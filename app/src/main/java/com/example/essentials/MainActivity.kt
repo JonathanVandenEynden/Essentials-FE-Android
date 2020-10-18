@@ -1,7 +1,7 @@
 package com.example.essentials
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+
 import androidx.databinding.DataBindingUtil
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.lifecycle.LiveData
@@ -13,6 +13,9 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.essentials.databinding.ActivityMainBinding
+
+
+import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
     private lateinit var drawerLayout: DrawerLayout
