@@ -3,9 +3,9 @@ package com.example.essentials.ui.changeInitiatives
 import androidx.lifecycle.ViewModel
 import com.example.essentials.data.model.ChangeInitiative
 
-class ChangeInitiativeViewModel : ViewModel(){
+class ChangeInitiativeViewModel : ViewModel() {
 
-    lateinit var changeInitiatives : ArrayList<ChangeInitiative>
+    lateinit var changeInitiatives: ArrayList<ChangeInitiative>
 
     init {
         changeInitiatives = ArrayList()

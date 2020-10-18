@@ -1,18 +1,12 @@
 package com.example.essentials.ui.changeInitiatives
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.ViewHolder
-import com.example.essentials.R
 import com.example.essentials.data.model.ChangeInitiative
 import com.example.essentials.databinding.ChangeInitiativeListItemBinding
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import javax.security.auth.callback.CallbackHandler
 
 class ChangeInitiativeAdapter :
     ListAdapter<ChangeInitiative, ChangeInitiativeAdapter.ViewHolder>(ChangeInitiativeDiffCallback()) {
@@ -27,8 +21,8 @@ class ChangeInitiativeAdapter :
         return ViewHolder.from(parent)
     }
 
-    class ViewHolder private constructor(val binding: ChangeInitiativeListItemBinding)
-        : RecyclerView.ViewHolder(binding.root) {
+    class ViewHolder private constructor(val binding: ChangeInitiativeListItemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item: ChangeInitiative) {
             binding.changeInitiative = item
@@ -44,7 +38,6 @@ class ChangeInitiativeAdapter :
             }
         }
     }
-
 }
 
 class ChangeInitiativeDiffCallback : DiffUtil.ItemCallback<ChangeInitiative>() {
