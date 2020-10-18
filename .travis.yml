@@ -39,4 +39,5 @@ before_install:
 
 # Run your main script
 script:
+  - ./gradlew ktlintCheck
   - ./gradlew -PdisablePreDex
