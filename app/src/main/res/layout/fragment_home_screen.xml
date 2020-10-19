@@ -5,13 +5,16 @@
 
     <data>
 
+        <variable
+            name="viewModel"
+            type="com.example.essentials.ui.homeScreen.HomeScreenViewModel" />
     </data>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".HomeScreenFragment"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        tools:context=".ui.homeScreen.HomeScreenFragment">
 
         <!-- TODO Make the greeting changeable-->
         <TextView
@@ -28,7 +31,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-            <!--TODO change icon-->
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -37,7 +39,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            android:onClick="@{()->viewModel.onChangeInitiativesClicked()}">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -49,12 +52,13 @@
                     android:id="@+id/icon_change_initiatives"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-
+                    android:minWidth="100dp"
+                    android:minHeight="100dp"
                     android:contentDescription="@string/icon_for_change_initiative"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    tools:src="@tools:sample/avatars" />
+                    app:srcCompat="@drawable/sync_white_48dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -67,13 +71,12 @@
         </com.google.android.material.card.MaterialCardView>
 
 
-
-        <!--TODO change icon-->
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             app:cardBackgroundColor="#FF6A3B"
+
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -89,12 +92,13 @@
                     android:id="@+id/icon_dasboard"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-
                     android:contentDescription="@string/icon_for_change_initiative"
+                    android:minWidth="100dp"
+                    android:minHeight="100dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    tools:src="@tools:sample/avatars" />
+                    app:srcCompat="@drawable/dashboard_white_48dp" />
 
                 <TextView
                     android:layout_width="wrap_content"

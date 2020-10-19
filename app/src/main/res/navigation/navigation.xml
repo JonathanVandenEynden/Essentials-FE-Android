@@ -12,7 +12,7 @@
         tools:layout="@layout/fragment_change_initiatives" />
     <fragment
         android:id="@+id/homeScreenFragment"
-        android:name="com.example.essentials.HomeScreenFragment"
+        android:name="com.example.essentials.ui.homeScreen.HomeScreenFragment"
         android:label="fragment_home_screen"
         tools:layout="@layout/fragment_home_screen" >
         <action
