@@ -7,4 +7,7 @@
     <string name="icon_for_change_initiative">icon for change initiative</string>
     <string name="icon_for_dashboard">icon for dashboard</string>
     <string name="dashboard">Dashboard</string>
+    <string name="surveys">Surveys</string>
+    <string name="titleSurvey">Title of survey</string>
+    <string name="title_change">ChangeInitiative Title</string>
 </resources>
