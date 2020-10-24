@@ -24,7 +24,6 @@ class SurveyDoneFragment : Fragment() {
             view.findNavController().navigate(
                 SurveyDoneFragmentDirections.actionSurveyDoneFragmentToHomeScreenFragment()
             )
-
         }
         binding.surveyDone = this
 
