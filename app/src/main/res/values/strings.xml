@@ -7,4 +7,8 @@
     <string name="icon_for_change_initiative">icon for change initiative</string>
     <string name="icon_for_dashboard">icon for dashboard</string>
     <string name="dashboard">Dashboard</string>
+    <string name="next_question">Next question</string>
+    <string name="title_survey_question">Survey question (%1$d/%2$d)</string>
+    <string name="survey_finished">The survey is finished</string>
+    <string name="back_survey_finished">Back to homescreen</string>
 </resources>

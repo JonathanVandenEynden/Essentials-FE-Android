@@ -28,6 +28,12 @@ class HomeScreenFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(HomeScreenViewModel::class.java)
         binding.viewModel = viewModel
 
+        binding.testButton.setOnClickListener { view: View ->
+            run {
+                view.findNavController()
+                    .navigate(R.id.action_homeScreenFragment_to_surveyQuestionFragement)
+            }
+        }
         viewModel.navigateToChangeInitiatives.observe(
             viewLifecycleOwner,
             Observer<Boolean> { shouldNavigate ->
