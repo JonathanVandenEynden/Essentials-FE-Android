@@ -53,9 +53,7 @@ class SurveyQuestionFragement : Fragment() {
         setQuestion()
 
         binding.ratingBarQuestion.setOnRatingBarChangeListener { _, _, _ ->
-            (
-                    ratingGiven()
-                    )
+            (ratingGiven())
         }
 
         binding.nextQuestion.setOnClickListener { view: View ->
