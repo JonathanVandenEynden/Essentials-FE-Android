@@ -11,4 +11,9 @@
     <string name="survey_finished">The survey is finished</string>
     <string name="back_survey_finished">Back to homescreen</string>
     <string name="surveys">Surveys</string>
+    <string name="titleSurvey">Title of survey</string>
+    <string name="title_change">ChangeInitiative Title</string>
+    <string name="changes">Changes</string>
+    <string name="homeScreen">Home</string>
+    <string name="team_members">My Teams</string>
 </resources>
