@@ -17,6 +17,7 @@
         tools:context=".ui.homeScreen.HomeScreenFragment">
 
         <!-- TODO Make the greeting changeable-->
+
         <TextView
             android:id="@+id/label_name"
             android:layout_width="match_parent"
@@ -34,38 +35,50 @@
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            app:cardBackgroundColor="@color/brown"
+            android:layout_marginStart="@dimen/dp16"
+            android:layout_marginEnd="@dimen/dp16"
+            android:onClick="@{()->viewModel.onChangeInitiativesClicked()}"
+            app:cardBackgroundColor="@color/cardview_light_background"
+            app:cardCornerRadius="@dimen/dp16"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:onClick="@{()->viewModel.onChangeInitiativesClicked()}">
+            app:strokeColor="#FF9800"
+            app:strokeWidth="2dp">
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="16dp"
-                android:orientation="vertical">
+                android:layout_width="348dp"
+                android:layout_height="50dp"
+                android:layout_margin="16dp">
+
+                <TextView
+                    android:layout_width="240dp"
+                    android:layout_height="50dp"
+                    android:fontFamily="@font/roboto"
+                    android:gravity="center_vertical"
+
+                    android:text="@string/changes"
+                    android:textAlignment="viewStart"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
 
                 <ImageView
                     android:id="@+id/icon_change_initiatives"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center"
+                    android:contentDescription="@string/icon_for_dashboard"
+                    android:foregroundGravity="center_vertical"
                     android:minWidth="100dp"
                     android:minHeight="100dp"
-                    android:contentDescription="@string/icon_for_change_initiative"
+                    android:paddingRight="32dp"
+                    android:rotation="0"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/sync_white_48dp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="8dp"
-                    android:text="@string/change_initiatives"
-                    android:textSize="36sp" />
+                    app:srcCompat="@drawable/sync_black_18dp" />
 
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
@@ -75,37 +88,137 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            app:cardBackgroundColor="@color/brown"
 
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="@dimen/dp16"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            app:strokeColor="#FF9800"
+            app:strokeWidth="2dp">
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="16dp"
-                android:orientation="vertical">
+                android:layout_width="348dp"
+                android:layout_height="50dp"
+                android:layout_margin="16dp">
+
+                <TextView
+                    android:layout_width="240dp"
+                    android:layout_height="50dp"
+                    android:fontFamily="@font/roboto"
+                    android:gravity="center_vertical"
+                    android:text="@string/dashboard"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
 
                 <ImageView
-                    android:id="@+id/icon_dasboard"
+                    android:id="@+id/icon_dashboard"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:contentDescription="@string/icon_for_change_initiative"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center"
+                    android:contentDescription="@string/dashboard"
+                    android:foregroundGravity="center_vertical"
                     android:minWidth="100dp"
                     android:minHeight="100dp"
+                    android:paddingRight="32dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/dashboard_white_48dp" />
+                    app:srcCompat="@drawable/dashboard_black_18dp" />
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp16"
+            android:layout_marginEnd="@dimen/dp16"
+            android:onClick="@{()->viewModel.onChangeInitiativesClicked()}"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="@dimen/dp16"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:strokeColor="#FF9800"
+            app:strokeWidth="2dp">
+
+            <LinearLayout
+                android:layout_width="348dp"
+                android:layout_height="50dp"
+                android:layout_margin="16dp">
 
                 <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="240dp"
+                    android:layout_height="50dp"
+                    android:fontFamily="@font/roboto"
+                    android:gravity="center_vertical"
+                    android:text="@string/surveys"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+
+                <ImageView
+                    android:id="@+id/icon_survey"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="8dp"
-                    android:text="@string/dashboard"
-                    android:textSize="36sp" />
+                    android:layout_height="60dp"
+                    android:layout_gravity="center"
+                    android:contentDescription="@string/dashboard"
+                    android:foregroundGravity="center_vertical"
+                    android:minWidth="100dp"
+                    android:minHeight="100dp"
+                    android:paddingRight="32dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/content_paste_black_48dp" />
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dp16"
+            android:onClick="@{()->viewModel.onChangeInitiativesClicked()}"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="@dimen/dp16"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:strokeColor="#FF9800"
+            app:strokeWidth="2dp">
+
+            <LinearLayout
+                android:layout_width="348dp"
+                android:layout_height="50dp"
+                android:layout_margin="16dp">
+
+                <TextView
+                    android:layout_width="240dp"
+                    android:layout_height="50dp"
+                    android:fontFamily="@font/roboto"
+                    android:gravity="center_vertical"
+                    android:text="@string/team_members"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center"
+                    android:contentDescription="@string/dashboard"
+                    android:foregroundGravity="center_vertical"
+                    android:minWidth="100dp"
+                    android:minHeight="100dp"
+                    android:paddingRight="32dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/people_black_48dp" />
 
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>

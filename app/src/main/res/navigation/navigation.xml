@@ -9,14 +9,23 @@
         android:id="@+id/changeInitiativesFragment"
         android:name="com.example.essentials.ui.changeInitiatives.ChangeInitiativesFragment"
         android:label="fragment_change_initiatives"
-        tools:layout="@layout/fragment_change_initiatives" />
+        tools:layout="@layout/fragment_change_initiatives" >
+        <action
+            android:id="@+id/action_changeInitiativesFragment_to_surveyFragment"
+            app:destination="@id/surveyFragment" />
+    </fragment>
     <fragment
         android:id="@+id/homeScreenFragment"
         android:name="com.example.essentials.ui.homeScreen.HomeScreenFragment"
-        android:label="fragment_home_screen"
-        tools:layout="@layout/fragment_home_screen" >
+        android:label="@string/homeScreen"
+        tools:layout="@layout/fragment_home_screen">
         <action
             android:id="@+id/action_homeScreenFragment_to_changeInitiativesFragment"
             app:destination="@id/changeInitiativesFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/surveyFragment"
+        android:name="com.example.essentials.ui.surveyScreen.SurveyFragment"
+        android:label="fragment_survey_display"
+        tools:layout="@layout/fragment_survey_display" />
 </navigation>
