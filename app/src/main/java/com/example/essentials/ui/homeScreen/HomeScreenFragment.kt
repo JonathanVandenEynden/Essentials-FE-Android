@@ -28,13 +28,11 @@ class HomeScreenFragment : Fragment() {
         binding.viewModel = viewModel
 
         binding.surveysHomescreen.setOnClickListener { view: View ->
-            (
-                    binding.root.findNavController().navigate(
-                        HomeScreenFragmentDirections.actionHomeScreenFragmentToAllSurveysFragment(
-                            viewModel.getSurveys().toTypedArray()
-                        )
-                    )
-                    )
+            (binding.root.findNavController().navigate(
+                HomeScreenFragmentDirections.actionHomeScreenFragmentToAllSurveysFragment(
+                    viewModel.getSurveys().toTypedArray()
+                )
+            ))
         }
 
         viewModel.navigateToChangeInitiatives.observe(
