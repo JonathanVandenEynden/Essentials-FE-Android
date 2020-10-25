@@ -13,7 +13,7 @@ import com.example.essentials.data.model.SurveyQuestion
 import com.example.essentials.databinding.SurveyQuestionBinding
 
 class SurveyQuestionFragement : Fragment() {
-    private val questions: MutableList<SurveyQuestion> = mutableListOf(
+    /*private val questions: MutableList<SurveyQuestion> = mutableListOf(
         SurveyQuestion(
             question = "What do you think of the new food?",
             option0 = "uneatable",
@@ -24,13 +24,14 @@ class SurveyQuestionFragement : Fragment() {
             option0 = "unfriendly",
             option5 = "friendly"
         )
-    )
+    )*/
 
+    private var questions: ArrayList<SurveyQuestion> = arrayListOf()
     lateinit var currentQuestion: SurveyQuestion
     lateinit var option0: String
     lateinit var option5: String
     private var questionIndex = 0
-    private val numberOfQuestions = questions.size
+    private var numberOfQuestions = 0
     private var ratingIsGiven = false
 
     override fun onCreateView(
@@ -38,6 +39,9 @@ class SurveyQuestionFragement : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        val args = SurveyQuestionFragementArgs.fromBundle(requireArguments())
+        questions = args.survey.questions
+        numberOfQuestions = questions.size
         val binding = DataBindingUtil.inflate<SurveyQuestionBinding>(
             inflater,
             R.layout.survey_question,

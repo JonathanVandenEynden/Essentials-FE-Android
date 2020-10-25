@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">Essentials, Hello world</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="hello_sukrit">Hello Sukrit</string>
     <string name="change_initiatives">Change Initiatives</string>
@@ -11,4 +10,5 @@
     <string name="title_survey_question">Survey question (%1$d/%2$d)</string>
     <string name="survey_finished">The survey is finished</string>
     <string name="back_survey_finished">Back to homescreen</string>
+    <string name="surveys">Surveys</string>
 </resources>

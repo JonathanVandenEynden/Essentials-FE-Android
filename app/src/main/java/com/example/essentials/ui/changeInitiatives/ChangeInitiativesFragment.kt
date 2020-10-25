@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -13,7 +14,7 @@ import com.example.essentials.databinding.FragmentChangeInitiativesBinding
 
 /**
  * A simple [Fragment] subclass.
- * Use the [ChangeInitiativesFragment.newInstance] factory method to
+ * Use the [ChangeInitiativesFragment] factory method to
  * create an instance of this fragment.
  */
 class ChangeInitiativesFragment : Fragment() {
@@ -55,15 +56,12 @@ class ChangeInitiativesFragment : Fragment() {
 
         adapter.submitList(viewModel.changeInitiatives)
 
+        (activity as AppCompatActivity).supportActionBar?.title = "My change initiatives"
+
         return binding.root
     }
 
-    // TODO de titel van de appbar kunnen veranderen
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-
-//        activity?.let {
-//            it.updateActionbarTitle("My Change Initiatives");
-//        }
     }
 }

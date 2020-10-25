@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
@@ -37,6 +38,8 @@ class SurveyDoneFragment : Fragment() {
         }
         summary = ret
 
+        (activity as AppCompatActivity).supportActionBar?.title =
+            getString(R.string.survey_finished)
         return binding.root
     }
 }

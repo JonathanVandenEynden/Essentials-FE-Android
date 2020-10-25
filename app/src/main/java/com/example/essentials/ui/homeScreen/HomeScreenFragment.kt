@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.example.essentials.R
@@ -31,12 +30,12 @@ class HomeScreenFragment : Fragment() {
         binding.testButton.setOnClickListener { view: View ->
             run {
                 view.findNavController()
-                    .navigate(R.id.action_homeScreenFragment_to_surveyQuestionFragement)
+                    .navigate(R.id.action_homeScreenFragment_to_surveysChangeinitiativeFragment)
             }
         }
         viewModel.navigateToChangeInitiatives.observe(
             viewLifecycleOwner,
-            Observer<Boolean> { shouldNavigate ->
+            { shouldNavigate ->
                 if (shouldNavigate == true) {
                     val navController = binding.root.findNavController()
                     navController.navigate(R.id.action_homeScreenFragment_to_changeInitiativesFragment)

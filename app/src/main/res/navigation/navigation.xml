@@ -19,8 +19,8 @@
             android:id="@+id/action_homeScreenFragment_to_changeInitiativesFragment"
             app:destination="@id/changeInitiativesFragment" />
         <action
-            android:id="@+id/action_homeScreenFragment_to_surveyQuestionFragement"
-            app:destination="@id/surveyQuestionFragement" />
+            android:id="@+id/action_homeScreenFragment_to_surveysChangeinitiativeFragment"
+            app:destination="@id/surveysChangeinitiativeFragment" />
     </fragment>
     <fragment
         android:id="@+id/surveyQuestionFragement"
@@ -29,6 +29,9 @@
         <action
             android:id="@+id/action_surveyQuestionFragement_to_surveyDoneFragment"
             app:destination="@id/surveyDoneFragment" />
+        <argument
+            android:name="survey"
+            app:argType="com.example.essentials.data.model.Survey" />
     </fragment>
     <fragment
         android:id="@+id/surveyDoneFragment"
@@ -40,5 +43,13 @@
         <argument
             android:name="questions"
             app:argType="com.example.essentials.data.model.SurveyQuestion[]" />
+    </fragment>
+    <fragment
+        android:id="@+id/surveysChangeinitiativeFragment"
+        android:name="com.example.essentials.ui.surveys.SurveysChangeinitiativeFragment"
+        android:label="SurveysChangeinitiativeFragment">
+        <action
+            android:id="@+id/action_surveysChangeinitiativeFragment_to_surveyQuestionFragement"
+            app:destination="@id/surveyQuestionFragement" />
     </fragment>
 </navigation>
