@@ -11,11 +11,11 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.essentials.R
-import com.example.essentials.databinding.SurveysChangeinitiativeBinding
+import com.example.essentials.databinding.AllSurveysBinding
 
-class SurveysChangeinitiativeFragment : Fragment() {
+class AllSurveysFragment : Fragment() {
 
-    lateinit var viewModel: SurveysChangeinitiativeViewModel
+    lateinit var viewModel: AllSurveysViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -23,27 +23,27 @@ class SurveysChangeinitiativeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        val binding: SurveysChangeinitiativeBinding =
-            DataBindingUtil.inflate(inflater, R.layout.surveys_changeinitiative, container, false)
+        val binding: AllSurveysBinding =
+            DataBindingUtil.inflate(inflater, R.layout.all_surveys, container, false)
 
-        viewModel = ViewModelProvider(this).get(SurveysChangeinitiativeViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(AllSurveysViewModel::class.java)
 
         binding.viewModel = viewModel
 
-        val args = SurveysChangeinitiativeFragmentArgs.fromBundle(requireArguments())
+        val args = AllSurveysFragmentArgs.fromBundle(requireArguments())
 
-        val ci = args.changeInitiative
+        val surveys = args.surveys
 
-        viewModel.changeInitiative = ci
+        viewModel.surveys.addAll(surveys)
 
         binding.lifecycleOwner = this
 
         val manager = LinearLayoutManager(activity)
 
-        binding.surveysCISummary.layoutManager = manager
+        binding.allSurveysSummary.layoutManager = manager
 
-        val adapter = SurveysChangeinitiativeAdapter(
-            SurveyListener { survey ->
+        val adapter = AllSurveysAdapter(
+            AllSurveyListener { survey ->
                 viewModel.onSurveyClicked(survey)
             }
         )
@@ -62,11 +62,11 @@ class SurveysChangeinitiativeFragment : Fragment() {
             }
         )
 
-        binding.surveysCISummary.adapter = adapter
+        binding.allSurveysSummary.adapter = adapter
 
-        adapter.submitList(viewModel.changeInitiative.surveys)
+        adapter.submitList(viewModel.surveys)
 
-        (activity as AppCompatActivity).supportActionBar?.title = viewModel.changeInitiative.title
+        (activity as AppCompatActivity).supportActionBar?.title = "All surveys"
         return binding.root
     }
 }

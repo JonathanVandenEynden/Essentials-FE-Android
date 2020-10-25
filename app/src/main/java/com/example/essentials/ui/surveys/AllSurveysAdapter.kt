@@ -6,10 +6,10 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.essentials.data.model.Survey
-import com.example.essentials.databinding.SurveysChangeinitiativeListitemBinding
+import com.example.essentials.databinding.AllSurveysListitemBinding
 
-class SurveysChangeinitiativeAdapter(val clickListener: SurveyListener) :
-    ListAdapter<Survey, SurveysChangeinitiativeAdapter.ViewHolder>(SurveyDiffCallback()) {
+class AllSurveysAdapter(val clickListener: AllSurveyListener) :
+    ListAdapter<Survey, AllSurveysAdapter.ViewHolder>(AllSurveyDiffCallback()) {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = getItem(position)
@@ -20,10 +20,10 @@ class SurveysChangeinitiativeAdapter(val clickListener: SurveyListener) :
         return ViewHolder.from(parent)
     }
 
-    class ViewHolder private constructor(val binding: SurveysChangeinitiativeListitemBinding) :
+    class ViewHolder private constructor(val binding: AllSurveysListitemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(clickListener: SurveyListener, item: Survey) {
+        fun bind(clickListener: AllSurveyListener, item: Survey) {
             binding.survey = item
             binding.clickListener = clickListener
             binding.executePendingBindings()
@@ -33,14 +33,14 @@ class SurveysChangeinitiativeAdapter(val clickListener: SurveyListener) :
             fun from(parent: ViewGroup): ViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
                 val binding =
-                    SurveysChangeinitiativeListitemBinding.inflate(layoutInflater, parent, false)
+                    AllSurveysListitemBinding.inflate(layoutInflater, parent, false)
                 return ViewHolder(binding)
             }
         }
     }
 }
 
-class SurveyDiffCallback : DiffUtil.ItemCallback<Survey>() {
+class AllSurveyDiffCallback : DiffUtil.ItemCallback<Survey>() {
     override fun areItemsTheSame(oldItem: Survey, newItem: Survey): Boolean {
         return oldItem.name == newItem.name
     }
@@ -50,6 +50,6 @@ class SurveyDiffCallback : DiffUtil.ItemCallback<Survey>() {
     }
 }
 
-class SurveyListener(val clickListener: (survey: Survey) -> Unit) {
+class AllSurveyListener(val clickListener: (survey: Survey) -> Unit) {
     fun onClick(survey: Survey) = clickListener(survey)
 }

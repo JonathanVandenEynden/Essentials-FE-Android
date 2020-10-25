@@ -11,7 +11,7 @@
 
         <variable
             name="clickListener"
-            type="com.example.essentials.ui.surveys.SurveyListener" />
+            type="com.example.essentials.ui.surveys.AllSurveyListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -19,7 +19,7 @@
         android:layout_height="wrap_content">
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/changeinitiative_listitem_button"
+            android:id="@+id/allSurvey_listitem_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"

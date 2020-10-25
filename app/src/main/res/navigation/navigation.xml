@@ -9,10 +9,13 @@
         android:id="@+id/changeInitiativesFragment"
         android:name="com.example.essentials.ui.changeInitiatives.ChangeInitiativesFragment"
         android:label="fragment_change_initiatives"
-        tools:layout="@layout/fragment_change_initiatives" >
+        tools:layout="@layout/fragment_change_initiatives">
+        <argument
+            android:name="changeinitiatives"
+            app:argType="com.example.essentials.data.model.ChangeInitiative[]" />
         <action
-            android:id="@+id/action_changeInitiativesFragment_to_surveyFragment"
-            app:destination="@id/surveyFragment" />
+            android:id="@+id/action_changeInitiativesFragment_to_surveysChangeinitiativeFragment"
+            app:destination="@id/surveysChangeinitiativeFragment" />
     </fragment>
     <fragment
         android:id="@+id/homeScreenFragment"
@@ -23,8 +26,8 @@
             android:id="@+id/action_homeScreenFragment_to_changeInitiativesFragment"
             app:destination="@id/changeInitiativesFragment" />
         <action
-            android:id="@+id/action_homeScreenFragment_to_surveysChangeinitiativeFragment"
-            app:destination="@id/surveysChangeinitiativeFragment" />
+            android:id="@+id/action_homeScreenFragment_to_allSurveysFragment"
+            app:destination="@id/allSurveysFragment" />
     </fragment>
     <fragment
         android:id="@+id/surveyQuestionFragement"
@@ -55,10 +58,19 @@
         <action
             android:id="@+id/action_surveysChangeinitiativeFragment_to_surveyQuestionFragement"
             app:destination="@id/surveyQuestionFragement" />
+        <argument
+            android:name="changeInitiative"
+            app:argType="com.example.essentials.data.model.ChangeInitiative" />
     </fragment>
     <fragment
-        android:id="@+id/surveyFragment"
-        android:name="com.example.essentials.ui.surveyScreen.SurveyFragment"
-        android:label="fragment_survey_display"
-        tools:layout="@layout/fragment_survey_display" />
+        android:id="@+id/allSurveysFragment"
+        android:name="com.example.essentials.ui.surveys.AllSurveysFragment"
+        android:label="AllSurveysFragment">
+        <action
+            android:id="@+id/action_allSurveysFragment_to_surveyQuestionFragement"
+            app:destination="@id/surveyQuestionFragement" />
+        <argument
+            android:name="surveys"
+            app:argType="com.example.essentials.data.model.Survey[]" />
+    </fragment>
 </navigation>

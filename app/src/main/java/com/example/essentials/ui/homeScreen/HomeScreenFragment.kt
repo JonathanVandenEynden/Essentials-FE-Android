@@ -4,10 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
-import com.example.essentials.R
 import com.example.essentials.databinding.FragmentHomeScreenBinding
 
 class HomeScreenFragment : Fragment() {
@@ -27,22 +27,31 @@ class HomeScreenFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(HomeScreenViewModel::class.java)
         binding.viewModel = viewModel
 
-        binding.testButton.setOnClickListener { view: View ->
-            run {
-                view.findNavController()
-                    .navigate(R.id.action_homeScreenFragment_to_surveysChangeinitiativeFragment)
-            }
+        binding.surveysHomescreen.setOnClickListener { view: View ->
+            (binding.root.findNavController().navigate(
+                HomeScreenFragmentDirections.actionHomeScreenFragmentToAllSurveysFragment(
+                    viewModel.getSurveys().toTypedArray()
+                )
+            ))
         }
+
         viewModel.navigateToChangeInitiatives.observe(
             viewLifecycleOwner,
             { shouldNavigate ->
                 if (shouldNavigate == true) {
                     val navController = binding.root.findNavController()
-                    navController.navigate(R.id.action_homeScreenFragment_to_changeInitiativesFragment)
+                    navController.navigate(
+                        HomeScreenFragmentDirections.actionHomeScreenFragmentToChangeInitiativesFragment(
+                            viewModel.changeInitiatives.toTypedArray()
+                        )
+                    )
                     viewModel.onNavigatedToChangeInitiatives()
                 }
             }
         )
+
+        (activity as AppCompatActivity).supportActionBar?.title = "Essentials"
+
         return binding.root
     }
 }

@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.essentials.R
 import com.example.essentials.databinding.FragmentChangeInitiativesBinding
@@ -44,13 +45,37 @@ class ChangeInitiativesFragment : Fragment() {
 
         binding.viewModel = viewModel
 
+        val args = ChangeInitiativesFragmentArgs.fromBundle(requireArguments())
+
+        val cInitiatives = args.changeinitiatives
+
+        viewModel.changeInitiatives.addAll(cInitiatives)
+
         binding.setLifecycleOwner(this)
 
         val manager = LinearLayoutManager(activity)
 
         binding.ciList.layoutManager = manager
 
-        val adapter = ChangeInitiativeAdapter()
+        val adapter = ChangeInitiativeAdapter(
+            ChangeInitiativeListener { changeInitiative ->
+                viewModel.onChangeInitiativeClicked(changeInitiative)
+            }
+        )
+
+        viewModel.navigateToChangeInitiative.observe(
+            viewLifecycleOwner,
+            { changeInitiative ->
+                changeInitiative?.let {
+                    this.findNavController().navigate(
+                        ChangeInitiativesFragmentDirections.actionChangeInitiativesFragmentToSurveysChangeinitiativeFragment(
+                            changeInitiative
+                        )
+                    )
+                    viewModel.onChangeInitiativeNavigated()
+                }
+            }
+        )
 
         binding.ciList.adapter = adapter
 

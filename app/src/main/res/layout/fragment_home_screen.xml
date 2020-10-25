@@ -131,11 +131,11 @@
         </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.card.MaterialCardView
+            android:id="@+id/surveys_homescreen"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/dp16"
             android:layout_marginEnd="@dimen/dp16"
-            android:onClick="@{()->viewModel.onChangeInitiativesClicked()}"
             app:cardBackgroundColor="@color/white"
             app:cardCornerRadius="@dimen/dp16"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -222,12 +222,6 @@
 
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
-
-        <Button
-            android:id="@+id/testButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Test survey" />
 
 
     </LinearLayout>
