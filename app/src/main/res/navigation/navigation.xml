@@ -17,11 +17,44 @@
     <fragment
         android:id="@+id/homeScreenFragment"
         android:name="com.example.essentials.ui.homeScreen.HomeScreenFragment"
-        android:label="@string/homeScreen"
+        android:label="fragment_home_screen"
         tools:layout="@layout/fragment_home_screen">
         <action
             android:id="@+id/action_homeScreenFragment_to_changeInitiativesFragment"
             app:destination="@id/changeInitiativesFragment" />
+        <action
+            android:id="@+id/action_homeScreenFragment_to_surveysChangeinitiativeFragment"
+            app:destination="@id/surveysChangeinitiativeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/surveyQuestionFragement"
+        android:name="com.example.essentials.ui.surveys.SurveyQuestionFragement"
+        android:label="SurveyQuestionFragement">
+        <action
+            android:id="@+id/action_surveyQuestionFragement_to_surveyDoneFragment"
+            app:destination="@id/surveyDoneFragment" />
+        <argument
+            android:name="survey"
+            app:argType="com.example.essentials.data.model.Survey" />
+    </fragment>
+    <fragment
+        android:id="@+id/surveyDoneFragment"
+        android:name="com.example.essentials.ui.surveys.SurveyDoneFragment"
+        android:label="SurveyDoneFragment">
+        <action
+            android:id="@+id/action_surveyDoneFragment_to_homeScreenFragment"
+            app:destination="@id/homeScreenFragment" />
+        <argument
+            android:name="questions"
+            app:argType="com.example.essentials.data.model.SurveyQuestion[]" />
+    </fragment>
+    <fragment
+        android:id="@+id/surveysChangeinitiativeFragment"
+        android:name="com.example.essentials.ui.surveys.SurveysChangeinitiativeFragment"
+        android:label="SurveysChangeinitiativeFragment">
+        <action
+            android:id="@+id/action_surveysChangeinitiativeFragment_to_surveyQuestionFragement"
+            app:destination="@id/surveyQuestionFragement" />
     </fragment>
     <fragment
         android:id="@+id/surveyFragment"
