@@ -43,7 +43,8 @@ class SurveysChangeinitiativeFragment : Fragment() {
         )
 
         viewModel.navigateToSurvey.observe(
-            viewLifecycleOwner, { survey ->
+            viewLifecycleOwner,
+            { survey ->
                 survey?.let {
                     this.findNavController().navigate(
                         SurveysChangeinitiativeFragmentDirections.actionSurveysChangeinitiativeFragmentToSurveyQuestionFragement(
