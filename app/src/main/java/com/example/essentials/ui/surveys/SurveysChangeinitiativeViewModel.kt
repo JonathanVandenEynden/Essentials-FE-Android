@@ -4,11 +4,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.essentials.data.model.ChangeInitiative
 import com.example.essentials.data.model.Survey
-import com.example.essentials.data.model.SurveyQuestion
 
 class SurveysChangeinitiativeViewModel : ViewModel() {
 
-    val changeInitiative: ChangeInitiative = ChangeInitiative(
+    lateinit var changeInitiative: ChangeInitiative /* = ChangeInitiative(
         title = "New Resto",
         surveys = arrayListOf(
             Survey(
@@ -42,7 +41,7 @@ class SurveysChangeinitiativeViewModel : ViewModel() {
                 )
             )
         )
-    )
+    )*/
 
     override fun onCleared() {
         super.onCleared()

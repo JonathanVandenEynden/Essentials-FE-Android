@@ -5,17 +5,15 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.essentials.data.model.ChangeInitiative
 import com.example.essentials.databinding.ChangeInitiativeListItemBinding
 
-class ChangeInitiativeAdapter :
+class ChangeInitiativeAdapter(val clickListener: ChangeInitiativeListener) :
     ListAdapter<ChangeInitiative, ChangeInitiativeAdapter.ViewHolder>(ChangeInitiativeDiffCallback()) {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = getItem(position)
-
-        holder.bind(item)
+        holder.bind(clickListener, item)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -25,8 +23,9 @@ class ChangeInitiativeAdapter :
     class ViewHolder private constructor(val binding: ChangeInitiativeListItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(item: ChangeInitiative) {
+        fun bind(clickListener: ChangeInitiativeListener, item: ChangeInitiative) {
             binding.changeInitiative = item
+            binding.clickListener = clickListener
             binding.executePendingBindings()
         }
 
@@ -49,4 +48,8 @@ class ChangeInitiativeDiffCallback : DiffUtil.ItemCallback<ChangeInitiative>() {
     override fun areContentsTheSame(oldItem: ChangeInitiative, newItem: ChangeInitiative): Boolean {
         return oldItem == newItem
     }
+}
+
+class ChangeInitiativeListener(val clickListener: (changeInitiative: ChangeInitiative) -> Unit) {
+    fun onClick(changeInitiative: ChangeInitiative) = clickListener(changeInitiative)
 }
