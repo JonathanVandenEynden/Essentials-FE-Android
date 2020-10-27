@@ -57,7 +57,6 @@
                     android:layout_height="50dp"
                     android:fontFamily="@font/roboto"
                     android:gravity="center_vertical"
-
                     android:text="@string/changes"
                     android:textAlignment="viewStart"
                     android:textAllCaps="false"
@@ -69,7 +68,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="60dp"
                     android:layout_gravity="center"
-                    android:contentDescription="@string/icon_for_dashboard"
+                    android:contentDescription="@string/icon_for_change_initiative"
                     android:foregroundGravity="center_vertical"
                     android:minWidth="100dp"
                     android:minHeight="100dp"
@@ -88,7 +87,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
-
+            android:onClick="@{()->viewModel.onDasboardClicked()}"
             app:cardBackgroundColor="@color/white"
             app:cardCornerRadius="@dimen/dp16"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -117,7 +116,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="60dp"
                     android:layout_gravity="center"
-                    android:contentDescription="@string/dashboard"
+                    android:contentDescription="@string/icon_for_dashboard"
                     android:foregroundGravity="center_vertical"
                     android:minWidth="100dp"
                     android:minHeight="100dp"
@@ -136,6 +135,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/dp16"
             android:layout_marginEnd="@dimen/dp16"
+            android:onClick="@{()->viewModel.onSurveysClicked()}"
             app:cardBackgroundColor="@color/white"
             app:cardCornerRadius="@dimen/dp16"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -165,7 +165,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="60dp"
                     android:layout_gravity="center"
-                    android:contentDescription="@string/dashboard"
+                    android:contentDescription="@string/icon_for_surveys"
                     android:foregroundGravity="center_vertical"
                     android:minWidth="100dp"
                     android:minHeight="100dp"
@@ -182,7 +182,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/dp16"
-            android:onClick="@{()->viewModel.onChangeInitiativesClicked()}"
+            android:onClick="@{()->viewModel.onTeamsClicked()}"
             app:cardBackgroundColor="@color/white"
             app:cardCornerRadius="@dimen/dp16"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -202,7 +202,7 @@
                     android:layout_height="50dp"
                     android:fontFamily="@font/roboto"
                     android:gravity="center_vertical"
-                    android:text="@string/team_members"
+                    android:text="@string/my_teams"
                     android:textColor="@color/black"
                     android:textSize="20sp" />
 
@@ -210,7 +210,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="60dp"
                     android:layout_gravity="center"
-                    android:contentDescription="@string/dashboard"
+                    android:contentDescription="@string/icon_for_teams"
                     android:foregroundGravity="center_vertical"
                     android:minWidth="100dp"
                     android:minHeight="100dp"
@@ -219,6 +219,59 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/people_black_48dp" />
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Divider voor extra functie cm-->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/brown" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dp16"
+            android:onClick="@{()->viewModel.onMyChangeInitiativesClicked()}"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="@dimen/dp16"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:strokeColor="#FF9800"
+            app:strokeWidth="2dp">
+
+            <LinearLayout
+                android:layout_width="348dp"
+                android:layout_height="50dp"
+                android:layout_margin="16dp">
+
+                <TextView
+                    android:layout_width="240dp"
+                    android:layout_height="50dp"
+                    android:fontFamily="@font/roboto"
+                    android:gravity="center_vertical"
+                    android:text="@string/my_changes"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+
+                <ImageView
+                    android:id="@+id/icon_my_change_initiatives"
+                    android:layout_width="wrap_content"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center"
+                    android:contentDescription="@string/icon_for_my_change_initiatives"
+                    android:foregroundGravity="center_vertical"
+                    android:minWidth="100dp"
+                    android:minHeight="100dp"
+                    android:paddingRight="32dp"
+                    android:rotation="0"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/sync_black_18dp" />
 
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>

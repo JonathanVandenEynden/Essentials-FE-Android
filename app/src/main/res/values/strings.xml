@@ -16,4 +16,9 @@
     <string name="changes">Changes</string>
     <string name="homeScreen">Home</string>
     <string name="team_members">My Teams</string>
+    <string name="my_changes">My changes</string>
+    <string name="icon_for_surveys">icon for surveys</string>
+    <string name="icon_for_teams">icon for teams</string>
+    <string name="icon_for_my_change_initiatives">icon for my change initiatives</string>
+    <string name="my_teams">My Teams</string>
 </resources>
