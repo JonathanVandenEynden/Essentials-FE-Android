@@ -11,7 +11,9 @@ import androidx.navigation.ui.setupWithNavController
 import com.example.essentials.databinding.ActivityMainBinding
 import com.google.android.material.navigation.NavigationView
 
-
+/**
+ * @author Simon De Wilde
+ */
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
     private lateinit var binding: ActivityMainBinding
@@ -28,11 +30,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.layout.activity_main
         )
 
-
         binding.navView.setupWithNavController(navController)
         NavigationUI.setupActionBarWithNavController(this, navController, binding.drawerLayout)
         binding.navView.setNavigationItemSelectedListener(this)
-
     }
     override fun onSupportNavigateUp(): Boolean {
         return NavigationUI.navigateUp(navController, binding.drawerLayout)
@@ -52,53 +52,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         binding.drawerLayout.closeDrawers()
 
         when (item.itemId) {
-            R.id.changeInitiativesDrawer -> navController.navigate(R.id.changeInitiativesDrawer)
-            R.id.dashBoardDrawer -> navController.navigate(R.id.dashboardFragment)
-     }
+            R.id.changeInitiativesDrawer -> navController.navigate(R.id.changeInitiativesFragment)
+            R.id.dashboardDrawer -> navController.navigate(R.id.dashboardFragment)
+            R.id.allSurveysDrawer -> navController.navigate(R.id.allSurveysFragment)
+            R.id.teamsDrawer -> navController.navigate(R.id.teamsFragment)
+            // TODO extra
+        }
         return true
     }
-
-    // TODO EXPERIMENTAL - make drawer navigate - does not work properly yet
-//    private fun setupDrawerContent(navigationView: NavigationView) {
-//        navigationView.setNavigationItemSelectedListener(
-//            object : NavigationView.OnNavigationItemSelectedListener {
-//                override fun onNavigationItemSelected(menuItem: MenuItem): Boolean {
-//                    selectDrawerItem(menuItem)
-//                    return true
-//                }
-//            })
-//    }
-//
-//    fun selectDrawerItem(menuItem: MenuItem) {
-//        // Create a new fragment and specify the fragment to show based on nav item clicked
-//        var fragment: Fragment? = null
-//        val fragmentClass: Class<*>
-//        fragmentClass = when (menuItem.getItemId()) {
-//            R.id.changeInitiativesDrawer -> ChangeInitiativesFragment::class.java
-//            R.id.dashBoardDrawer -> DashboardFragment::class.java
-//            R.id.surveysDrawer -> SurveyFragment::class.java
-//            R.id.teamsDrawer -> TeamsFragment::class.java
-//            R.id.myChangeInitiativesDrawer -> ChangeInitiativesFragment::class.java // TODO veranderen naar de juiste fragment
-//            else -> ChangeInitiativesFragment::class.java
-//        }
-//        try {
-//            fragment = fragmentClass.newInstance() as Fragment
-//        } catch (e: Exception) {
-//            e.printStackTrace()
-//        }
-//
-//        // Insert the fragment by replacing any existing fragment
-//        val fragmentManager: FragmentManager = supportFragmentManager
-//        fragment?.let {
-//            fragmentManager.beginTransaction().replace(
-//                R.id.navHostFragment,
-//                it
-//            ).commit()
-//        }
-//
-//        // Set action bar title
-//        setTitle(menuItem.getTitle())
-//        // Close the navigation drawer
-//        drawerLayout.closeDrawers()
-//    }
 }

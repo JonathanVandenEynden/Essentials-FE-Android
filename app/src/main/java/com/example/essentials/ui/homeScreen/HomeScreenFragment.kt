@@ -43,9 +43,7 @@ class HomeScreenFragment : Fragment() {
                 if (it) {
                     val navController = binding.root.findNavController()
                     navController.navigate(
-                        HomeScreenFragmentDirections.actionHomeScreenFragmentToChangeInitiativesFragment(
-                            viewModel.changeInitiatives.toTypedArray()
-                        )
+                        HomeScreenFragmentDirections.actionHomeScreenFragmentToChangeInitiativesFragment()
                     )
                     viewModel.onNavigatedToChangeInitiatives()
                 }
@@ -78,10 +76,7 @@ class HomeScreenFragment : Fragment() {
             {
                 if (it) {
                     binding.root.findNavController().navigate(
-                        HomeScreenFragmentDirections.actionHomeScreenFragmentToAllSurveysFragment(
-                            // TODO surveys laten ophalen met retrofit in surveyviewmodel
-                            viewModel.getSurveys().toTypedArray()
-                        )
+                        HomeScreenFragmentDirections.actionHomeScreenFragmentToAllSurveysFragment()
                     )
                     viewModel.onNavigatedToSurveys()
                 }

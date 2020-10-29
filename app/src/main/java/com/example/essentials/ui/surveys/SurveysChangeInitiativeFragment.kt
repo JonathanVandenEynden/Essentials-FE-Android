@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.essentials.R
 import com.example.essentials.databinding.SurveysChangeinitiativeBinding
 
-class SurveysChangeinitiativeFragment : Fragment() {
+class SurveysChangeInitiativeFragment : Fragment() {
 
     lateinit var viewModel: SurveysChangeinitiativeViewModel
 
@@ -30,7 +30,7 @@ class SurveysChangeinitiativeFragment : Fragment() {
 
         binding.viewModel = viewModel
 
-        val args = SurveysChangeinitiativeFragmentArgs.fromBundle(requireArguments())
+        val args = SurveysChangeInitiativeFragmentArgs.fromBundle(requireArguments())
 
         val ci = args.changeInitiative
 
@@ -53,7 +53,7 @@ class SurveysChangeinitiativeFragment : Fragment() {
             { survey ->
                 survey?.let {
                     this.findNavController().navigate(
-                        SurveysChangeinitiativeFragmentDirections.actionSurveysChangeinitiativeFragmentToSurveyQuestionFragement(
+                        SurveysChangeInitiativeFragmentDirections.actionSurveysChangeinitiativeFragmentToSurveyQuestionFragement(
                             survey
                         )
                     )

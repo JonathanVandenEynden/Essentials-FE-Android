@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- @author Simon De Wilde -->
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/changeInitiativesFragment"
+        android:id="@+id/changeInitiativesDrawer"
         android:icon="@drawable/sync_black_18dp"
         android:title="@string/change_initiatives" />
     <item
-        android:id="@+id/dashboardFragment"
+        android:id="@+id/dashboardDrawer"
         android:icon="@drawable/dashboard_black_18dp"
         android:title="@string/dashboard" />
     <item
-        android:id="@+id/allSurveysFragment"
+        android:id="@+id/allSurveysDrawer"
         android:icon="@drawable/content_paste_black_48dp"
         android:title="@string/surveys" />
     <item
-        android:id="@+id/teamsFragment"
+        android:id="@+id/teamsDrawer"
         android:icon="@drawable/people_black_48dp"
         android:title="@string/my_teams" />
 <!--    TODO extra element-->

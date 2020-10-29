@@ -8,6 +8,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.essentials.data.model.ChangeInitiative
 import com.example.essentials.databinding.ChangeInitiativeListItemBinding
 
+/**
+ * @author Simon De Wilde
+ *
+ * Converts Change Initiatives to views
+ */
 class ChangeInitiativeAdapter(val clickListener: ChangeInitiativeListener) :
     ListAdapter<ChangeInitiative, ChangeInitiativeAdapter.ViewHolder>(ChangeInitiativeDiffCallback()) {
 

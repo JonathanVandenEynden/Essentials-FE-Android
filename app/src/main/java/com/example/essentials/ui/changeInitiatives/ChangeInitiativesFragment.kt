@@ -14,6 +14,7 @@ import com.example.essentials.R
 import com.example.essentials.databinding.FragmentChangeInitiativesBinding
 
 /**
+ * @author Simon De Wilde
  * A simple [Fragment] subclass.
  * Use the [ChangeInitiativesFragment] factory method to
  * create an instance of this fragment.
@@ -44,12 +45,6 @@ class ChangeInitiativesFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(ChangeInitiativeViewModel::class.java)
 
         binding.viewModel = viewModel
-
-        val args = ChangeInitiativesFragmentArgs.fromBundle(requireArguments())
-
-        val cInitiatives = args.changeinitiatives
-
-        viewModel.changeInitiatives.addAll(cInitiatives)
 
         binding.setLifecycleOwner(this)
 
