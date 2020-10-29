@@ -45,9 +45,6 @@ class MainActivity : AppCompatActivity() {
         drawerLayout = binding.drawerLayout
         navigationView = binding.navView;
 
-        navigationView.setupWithNavController(navController)
-        NavigationUI.setupActionBarWithNavController(this, navController, drawerLayout)
-
 //        appBarConfiguration = AppBarConfiguration(navController.graph, drawerLayout)
 
 //        navController.addOnDestinationChangedListener { nc: NavController, nd: NavDestination, bundle: Bundle? ->
@@ -57,6 +54,7 @@ class MainActivity : AppCompatActivity() {
 //                drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
 //            }
 //        }
+        setupDrawerLayout()
 
 
         // TODO EXPERIMENTAL - make drawer navigate - does not work properly yet
