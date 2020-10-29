@@ -167,6 +167,4 @@ class HomeScreenViewModel : ViewModel() {
     fun onNavigatedToMyChangeInitiatives() {
         _navigateToMyChangeInitiatives.value = false
     }
-
-
 }

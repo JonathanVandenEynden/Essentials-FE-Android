@@ -6,8 +6,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
-import androidx.navigation.ui.NavigationUI
-import com.example.essentials.R
 import com.example.essentials.databinding.FragmentHomeScreenBinding
 
 class HomeScreenFragment : Fragment() {
@@ -126,5 +124,4 @@ class HomeScreenFragment : Fragment() {
 
         return binding.root
     }
-
 }
