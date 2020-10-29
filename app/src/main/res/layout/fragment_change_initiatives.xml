@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.essentials.ui.changeInitiatives.ChangeInitiativeViewModel" />
+            type="com.hogentessentials1.essentials.ui.changeInitiatives.ChangeInitiativeViewModel" />
     </data>
 
     <FrameLayout

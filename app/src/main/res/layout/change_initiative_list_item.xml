@@ -8,11 +8,11 @@
 
         <variable
             name="changeInitiative"
-            type="com.example.essentials.data.model.ChangeInitiative" />
+            type="com.hogentessentials1.essentials.data.model.ChangeInitiative" />
 
         <variable
             name="clickListener"
-            type="com.example.essentials.ui.changeInitiatives.ChangeInitiativeListener" />
+            type="com.hogentessentials1.essentials.ui.changeInitiatives.ChangeInitiativeListener" />
 
     </data>
 

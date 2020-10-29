@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.essentials.ui.surveys.SurveysChangeinitiativeViewModel" />
+            type="com.hogentessentials1.essentials.ui.surveys.SurveysChangeinitiativeViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

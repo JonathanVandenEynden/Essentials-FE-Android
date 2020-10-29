@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/changeInitiativesFragment"
-        android:name="com.example.essentials.ui.changeInitiatives.ChangeInitiativesFragment"
+        android:name="com.hogentessentials1.essentials.ui.changeInitiatives.ChangeInitiativesFragment"
         android:label="fragment_change_initiatives"
         tools:layout="@layout/fragment_change_initiatives">
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/homeScreenFragment"
-        android:name="com.example.essentials.ui.homeScreen.HomeScreenFragment"
+        android:name="com.hogentessentials1.essentials.ui.homeScreen.HomeScreenFragment"
         android:label="fragment_home_screen"
         tools:layout="@layout/fragment_home_screen">
         <action
@@ -34,40 +34,40 @@
     </fragment>
     <fragment
         android:id="@+id/surveyQuestionFragment"
-        android:name="com.example.essentials.ui.surveys.SurveyQuestionFragement"
+        android:name="com.hogentessentials1.essentials.ui.surveys.SurveyQuestionFragement"
         android:label="SurveyQuestionFragment">
         <action
             android:id="@+id/action_surveyQuestionFragement_to_surveyDoneFragment"
             app:destination="@id/surveyDoneFragment" />
         <argument
             android:name="survey"
-            app:argType="com.example.essentials.data.model.Survey" />
+            app:argType="com.hogentessentials1.essentials.data.model.Survey" />
     </fragment>
     <fragment
         android:id="@+id/surveyDoneFragment"
-        android:name="com.example.essentials.ui.surveys.SurveyDoneFragment"
+        android:name="com.hogentessentials1.essentials.ui.surveys.SurveyDoneFragment"
         android:label="SurveyDoneFragment">
         <action
             android:id="@+id/action_surveyDoneFragment_to_homeScreenFragment"
             app:destination="@id/homeScreenFragment" />
         <argument
             android:name="questions"
-            app:argType="com.example.essentials.data.model.SurveyQuestion[]" />
+            app:argType="com.hogentessentials1.essentials.data.model.SurveyQuestion[]" />
     </fragment>
     <fragment
         android:id="@+id/surveysChangeInitiativeFragment"
-        android:name="com.example.essentials.ui.surveys.SurveysChangeInitiativeFragment"
+        android:name="com.hogentessentials1.essentials.ui.surveys.SurveysChangeInitiativeFragment"
         android:label="SurveysChangeinitiativeFragment">
         <action
             android:id="@+id/action_surveysChangeinitiativeFragment_to_surveyQuestionFragement"
             app:destination="@id/surveyQuestionFragment" />
         <argument
             android:name="changeInitiative"
-            app:argType="com.example.essentials.data.model.ChangeInitiative" />
+            app:argType="com.hogentessentials1.essentials.data.model.ChangeInitiative" />
     </fragment>
     <fragment
         android:id="@+id/allSurveysFragment"
-        android:name="com.example.essentials.ui.surveys.AllSurveysFragment"
+        android:name="com.hogentessentials1.essentials.ui.surveys.AllSurveysFragment"
         android:label="AllSurveysFragment">
         <action
             android:id="@+id/action_allSurveysFragment_to_surveyQuestionFragment"
@@ -75,12 +75,12 @@
     </fragment>
     <fragment
         android:id="@+id/dashboardFragment"
-        android:name="com.example.essentials.ui.dashboard.DashboardFragment"
+        android:name="com.hogentessentials1.essentials.ui.dashboard.DashboardFragment"
         android:label="fragment_dashboard"
         tools:layout="@layout/fragment_dashboard" />
     <fragment
         android:id="@+id/teamsFragment"
-        android:name="com.example.essentials.ui.teams.TeamsFragment"
+        android:name="com.hogentessentials1.essentials.ui.teams.TeamsFragment"
         android:label="fragment_teams"
         tools:layout="@layout/fragment_teams" />
 </navigation>
