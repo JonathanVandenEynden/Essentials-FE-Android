@@ -30,12 +30,6 @@ class AllSurveysFragment : Fragment() {
 
         binding.viewModel = viewModel
 
-        val args = AllSurveysFragmentArgs.fromBundle(requireArguments())
-
-        val surveys = args.surveys
-
-        viewModel.surveys.addAll(surveys)
-
         binding.lifecycleOwner = this
 
         val manager = LinearLayoutManager(activity)
@@ -53,7 +47,7 @@ class AllSurveysFragment : Fragment() {
             { survey ->
                 survey?.let {
                     this.findNavController().navigate(
-                        SurveysChangeinitiativeFragmentDirections.actionSurveysChangeinitiativeFragmentToSurveyQuestionFragement(
+                        AllSurveysFragmentDirections.actionAllSurveysFragmentToSurveyQuestionFragment(
                             survey
                         )
                     )
