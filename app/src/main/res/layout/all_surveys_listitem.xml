@@ -7,11 +7,11 @@
 
         <variable
             name="survey"
-            type="com.example.essentials.data.model.Survey" />
+            type="com.hogentessentials1.essentials.data.model.Survey" />
 
         <variable
             name="clickListener"
-            type="com.example.essentials.ui.surveys.AllSurveyListener" />
+            type="com.hogentessentials1.essentials.ui.surveys.AllSurveyListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

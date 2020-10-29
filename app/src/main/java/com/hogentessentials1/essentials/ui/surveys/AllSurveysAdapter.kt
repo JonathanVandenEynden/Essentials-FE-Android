@@ -1,0 +1,59 @@
+package com.hogentessentials1.essentials.ui.surveys
+
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
+import androidx.recyclerview.widget.RecyclerView
+import com.hogentessentials1.essentials.data.model.Survey
+import com.hogentessentials1.essentials.databinding.AllSurveysListitemBinding
+
+/**
+ * @author Ziggy Moens
+ */
+
+class AllSurveysAdapter(val clickListener: AllSurveyListener) :
+    ListAdapter<Survey, AllSurveysAdapter.ViewHolder>(AllSurveyDiffCallback()) {
+
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val item = getItem(position)
+        holder.bind(clickListener, item)
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        return ViewHolder.from(parent)
+    }
+
+    class ViewHolder private constructor(val binding: AllSurveysListitemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+
+        fun bind(clickListener: AllSurveyListener, item: Survey) {
+            binding.survey = item
+            binding.clickListener = clickListener
+            binding.executePendingBindings()
+        }
+
+        companion object {
+            fun from(parent: ViewGroup): ViewHolder {
+                val layoutInflater = LayoutInflater.from(parent.context)
+                val binding =
+                    AllSurveysListitemBinding.inflate(layoutInflater, parent, false)
+                return ViewHolder(binding)
+            }
+        }
+    }
+}
+
+class AllSurveyDiffCallback : DiffUtil.ItemCallback<Survey>() {
+    override fun areItemsTheSame(oldItem: Survey, newItem: Survey): Boolean {
+        return oldItem.name == newItem.name
+    }
+
+    override fun areContentsTheSame(oldItem: Survey, newItem: Survey): Boolean {
+        return oldItem == newItem
+    }
+}
+
+class AllSurveyListener(val clickListener: (survey: Survey) -> Unit) {
+    fun onClick(survey: Survey) = clickListener(survey)
+}

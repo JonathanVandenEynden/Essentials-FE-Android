@@ -6,7 +6,7 @@
 
         <variable
             name="surveyDone"
-            type="com.example.essentials.ui.surveys.SurveyDoneFragment" />
+            type="com.hogentessentials1.essentials.ui.surveys.SurveyDoneFragment" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
