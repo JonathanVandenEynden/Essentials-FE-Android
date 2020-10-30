@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Essentials, Hello world</string>
+    <string name="app_name">Essentials E1</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="hello_sukrit">Hello Sukrit</string>
     <string name="change_initiatives">Change Initiatives</string>
@@ -21,4 +21,7 @@
     <string name="icon_for_teams">icon for teams</string>
     <string name="icon_for_my_change_initiatives">icon for my change initiatives</string>
     <string name="my_teams">My Teams</string>
+    <string name="changemanager_functions">Changemanager functions</string>
+    <string name="ratingbar_question">Ratingbar for question</string>
+    <string name="hello">Hello %1$s</string>
 </resources>

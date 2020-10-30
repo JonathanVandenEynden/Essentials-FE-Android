@@ -7,8 +7,9 @@
 <!--    <color name="teal_700">#FF018786</color>-->
     <color name="green">#4caf50</color>
     <color name="green_light">#80e27e</color>
-    <color name="brown">#ff8f00</color>
+    <color name="brown">#E37400</color>
     <color name="brown_light">#ffc046</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="new_orange">#ff8f00</color>
 </resources>
