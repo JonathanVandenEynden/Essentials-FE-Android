@@ -44,6 +44,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="32dp"
             android:text="@string/next_question"
+            android:textColor="@color/black"
             app:backgroundTint="@color/brown"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

@@ -26,6 +26,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:text="@{survey.name}"
+            android:textColor="@color/black"
             android:onClick="@{() -> clickListener.onClick(survey)}"
             app:backgroundTint="@color/brown"
             app:layout_constraintEnd_toEndOf="parent"

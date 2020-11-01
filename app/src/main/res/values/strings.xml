@@ -24,4 +24,15 @@
     <string name="changemanager_functions">Changemanager functions</string>
     <string name="ratingbar_question">Ratingbar for question</string>
     <string name="hello">Hello %1$s</string>
+    <string name="ci_screen">Change Initiative:%n%1$s</string>
+    <string name="information">Information</string>
+    <string name="roadmap">Roadmap</string>
+    <string name="description">Description</string>
+    <string name="end">End</string>
+    <string name="start">Start</string>
+    <string name="sponsor">Sponsor</string>
+    <plurals name="amount_surveys">
+        <item quantity="one">%d Survey</item>
+        <item quantity="other">%d Surveys</item>
+    </plurals>
 </resources>
