@@ -12,7 +12,7 @@ import com.hogentessentials1.essentials.data.model.Answer
  */
 
 @Dao
-interface AnswerDto {
+interface AnswerDao {
     @Query("SELECT * FROM answer ORDER BY id")
     fun getAnswers(): LiveData<List<Answer>>
 
