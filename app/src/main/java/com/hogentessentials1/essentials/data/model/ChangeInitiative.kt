@@ -2,14 +2,18 @@ package com.hogentessentials1.essentials.data.model
 
 import android.os.Parcel
 import android.os.Parcelable
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import java.util.*
 
 /**
  * @author Ziggy Moens: made Parcelable
  * @author Kilian Hoefman: start of Dataclass
  */
-data class ChangeInitative(
-    val id: Int,
+
+@Entity(tableName = "changeInitiative")
+data class ChangeInitiative(
+    @PrimaryKey val id: Int,
     val name: String,
     val description: String,
     val startDate: Date,

@@ -1,4 +1,4 @@
-package com.hogentessentials1.essentials.data.model.DTOs
+package com.hogentessentials1.essentials.data.model.DAOs
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
