@@ -32,8 +32,8 @@ class SurveyQuestionFragement : Fragment() {
 
     private var questions: ArrayList<SurveyQuestion> = arrayListOf()
     lateinit var currentQuestion: SurveyQuestion
-    lateinit var option0: String
-    lateinit var option5: String
+    private lateinit var option0: String
+    private lateinit var option5: String
     private var questionIndex = 0
     private var numberOfQuestions = 0
     private var ratingIsGiven = false
@@ -61,22 +61,22 @@ class SurveyQuestionFragement : Fragment() {
         }
 
         binding.nextQuestion.setOnClickListener { view: View ->
-            if (ratingIsGiven) {
-                currentQuestion.answer = binding.ratingBarQuestion.rating.toDouble()
-                questionIndex++
-                if (questionIndex < numberOfQuestions) {
-                    currentQuestion = questions[questionIndex]
-                    setQuestion()
-                    binding.ratingBarQuestion.rating = 0.0F
-                    binding.invalidateAll()
-                } else {
-                    view.findNavController().navigate(
-                        SurveyQuestionFragementDirections.actionSurveyQuestionFragementToSurveyDoneFragment(
-                            questions.toTypedArray()
-                        )
+            // if (ratingIsGiven) {
+            currentQuestion.answer = binding.ratingBarQuestion.rating.toDouble()
+            questionIndex++
+            if (questionIndex < numberOfQuestions) {
+                currentQuestion = questions[questionIndex]
+                setQuestion()
+                binding.ratingBarQuestion.rating = 0.0F
+                binding.invalidateAll()
+            } else {
+                view.findNavController().navigate(
+                    SurveyQuestionFragementDirections.actionSurveyQuestionFragementToSurveyDoneFragment(
+                        questions.toTypedArray()
                     )
-                }
+                )
             }
+            // }
         }
 
         return binding.root

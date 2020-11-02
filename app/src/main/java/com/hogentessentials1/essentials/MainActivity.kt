@@ -5,7 +5,8 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.databinding.DataBindingUtil
-import androidx.navigation.Navigation
+import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.navigation.NavigationView
@@ -17,19 +18,23 @@ import com.hogentessentials1.essentials.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
     private lateinit var binding: ActivityMainBinding
+    private lateinit var navController: NavController
 
-    private val navController by lazy {
-        Navigation.findNavController(this, R.id.navHostFragment)
-    }
+    /*private val navController by lazy {
+        this.findNavController(R.id.navHostFragment)
+    }*/
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = DataBindingUtil.setContentView<ActivityMainBinding>(
+        binding = DataBindingUtil.setContentView(
             this,
             R.layout.activity_main
         )
 
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.navHostFragment) as NavHostFragment
+        navController = navHostFragment.navController
         binding.navView.setupWithNavController(navController)
         NavigationUI.setupActionBarWithNavController(this, navController, binding.drawerLayout)
         binding.navView.setNavigationItemSelectedListener(this)

@@ -18,8 +18,7 @@ data class SurveyQuestion(
         parcel.readString()!!,
         parcel.readString()!!,
         parcel.readDouble()
-    ) {
-    }
+    )
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(question)
