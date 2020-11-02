@@ -17,8 +17,7 @@ data class Survey(
         arrayListOf<SurveyQuestion>().apply {
             parcel.readList(this, SurveyQuestion::class.java.classLoader)
         }
-    ) {
-    }
+    )
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(name)

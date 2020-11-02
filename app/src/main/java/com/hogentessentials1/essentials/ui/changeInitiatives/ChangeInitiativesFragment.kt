@@ -46,7 +46,7 @@ class ChangeInitiativesFragment : Fragment() {
 
         binding.viewModel = viewModel
 
-        binding.setLifecycleOwner(this)
+        binding.lifecycleOwner = this
 
         val manager = LinearLayoutManager(activity)
 
