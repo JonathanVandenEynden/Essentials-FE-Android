@@ -9,8 +9,7 @@ data class Employee(
     val firstName: String,
     val lastName: String,
     val email: String,
-    //TODO Tussentabel mappen
-    val employeeOrganizationParts: String,
+    val employeeOrganizationParts: ArrayList<EmployeeOrganizationPart>,
     val type: Int
 ) {
     //TODO

@@ -18,7 +18,9 @@ data class ChangeInitative(
     val changeSponsor: Employee,
     val changeType: ChangeType,
     val roadMap: RoadMap
-){}
+){
+
+}
 
 
 //data class ChangeInitiative(

@@ -1,11 +1,15 @@
 package com.hogentessentials1.essentials.data.model
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
 /**
  * @author Kilian Hoefman
  */
 
+@Entity(tableName = "feedback")
 data class Feedback(
-    val id: Int,
+    @PrimaryKey val id: Int,
     val questionString: String,
     val possibleAnswers: ArrayList<Answer>,
     val maxAmount: Int
