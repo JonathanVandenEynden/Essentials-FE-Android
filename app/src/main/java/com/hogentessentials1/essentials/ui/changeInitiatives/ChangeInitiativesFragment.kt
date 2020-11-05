@@ -76,7 +76,7 @@ class ChangeInitiativesFragment : Fragment() {
 
         adapter.submitList(viewModel.changeInitiatives)
 
-        (activity as AppCompatActivity).supportActionBar?.title = "My change initiatives"
+        (activity as AppCompatActivity).supportActionBar?.title = "Change initiatives"
 
         return binding.root
     }
