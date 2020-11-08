@@ -1,5 +1,6 @@
 package com.hogentessentials1.essentials.data.model
 
+import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
@@ -10,6 +11,7 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "employee")
 data class Employee(
     @PrimaryKey val id: Int,
+    @ColumnInfo(name= "organization_id") val organizationId: Int,
     val firstName: String,
     val lastName: String,
     val email: String,

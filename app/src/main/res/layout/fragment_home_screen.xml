@@ -10,178 +10,272 @@
             type="com.hogentessentials1.essentials.ui.homeScreen.HomeScreenViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constrainedlayout"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         tools:context=".ui.homeScreen.HomeScreenFragment">
 
+        <!-- TODO Make the greeting changeable-->
 
         <TextView
             android:id="@+id/label_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
-            android:text=""
+            android:layout_marginBottom="16dp"
+            android:text="@string/hello_sukrit"
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ScrollView
-            android:id="@+id/scrollView3"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp16"
+            android:layout_marginEnd="@dimen/dp16"
+            android:onClick="@{()->viewModel.onChangeInitiativesClicked()}"
+            app:cardBackgroundColor="@color/cardview_light_background"
+            app:cardCornerRadius="@dimen/dp16"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/label_name"
-            app:layout_constraintVertical_bias="0.65999997">
+            app:layout_constraintTop_toTopOf="parent"
+            app:strokeColor="#FF9800"
+            app:strokeWidth="2dp">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                tools:context=".ui.homeScreen.HomeScreenFragment">
+            <LinearLayout
+                android:layout_width="348dp"
+                android:layout_height="50dp"
+                android:layout_margin="16dp">
 
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/changes"
-                    style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="16dp"
-                    android:fontFamily="sans-serif-black"
-                    android:onClick="@{()->viewModel.onChangeInitiativesClicked()}"
+                <TextView
+                    android:layout_width="240dp"
+                    android:layout_height="50dp"
+                    android:fontFamily="@font/roboto"
+                    android:gravity="center_vertical"
                     android:text="@string/changes"
+                    android:textAlignment="viewStart"
+                    android:textAllCaps="false"
                     android:textColor="@color/black"
-                    android:textSize="18sp"
-                    app:icon="@drawable/sync_black_18dp"
-                    app:iconSize="60dp"
-                    app:iconTint="@color/black"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
+                    android:textSize="20sp" />
+
+                <ImageView
+                    android:id="@+id/icon_change_initiatives"
+                    android:layout_width="wrap_content"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center"
+                    android:contentDescription="@string/icon_for_change_initiative"
+                    android:foregroundGravity="center_vertical"
+                    android:minWidth="100dp"
+                    android:minHeight="100dp"
+                    android:paddingRight="32dp"
+                    android:rotation="0"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:strokeColor="@color/brown"
-                    app:strokeWidth="2.5dp" />
+                    app:srcCompat="@drawable/sync_black_18dp" />
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/my_changes"
-                    style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginBottom="16dp"
-                    android:fontFamily="sans-serif-black"
-                    android:onClick="@{()->viewModel.onMyChangeInitiativesClicked()}"
-                    android:text="@string/my_changes"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    app:icon="@drawable/sync_black_18dp"
-                    app:iconSize="60dp"
-                    app:iconTint="@color/black"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/dashboard"
-                    app:strokeColor="@color/brown"
-                    app:strokeWidth="2.5dp" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/surveys"
-                    style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="16dp"
-                    android:fontFamily="sans-serif-black"
-                    android:onClick="@{()->viewModel.onSurveysClicked()}"
-                    android:text="@string/surveys"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    app:icon="@drawable/content_paste_black_18dp"
-                    app:iconSize="60dp"
-                    app:iconTint="@color/black"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/changes"
-                    app:strokeColor="@color/brown"
-                    app:strokeWidth="2.5dp" />
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/dashboard"
-                    style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="16dp"
-                    android:fontFamily="sans-serif-black"
-                    android:onClick="@{()->viewModel.onDasboardClicked()}"
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:onClick="@{()->viewModel.onDasboardClicked()}"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="@dimen/dp16"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:strokeColor="#FF9800"
+            app:strokeWidth="2dp">
+
+            <LinearLayout
+                android:layout_width="348dp"
+                android:layout_height="50dp"
+                android:layout_margin="16dp">
+
+                <TextView
+                    android:layout_width="240dp"
+                    android:layout_height="50dp"
+                    android:fontFamily="@font/roboto"
+                    android:gravity="center_vertical"
                     android:text="@string/dashboard"
                     android:textColor="@color/black"
-                    android:textSize="18sp"
-                    app:icon="@drawable/dashboard_black_18dp"
-                    app:iconSize="60dp"
-                    app:iconTint="@color/black"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView3"
-                    app:strokeColor="@color/brown"
-                    app:strokeWidth="2.5dp" />
+                    android:textSize="20sp" />
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/my_team"
-                    style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="16dp"
-                    android:fontFamily="sans-serif-black"
-                    android:onClick="@{()->viewModel.onTeamsClicked()}"
-                    android:text="@string/my_teams"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    app:icon="@drawable/people_black_18dp"
-                    app:iconSize="60dp"
-                    app:iconTint="@color/black"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
+                <ImageView
+                    android:id="@+id/icon_dashboard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center"
+                    android:contentDescription="@string/icon_for_dashboard"
+                    android:foregroundGravity="center_vertical"
+                    android:minWidth="100dp"
+                    android:minHeight="100dp"
+                    android:paddingRight="32dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/surveys"
-                    app:strokeColor="@color/brown"
-                    app:strokeWidth="2.5dp" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/dashboard_black_18dp" />
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/surveys_homescreen"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp16"
+            android:layout_marginEnd="@dimen/dp16"
+            android:onClick="@{()->viewModel.onSurveysClicked()}"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="@dimen/dp16"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:strokeColor="#FF9800"
+            app:strokeWidth="2dp">
+
+            <LinearLayout
+                android:layout_width="348dp"
+                android:layout_height="50dp"
+                android:layout_margin="16dp">
 
                 <TextView
                     android:id="@+id/textView3"
+                    android:layout_width="240dp"
+                    android:layout_height="50dp"
+                    android:fontFamily="@font/roboto"
+                    android:gravity="center_vertical"
+                    android:text="@string/surveys"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+
+                <ImageView
+                    android:id="@+id/icon_survey"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="64dp"
-                    android:fontFamily="sans-serif-black"
-                    android:text="@string/changemanager_functions"
-                    android:textSize="16sp"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center"
+                    android:contentDescription="@string/icon_for_surveys"
+                    android:foregroundGravity="center_vertical"
+                    android:minWidth="100dp"
+                    android:minHeight="100dp"
+                    android:paddingRight="32dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/my_team" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/content_paste_black_48dp" />
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dp16"
+            android:onClick="@{()->viewModel.onTeamsClicked()}"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="@dimen/dp16"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:strokeColor="#FF9800"
+            app:strokeWidth="2dp">
+
+            <LinearLayout
+                android:layout_width="348dp"
+                android:layout_height="50dp"
+                android:layout_margin="16dp">
+
+                <TextView
+                    android:layout_width="240dp"
+                    android:layout_height="50dp"
+                    android:fontFamily="@font/roboto"
+                    android:gravity="center_vertical"
+                    android:text="@string/my_teams"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center"
+                    android:contentDescription="@string/icon_for_teams"
+                    android:foregroundGravity="center_vertical"
+                    android:minWidth="100dp"
+                    android:minHeight="100dp"
+                    android:paddingRight="32dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/people_black_48dp" />
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Divider voor extra functie cm-->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/brown" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dp16"
+            android:onClick="@{()->viewModel.onMyChangeInitiativesClicked()}"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="@dimen/dp16"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:strokeColor="#FF9800"
+            app:strokeWidth="2dp">
+
+            <LinearLayout
+                android:layout_width="348dp"
+                android:layout_height="50dp"
+                android:layout_margin="16dp">
+
+                <TextView
+                    android:layout_width="240dp"
+                    android:layout_height="50dp"
+                    android:fontFamily="@font/roboto"
+                    android:gravity="center_vertical"
+                    android:text="@string/my_changes"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+
+                <ImageView
+                    android:id="@+id/icon_my_change_initiatives"
+                    android:layout_width="wrap_content"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center"
+                    android:contentDescription="@string/icon_for_my_change_initiatives"
+                    android:foregroundGravity="center_vertical"
+                    android:minWidth="100dp"
+                    android:minHeight="100dp"
+                    android:paddingRight="32dp"
+                    android:rotation="0"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/sync_black_18dp" />
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
 
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </ScrollView>
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 </layout>
