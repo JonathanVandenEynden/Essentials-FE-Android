@@ -82,5 +82,17 @@
         android:id="@+id/teamsFragment"
         android:name="com.hogentessentials1.essentials.ui.changeGroup.TeamsFragment"
         android:label="teams_fragment"
-        tools:layout="@layout/teams_fragment" />
+        tools:layout="@layout/teams_fragment" >
+        <action
+            android:id="@+id/action_teamsFragment_to_teamDetailsFragment"
+            app:destination="@id/teamDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/teamDetailsFragment"
+        android:name="com.hogentessentials1.essentials.ui.changeGroup.changeGroupDetail.TeamDetailsFragment"
+        android:label="TeamDetailsFragment" >
+        <argument
+            android:name="ChangeGroupMembers"
+            app:argType="string[]" />
+    </fragment>
 </navigation>

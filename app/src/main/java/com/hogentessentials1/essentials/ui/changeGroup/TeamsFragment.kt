@@ -38,9 +38,9 @@ class TeamsFragment : Fragment() {
 
         viewModel.navigateToTeam.observe(viewLifecycleOwner, Observer {
             it?.let {
-                // TODO changegroup ophalen uit dao en meegeven in navigatie
+                // TODO changegroup ophalen uit dao en stringlijst van namen meegeven in navigatie
                 // TODO navigeer naar het teamdetailscherm
-//                this.findNavController().navigate()
+//                this.findNavController().navigate(TeamsFragmentDirections.actionTeamsFragmentToTeamDetailsFragment(!! CHANGEGROUPMEMBERS !!))
 
                 viewModel.onNavigatedToTeamDetail();
             }
