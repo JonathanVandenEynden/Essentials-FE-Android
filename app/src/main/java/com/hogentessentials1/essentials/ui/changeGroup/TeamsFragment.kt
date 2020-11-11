@@ -55,6 +55,12 @@ class TeamsFragment : Fragment() {
 
         binding.teamsLV.adapter = adapter;
 
+        viewModel.ChangeGroups.observe(viewLifecycleOwner, Observer {
+            it?.let {
+                adapter.submitList(it)
+            }
+        })
+
 
         return binding.root
     }

@@ -12,6 +12,12 @@ import com.hogentessentials1.essentials.data.model.ChangeGroup
  */
 class TeamsViewModel : ViewModel() {
 
+    val ChangeGroups = MutableLiveData<List<ChangeGroup>>()
+
+    init {
+        // TODO ChangeGroups ophalen uit dao
+    }
+
     private val _navigateToTeam = MutableLiveData<Long>()
     val navigateToTeam: LiveData<Long>
         get() = _navigateToTeam
