@@ -14,8 +14,6 @@ import com.hogentessentials1.essentials.databinding.TeamDetailsFragmentBinding
 
 class TeamDetailsFragment : Fragment() {
 
-    private lateinit var viewModel: TeamDetailsViewModel
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -42,9 +40,6 @@ class TeamDetailsFragment : Fragment() {
             }
 
         binding.membersListView.adapter = adapter
-
-
-        viewModel = ViewModelProvider(this).get(TeamDetailsViewModel::class.java)
 
 
 
