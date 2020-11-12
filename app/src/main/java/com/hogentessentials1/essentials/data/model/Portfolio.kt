@@ -4,14 +4,12 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-
 /**
  * @author Kilian Hoefman
  */
 
-@Entity(tableName = "changeType")
-data class ChangeType(
-    @PrimaryKey @ColumnInfo(name = "changeType_id") val id: Int
+@Entity(tableName = "portfolio")
+data class Portfolio(
+    @PrimaryKey @ColumnInfo(name= "portfolio_id") val id: Int
 ) {
-
 }

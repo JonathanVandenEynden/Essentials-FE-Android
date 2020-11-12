@@ -16,7 +16,7 @@ interface RoadMapDao {
     @Query("SELECT * FROM roadMap ORDER BY id")
     fun getRoadMaps(): LiveData<List<RoadMap>>
 
-    @Query("SELECT * from roadMap WHERE id = :roadMapId")
+    @Query("SELECT * FROM roadMap WHERE id = :roadMapId")
     fun getRoadMap(roadMapId: Int): LiveData<RoadMap>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
