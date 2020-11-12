@@ -9,6 +9,11 @@ import com.hogentessentials1.essentials.data.model.ChangeGroup
 import com.hogentessentials1.essentials.databinding.TeamListItemBinding
 import com.hogentessentials1.essentials.generated.callback.OnClickListener
 
+/**
+ * @author Simon De Wilde
+ *
+ * Adapter to convert change group to a view
+ */
 class ChangeGroupAdapter(val clickListener: ChangeGroupListener) : ListAdapter<ChangeGroup,
         ChangeGroupAdapter.ViewHolder>(ChangeGroupDIffCallback()) {
     override fun onCreateViewHolder(
