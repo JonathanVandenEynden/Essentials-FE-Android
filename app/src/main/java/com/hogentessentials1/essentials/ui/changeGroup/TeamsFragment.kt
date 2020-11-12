@@ -13,6 +13,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.hogentessentials1.essentials.R
 import com.hogentessentials1.essentials.databinding.TeamsFragmentBinding
 
+/**
+ * @author Simon De Wilde
+ *
+ * Fragment for showing the overview of teams
+ */
 class TeamsFragment : Fragment() {
 
     private lateinit var viewModel: TeamsViewModel

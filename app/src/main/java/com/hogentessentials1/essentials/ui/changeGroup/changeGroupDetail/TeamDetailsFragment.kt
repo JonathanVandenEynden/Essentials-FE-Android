@@ -12,6 +12,11 @@ import androidx.navigation.fragment.navArgs
 import com.hogentessentials1.essentials.R
 import com.hogentessentials1.essentials.databinding.TeamDetailsFragmentBinding
 
+/**
+ * @author Simon De Wilde
+ *
+ * Fragment for showing the team members
+ */
 class TeamDetailsFragment : Fragment() {
 
     override fun onCreateView(
