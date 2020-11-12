@@ -98,7 +98,7 @@
         android:name="com.hogentessentials1.essentials.ui.changeGroup.changeGroupDetail.TeamDetailsFragment"
         android:label="TeamDetailsFragment" >
         <argument
-            android:name="ChangeGroupMembers"
+            android:name="changeGroupMembers"
             app:argType="string[]" />
     </fragment>
 </navigation>

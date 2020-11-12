@@ -4,47 +4,28 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
-import androidx.recyclerview.widget.RecyclerView
 import com.hogentessentials1.essentials.data.model.ChangeGroup
 import com.hogentessentials1.essentials.databinding.TeamListItemBinding
-import com.hogentessentials1.essentials.generated.callback.OnClickListener
 
 /**
  * @author Simon De Wilde
  *
  * Adapter to convert change group to a view
  */
-class ChangeGroupAdapter(val clickListener: ChangeGroupListener) : ListAdapter<ChangeGroup,
-        ChangeGroupAdapter.ViewHolder>(ChangeGroupDIffCallback()) {
+class ChangeGroupAdapter(private var clickClickListener: ChangeGroupClickListener) :
+    ListAdapter<ChangeGroup, ChangeGroupViewHolder>(ChangeGroupDIffCallback()) {
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): ChangeGroupAdapter.ViewHolder {
-        return ViewHolder.from(parent);
+    ): ChangeGroupViewHolder {
+        return ChangeGroupViewHolder(TeamListItemBinding.inflate(LayoutInflater.from(parent.context), parent, false))
     }
 
-    override fun onBindViewHolder(holder: ChangeGroupAdapter.ViewHolder, position: Int) {
-        val item = getItem(position);
-
-        holder.bind(clickListener, item);
-    }
-
-    class ViewHolder private constructor(val binding: TeamListItemBinding) :
-        RecyclerView.ViewHolder(binding.root) {
-
-        fun bind(clickListener: ChangeGroupListener, item: ChangeGroup) {
-            binding.changeGroup = item;
-            binding.clickListener = clickListener
-            binding.executePendingBindings()
-        }
-
-        companion object {
-            fun from(parent: ViewGroup): ViewHolder {
-                val layoutInflater = LayoutInflater.from(parent.context)
-                val binding = TeamListItemBinding.inflate(layoutInflater, parent, false)
-
-                return ViewHolder(binding)
-            }
+    override fun onBindViewHolder(holder: ChangeGroupViewHolder, position: Int) {
+        val changeGroup = getItem(position);
+        holder.bindData(changeGroup)
+        holder.itemView.setOnClickListener{
+            clickClickListener.onClick(changeGroup)
         }
     }
 
@@ -61,6 +42,6 @@ class ChangeGroupDIffCallback : DiffUtil.ItemCallback<ChangeGroup>() {
 
 }
 
-class ChangeGroupListener(val clickListener: (changeGroupIs: Long) -> Unit){
-    fun onClick(changeGroup: ChangeGroup) = clickListener(changeGroup.id)
+interface ChangeGroupClickListener {
+    fun onClick(changeGroup: ChangeGroup)
 }

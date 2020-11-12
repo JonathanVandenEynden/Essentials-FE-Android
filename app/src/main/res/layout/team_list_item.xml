@@ -1,43 +1,34 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
     @author Simon De Wilde
     layout for one team button
 -->
-<layout xmlns:tools="http://schemas.android.com/tools"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="changeGroup"
             type="com.hogentessentials1.essentials.data.model.ChangeGroup" />
-        <variable
-            name="clickListener"
-            type="com.hogentessentials1.essentials.ui.changeGroup.ChangeGroupListener" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:drawableEnd="@drawable/navigate_next_black_48dp"
         android:padding="8dp"
-        android:onClick="@{() -> clickListener.onClick(changeGroup)}">
+        android:text="@{changeGroup.name}"
+        android:textAlignment="viewStart"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.084"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
-            android:drawableEnd="@drawable/navigate_next_black_48dp"
-            android:text="@{changeGroup.name}"
-            android:textAlignment="viewStart"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.084"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

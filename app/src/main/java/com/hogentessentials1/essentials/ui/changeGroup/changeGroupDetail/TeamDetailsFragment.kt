@@ -31,22 +31,14 @@ class TeamDetailsFragment : Fragment() {
             false
         )
 
+        var changeGroupMembers = arrayListOf<String>().toTypedArray()
 
-        val changeGroupMembers = arguments?.getStringArrayList("ChangeGroupMembers")!!
-
-
-        val adapter =
-            activity?.let {
-                ArrayAdapter<String>(
-                    it,
-                    R.layout.change_group_member_item,
-                    changeGroupMembers
-                )
-            }
-
-        binding.membersListView.adapter = adapter
+        arguments?.getStringArray("changeGroupMembers")?.let{
+            changeGroupMembers = it
+        }
 
 
+        val adapter = activity?.let { ArrayAdapter<String>(it, R.layout.change_group_member_item, changeGroupMembers) }
 
         binding.membersListView.adapter = adapter
 
