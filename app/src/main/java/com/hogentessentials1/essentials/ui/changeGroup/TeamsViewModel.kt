@@ -12,22 +12,25 @@ import com.hogentessentials1.essentials.data.model.ChangeGroup
  */
 class TeamsViewModel : ViewModel() {
 
-    val ChangeGroups = MutableLiveData<List<ChangeGroup>>()
+    private val _changeGroups = MutableLiveData<List<ChangeGroup>>()
+    val changeGroups: LiveData<List<ChangeGroup>>
+        get() = _changeGroups
 
     init {
         // TODO ChangeGroups ophalen uit dao
-    }
+        val mockMembers = arrayListOf<String>()
+        mockMembers.add("simon")
+        mockMembers.add("ziggy")
+        mockMembers.add("kilian")
+        mockMembers.add("Jonathan")
+        mockMembers.add("Marbod")
+        mockMembers.add("Sébastien")
 
-    private val _navigateToTeam = MutableLiveData<Long>()
-    val navigateToTeam: LiveData<Long>
-        get() = _navigateToTeam
+        val mockChangeGroups = mutableListOf<ChangeGroup>()
+        mockChangeGroups.add(ChangeGroup(321, "changeGroup1", mockMembers))
+        mockChangeGroups.add(ChangeGroup(123, "changeGroup2", mockMembers))
 
-    fun onTeamClicked(id: Long){
+        _changeGroups.value = mockChangeGroups
 
-        _navigateToTeam.value = id;
-    }
-
-    fun onNavigatedToTeamDetail(){
-        _navigateToTeam.value = null;
     }
 }
