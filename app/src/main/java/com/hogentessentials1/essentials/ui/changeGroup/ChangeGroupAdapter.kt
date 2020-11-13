@@ -22,13 +22,12 @@ class ChangeGroupAdapter(private var clickClickListener: ChangeGroupClickListene
     }
 
     override fun onBindViewHolder(holder: ChangeGroupViewHolder, position: Int) {
-        val changeGroup = getItem(position);
+        val changeGroup = getItem(position)
         holder.bindData(changeGroup)
-        holder.itemView.setOnClickListener{
+        holder.itemView.setOnClickListener {
             clickClickListener.onClick(changeGroup)
         }
     }
-
 }
 
 class ChangeGroupDIffCallback : DiffUtil.ItemCallback<ChangeGroup>() {
@@ -37,9 +36,8 @@ class ChangeGroupDIffCallback : DiffUtil.ItemCallback<ChangeGroup>() {
     }
 
     override fun areContentsTheSame(oldItem: ChangeGroup, newItem: ChangeGroup): Boolean {
-        return oldItem == newItem;
+        return oldItem == newItem
     }
-
 }
 
 interface ChangeGroupClickListener {

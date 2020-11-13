@@ -31,6 +31,5 @@ class TeamsViewModel : ViewModel() {
         mockChangeGroups.add(ChangeGroup(123, "changeGroup2", mockMembers))
 
         _changeGroups.value = mockChangeGroups
-
     }
 }

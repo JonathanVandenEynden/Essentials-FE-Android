@@ -1,14 +1,14 @@
 package com.hogentessentials1.essentials.ui.changeGroup
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.hogentessentials1.essentials.R
 import com.hogentessentials1.essentials.data.model.ChangeGroup
@@ -21,9 +21,9 @@ import com.hogentessentials1.essentials.databinding.TeamsFragmentBinding
  */
 class TeamsFragment : Fragment(), ChangeGroupClickListener {
 
-
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
 
@@ -43,13 +43,14 @@ class TeamsFragment : Fragment(), ChangeGroupClickListener {
 
         val adapter = ChangeGroupAdapter(this)
 
-        binding.teamsRV.adapter = adapter;
+        binding.teamsRV.adapter = adapter
 
-
-        viewModel.changeGroups.observe(viewLifecycleOwner, Observer {
-            adapter.submitList(it)
-        })
-
+        viewModel.changeGroups.observe(
+            viewLifecycleOwner,
+            Observer {
+                adapter.submitList(it)
+            }
+        )
 
         (activity as AppCompatActivity).supportActionBar?.title = "Teams"
 
@@ -65,5 +66,4 @@ class TeamsFragment : Fragment(), ChangeGroupClickListener {
             TeamsFragmentDirections.actionTeamsFragmentToTeamDetailsFragment(changeGroup.members.toTypedArray())
         findNavController().navigate(directions)
     }
-
 }
