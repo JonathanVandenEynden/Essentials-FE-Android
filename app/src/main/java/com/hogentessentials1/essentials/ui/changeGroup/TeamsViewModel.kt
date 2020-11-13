@@ -19,9 +19,9 @@ class TeamsViewModel : ViewModel() {
     init {
         // TODO ChangeGroups ophalen uit dao
         val mockMembers = arrayListOf<String>()
-        mockMembers.add("simon")
-        mockMembers.add("ziggy")
-        mockMembers.add("kilian")
+        mockMembers.add("Simon")
+        mockMembers.add("Ziggy")
+        mockMembers.add("Kilian")
         mockMembers.add("Jonathan")
         mockMembers.add("Marbod")
         mockMembers.add("Sébastien")

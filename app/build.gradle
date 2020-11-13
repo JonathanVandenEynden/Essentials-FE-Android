@@ -72,4 +72,9 @@ dependencies {
     implementation 'com.google.android.material:material:1.2.1'
 
     implementation 'com.github.sujithkanna:smileyrating:2.0.0'
+
+
+    // Unit testing dependencies
+    testImplementation 'junit:junit:4.12'
+
 }

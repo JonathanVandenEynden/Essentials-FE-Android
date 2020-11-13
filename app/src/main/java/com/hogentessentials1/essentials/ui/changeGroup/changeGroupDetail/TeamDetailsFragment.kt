@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.navArgs
 import com.hogentessentials1.essentials.R
@@ -41,6 +42,8 @@ class TeamDetailsFragment : Fragment() {
         val adapter = activity?.let { ArrayAdapter<String>(it, R.layout.change_group_member_item, changeGroupMembers) }
 
         binding.membersListView.adapter = adapter
+
+        (activity as AppCompatActivity).supportActionBar?.title = "Team members"
 
         return binding.root
     }
