@@ -22,7 +22,7 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
 
         if (result is Result.Success) {
             _loginResult.value =
-                LoginResult(success = LoggedInUserView(displayName = result.data.displayName))
+                LoginResult(success = LoggedInUserView(result.data.userId.toInt(), result.data.displayName, result.data.bearerToken))
         } else {
             _loginResult.value = LoginResult(error = R.string.login_failed)
         }

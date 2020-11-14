@@ -107,7 +107,6 @@ class LoginActivity : AppCompatActivity() {
     private fun updateUiWithUser(model: LoggedInUserView) {
         val welcome = getString(R.string.welcome)
         val displayName = model.displayName
-        // TODO : initiate successful logged in experience --> make intent to mainactivity
 
         Toast.makeText(
             applicationContext,
@@ -116,6 +115,7 @@ class LoginActivity : AppCompatActivity() {
         ).show()
 
         val toMainActivity = Intent(this@LoginActivity, MainActivity::class.java)
+        toMainActivity.putExtra("loggedInUser", model)
         startActivity(toMainActivity)
     }
 
