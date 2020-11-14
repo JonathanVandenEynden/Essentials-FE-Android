@@ -1,6 +1,7 @@
 package com.hogentessentials1.essentials.login.ui.login
 
 import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -14,6 +15,7 @@ import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.hogentessentials1.essentials.MainActivity
 import com.hogentessentials1.essentials.R
 
 class LoginActivity : AppCompatActivity() {
@@ -105,12 +107,17 @@ class LoginActivity : AppCompatActivity() {
     private fun updateUiWithUser(model: LoggedInUserView) {
         val welcome = getString(R.string.welcome)
         val displayName = model.displayName
-        // TODO : initiate successful logged in experience
+        // TODO : initiate successful logged in experience --> make intent to mainactivity
+
         Toast.makeText(
             applicationContext,
             "$welcome $displayName",
             Toast.LENGTH_LONG
         ).show()
+
+        val toMainActivity = Intent(this@LoginActivity, MainActivity::class.java)
+        startActivity(toMainActivity)
+
     }
 
     private fun showLoginFailed(@StringRes errorString: Int) {
