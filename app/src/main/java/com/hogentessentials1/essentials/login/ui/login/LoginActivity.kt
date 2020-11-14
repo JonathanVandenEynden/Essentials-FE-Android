@@ -117,7 +117,6 @@ class LoginActivity : AppCompatActivity() {
 
         val toMainActivity = Intent(this@LoginActivity, MainActivity::class.java)
         startActivity(toMainActivity)
-
     }
 
     private fun showLoginFailed(@StringRes errorString: Int) {
