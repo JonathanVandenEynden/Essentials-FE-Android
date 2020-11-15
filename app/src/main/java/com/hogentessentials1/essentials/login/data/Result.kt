@@ -1,6 +1,8 @@
 package com.hogentessentials1.essentials.login.data
 
 /**
+ * @author Simon De Wilde
+ *
  * A generic class that holds a value with its loading status.
  * @param <T>
  */
