@@ -6,6 +6,8 @@ import com.hogentessentials1.essentials.login.data.LoginDataSource
 import com.hogentessentials1.essentials.login.data.LoginRepository
 
 /**
+ * @author Simon De Wilde
+ *
  * ViewModel provider factory to instantiate LoginViewModel.
  * Required given LoginViewModel has a non-empty constructor
  */
