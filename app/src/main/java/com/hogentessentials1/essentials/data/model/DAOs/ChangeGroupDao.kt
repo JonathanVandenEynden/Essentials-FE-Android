@@ -13,10 +13,10 @@ import com.hogentessentials1.essentials.data.model.ChangeGroup
 
 @Dao
 interface ChangeGroupDao {
-    @Query("SELECT * FROM changeGroup ORDER BY id")
+    @Query("SELECT * FROM changeGroup ORDER BY change_group_id")
     fun getChangeGroups(): LiveData<List<ChangeGroup>>
 
-    @Query("SELECT * FROM changeGroup WHERE id = :changeGroupId")
+    @Query("SELECT * FROM changeGroup WHERE change_group_id = :changeGroupId")
     fun getChangeGroup(changeGroupId: Int): LiveData<ChangeGroup>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)

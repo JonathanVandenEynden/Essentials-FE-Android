@@ -13,10 +13,10 @@ import com.hogentessentials1.essentials.data.model.Employee
 
 @Dao
 interface EmployeeDao {
-    @Query("SELECT * FROM employee ORDER BY id")
+    @Query("SELECT * FROM employee ORDER BY employee_id")
     fun getEmployees(): LiveData<List<Employee>>
 
-    @Query("SELECT * FROM employee WHERE id = :employeeId")
+    @Query("SELECT * FROM employee WHERE employee_id = :employeeId")
     fun getEmployee(employeeId: Int): LiveData<Employee>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)

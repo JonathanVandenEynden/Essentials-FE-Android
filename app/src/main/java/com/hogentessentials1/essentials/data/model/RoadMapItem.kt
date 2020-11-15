@@ -7,8 +7,8 @@ import java.util.*
  * @author Kilian Hoefman
  */
 
-@Entity(tableName = "roadMap")
-data class RoadMap(
+@Entity(tableName = "roadMapItem")
+data class RoadMapItem(
     val id: Int,
     val title: String,
     val assessment: Assessment,

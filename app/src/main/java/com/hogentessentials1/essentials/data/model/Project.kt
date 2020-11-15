@@ -10,6 +10,7 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "project")
 data class Project (
     @PrimaryKey @ColumnInfo(name= "project_id") val Id: Int,
-    val name: String
+    val name: String,
+    val changeInitiatives: ArrayList<ChangeInitiative>
     ){
 }

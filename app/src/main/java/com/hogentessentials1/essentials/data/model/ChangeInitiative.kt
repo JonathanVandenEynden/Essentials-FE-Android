@@ -1,7 +1,5 @@
 package com.hogentessentials1.essentials.data.model
 
-import android.os.Parcel
-import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import java.util.*
@@ -14,14 +12,14 @@ import java.util.*
 @Entity(tableName = "changeInitiative")
 data class ChangeInitiative(
     @PrimaryKey val id: Int,
-    val name: String,
+    val title: String,
     val description: String,
     val startDate: Date,
     val endDate: Date,
     val changeGroup: ChangeGroup,
     val changeSponsor: Employee,
     val changeType: ChangeType,
-    val roadMap: RoadMap
+    val roadMapItem: RoadMapItem
 ){
 
 }

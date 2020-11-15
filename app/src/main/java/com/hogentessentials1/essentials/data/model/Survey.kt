@@ -9,6 +9,7 @@ import android.os.Parcelable
 
 data class Survey(
   val id: Int,
+  val name: String, //TODO wegdoen
   val questions: ArrayList<Question>,
   val feedback: Feedback,
   val amountSubmitted: Int
