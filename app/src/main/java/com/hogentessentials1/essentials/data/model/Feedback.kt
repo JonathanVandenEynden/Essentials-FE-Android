@@ -13,6 +13,4 @@ data class Feedback(
     val questionString: String,
     val possibleAnswers: ArrayList<Answer>,
     val maxAmount: Int
-) {
-
-}
+)

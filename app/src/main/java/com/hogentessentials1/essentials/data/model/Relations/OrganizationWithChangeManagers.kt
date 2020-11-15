@@ -5,7 +5,6 @@ import androidx.room.Relation
 import com.hogentessentials1.essentials.data.model.ChangeManager
 import com.hogentessentials1.essentials.data.model.Organization
 
-
 /**
  * @author Kilian Hoefman
  * @author Simon De Wilde

@@ -13,10 +13,10 @@ import com.hogentessentials1.essentials.data.model.ChangeType
 
 @Dao
 interface ChangeTypeDao {
-    @Query("SELECT * FROM changeType ORDER BY id")
+    @Query("SELECT * FROM changeType ORDER BY changeType_id")
     fun getChangeTypes(): LiveData<List<ChangeType>>
 
-    @Query("SELECT * FROM changeType WHERE id = :changeTypeId")
+    @Query("SELECT * FROM changeType WHERE changeType_id = :changeTypeId")
     fun getChangeType(changeTypeId: Int): LiveData<ChangeType>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)

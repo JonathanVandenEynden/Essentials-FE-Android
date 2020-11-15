@@ -4,7 +4,6 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-
 /**
  * @author Kilian Hoefman: start of Dataclass
  *
@@ -12,9 +11,9 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "changeGroup")
 data class ChangeGroup(
-    @PrimaryKey @ColumnInfo(name="change_group_id") val id: Int,
+    @PrimaryKey @ColumnInfo(name = "change_group_id") val id: Int,
     val name: String,
     val users: ArrayList<Employee>
 ) {
- //TODO
+    // TODO
 }

@@ -8,9 +8,8 @@ import androidx.room.PrimaryKey
  * @author Kilian Hoefman
  */
 @Entity(tableName = "project")
-data class Project (
-    @PrimaryKey @ColumnInfo(name= "project_id") val Id: Int,
+data class Project(
+    @PrimaryKey @ColumnInfo(name = "project_id") val Id: Int,
     val name: String,
     val changeInitiatives: ArrayList<ChangeInitiative>
-    ){
-}
+)

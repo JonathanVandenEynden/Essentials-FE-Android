@@ -9,10 +9,9 @@ import javax.inject.Singleton
  */
 
 @Singleton
-class EmployeeRepository @Inject constructor(private val employeeDao: EmployeeDao){
+class EmployeeRepository @Inject constructor(private val employeeDao: EmployeeDao) {
 
     fun getEmployees() = employeeDao.getEmployees()
 
     fun getEmployee(employeeId: Int) = employeeDao.getEmployee(employeeId)
-
 }

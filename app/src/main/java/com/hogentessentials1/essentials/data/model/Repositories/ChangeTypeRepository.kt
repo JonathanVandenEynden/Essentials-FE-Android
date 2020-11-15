@@ -9,7 +9,7 @@ import javax.inject.Singleton
  */
 
 @Singleton
-class ChangeTypeRepository @Inject constructor(private val changeTypeDao: ChangeTypeDao){
+class ChangeTypeRepository @Inject constructor(private val changeTypeDao: ChangeTypeDao) {
 
     fun getChangeTypes() = changeTypeDao.getChangeTypes()
 

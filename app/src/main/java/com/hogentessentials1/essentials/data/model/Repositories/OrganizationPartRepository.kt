@@ -9,7 +9,7 @@ import javax.inject.Singleton
  */
 
 @Singleton
-class OrganizationPartRepository @Inject constructor(private val organizationPartDao: OrganizationPartDao){
+class OrganizationPartRepository @Inject constructor(private val organizationPartDao: OrganizationPartDao) {
 
     fun getOrganizationParts() = organizationPartDao.getOrganizationParts()
 

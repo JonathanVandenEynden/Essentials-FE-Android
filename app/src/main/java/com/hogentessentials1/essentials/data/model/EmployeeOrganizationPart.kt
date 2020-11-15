@@ -14,6 +14,4 @@ data class EmployeeOrganizationPart(
     val organizationPartId: Int,
     val organizationParts: OrganizationPart,
     val type: OrganizationPartType
-) {
-
-}
+)

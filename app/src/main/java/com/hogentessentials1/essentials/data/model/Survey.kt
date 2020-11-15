@@ -1,25 +1,22 @@
 package com.hogentessentials1.essentials.data.model
 
-import android.os.Parcel
-import android.os.Parcelable
-
 /**
  * @author Ziggy Moens: Start data class & made Parcelable
  */
 
 data class Survey(
-  val id: Int,
-  val name: String, //TODO wegdoen
-  val questions: ArrayList<Question>,
-  val feedback: Feedback,
-  val amountSubmitted: Int
-){}
+    val id: Int = 20, // TODO niet hardcoden
+    val name: String, // TODO wegdoen
+//  val questions: ArrayList<Question>, // TODO terug insteken
+    val questions: ArrayList<SurveyQuestion>, // TODO verwijderen
+    val feedback: Question = Question(10, "randovraag"), // TODO niet hardcoden
+    val amountSubmitted: Int = 20 // TODO niet hardcoden
+)
 
-
-//data class Survey(
+// data class Survey(
 //    var name: String,
 //    var questions: ArrayList<SurveyQuestion>
-//) : Parcelable {
+// ) : Parcelable {
 //    constructor(parcel: Parcel) : this(
 //        parcel.readString()!!,
 //        // Solution found --> https://stackoverflow.com/questions/45459273/kotlin-parcelable-and-arraylist-of-parcelables
@@ -47,4 +44,4 @@ data class Survey(
 //            return arrayOfNulls(size)
 //        }
 //    }
-//}
+// }

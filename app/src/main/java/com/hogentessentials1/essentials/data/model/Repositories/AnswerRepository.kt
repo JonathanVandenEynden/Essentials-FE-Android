@@ -9,7 +9,7 @@ import javax.inject.Singleton
  */
 
 @Singleton
-class AnswerRepository @Inject constructor(private val answerDao: AnswerDao){
+class AnswerRepository @Inject constructor(private val answerDao: AnswerDao) {
 
     fun getAnswers() = answerDao.getAnswers()
 

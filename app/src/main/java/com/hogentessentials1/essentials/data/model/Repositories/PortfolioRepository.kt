@@ -9,7 +9,7 @@ import javax.inject.Singleton
  */
 
 @Singleton
-class PortfolioRepository @Inject constructor(private val portfolioDao: PortfolioDao){
+class PortfolioRepository @Inject constructor(private val portfolioDao: PortfolioDao) {
 
     fun getPortfolios() = portfolioDao.getPortfolios()
 

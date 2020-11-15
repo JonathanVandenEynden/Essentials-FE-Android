@@ -10,6 +10,5 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "portfolio")
 data class Portfolio(
-    @PrimaryKey @ColumnInfo(name= "portfolio_id") val id: Int
-) {
-}
+    @PrimaryKey @ColumnInfo(name = "portfolio_id") val id: Int
+)

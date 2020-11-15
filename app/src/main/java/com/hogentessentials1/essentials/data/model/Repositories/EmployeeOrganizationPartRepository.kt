@@ -10,10 +10,10 @@ import javax.inject.Singleton
 
 @Singleton
 class EmployeeOrganizationPartRepository
-@Inject constructor(private val employeeOrganizationPartDao: EmployeeOrganizationPartDao){
+@Inject constructor(private val employeeOrganizationPartDao: EmployeeOrganizationPartDao) {
 
     fun getEmployeeOrganizationParts() = employeeOrganizationPartDao.getEmployeeOrganizationParts()
 
-    fun getEmployeeOrganizationPart(employeeId: Int, organizationPartId: Int)
-            = employeeOrganizationPartDao.getEmployeeOrganizationPart(employeeId, organizationPartId)
+    fun getEmployeeOrganizationPart(employeeId: Int, organizationPartId: Int) =
+        employeeOrganizationPartDao.getEmployeeOrganizationPart(employeeId, organizationPartId)
 }

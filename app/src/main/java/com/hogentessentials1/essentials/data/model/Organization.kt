@@ -6,5 +6,4 @@ import androidx.room.Entity
 data class Organization(
     val id: Int,
     val name: String
-) {
-}
+)

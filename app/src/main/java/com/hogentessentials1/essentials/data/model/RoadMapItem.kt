@@ -12,11 +12,9 @@ data class RoadMapItem(
     val id: Int,
     val title: String,
     val assessment: Assessment,
-    val feedback: Feedback,
     val done: Boolean,
     val startDate: Date,
     val endDate: Date
 ) {
-    //TODO
-
+    // TODO
 }

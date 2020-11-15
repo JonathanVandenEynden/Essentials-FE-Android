@@ -9,7 +9,7 @@ import javax.inject.Singleton
  */
 
 @Singleton
-class FeedbackRepository @Inject constructor(private val feedbackDao: FeedbackDao){
+class FeedbackRepository @Inject constructor(private val feedbackDao: FeedbackDao) {
 
     fun getFeedbacks() = feedbackDao.getFeedbacks()
 

@@ -7,7 +7,6 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.hogentessentials1.essentials.data.model.ChangeInitiative
 
-
 @Dao
 interface ChangeInitiativeDao {
     @Query("SELECT * FROM changeInitiative ORDER BY id")

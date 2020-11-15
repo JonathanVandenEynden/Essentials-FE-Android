@@ -11,8 +11,6 @@ import androidx.room.PrimaryKey
 data class Assessment(
     @PrimaryKey val id: Int,
     val questions: ArrayList<Question>,
-    val feedback: Feedback,
+    val feedback: Question,
     val amountSubmitted: Int
-) {
-
-}
+)

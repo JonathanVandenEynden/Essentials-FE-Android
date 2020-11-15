@@ -4,7 +4,6 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-
 /**
  * @author Kilian Hoefman
  */
@@ -12,6 +11,4 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "changeType")
 data class ChangeType(
     @PrimaryKey @ColumnInfo(name = "changeType_id") val id: Int
-) {
-
-}
+)

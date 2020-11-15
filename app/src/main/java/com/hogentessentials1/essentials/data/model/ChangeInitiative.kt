@@ -3,6 +3,7 @@ package com.hogentessentials1.essentials.data.model
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import java.util.*
+import kotlin.collections.ArrayList
 
 /**
  * @author Ziggy Moens: made Parcelable
@@ -19,16 +20,15 @@ data class ChangeInitiative(
     val changeGroup: ChangeGroup,
     val changeSponsor: Employee,
     val changeType: ChangeType,
-    val roadMapItem: RoadMapItem
-){
+    val roadMap: List<RoadMapItem>,
+    val surveys: ArrayList<Survey> // TODO verwijderen
 
-}
+)
 
-
-//data class ChangeInitiative(
+// data class ChangeInitiative(
 //    var title: String,
 //    var surveys: ArrayList<Survey> = arrayListOf()
-//) : Parcelable {
+// ) : Parcelable {
 //    constructor(parcel: Parcel) : this(
 //        parcel.readString()!!,
 //        arrayListOf<Survey>().apply {
@@ -55,4 +55,4 @@ data class ChangeInitiative(
 //            return arrayOfNulls(size)
 //        }
 //    }
-//}
+// }

@@ -4,7 +4,6 @@ import androidx.room.Embedded
 import androidx.room.Relation
 import com.hogentessentials1.essentials.data.model.Employee
 import com.hogentessentials1.essentials.data.model.Organization
-import com.hogentessentials1.essentials.data.model.OrganizationPart
 
 /**
  * @author Kilian Hoefman

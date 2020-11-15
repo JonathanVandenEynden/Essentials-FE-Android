@@ -16,6 +16,4 @@ data class ProjectWithChangeInitiatives(
         entityColumn = "id"
     )
     val changeInitiatives: List<ChangeInitiative>
-){
-
-}
+)

@@ -9,12 +9,11 @@ import com.hogentessentials1.essentials.data.model.Portfolio
  * @author Kilian Hoefman
  */
 
-data class OrganizationWithPortfolios (
+data class OrganizationWithPortfolios(
     @Embedded val organization: Organization,
     @Relation(
         parentColumn = "portfolio_id",
         entityColumn = "organization_id"
     )
     val portfolios: List<Portfolio>
-){
-}
+)

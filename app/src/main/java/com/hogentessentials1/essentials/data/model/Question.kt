@@ -11,5 +11,4 @@ import androidx.room.PrimaryKey
 data class Question(
     @PrimaryKey val id: Int,
     val questionString: String
-) {
-}
+)

@@ -7,12 +7,10 @@ import androidx.room.Entity
  * @author Kilian Hoefman
  */
 
-@Entity(tableName = "organizationParts")
+@Entity(tableName = "organizationPart")
 data class OrganizationPart(
     val id: Int,
-    @ColumnInfo(name= "organization_id") val organizationId: Int,
+    @ColumnInfo(name = "organization_id") val organizationId: Int,
     val name: String,
     val employeeOrganizationParts: ArrayList<EmployeeOrganizationPart>
-) {
-
-}
+)

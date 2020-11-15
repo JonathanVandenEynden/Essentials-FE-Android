@@ -9,7 +9,7 @@ import javax.inject.Singleton
  */
 
 @Singleton
-class ChangeGroupRepository @Inject constructor(private val changeGroupDao: ChangeGroupDao){
+class ChangeGroupRepository @Inject constructor(private val changeGroupDao: ChangeGroupDao) {
 
     fun getChangeGroups() = changeGroupDao.getChangeGroups()
 

@@ -15,5 +15,4 @@ data class ChangeInitiativesWithChangeType(
         entityColumn = "changeType_id"
     )
     val changeType: ChangeType
-) {
-}
+)

@@ -15,5 +15,4 @@ data class ChangeInitiativeWithRoadMapItems(
         entityColumn = "roadmap_id"
     )
     val roadMapItems: List<RoadMapItem>
-) {
-}
+)

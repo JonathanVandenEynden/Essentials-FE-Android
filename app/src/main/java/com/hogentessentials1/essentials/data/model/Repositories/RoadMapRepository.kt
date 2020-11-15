@@ -9,7 +9,7 @@ import javax.inject.Singleton
  */
 
 @Singleton
-class RoadMapRepository @Inject constructor(private val roadMapDao: RoadMapDao){
+class RoadMapRepository @Inject constructor(private val roadMapDao: RoadMapDao) {
 
     fun getRoadMaps() = roadMapDao.getRoadMaps()
 

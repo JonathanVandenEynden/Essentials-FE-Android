@@ -5,7 +5,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class ProjectRepository @Inject constructor(private val projectDao: ProjectDao){
+class ProjectRepository @Inject constructor(private val projectDao: ProjectDao) {
 
     fun getProjects() = projectDao.getProjects()
 

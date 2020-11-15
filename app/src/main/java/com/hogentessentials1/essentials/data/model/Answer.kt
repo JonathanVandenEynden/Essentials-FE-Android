@@ -12,6 +12,4 @@ data class Answer(
     @PrimaryKey val id: Int,
     val answerString: String,
     val amountChosen: Int
-) {
-
-}
+)

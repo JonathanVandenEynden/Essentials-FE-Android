@@ -9,5 +9,4 @@ data class ChangeManager(
     val lastName: String,
     val email: String,
     val createdChangeInitiatives: List<ChangeInitiative>
-) {
-}
+)
