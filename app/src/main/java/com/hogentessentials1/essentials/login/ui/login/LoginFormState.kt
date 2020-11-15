@@ -1,6 +1,8 @@
 package com.hogentessentials1.essentials.login.ui.login
 
 /**
+ * @author Simon De Wilde
+ *
  * Data validation state of the login form.
  */
 data class LoginFormState(

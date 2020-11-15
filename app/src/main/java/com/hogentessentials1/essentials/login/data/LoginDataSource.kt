@@ -5,6 +5,8 @@ import java.io.IOException
 import kotlin.random.Random
 
 /**
+ * @author Simon De Wilde
+ *
  * Class that handles authentication w/ login credentials and retrieves user information.
  */
 class LoginDataSource {

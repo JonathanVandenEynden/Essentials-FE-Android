@@ -18,6 +18,9 @@ import androidx.lifecycle.ViewModelProvider
 import com.hogentessentials1.essentials.MainActivity
 import com.hogentessentials1.essentials.R
 
+/**
+ * @author Simon De Wilde
+ */
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var loginViewModel: LoginViewModel

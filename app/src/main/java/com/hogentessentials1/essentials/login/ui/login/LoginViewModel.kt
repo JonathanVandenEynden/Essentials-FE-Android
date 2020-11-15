@@ -8,6 +8,9 @@ import com.hogentessentials1.essentials.R
 import com.hogentessentials1.essentials.login.data.LoginRepository
 import com.hogentessentials1.essentials.login.data.Result
 
+/**
+ * @author Simon De Wilde
+ */
 class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel() {
 
     private val _loginForm = MutableLiveData<LoginFormState>()
