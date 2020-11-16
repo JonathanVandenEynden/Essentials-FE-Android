@@ -14,7 +14,7 @@ class LoginDataSource {
     fun login(username: String, password: String): Result<LoggedInUser> {
         try {
             // TODO: handle loggedInUser authentication --> call naar api en bearertoken krijgen
-            val fakeUser = LoggedInUser(Random(42).nextInt(), "bearertoken", "Jane Doe")
+            val fakeUser = LoggedInUser(Random(42).nextInt(), "Sukrit", "bearerToken")
             return Result.Success(fakeUser)
         } catch (e: Throwable) {
             return Result.Error(IOException("Error logging in", e))

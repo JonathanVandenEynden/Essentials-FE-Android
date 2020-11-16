@@ -55,6 +55,9 @@ class LoginActivity : AppCompatActivity() {
             }
         )
 
+        // TODO weghalen zodat het niet automatisch wordt ingevuld
+        username.setText("sukrit@essentials.com")
+
         loginViewModel.loginResult.observe(
             this@LoginActivity,
             Observer {

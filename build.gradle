@@ -1,10 +1,14 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
-    ext.kotlin_version = "1.4.10"
-    ext.lifecycle_version = "2.2.0"
-    ext.navigation_version = "2.3.1"
-    ext.material_version = "1.2.1"
-    ext.junit_version = "4.13.1"
+    ext{
+        kotlin_version = "1.4.10"
+        lifecycle_version = "2.2.0"
+        navigation_version = "2.3.1"
+        material_version = "1.2.1"
+        junit_version = "4.13.1"
+        version_moshi = "1.9.3"
+        version_retrofit = "2.9.0"
+    }
 
     repositories {
         google()
