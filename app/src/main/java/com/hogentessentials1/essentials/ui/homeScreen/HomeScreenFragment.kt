@@ -11,6 +11,11 @@ import androidx.navigation.findNavController
 import com.hogentessentials1.essentials.R
 import com.hogentessentials1.essentials.databinding.FragmentHomeScreenBinding
 
+/**
+ * @author Ziggy Moens
+ * @author Simon De Wilde
+ */
+
 class HomeScreenFragment : Fragment() {
 
     private lateinit var viewModel: HomeScreenViewModel

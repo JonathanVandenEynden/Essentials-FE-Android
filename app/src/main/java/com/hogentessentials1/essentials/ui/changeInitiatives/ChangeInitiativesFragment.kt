@@ -15,6 +15,7 @@ import com.hogentessentials1.essentials.databinding.FragmentChangeInitiativesBin
 
 /**
  * @author Simon De Wilde
+ * @author Ziggy Moens
  * A simple [Fragment] subclass.
  * Use the [ChangeInitiativesFragment] factory method to
  * create an instance of this fragment.

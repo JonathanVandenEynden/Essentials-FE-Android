@@ -10,6 +10,7 @@ import com.hogentessentials1.essentials.databinding.ChangeInitiativeListItemBind
 
 /**
  * @author Simon De Wilde
+ * @author Ziggy Moens
  *
  * Converts Change Initiatives to views
  */
