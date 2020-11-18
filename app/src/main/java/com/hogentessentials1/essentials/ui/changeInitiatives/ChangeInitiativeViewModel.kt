@@ -21,6 +21,7 @@ class ChangeInitiativeViewModel : ViewModel() {
 //        }
 //        return surveys
 //    }
+var changemanager: Boolean = false
 
     var changeInitiatives: ArrayList<ChangeInitiative> = arrayListOf(
         ChangeInitiative(
@@ -116,6 +117,18 @@ class ChangeInitiativeViewModel : ViewModel() {
 
     override fun onCleared() {
         super.onCleared()
+    }
+
+    fun getChangeInitiatives(): MutableList<ChangeInitiative> {
+        if (changemanager) {
+            var c: MutableList<ChangeInitiative>
+            c = arrayListOf(
+                changeInitiatives.get(0)
+            )
+            return c
+        } else {
+            return changeInitiatives
+        }
     }
 
     private val _navigateToChangeInitiative = MutableLiveData<ChangeInitiative>()

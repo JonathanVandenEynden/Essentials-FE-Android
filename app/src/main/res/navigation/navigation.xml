@@ -19,6 +19,9 @@
         <action
             android:id="@+id/action_changeInitiativesFragment_to_surveysChangeinitiativeFragment"
             app:destination="@id/surveysChangeInitiativeFragment" />
+        <argument
+            android:name="changemanager"
+            app:argType="boolean" />
     </fragment>
     <fragment
         android:id="@+id/homeScreenFragment"
