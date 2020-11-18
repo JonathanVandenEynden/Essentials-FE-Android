@@ -34,7 +34,8 @@ class SurveysChangeInitiativeFragment : Fragment() {
 
         binding.viewModel = viewModel
 
-        val args = SurveysChangeInitiativeFragmentArgs.fromBundle(requireArguments())
+        val args =
+            SurveysChangeInitiativeFragmentArgs.fromBundle(requireArguments()) // TODO controle op niet null
 
         val ci = args.changeInitiative
 

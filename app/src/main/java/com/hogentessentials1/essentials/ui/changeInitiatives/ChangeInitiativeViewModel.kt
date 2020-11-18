@@ -8,7 +8,7 @@ import com.hogentessentials1.essentials.data.model.SurveyQuestion
 
 /**
  * @author Simon De Wilde
- * @author Ziggy Moens: added offline data
+ * @author Ziggy Moens: added offline data + navigation
  *
  * viewmodel voor changeInitiative
  */
