@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-kapt'
+    id 'kotlin-android-extensions'
     id 'androidx.navigation.safeargs'
 }
 
@@ -71,10 +72,28 @@ dependencies {
     // Material
     implementation "com.google.android.material:material:$material_version"
 
+    // Moshi
+//    implementation "com.squareup.moshi:moshi:$version_moshi"
+    implementation "com.squareup.moshi:moshi-kotlin:$version_moshi"
+
+    // Retrofit with Moshi Converter
+    implementation "com.squareup.retrofit2:converter-moshi:$version_retrofit"
+
+    // Smiley bar
     implementation 'com.github.sujithkanna:smileyrating:2.0.0'
+
+    // Timber
+    implementation 'com.jakewharton.timber:timber:4.7.1'
+
+    // okHTTP
+    implementation "com.squareup.okhttp3:okhttp:$okhttp_version"
+    implementation "com.squareup.okhttp3:logging-interceptor:$interceptor_version"
 
 
     // Unit testing dependencies
     testImplementation "junit:junit:$junit_version"
 
 }
+
+
+

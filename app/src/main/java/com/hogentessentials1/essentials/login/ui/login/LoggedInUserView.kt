@@ -10,7 +10,7 @@ import java.io.Serializable
 
 data class LoggedInUserView(
     val userId: Number,
-    val bearerToken: String,
-    val displayName: String
+    val displayName: String,
+    val bearerToken: String
     // ... other data fields that may be accessible to the UI
 ) : Serializable
