@@ -57,7 +57,7 @@ class TeamsViewModel : ViewModel() {
             Timber.e("start met ophalen")
             try {
                 _changeGroups.value =
-                    ChangeGroupApi.changeGroupApiService.getChangeGroupsForUser(4); // TODO logged in userid meegeven
+                    ChangeGroupApi.changeGroupApiService.getChangeGroupsForUser(4) // TODO logged in userid meegeven
                 Timber.e("ophalen successvol")
                 _status.value = ChangeGroupApiStatus.DONE
             } catch (e: Exception) {
