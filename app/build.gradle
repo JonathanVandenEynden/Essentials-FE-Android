@@ -39,6 +39,10 @@ android {
     }
 }
 
+repositories {
+    maven { url "https://jitpack.io" }
+}
+
 dependencies {
 
     implementation fileTree(dir: "libs", include: ["*.jar"])
@@ -88,7 +92,8 @@ dependencies {
     // okHTTP
     implementation "com.squareup.okhttp3:okhttp:$okhttp_version"
     implementation "com.squareup.okhttp3:logging-interceptor:$interceptor_version"
-
+    //Charts
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.0.3'
 
     // Unit testing dependencies
     testImplementation "junit:junit:$junit_version"
