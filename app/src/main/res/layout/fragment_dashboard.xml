@@ -14,36 +14,35 @@
         android:layout_height="match_parent"
         tools:context=".ui.dashboard.DashboardFragment">
 
-        <androidx.appcompat.widget.AppCompatSpinner
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:listitem="New Catering">
-            <!--<androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/ci_list"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:layout_constraintBottom_toTopOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="parent">
-            </androidx.recyclerview.widget.RecyclerView>-->
-        </androidx.appcompat.widget.AppCompatSpinner>
+            android:layout_height="match_parent">
 
-        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:tools="http://schemas.android.com/tools"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:paddingLeft="@dimen/activity_horizontal_margin"
-            android:paddingRight="@dimen/activity_horizontal_margin"
-            android:paddingTop="@dimen/activity_vertical_margin"
-            android:paddingBottom="@dimen/activity_vertical_margin"
-            tools:context=".MainActivity">
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:id="@+id/spinner_ci"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="20sp"
+                tools:listitem="New Catering">
+                <!--<androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/ci_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layout_constraintBottom_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="parent">
+                </androidx.recyclerview.widget.RecyclerView>-->
+            </androidx.appcompat.widget.AppCompatSpinner>
 
             <com.github.mikephil.charting.charts.PieChart
                 android:id="@+id/chart"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-
+                android:layout_height="match_parent"
+                android:layout_below="@+id/spinner_ci"
+                android:layout_alignParentBottom="true"
+                android:layout_marginTop="0dp"
+                android:layout_marginBottom="0dp" />
         </RelativeLayout>
 
     </FrameLayout>

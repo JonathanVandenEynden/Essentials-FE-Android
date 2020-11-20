@@ -7,20 +7,12 @@ import com.hogentessentials1.essentials.data.model.Survey
 import com.hogentessentials1.essentials.data.model.SurveyQuestion
 
 /**
- * @author Simon De Wilde
- * @author Ziggy Moens: added offline data
  *
- * viewmodel voor changeInitiative
+ * @author Marbod Naassens
+ *
+ * viewmodel voor Dashboard
  */
 class DashboardViewModel : ViewModel() {
-
-//    fun getSurveys(): ArrayList<Survey> {
-//        val surveys: ArrayList<Survey> = arrayListOf()
-//        for (c in changeInitiatives) {
-//            surveys.addAll(c.surveys)
-//        }
-//        return surveys
-//    }
 
     var changeInitiatives: ArrayList<ChangeInitiative> = arrayListOf(
         ChangeInitiative(
