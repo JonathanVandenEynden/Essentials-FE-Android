@@ -83,6 +83,19 @@ dependencies {
     implementation "com.squareup.retrofit2:converter-scalars:2.3.0"
 
     //Retrofit with Moshi Convertor
+    implementation "com.squareup.moshi:moshi-kotlin:$moshi_version"
     implementation "com.squareup.retrofit2:converter-moshi:2.3.0"
+
+    //OKHTTP & Logging
+    implementation "com.squareup.okhttp3:okhttp:$okhttp_version"
+    implementation "com.squareup.okhttp3:logging-interceptor:$interceptor_version"
+
+    // Koin AndroidX Scope features
+    implementation "org.koin:koin-androidx-scope:$koin_version"
+    // Koin AndroidX ViewModel features
+    implementation "org.koin:koin-androidx-viewmodel:$koin_version"
+    // Koin AndroidX Fragment features
+    implementation "org.koin:koin-androidx-fragment:$koin_version"
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
 }

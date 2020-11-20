@@ -21,82 +21,87 @@ private val retrofit = Retrofit.Builder()
     .baseUrl(BASE_URL)
     .build()
 
+interface EssentialsApiService {
 
-interface EmployeeEndpointInterface {
+    interface EmployeeEndpointInterface {
 
-    @GET("Employees/{id}")
-    fun getEmployee(@Path("id") id: Int): Call<Employee>
+        @GET("Employees/{id}")
+        suspend fun getEmployee(@Path("id") id: Int): Call<Employee>
 
-    @GET("Employees/GetAllEmployeesFromOrganization/{organizationId}")
-    fun getAllEmployeesFromOrganization(@Path("organizationId") organizationId: Int): Call<List<Employee>>
-}
+        @GET("Employees/GetAllEmployeesFromOrganization/{organizationId}")
+        suspend fun getAllEmployeesFromOrganization(@Path("organizationId") organizationId: Int): Call<List<Employee>>
+    }
 
-interface ChangeInitiativesEndpointInterface{
+    interface ChangeInitiativesEndpointInterface {
 
-    @GET("ChangeInitiatives/{id}")
-    fun getChangeInitiativeById(@Path("id") id: Int): Call<List<ChangeInitiative>>
+        @GET("ChangeInitiatives/{id}")
+        suspend fun getChangeInitiativeById(@Path("id") id: Int): Call<List<ChangeInitiative>>
 
-    @GET("ChangeInitatives/GetChangeInitiativesForEmployee/{employeeId}")
-    fun getChangeInitiativesForEmployee(@Path("employeeId") employeeId: Int): Call<List<ChangeInitiative>>
+        @GET("ChangeInitatives/GetChangeInitiativesForEmployee/{employeeId}")
+        suspend fun getChangeInitiativesForEmployee(@Path("employeeId") employeeId: Int): Call<List<ChangeInitiative>>
 
-    @GET("/ChangeInitiatives/GetChangeInitiativesForChangeManager/{changeManagerId}")
-    fun getChangeInitiativesForChangeManager(@Path("changeManagerId") changeManagerId: Int): Call<List<ChangeInitiative>>
-}
+        @GET("/ChangeInitiatives/GetChangeInitiativesForChangeManager/{changeManagerId}")
+        suspend fun getChangeInitiativesForChangeManager(@Path("changeManagerId") changeManagerId: Int): Call<List<ChangeInitiative>>
+    }
 
-interface ChangeManagersEndpointInterface{
+    interface ChangeManagersEndpointInterface {
 
-    @GET("/ChangeManagers/GetChangeManagersFromOrganization/{organizationId}")
-    fun getChangeManagersFromOrganizationWithId(@Path("organizationId") organizationId: Int) : Call<List<ChangeManager>>
+        @GET("/ChangeManagers/GetChangeManagersFromOrganization/{organizationId}")
+        suspend fun getChangeManagersFromOrganizationWithId(@Path("organizationId") organizationId: Int): Call<List<ChangeManager>>
 
-    @GET("ChangeManagers/{changeManagerId}")
-    fun getChangeManagerById(@Path("changeManagerId") changeManagerId: Int) : Call<ChangeManager>
-}
+        @GET("ChangeManagers/{changeManagerId}")
+        suspend fun getChangeManagerById(@Path("changeManagerId") changeManagerId: Int): Call<ChangeManager>
+    }
 
-interface OrganizationsEndpointInterface{
+    interface OrganizationsEndpointInterface {
 
-    @GET("Organizations/{organizationId}")
-    fun getOrganizationById(@Path("organizationId") organizationId: Int) : Call<Organization>
-}
+        @GET("Organizations/{organizationId}")
+        suspend fun getOrganizationById(@Path("organizationId") organizationId: Int): Call<Organization>
+    }
 
 
-interface ProjectsEndpointInterface{
+    interface ProjectsEndpointInterface {
 
-    @GET("/Projects/GetProjectsForOrganization/{organizationId}")
-    fun getProjectsFromOrganization(@Path("organizationId") organizationId: Int): Call<List<Project>>
+        @GET("/Projects/GetProjectsForOrganization/{organizationId}")
+        suspend fun getProjectsFromOrganization(@Path("organizationId") organizationId: Int): Call<List<Project>>
 
-    @GET("/Projects/{projectId}")
-    fun getProjectById(@Path("projectId") projectId: Int) : Call<Project>
-}
+        @GET("/Projects/{projectId}")
+        suspend fun getProjectById(@Path("projectId") projectId: Int): Call<Project>
+    }
 
-interface QuestionsEndpointInterface {
+    interface QuestionsEndpointInterface {
 
-    @GET("/Questions/{surveyId}")
-    fun getAllQuestionsFromSurveyById(@Path("surveyId") surveyId: Int) : Call<List<Question>>
+        @GET("/Questions/{surveyId}")
+        suspend fun getAllQuestionsFromSurveyById(@Path("surveyId") surveyId: Int): Call<List<Question>>
 
-    @POST("/Questions/PostAnswerToQuestion/{questionId}")
-    fun postAnswerToQuestion(@Path("questionId") questionId: Int, @Body requestBody: RequestBody) : Response<ResponseBody>
+        @POST("/Questions/PostAnswerToQuestion/{questionId}")
+        suspend fun postAnswerToQuestion(
+            @Path("questionId") questionId: Int,
+            @Body requestBody: RequestBody
+        ): Response<ResponseBody>
 
-    @DELETE("/Questions/{surveyId}")
-    fun deleteSurveyById(@Path("surveyId") surveyId: Int): Response<ResponseBody>
-}
+        @DELETE("/Questions/{surveyId}")
+        suspend fun deleteSurveyById(@Path("surveyId") surveyId: Int): Response<ResponseBody>
+    }
 
-interface RoadMapItemsEndpointInterface{
+    interface RoadMapItemsEndpointInterface {
 
-    @GET("/RoadMapItems/{id}")
-    fun getRoadMapItemById(@Path("id") id: Int) : Call<RoadMapItem>
+        @GET("/RoadMapItems/{id}")
+        suspend fun getRoadMapItemById(@Path("id") id: Int): Call<RoadMapItem>
 
-    @GET("/RoadMapItems/GetRoadMapItemsForChangeInitiative/{changeInitiativeId}")
-    fun getRoadMapItemsForChangeInitatitveWithId(@Path("changeInitiativeId") changeInitiativeId: Int) : Call<List<RoadMapItem>>
-}
+        @GET("/RoadMapItems/GetRoadMapItemsForChangeInitiative/{changeInitiativeId}")
+        suspend fun getRoadMapItemsForChangeInitatitveWithId(@Path("changeInitiativeId") changeInitiativeId: Int): Call<List<RoadMapItem>>
+    }
 
-interface SurveyEndpointInterface {
+    interface SurveyEndpointInterface {
 
-    @GET("/Survey")
-    fun getAllSurveys() : Call<List<Survey>>
+        @GET("/Survey")
+        suspend fun getAllSurveys(): Call<List<Survey>>
 
-    @GET("/Survey/{id}")
-    fun getSurveyById(@Path("id") id: Int) : Call<Survey>
+        @GET("/Survey/{id}")
+        suspend fun getSurveyById(@Path("id") id: Int): Call<Survey>
 
-    @GET("/Survey/GetSurveyByRoadMapItemId/{roadmapItemId}")
-    fun getSurveyByRoadMapItemId(@Path("roadmapItemId") roadmapItemId: Int): Call<RoadMapItem>
+        @GET("/Survey/GetSurveyByRoadMapItemId/{roadmapItemId}")
+        suspend fun getSurveyByRoadMapItemId(@Path("roadmapItemId") roadmapItemId: Int): Call<RoadMapItem>
+    }
 }
