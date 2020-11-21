@@ -1,7 +1,9 @@
 package com.hogentessentials1.essentials.data.model
 
+import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import kotlinx.android.parcel.Parcelize
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -10,7 +12,8 @@ import kotlin.collections.ArrayList
  * @author Kilian Hoefman: start of Dataclass
  */
 
-@Entity(tableName = "changeInitiative")
+//@Entity(tableName = "changeInitiative")
+@Parcelize
 data class ChangeInitiative(
     @PrimaryKey val id: Int,
     val title: String,
@@ -23,7 +26,7 @@ data class ChangeInitiative(
     val roadMap: List<RoadMapItem>,
     val surveys: ArrayList<Survey> // TODO verwijderen
 
-)
+) : Parcelable
 
 // data class ChangeInitiative(
 //    var title: String,

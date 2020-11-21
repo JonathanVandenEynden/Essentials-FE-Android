@@ -1,8 +1,16 @@
 package com.hogentessentials1.essentials.ui.changeInitiatives
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.hogentessentials1.essentials.data.model.ChangeInitiative
+import com.hogentessentials1.essentials.data.model.Repositories.TestRepository
+import com.hogentessentials1.essentials.data.model.RoadMapItem
+import com.hogentessentials1.essentials.data.model.network.EssentialsApiService
+import com.hogentessentials1.essentials.data.model.util.Status
+import kotlinx.coroutines.launch
+import timber.log.Timber
 
 /**
  * @author Simon De Wilde
@@ -10,7 +18,7 @@ import com.hogentessentials1.essentials.data.model.ChangeInitiative
  *
  * viewmodel voor changeInitiative
  */
-class ChangeInitiativeViewModel : ViewModel() {
+class ChangeInitiativeViewModel(private val repo: TestRepository) : ViewModel() {
 
 //    fun getSurveys(): ArrayList<Survey> {
 //        val surveys: ArrayList<Survey> = arrayListOf()
@@ -19,6 +27,14 @@ class ChangeInitiativeViewModel : ViewModel() {
 //        }
 //        return surveys
 //    }
+
+    private val _status = MutableLiveData<Status>()
+    val status: LiveData<Status>
+        get() = _status
+
+    private val _rmi = MutableLiveData<RoadMapItem>()
+    val rmi: LiveData<RoadMapItem>
+        get() = _rmi
 
     var changeInitiatives: ArrayList<ChangeInitiative> = arrayListOf(
 //        ChangeInitiative(
@@ -109,11 +125,22 @@ class ChangeInitiativeViewModel : ViewModel() {
     )
 
     init {
-        // TODO hier data ophalen van API
-    }
+            viewModelScope.launch {
+                _status.value = Status.LOADING
+                Timber.e("start met ophalen")
+                try {
+                    _rmi.value =
+                        repo.getRMI(5).data
+                    Timber.e("ophalen successvol")
+                    _status.value = Status.SUCCESS
+                } catch (e: Exception) {
+                    Timber.e("ophalen mislukt")
+                    Timber.e("${e.message}")
 
-    override fun onCleared() {
-        super.onCleared()
+                    _status.value = Status.ERROR
+                    //_changeGroups.value = ArrayList()
+                }
+            }
     }
 
     private val _navigateToChangeInitiative = MutableLiveData<ChangeInitiative>()

@@ -1,9 +1,13 @@
 package com.hogentessentials1.essentials.data.model
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
 /**
  * @author Ziggy Moens: Start data class & made Parcelable
  */
 
+@Parcelize
 data class Survey(
     val id: Int = 20, // TODO niet hardcoden
     val name: String, // TODO wegdoen
@@ -11,7 +15,7 @@ data class Survey(
     val questions: ArrayList<SurveyQuestion>, // TODO verwijderen
     val feedback: Question = Question(10, "randovraag"), // TODO niet hardcoden
     val amountSubmitted: Int = 20 // TODO niet hardcoden
-)
+) : Parcelable
 
 // data class Survey(
 //    var name: String,

@@ -98,4 +98,8 @@ dependencies {
     implementation "org.koin:koin-androidx-fragment:$koin_version"
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
+    //Timber
+    implementation 'com.jakewharton.timber:timber:4.7.1'
+
+
 }

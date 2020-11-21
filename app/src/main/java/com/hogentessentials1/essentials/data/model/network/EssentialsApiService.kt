@@ -14,7 +14,7 @@ import retrofit2.http.*
  * @author Jonathan Vanden Eynden
  */
 
-private const val BASE_URL = "https://essentialsapi.azurewebsites.net/"
+private const val BASE_URL = "https://essentialsapi.azurewebsites.net/api/"
 
 private val retrofit = Retrofit.Builder()
     .addConverterFactory(ScalarsConverterFactory.create())
@@ -35,18 +35,18 @@ interface EssentialsApiService {
     interface ChangeInitiativesEndpointInterface {
 
         @GET("ChangeInitiatives/{id}")
-        suspend fun getChangeInitiativeById(@Path("id") id: Int): Call<List<ChangeInitiative>>
+        suspend fun getChangeInitiativeById(@Path("id") id: Int): Response<List<ChangeInitiative>>
 
         @GET("ChangeInitatives/GetChangeInitiativesForEmployee/{employeeId}")
         suspend fun getChangeInitiativesForEmployee(@Path("employeeId") employeeId: Int): Call<List<ChangeInitiative>>
 
-        @GET("/ChangeInitiatives/GetChangeInitiativesForChangeManager/{changeManagerId}")
+        @GET("ChangeInitiatives/GetChangeInitiativesForChangeManager/{changeManagerId}")
         suspend fun getChangeInitiativesForChangeManager(@Path("changeManagerId") changeManagerId: Int): Call<List<ChangeInitiative>>
     }
 
     interface ChangeManagersEndpointInterface {
 
-        @GET("/ChangeManagers/GetChangeManagersFromOrganization/{organizationId}")
+        @GET("ChangeManagers/GetChangeManagersFromOrganization/{organizationId}")
         suspend fun getChangeManagersFromOrganizationWithId(@Path("organizationId") organizationId: Int): Call<List<ChangeManager>>
 
         @GET("ChangeManagers/{changeManagerId}")
@@ -59,49 +59,48 @@ interface EssentialsApiService {
         suspend fun getOrganizationById(@Path("organizationId") organizationId: Int): Call<Organization>
     }
 
-
     interface ProjectsEndpointInterface {
 
-        @GET("/Projects/GetProjectsForOrganization/{organizationId}")
+        @GET("Projects/GetProjectsForOrganization/{organizationId}")
         suspend fun getProjectsFromOrganization(@Path("organizationId") organizationId: Int): Call<List<Project>>
 
-        @GET("/Projects/{projectId}")
+        @GET("Projects/{projectId}")
         suspend fun getProjectById(@Path("projectId") projectId: Int): Call<Project>
     }
 
     interface QuestionsEndpointInterface {
 
-        @GET("/Questions/{surveyId}")
+        @GET("Questions/{surveyId}")
         suspend fun getAllQuestionsFromSurveyById(@Path("surveyId") surveyId: Int): Call<List<Question>>
 
-        @POST("/Questions/PostAnswerToQuestion/{questionId}")
+        @POST("Questions/PostAnswerToQuestion/{questionId}")
         suspend fun postAnswerToQuestion(
             @Path("questionId") questionId: Int,
             @Body requestBody: RequestBody
         ): Response<ResponseBody>
 
-        @DELETE("/Questions/{surveyId}")
+        @DELETE("Questions/{surveyId}")
         suspend fun deleteSurveyById(@Path("surveyId") surveyId: Int): Response<ResponseBody>
     }
 
     interface RoadMapItemsEndpointInterface {
 
-        @GET("/RoadMapItems/{id}")
-        suspend fun getRoadMapItemById(@Path("id") id: Int): Call<RoadMapItem>
+        @GET("RoadMapItems/{id}")
+        suspend fun getRoadMapItemById(@Path("id") id: Int): Response<RoadMapItem>
 
-        @GET("/RoadMapItems/GetRoadMapItemsForChangeInitiative/{changeInitiativeId}")
+        @GET("RoadMapItems/GetRoadMapItemsForChangeInitiative/{changeInitiativeId}")
         suspend fun getRoadMapItemsForChangeInitatitveWithId(@Path("changeInitiativeId") changeInitiativeId: Int): Call<List<RoadMapItem>>
     }
 
     interface SurveyEndpointInterface {
 
-        @GET("/Survey")
+        @GET("Survey")
         suspend fun getAllSurveys(): Call<List<Survey>>
 
-        @GET("/Survey/{id}")
+        @GET("Survey/{id}")
         suspend fun getSurveyById(@Path("id") id: Int): Call<Survey>
 
-        @GET("/Survey/GetSurveyByRoadMapItemId/{roadmapItemId}")
+        @GET("Survey/GetSurveyByRoadMapItemId/{roadmapItemId}")
         suspend fun getSurveyByRoadMapItemId(@Path("roadmapItemId") roadmapItemId: Int): Call<RoadMapItem>
     }
 }
