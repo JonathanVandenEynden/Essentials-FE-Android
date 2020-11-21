@@ -1,15 +1,11 @@
 package com.hogentessentials1.essentials.ui.dashboard
 
-import android.content.Context
-import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.hogentessentials1.essentials.data.model.ChangeInitiative
-import com.hogentessentials1.essentials.databinding.ChangeInitiativeListItemBinding
-import kotlin.coroutines.coroutineContext
 
 /**
  */

@@ -1,6 +1,5 @@
 package com.hogentessentials1.essentials.ui.dashboard
 
-import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,14 +9,14 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.github.mikephil.charting.charts.BarChart
 import com.github.mikephil.charting.charts.PieChart
-import com.github.mikephil.charting.data.*
-import com.github.mikephil.charting.interfaces.datasets.IBarDataSet
+import com.github.mikephil.charting.data.BarEntry
+import com.github.mikephil.charting.data.PieData
+import com.github.mikephil.charting.data.PieDataSet
+import com.github.mikephil.charting.data.PieEntry
 import com.github.mikephil.charting.utils.ColorTemplate
 import com.hogentessentials1.essentials.R
 import com.hogentessentials1.essentials.databinding.FragmentDashboardBinding
-
 
 /**
  * A simple [Fragment] subclass.
@@ -57,7 +56,7 @@ class DashboardFragment : Fragment() {
 
         val manager = LinearLayoutManager(activity)
 
-        //binding.ciList.layoutManager = manager
+        // binding.ciList.layoutManager = manager
 
         /*val adapter = ChangeInitiativeAdapter(
             ChangeInitiativeListener { changeInitiative ->
@@ -75,7 +74,7 @@ class DashboardFragment : Fragment() {
 
         val data = PieData(getDataSet())
         chart.data = data
-        chart.description.text =  "My chart"
+        chart.description.text = "My chart"
         chart.animateXY(2000, 2000)
         chart.invalidate()
 
