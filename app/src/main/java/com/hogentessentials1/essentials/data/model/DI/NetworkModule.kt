@@ -2,8 +2,8 @@ package com.hogentessentials1.essentials.data.model.DI
 
 import com.hogentessentials1.essentials.BuildConfig
 import com.hogentessentials1.essentials.data.model.Repositories.TestRepository
-import com.hogentessentials1.essentials.data.model.network.EssentialsApiService
 import com.hogentessentials1.essentials.data.model.network.EssentialsRemoteDataSource
+import com.hogentessentials1.essentials.data.model.network.RoadMapItemsEndpointInterface
 import com.hogentessentials1.essentials.data.model.util.Globals
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -16,9 +16,8 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 val networkModule = module {
     single { provideOkHttpClient() }
     single { provideRetrofit(get(), Globals.BASE_URL) }
-    single {
-        provideApiService(get())
-    }
+    single { provideRmiEndpointInterface(get()) }
+    // TODO alle apiinterfaces appart als single (zoals hierboven)
     single { EssentialsRemoteDataSource(get()) }
     single { TestRepository(get()) }
 }
@@ -60,5 +59,5 @@ private fun provideRetrofit(
  * Provide the API Service
  */
 
-private fun provideApiService(retrofit: Retrofit): EssentialsApiService =
-    retrofit.create(EssentialsApiService::class.java)
+private fun provideRmiEndpointInterface(retrofit: Retrofit): RoadMapItemsEndpointInterface =
+    retrofit.create(RoadMapItemsEndpointInterface::class.java)

@@ -7,7 +7,6 @@ import androidx.lifecycle.viewModelScope
 import com.hogentessentials1.essentials.data.model.ChangeInitiative
 import com.hogentessentials1.essentials.data.model.Repositories.TestRepository
 import com.hogentessentials1.essentials.data.model.RoadMapItem
-import com.hogentessentials1.essentials.data.model.network.EssentialsApiService
 import com.hogentessentials1.essentials.data.model.util.Status
 import kotlinx.coroutines.launch
 import timber.log.Timber
