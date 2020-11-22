@@ -101,4 +101,3 @@ interface SurveyEndpointInterface {
     @GET("Survey/GetSurveyByRoadMapItemId/{roadmapItemId}")
     suspend fun getSurveyByRoadMapItemId(@Path("roadmapItemId") roadmapItemId: Int): Call<RoadMapItem>
 }
-

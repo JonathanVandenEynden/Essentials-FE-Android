@@ -124,22 +124,22 @@ class ChangeInitiativeViewModel(private val repo: TestRepository) : ViewModel() 
     )
 
     init {
-            viewModelScope.launch {
-                _status.value = Status.LOADING
-                Timber.e("start met ophalen")
-                try {
-                    _rmi.value =
-                        repo.getRMI(5).data
-                    Timber.e("ophalen successvol")
-                    _status.value = Status.SUCCESS
-                } catch (e: Exception) {
-                    Timber.e("ophalen mislukt")
-                    Timber.e("${e.message}")
+        viewModelScope.launch {
+            _status.value = Status.LOADING
+            Timber.e("start met ophalen")
+            try {
+                _rmi.value =
+                    repo.getRMI(5).data
+                Timber.e("ophalen successvol")
+                _status.value = Status.SUCCESS
+            } catch (e: Exception) {
+                Timber.e("ophalen mislukt")
+                Timber.e("${e.message}")
 
-                    _status.value = Status.ERROR
-                    //_changeGroups.value = ArrayList()
-                }
+                _status.value = Status.ERROR
+                // _changeGroups.value = ArrayList()
             }
+        }
     }
 
     private val _navigateToChangeInitiative = MutableLiveData<ChangeInitiative>()

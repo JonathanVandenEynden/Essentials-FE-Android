@@ -15,9 +15,7 @@ import timber.log.Timber
  * @author Simon De Wilde: added offline data used from ChangeInitiativeViewModel
  * @author Ziggy Moens
  */
-class AllSurveysViewModel(private val repo: TestRepository): ViewModel() {
-
-
+class AllSurveysViewModel(private val repo: TestRepository) : ViewModel() {
 
     private val _status = MutableLiveData<Status>()
     val status: LiveData<Status>

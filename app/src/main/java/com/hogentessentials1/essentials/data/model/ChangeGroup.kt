@@ -2,7 +2,6 @@ package com.hogentessentials1.essentials.data.model
 
 import android.os.Parcelable
 import androidx.room.ColumnInfo
-import androidx.room.Entity
 import androidx.room.PrimaryKey
 import kotlinx.android.parcel.Parcelize
 
@@ -11,7 +10,7 @@ import kotlinx.android.parcel.Parcelize
  *
  */
 
-//@Entity(tableName = "changeGroup")
+// @Entity(tableName = "changeGroup")
 @Parcelize
 data class ChangeGroup(
     @PrimaryKey @ColumnInfo(name = "change_group_id") val id: Int,
