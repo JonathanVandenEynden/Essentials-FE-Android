@@ -1,13 +1,27 @@
 package com.hogentessentials1.essentials.data.model.DI
 
 import com.hogentessentials1.essentials.BuildConfig
+import com.hogentessentials1.essentials.data.model.Repositories.TestRepository
 import com.hogentessentials1.essentials.data.model.network.EssentialsApiService
+import com.hogentessentials1.essentials.data.model.network.EssentialsRemoteDataSource
+import com.hogentessentials1.essentials.data.model.util.Globals
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
+import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+
+val networkModule = module {
+    single { provideOkHttpClient() }
+    single { provideRetrofit(get(), Globals.BASE_URL) }
+    single {
+        provideApiService(get())
+    }
+    single { EssentialsRemoteDataSource(get()) }
+    single { TestRepository(get()) }
+}
 
 /**
  * Provided a OkHttpClient. In debug version, an interceptor is added
