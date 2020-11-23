@@ -1,5 +1,6 @@
 package com.hogentessentials1.essentials.ui.surveys
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -7,7 +8,10 @@ import androidx.lifecycle.viewModelScope
 import com.hogentessentials1.essentials.data.model.Repositories.TestRepository
 import com.hogentessentials1.essentials.data.model.RoadMapItem
 import com.hogentessentials1.essentials.data.model.Survey
+
+import com.hogentessentials1.essentials.data.model.util.Resource
 import com.hogentessentials1.essentials.data.model.util.Status
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import timber.log.Timber
 
@@ -105,7 +109,24 @@ class AllSurveysViewModel(private val repo: TestRepository) : ViewModel() {
                 _status.value = Status.ERROR
             }
         }
+
     }
+
+//    private fun getRoadMapItemsById(id: Int) {
+//        viewModelScope.launch {
+//            _status.value = Status.LOADING
+//            Timber.e("start ophaling dink")
+//            try {
+//                _rmi.value = EssentialsApi.retrofitService.getRoadMapItemById(id).body()
+//                _status.value = Status.SUCCESS
+//                Timber.e("ophaling dink gelukt")
+//            } catch (e: Exception) {
+//                _status.value = Status.ERROR
+//                _rmi.value = null
+//                Timber.e("ophaling dink mislukt")
+//            }
+//        }
+//    }
 
     private val _navigateToSurvey = MutableLiveData<Survey>()
     val navigateToSurvey

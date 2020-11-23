@@ -1,12 +1,15 @@
 package com.hogentessentials1.essentials.data.model.network
 
 import com.hogentessentials1.essentials.data.model.*
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import okhttp3.RequestBody
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.scalars.ScalarsConverterFactory
+import retrofit2.create
 import retrofit2.http.*
 
 /**
@@ -15,6 +18,10 @@ import retrofit2.http.*
  */
 
 private const val BASE_URL = "https://essentialsapi.azurewebsites.net/api/"
+
+private val moshi = Moshi.Builder()
+    .add(KotlinJsonAdapterFactory())
+    .build()
 
 private val retrofit = Retrofit.Builder()
     .addConverterFactory(ScalarsConverterFactory.create())
@@ -101,3 +108,5 @@ interface SurveyEndpointInterface {
     @GET("Survey/GetSurveyByRoadMapItemId/{roadmapItemId}")
     suspend fun getSurveyByRoadMapItemId(@Path("roadmapItemId") roadmapItemId: Int): Call<RoadMapItem>
 }
+
+

@@ -1,7 +1,9 @@
 package com.hogentessentials1.essentials.data.model
 
 import android.os.Parcelable
+import com.squareup.moshi.Json
 import kotlinx.android.parcel.Parcelize
+import java.text.DateFormat
 import java.util.*
 
 /**
@@ -11,12 +13,19 @@ import java.util.*
 // @Entity(tableName = "roadMapItem")
 @Parcelize
 data class RoadMapItem(
-    val id: Int,
+    @Json(name = "id")
+    val id: String,
+    @Json(name = "title")
     val title: String,
+    @Json(name = "assessment")
     val assessment: Assessment,
+    @Json(name = "done")
     val done: Boolean,
-    val startDate: Date,
-    val endDate: Date
+    @Json(name = "startDate")
+    val startDate: String,
+    @Json(name = "endDate")
+    val endDate: String
+//TODO Dates casten naar echte datums, formattering tussen JSON en android is verschillend
 ) : Parcelable {
     // TODO
 }

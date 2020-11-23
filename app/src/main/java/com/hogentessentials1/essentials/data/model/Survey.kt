@@ -1,6 +1,7 @@
 package com.hogentessentials1.essentials.data.model
 
 import android.os.Parcelable
+import com.squareup.moshi.Json
 import kotlinx.android.parcel.Parcelize
 
 /**
@@ -13,9 +14,21 @@ data class Survey(
     val name: String, // TODO wegdoen
 //  val questions: ArrayList<Question>, // TODO terug insteken
     val questions: ArrayList<SurveyQuestion>, // TODO verwijderen
-    val feedback: Question = Question(10, "randovraag"), // TODO niet hardcoden
+    val feedback: Question = Question("10", hashMapOf("key" to 1),"test", "1", hashMapOf("String" to 3)), // TODO niet hardcoden
     val amountSubmitted: Int = 20 // TODO niet hardcoden
 ) : Parcelable
+//data class Survey(
+//    @Json(name = "id")
+//    val id: Number,
+//    @Json(name = "questions")
+//    val questions: ArrayList<Question>,
+//    @Json(name = "feedback")
+//    val feedback: Question,
+//    @Json(name = "roadMapItemId")
+//    val roadMapItemId: Number,
+//    @Json(name = "roadMapItem")
+//    val roadMapItem: RoadMapItem
+//) : Parcelable
 
 // data class Survey(
 //    var name: String,

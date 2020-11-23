@@ -51,10 +51,10 @@ private fun provideRetrofit(
                 ).build()
             )
         )
+
         .baseUrl(BASE_URL)
         .client(okHttpClient)
         .build()
-
 /*
  * Provide the API Service
  */
