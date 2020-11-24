@@ -1,6 +1,8 @@
 package com.hogentessentials1.essentials.login.data
 
+import com.auth0.android.jwt.JWT
 import com.hogentessentials1.essentials.login.data.model.LoggedInUser
+import com.hogentessentials1.essentials.util.Globals
 import java.io.IOException
 import kotlin.random.Random
 
@@ -13,8 +15,13 @@ class LoginDataSource {
 
     fun login(username: String, password: String): Result<LoggedInUser> {
         try {
-            // TODO: handle loggedInUser authentication --> call naar api en bearertoken krijgen
-            val fakeUser = LoggedInUser(Random(42).nextInt(), "Sukrit", "bearerToken")
+            val response = "" // todo retrofit call naar be
+
+            // Todo checken of het gelukt is
+
+            Globals.bearerToken = response;
+
+            val fakeUser = LoggedInUser( Globals.username)
             return Result.Success(fakeUser)
         } catch (e: Throwable) {
             return Result.Error(IOException("Error logging in", e))
@@ -22,6 +29,6 @@ class LoginDataSource {
     }
 
     fun logout() {
-        // TODO: revoke authentication --> bearer token uit cache verwijderen
+        Globals.bearerToken = "";
     }
 }

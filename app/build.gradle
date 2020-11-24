@@ -99,6 +99,9 @@ dependencies {
     // Unit testing dependencies
     testImplementation "junit:junit:$junit_version"
 
+    // Authentication
+    implementation "com.auth0.android:jwtdecode:$authentication_version"
+
 }
 
 
