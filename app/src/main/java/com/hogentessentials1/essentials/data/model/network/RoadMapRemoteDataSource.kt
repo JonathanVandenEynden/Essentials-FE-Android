@@ -1,6 +1,6 @@
 package com.hogentessentials1.essentials.data.model.network
 
-class EssentialsRemoteDataSource(val rmiApiService: RoadMapItemsEndpointInterface) : BaseDataSource() {
+class RoadMapRemoteDataSource(val rmiApiService: RoadMapItemsEndpointInterface) : BaseDataSource() {
 
     suspend fun getRoadMapItemById(id: Int) = getResult { rmiApiService.getRoadMapItemById(id) }
 

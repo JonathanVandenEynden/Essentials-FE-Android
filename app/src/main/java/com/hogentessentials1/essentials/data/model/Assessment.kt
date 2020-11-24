@@ -16,7 +16,7 @@ data class Assessment(
     @Json(name = "questions")
     val questions: List<Question>,
     @Json(name = "feedback")
-    val feedback: Question,
+    val feedback: Question?,
     @Json(name = "roadMapItemId")
     val roadMapItemId: String
 ) : Parcelable

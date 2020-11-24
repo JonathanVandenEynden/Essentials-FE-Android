@@ -11,7 +11,7 @@ import kotlinx.android.parcel.Parcelize
 // @Entity(tableName = "employeeOrganizationPart")
 @Parcelize
 data class EmployeeOrganizationPart(
-    @PrimaryKey val employeeId: Int,
+    val employeeId: Int,
     val employee: Employee,
     val organizationPartId: Int,
     val organizationParts: OrganizationPart,

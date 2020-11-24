@@ -1,7 +1,9 @@
 package com.hogentessentials1.essentials.data.model.Repositories
 
-import com.hogentessentials1.essentials.data.model.DAOs.ChangeInitiativeDao
-import javax.inject.Inject
+import com.hogentessentials1.essentials.data.model.ChangeInitiative
+import com.hogentessentials1.essentials.data.model.network.ChangeInitiativeRemoteDataSource
+import com.hogentessentials1.essentials.data.model.network.RoadMapRemoteDataSource
+import com.hogentessentials1.essentials.data.model.util.Resource
 import javax.inject.Singleton
 
 /**
@@ -9,9 +11,17 @@ import javax.inject.Singleton
  */
 
 @Singleton
-class ChangeInitiativeRepository @Inject constructor(private val changeInitiativeDao: ChangeInitiativeDao) {
+class ChangeInitiativeRepository(val remoteDataSource: ChangeInitiativeRemoteDataSource) {
 
-    fun getChangeInitiatives() = changeInitiativeDao.getChangeInitatives()
+    suspend fun getChangeInitiativeById(changeInitiativeId: Int) : Resource<ChangeInitiative>{
+      return remoteDataSource.getChangeInitiativeById(changeInitiativeId)
+    }
 
-    fun getChangeInitiative(changeInitiativeId: Int) = changeInitiativeDao.getChangeInitative(changeInitiativeId)
+    suspend fun getChangeInitiativesForEmployee(employeeId: Int): Resource<List<ChangeInitiative>>{
+        return remoteDataSource.getChangeInitiativesForEmployee(employeeId)
+    }
+
+    suspend fun getChangeInitiativesForChangeManager(changeManagerId: Int) : Resource<List<ChangeInitiative>>{
+        return remoteDataSource.getChangeInitiativesForChangeManager(changeManagerId)
+    }
 }

@@ -2,6 +2,7 @@ package com.hogentessentials1.essentials.data.model
 
 import android.os.Parcelable
 import androidx.room.PrimaryKey
+import com.squareup.moshi.Json
 import kotlinx.android.parcel.Parcelize
 import java.util.*
 import kotlin.collections.ArrayList
@@ -14,16 +15,27 @@ import kotlin.collections.ArrayList
 // @Entity(tableName = "changeInitiative")
 @Parcelize
 data class ChangeInitiative(
-    @PrimaryKey val id: Int,
+    @Json(name = "id")
+    val id: Int,
+    @Json(name = "name")
     val title: String,
+    @Json(name = "description")
     val description: String,
-    val startDate: Date,
-    val endDate: Date,
+    @Json(name = "startDate")
+    val startDate: String,
+    @Json(name = "endDate")
+    val endDate: String,
+    @Json(name = "changeGroup")
     val changeGroup: ChangeGroup,
+    @Json(name = "changeSponsor")
     val changeSponsor: Employee,
-    val changeType: ChangeType,
-    val roadMap: List<RoadMapItem>,
-    val surveys: ArrayList<Survey> // TODO verwijderen
+    @Json(name = "changeType")
+    val changeType: ChangeType?,
+    @Json(name = "roadMap")
+    val roadMap: Array<RoadMapItem>,
+    //val surveys: ArrayList<Survey> // TODO verwijderen
+    @Json(name = "progress")
+    val progress: String
 
 ) : Parcelable
 

@@ -4,6 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.hogentessentials1.essentials.data.model.ChangeInitiative
+import com.hogentessentials1.essentials.data.model.Repositories.ChangeInitiativeRepository
 import com.hogentessentials1.essentials.data.model.Repositories.RoadMapRepository
 import com.hogentessentials1.essentials.data.model.RoadMapItem
 import com.hogentessentials1.essentials.data.model.Survey
@@ -16,15 +18,20 @@ import timber.log.Timber
  * @author Simon De Wilde: added offline data used from ChangeInitiativeViewModel
  * @author Ziggy Moens
  */
-class AllSurveysViewModel(private val repo: RoadMapRepository) : ViewModel() {
+class AllSurveysViewModel(private val repo: ChangeInitiativeRepository) : ViewModel() {
+
 
     private val _status = MutableLiveData<Status>()
     val status: LiveData<Status>
         get() = _status
 
-    private val _rmi = MutableLiveData<List<RoadMapItem>>()
-    val rmi: LiveData<List<RoadMapItem>>
-        get() = _rmi
+//    private val _rmi = MutableLiveData<List<RoadMapItem>>()
+//    val rmi: LiveData<List<RoadMapItem>>
+//        get() = _rmi
+
+    private val _changeInit = MutableLiveData<List<ChangeInitiative>>()
+    val changeInit: LiveData<List<ChangeInitiative>>
+        get() = _changeInit
 
     var surveys: ArrayList<Survey> = arrayListOf(
 //        Survey(
@@ -95,8 +102,10 @@ class AllSurveysViewModel(private val repo: RoadMapRepository) : ViewModel() {
             _status.value = Status.LOADING
             Timber.e("start met ophalen")
             try {
-                _rmi.value =
-                    repo.getRoadMaps(1).data
+//                _rmi.value =
+//                    repo.getRoadMaps(1).data
+                _changeInit.value =
+                    repo.getChangeInitiativesForEmployee(5).data
                 Timber.e("ophalen successvol")
                 _status.value = Status.SUCCESS
             } catch (e: Exception) {

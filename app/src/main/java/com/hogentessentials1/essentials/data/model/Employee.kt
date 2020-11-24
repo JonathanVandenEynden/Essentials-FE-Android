@@ -3,6 +3,7 @@ package com.hogentessentials1.essentials.data.model
 import android.os.Parcelable
 import androidx.room.ColumnInfo
 import androidx.room.PrimaryKey
+import com.squareup.moshi.Json
 import kotlinx.android.parcel.Parcelize
 
 /**
@@ -10,14 +11,20 @@ import kotlinx.android.parcel.Parcelize
  */
 
 // @Entity(tableName = "employee")
+//@PrimaryKey @ColumnInfo(name = "employee_id")
+//@ColumnInfo(name = "organization_id")
 @Parcelize
 data class Employee(
-    @PrimaryKey @ColumnInfo(name = "employee_id") val id: Int,
-    @ColumnInfo(name = "organization_id") val organizationId: Int,
+    @Json(name = "id")
+    val id: Int,
+    @Json(name = "firstName")
     val firstName: String,
+    @Json(name = "lastName")
     val lastName: String,
+    @Json(name = "email")
     val email: String,
-    val employeeOrganizationParts: ArrayList<EmployeeOrganizationPart>
+    //@Json(name = "employeeOrganizationParts")
+    //val employeeOrganizationParts: List<EmployeeOrganizationPart>?
 ) : Parcelable {
     // TODO invullen met logische gegevens
 }

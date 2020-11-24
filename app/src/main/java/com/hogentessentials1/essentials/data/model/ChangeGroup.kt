@@ -3,6 +3,7 @@ package com.hogentessentials1.essentials.data.model
 import android.os.Parcelable
 import androidx.room.ColumnInfo
 import androidx.room.PrimaryKey
+import com.squareup.moshi.Json
 import kotlinx.android.parcel.Parcelize
 
 /**
@@ -11,11 +12,15 @@ import kotlinx.android.parcel.Parcelize
  */
 
 // @Entity(tableName = "changeGroup")
+//@PrimaryKey @ColumnInfo(name = "change_group_id")
 @Parcelize
 data class ChangeGroup(
-    @PrimaryKey @ColumnInfo(name = "change_group_id") val id: Int,
+    @Json(name = "id")
+    val id: Int,
+    @Json(name = "name")
     val name: String,
-    val users: ArrayList<Employee>
+    @Json(name = "users")
+    val users: List<Employee>?
 ) : Parcelable {
     // TODO
 }

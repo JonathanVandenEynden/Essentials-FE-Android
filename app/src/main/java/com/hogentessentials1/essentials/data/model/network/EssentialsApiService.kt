@@ -40,13 +40,13 @@ interface EmployeeEndpointInterface {
 interface ChangeInitiativesEndpointInterface {
 
     @GET("ChangeInitiatives/{id}")
-    suspend fun getChangeInitiativeById(@Path("id") id: Int): Response<List<ChangeInitiative>>
+    suspend fun getChangeInitiativeById(@Path("id") id: Int): Response<ChangeInitiative>
 
-    @GET("ChangeInitatives/GetChangeInitiativesForEmployee/{employeeId}")
-    suspend fun getChangeInitiativesForEmployee(@Path("employeeId") employeeId: Int): Call<List<ChangeInitiative>>
+    @GET("ChangeInitiatives/GetChangeInitiativesForEmployee/{employeeId}")
+    suspend fun getChangeInitiativesForEmployee(@Path("employeeId") employeeId: Int): Response<List<ChangeInitiative>>
 
     @GET("ChangeInitiatives/GetChangeInitiativesForChangeManager/{changeManagerId}")
-    suspend fun getChangeInitiativesForChangeManager(@Path("changeManagerId") changeManagerId: Int): Call<List<ChangeInitiative>>
+    suspend fun getChangeInitiativesForChangeManager(@Path("changeManagerId") changeManagerId: Int): Response<List<ChangeInitiative>>
 }
 
 interface ChangeManagersEndpointInterface {
