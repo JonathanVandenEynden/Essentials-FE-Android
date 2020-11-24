@@ -2,11 +2,9 @@ package com.hogentessentials1.essentials.data.model.DI
 
 import com.hogentessentials1.essentials.BuildConfig
 import com.hogentessentials1.essentials.data.model.Repositories.ChangeInitiativeRepository
+import com.hogentessentials1.essentials.data.model.Repositories.ProjectRepository
 import com.hogentessentials1.essentials.data.model.Repositories.RoadMapRepository
-import com.hogentessentials1.essentials.data.model.network.ChangeInitiativeRemoteDataSource
-import com.hogentessentials1.essentials.data.model.network.ChangeInitiativesEndpointInterface
-import com.hogentessentials1.essentials.data.model.network.RoadMapRemoteDataSource
-import com.hogentessentials1.essentials.data.model.network.RoadMapItemsEndpointInterface
+import com.hogentessentials1.essentials.data.model.network.*
 import com.hogentessentials1.essentials.data.model.util.Globals
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -20,13 +18,18 @@ val networkModule = module {
     single { provideOkHttpClient() }
     single { provideRetrofit(get(), Globals.BASE_URL) }
     single { provideRmiEndpointInterface(get()) }
-    single { provideChangeInitiativeEndPointInterface(get())}
+    single { provideChangeInitiativeEndpointInterface(get())}
+    single { provideProjectEndpointInterface(get()) }
+
+
     // TODO alle apiinterfaces appart als single (zoals hierboven)
     single { RoadMapRemoteDataSource(get()) }
     single { ChangeInitiativeRemoteDataSource(get())}
+    single { ProjectRemoteDataSource(get())}
 
     single { RoadMapRepository(get()) }
     single { ChangeInitiativeRepository(get())}
+    single { ProjectRepository(get())}
 }
 
 /**
@@ -69,5 +72,8 @@ private fun provideRetrofit(
 private fun provideRmiEndpointInterface(retrofit: Retrofit): RoadMapItemsEndpointInterface =
     retrofit.create(RoadMapItemsEndpointInterface::class.java)
 
-private fun provideChangeInitiativeEndPointInterface(retrofit: Retrofit): ChangeInitiativesEndpointInterface =
+private fun provideChangeInitiativeEndpointInterface(retrofit: Retrofit): ChangeInitiativesEndpointInterface =
     retrofit.create(ChangeInitiativesEndpointInterface::class.java)
+
+private fun provideProjectEndpointInterface(retrofit: Retrofit): ProjectsEndpointInterface =
+    retrofit.create(ProjectsEndpointInterface::class.java)

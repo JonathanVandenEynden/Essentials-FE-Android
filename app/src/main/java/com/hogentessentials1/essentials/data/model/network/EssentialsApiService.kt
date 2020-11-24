@@ -31,10 +31,10 @@ private val retrofit = Retrofit.Builder()
 interface EmployeeEndpointInterface {
 
     @GET("Employees/{id}")
-    suspend fun getEmployee(@Path("id") id: Int): Call<Employee>
+    suspend fun getEmployee(@Path("id") id: Int): Response<Employee>
 
     @GET("Employees/GetAllEmployeesFromOrganization/{organizationId}")
-    suspend fun getAllEmployeesFromOrganization(@Path("organizationId") organizationId: Int): Call<List<Employee>>
+    suspend fun getAllEmployeesFromOrganization(@Path("organizationId") organizationId: Int): Response<List<Employee>>
 }
 
 interface ChangeInitiativesEndpointInterface {
@@ -52,31 +52,31 @@ interface ChangeInitiativesEndpointInterface {
 interface ChangeManagersEndpointInterface {
 
     @GET("ChangeManagers/GetChangeManagersFromOrganization/{organizationId}")
-    suspend fun getChangeManagersFromOrganizationWithId(@Path("organizationId") organizationId: Int): Call<List<ChangeManager>>
+    suspend fun getChangeManagersFromOrganizationWithId(@Path("organizationId") organizationId: Int): Response<List<ChangeManager>>
 
     @GET("ChangeManagers/{changeManagerId}")
-    suspend fun getChangeManagerById(@Path("changeManagerId") changeManagerId: Int): Call<ChangeManager>
+    suspend fun getChangeManagerById(@Path("changeManagerId") changeManagerId: Int): Response<ChangeManager>
 }
 
 interface OrganizationsEndpointInterface {
 
     @GET("Organizations/{organizationId}")
-    suspend fun getOrganizationById(@Path("organizationId") organizationId: Int): Call<Organization>
+    suspend fun getOrganizationById(@Path("organizationId") organizationId: Int): Response<Organization>
 }
 
 interface ProjectsEndpointInterface {
 
     @GET("Projects/GetProjectsForOrganization/{organizationId}")
-    suspend fun getProjectsFromOrganization(@Path("organizationId") organizationId: Int): Call<List<Project>>
+    suspend fun getProjectsFromOrganization(@Path("organizationId") organizationId: Int): Response<List<Project>>
 
     @GET("Projects/{projectId}")
-    suspend fun getProjectById(@Path("projectId") projectId: Int): Call<Project>
+    suspend fun getProjectById(@Path("projectId") projectId: Int): Response<Project>
 }
 
 interface QuestionsEndpointInterface {
 
     @GET("Questions/{surveyId}")
-    suspend fun getAllQuestionsFromSurveyById(@Path("surveyId") surveyId: Int): Call<List<Question>>
+    suspend fun getAllQuestionsFromSurveyById(@Path("surveyId") surveyId: Int): Response<List<Question>>
 
     @POST("Questions/PostAnswerToQuestion/{questionId}")
     suspend fun postAnswerToQuestion(
@@ -100,13 +100,13 @@ interface RoadMapItemsEndpointInterface {
 interface SurveyEndpointInterface {
 
     @GET("Survey")
-    suspend fun getAllSurveys(): Call<List<Survey>>
+    suspend fun getAllSurveys(): Response<List<Survey>>
 
     @GET("Survey/{id}")
-    suspend fun getSurveyById(@Path("id") id: Int): Call<Survey>
+    suspend fun getSurveyById(@Path("id") id: Int): Response<Survey>
 
     @GET("Survey/GetSurveyByRoadMapItemId/{roadmapItemId}")
-    suspend fun getSurveyByRoadMapItemId(@Path("roadmapItemId") roadmapItemId: Int): Call<RoadMapItem>
+    suspend fun getSurveyByRoadMapItemId(@Path("roadmapItemId") roadmapItemId: Int): Response<RoadMapItem>
 }
 
 

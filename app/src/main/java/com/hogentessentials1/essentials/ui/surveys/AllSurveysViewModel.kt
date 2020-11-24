@@ -5,7 +5,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.hogentessentials1.essentials.data.model.ChangeInitiative
+import com.hogentessentials1.essentials.data.model.Project
 import com.hogentessentials1.essentials.data.model.Repositories.ChangeInitiativeRepository
+import com.hogentessentials1.essentials.data.model.Repositories.ProjectRepository
 import com.hogentessentials1.essentials.data.model.Repositories.RoadMapRepository
 import com.hogentessentials1.essentials.data.model.RoadMapItem
 import com.hogentessentials1.essentials.data.model.Survey
@@ -18,7 +20,7 @@ import timber.log.Timber
  * @author Simon De Wilde: added offline data used from ChangeInitiativeViewModel
  * @author Ziggy Moens
  */
-class AllSurveysViewModel(private val repo: ChangeInitiativeRepository) : ViewModel() {
+class AllSurveysViewModel(private val repo: ProjectRepository) : ViewModel() {
 
 
     private val _status = MutableLiveData<Status>()
@@ -29,9 +31,13 @@ class AllSurveysViewModel(private val repo: ChangeInitiativeRepository) : ViewMo
 //    val rmi: LiveData<List<RoadMapItem>>
 //        get() = _rmi
 
-    private val _changeInit = MutableLiveData<List<ChangeInitiative>>()
-    val changeInit: LiveData<List<ChangeInitiative>>
-        get() = _changeInit
+//    private val _changeInit = MutableLiveData<List<ChangeInitiative>>()
+//    val changeInit: LiveData<List<ChangeInitiative>>
+//        get() = _changeInit
+
+    private val _project = MutableLiveData<List<Project>>()
+    val project: LiveData<List<Project>>
+        get() = _project
 
     var surveys: ArrayList<Survey> = arrayListOf(
 //        Survey(
@@ -104,8 +110,11 @@ class AllSurveysViewModel(private val repo: ChangeInitiativeRepository) : ViewMo
             try {
 //                _rmi.value =
 //                    repo.getRoadMaps(1).data
-                _changeInit.value =
-                    repo.getChangeInitiativesForEmployee(5).data
+//                _changeInit.value =
+//                    repo.getChangeInitiativesForEmployee(5).data
+                _project.value =
+                    repo.getProjectsFromOrganization(1).data
+
                 Timber.e("ophalen successvol")
                 _status.value = Status.SUCCESS
             } catch (e: Exception) {

@@ -1,13 +1,21 @@
 package com.hogentessentials1.essentials.data.model.Repositories
 
 import com.hogentessentials1.essentials.data.model.DAOs.ProjectDao
+import com.hogentessentials1.essentials.data.model.Project
+import com.hogentessentials1.essentials.data.model.network.ChangeInitiativeRemoteDataSource
+import com.hogentessentials1.essentials.data.model.network.ProjectRemoteDataSource
+import com.hogentessentials1.essentials.data.model.util.Resource
 import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class ProjectRepository @Inject constructor(private val projectDao: ProjectDao) {
+class ProjectRepository(val remoteDataSource: ProjectRemoteDataSource){
 
-    fun getProjects() = projectDao.getProjects()
+    suspend fun getProjectsFromOrganization(organizationId: Int) : Resource<List<Project>> {
+        return remoteDataSource.getProjectsFromOrganization(organizationId)
+    }
 
-    fun getProject(id: Int) = projectDao.getProject(id)
+    suspend fun getProjectById(projectId: Int) : Resource<Project> {
+        return remoteDataSource.getProjectById(projectId)
+    }
 }

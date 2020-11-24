@@ -26,9 +26,9 @@ data class ChangeInitiative(
     @Json(name = "endDate")
     val endDate: String,
     @Json(name = "changeGroup")
-    val changeGroup: ChangeGroup,
+    val changeGroup: ChangeGroup?,
     @Json(name = "changeSponsor")
-    val changeSponsor: Employee,
+    val changeSponsor: Employee?,
     @Json(name = "changeType")
     val changeType: ChangeType?,
     @Json(name = "roadMap")
