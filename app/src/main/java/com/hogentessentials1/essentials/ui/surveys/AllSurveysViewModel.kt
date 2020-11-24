@@ -4,13 +4,11 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.hogentessentials1.essentials.data.model.ChangeInitiative
-import com.hogentessentials1.essentials.data.model.Project
+import com.hogentessentials1.essentials.data.model.*
 import com.hogentessentials1.essentials.data.model.Repositories.ChangeInitiativeRepository
 import com.hogentessentials1.essentials.data.model.Repositories.ProjectRepository
+import com.hogentessentials1.essentials.data.model.Repositories.QuestionRepository
 import com.hogentessentials1.essentials.data.model.Repositories.RoadMapRepository
-import com.hogentessentials1.essentials.data.model.RoadMapItem
-import com.hogentessentials1.essentials.data.model.Survey
 
 import com.hogentessentials1.essentials.data.model.util.Status
 import kotlinx.coroutines.launch
@@ -20,7 +18,7 @@ import timber.log.Timber
  * @author Simon De Wilde: added offline data used from ChangeInitiativeViewModel
  * @author Ziggy Moens
  */
-class AllSurveysViewModel(private val repo: ProjectRepository) : ViewModel() {
+class AllSurveysViewModel(private val repo: QuestionRepository) : ViewModel() {
 
 
     private val _status = MutableLiveData<Status>()
@@ -35,9 +33,13 @@ class AllSurveysViewModel(private val repo: ProjectRepository) : ViewModel() {
 //    val changeInit: LiveData<List<ChangeInitiative>>
 //        get() = _changeInit
 
-    private val _project = MutableLiveData<List<Project>>()
-    val project: LiveData<List<Project>>
-        get() = _project
+//    private val _project = MutableLiveData<List<Project>>()
+//    val project: LiveData<List<Project>>
+//        get() = _project
+
+    private val _questions = MutableLiveData<List<Question>>()
+    val questions: LiveData<List<Question>>
+        get() = _questions
 
     var surveys: ArrayList<Survey> = arrayListOf(
 //        Survey(
@@ -112,8 +114,10 @@ class AllSurveysViewModel(private val repo: ProjectRepository) : ViewModel() {
 //                    repo.getRoadMaps(1).data
 //                _changeInit.value =
 //                    repo.getChangeInitiativesForEmployee(5).data
-                _project.value =
-                    repo.getProjectsFromOrganization(1).data
+//                _project.value =
+//                    repo.getProjectsFromOrganization(1).data
+                    _questions.value =
+                        repo.getAllQuestionsFromSurveyById(1).data
 
                 Timber.e("ophalen successvol")
                 _status.value = Status.SUCCESS

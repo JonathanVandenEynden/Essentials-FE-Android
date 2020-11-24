@@ -3,6 +3,7 @@ package com.hogentessentials1.essentials.data.model.DI
 import com.hogentessentials1.essentials.BuildConfig
 import com.hogentessentials1.essentials.data.model.Repositories.ChangeInitiativeRepository
 import com.hogentessentials1.essentials.data.model.Repositories.ProjectRepository
+import com.hogentessentials1.essentials.data.model.Repositories.QuestionRepository
 import com.hogentessentials1.essentials.data.model.Repositories.RoadMapRepository
 import com.hogentessentials1.essentials.data.model.network.*
 import com.hogentessentials1.essentials.data.model.util.Globals
@@ -20,16 +21,18 @@ val networkModule = module {
     single { provideRmiEndpointInterface(get()) }
     single { provideChangeInitiativeEndpointInterface(get())}
     single { provideProjectEndpointInterface(get()) }
-
+    single { provideQuestionEndpointInterface(get())}
 
     // TODO alle apiinterfaces appart als single (zoals hierboven)
     single { RoadMapRemoteDataSource(get()) }
     single { ChangeInitiativeRemoteDataSource(get())}
     single { ProjectRemoteDataSource(get())}
+    single { QuestionRemoteDataSource(get())}
 
     single { RoadMapRepository(get()) }
     single { ChangeInitiativeRepository(get())}
     single { ProjectRepository(get())}
+    single { QuestionRepository(get())}
 }
 
 /**
@@ -77,3 +80,7 @@ private fun provideChangeInitiativeEndpointInterface(retrofit: Retrofit): Change
 
 private fun provideProjectEndpointInterface(retrofit: Retrofit): ProjectsEndpointInterface =
     retrofit.create(ProjectsEndpointInterface::class.java)
+
+private fun provideQuestionEndpointInterface(retrofit: Retrofit): QuestionsEndpointInterface =
+    retrofit.create(QuestionsEndpointInterface::class.java)
+

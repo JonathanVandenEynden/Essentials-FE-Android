@@ -1,6 +1,9 @@
 package com.hogentessentials1.essentials.data.model.Repositories
 
 import com.hogentessentials1.essentials.data.model.DAOs.QuestionDao
+import com.hogentessentials1.essentials.data.model.Question
+import com.hogentessentials1.essentials.data.model.network.QuestionRemoteDataSource
+import com.hogentessentials1.essentials.data.model.util.Resource
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -9,9 +12,9 @@ import javax.inject.Singleton
  */
 
 @Singleton
-class QuestionRepository @Inject constructor(private val questionDao: QuestionDao) {
+class QuestionRepository(val remoteDataSource: QuestionRemoteDataSource){
 
-    fun getQuestions() = questionDao.getQuestions()
-
-    fun getQuestion(questionId: Int) = questionDao.getQuestion(questionId)
+    suspend fun getAllQuestionsFromSurveyById(surveyId: Int): Resource<List<Question>>{
+        return remoteDataSource.getAllQuestionsFromSurveyById(surveyId)
+    }
 }
