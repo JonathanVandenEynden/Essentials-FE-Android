@@ -94,7 +94,7 @@ interface RoadMapItemsEndpointInterface {
     suspend fun getRoadMapItemById(@Path("id") id: Int): Response<RoadMapItem>
 
     @GET("RoadMapItems/GetRoadMapItemsForChangeInitiative/{changeInitiativeId}")
-    suspend fun getRoadMapItemsForChangeInitatitveWithId(@Path("changeInitiativeId") changeInitiativeId: Int): Call<List<RoadMapItem>>
+    suspend fun getRoadMapItemsForChangeInitatitveWithId(@Path("changeInitiativeId") changeInitiativeId: Int): Response<List<RoadMapItem>>
 }
 
 interface SurveyEndpointInterface {

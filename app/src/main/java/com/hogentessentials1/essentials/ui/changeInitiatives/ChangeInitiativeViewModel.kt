@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.hogentessentials1.essentials.data.model.ChangeInitiative
-import com.hogentessentials1.essentials.data.model.Repositories.TestRepository
+import com.hogentessentials1.essentials.data.model.Repositories.RoadMapRepository
 import com.hogentessentials1.essentials.data.model.RoadMapItem
 import com.hogentessentials1.essentials.data.model.util.Status
 import kotlinx.coroutines.launch
@@ -17,7 +17,7 @@ import timber.log.Timber
  *
  * viewmodel voor changeInitiative
  */
-class ChangeInitiativeViewModel(private val repo: TestRepository) : ViewModel() {
+class ChangeInitiativeViewModel(private val repo: RoadMapRepository) : ViewModel() {
 
 //    fun getSurveys(): ArrayList<Survey> {
 //        val surveys: ArrayList<Survey> = arrayListOf()
@@ -129,7 +129,7 @@ class ChangeInitiativeViewModel(private val repo: TestRepository) : ViewModel() 
             Timber.e("start met ophalen")
             try {
                 _rmi.value =
-                    repo.getRMI(5).data
+                    repo.getRoadMapItemById(5).data
                 Timber.e("ophalen successvol")
                 _status.value = Status.SUCCESS
             } catch (e: Exception) {

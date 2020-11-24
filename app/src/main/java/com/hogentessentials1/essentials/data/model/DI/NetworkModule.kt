@@ -1,7 +1,7 @@
 package com.hogentessentials1.essentials.data.model.DI
 
 import com.hogentessentials1.essentials.BuildConfig
-import com.hogentessentials1.essentials.data.model.Repositories.TestRepository
+import com.hogentessentials1.essentials.data.model.Repositories.RoadMapRepository
 import com.hogentessentials1.essentials.data.model.network.EssentialsRemoteDataSource
 import com.hogentessentials1.essentials.data.model.network.RoadMapItemsEndpointInterface
 import com.hogentessentials1.essentials.data.model.util.Globals
@@ -19,7 +19,7 @@ val networkModule = module {
     single { provideRmiEndpointInterface(get()) }
     // TODO alle apiinterfaces appart als single (zoals hierboven)
     single { EssentialsRemoteDataSource(get()) }
-    single { TestRepository(get()) }
+    single { RoadMapRepository(get()) }
 }
 
 /**

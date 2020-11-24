@@ -1,17 +1,14 @@
 package com.hogentessentials1.essentials.ui.surveys
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.hogentessentials1.essentials.data.model.Repositories.TestRepository
+import com.hogentessentials1.essentials.data.model.Repositories.RoadMapRepository
 import com.hogentessentials1.essentials.data.model.RoadMapItem
 import com.hogentessentials1.essentials.data.model.Survey
 
-import com.hogentessentials1.essentials.data.model.util.Resource
 import com.hogentessentials1.essentials.data.model.util.Status
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import timber.log.Timber
 
@@ -19,14 +16,14 @@ import timber.log.Timber
  * @author Simon De Wilde: added offline data used from ChangeInitiativeViewModel
  * @author Ziggy Moens
  */
-class AllSurveysViewModel(private val repo: TestRepository) : ViewModel() {
+class AllSurveysViewModel(private val repo: RoadMapRepository) : ViewModel() {
 
     private val _status = MutableLiveData<Status>()
     val status: LiveData<Status>
         get() = _status
 
-    private val _rmi = MutableLiveData<RoadMapItem>()
-    val rmi: LiveData<RoadMapItem>
+    private val _rmi = MutableLiveData<List<RoadMapItem>>()
+    val rmi: LiveData<List<RoadMapItem>>
         get() = _rmi
 
     var surveys: ArrayList<Survey> = arrayListOf(
@@ -99,7 +96,7 @@ class AllSurveysViewModel(private val repo: TestRepository) : ViewModel() {
             Timber.e("start met ophalen")
             try {
                 _rmi.value =
-                    repo.getRMI(5).data
+                    repo.getRoadMaps(1).data
                 Timber.e("ophalen successvol")
                 _status.value = Status.SUCCESS
             } catch (e: Exception) {

@@ -18,7 +18,7 @@ data class RoadMapItem(
     @Json(name = "title")
     val title: String,
     @Json(name = "assessment")
-    val assessment: Assessment,
+    val assessment: Assessment?,
     @Json(name = "done")
     val done: Boolean,
     @Json(name = "startDate")
