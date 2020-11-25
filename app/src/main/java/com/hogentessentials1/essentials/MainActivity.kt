@@ -20,10 +20,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
 
-    /*private val navController by lazy {
-        this.findNavController(R.id.navHostFragment)
-    }*/
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -31,6 +27,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             this,
             R.layout.activity_main
         )
+
+        // TODO De logged in user opslaan en publicly available maken voor de requests
+        val loggedInUser = intent.getSerializableExtra("loggedInUser")
 
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.navHostFragment) as NavHostFragment

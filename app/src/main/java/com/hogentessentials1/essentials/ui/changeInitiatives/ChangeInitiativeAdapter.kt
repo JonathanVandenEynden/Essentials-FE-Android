@@ -10,6 +10,7 @@ import com.hogentessentials1.essentials.databinding.ChangeInitiativeListItemBind
 
 /**
  * @author Simon De Wilde
+ * @author Ziggy Moens
  *
  * Converts Change Initiatives to views
  */
@@ -55,6 +56,9 @@ class ChangeInitiativeDiffCallback : DiffUtil.ItemCallback<ChangeInitiative>() {
     }
 }
 
+/**
+ * @author Ziggy Moens
+ */
 class ChangeInitiativeListener(val clickListener: (changeInitiative: ChangeInitiative) -> Unit) {
     fun onClick(changeInitiative: ChangeInitiative) = clickListener(changeInitiative)
 }

@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 
 /**
  * @author Simon De Wilde
+ * @author Ziggy Moens: added mock data moved to ChangeInitiativeViewModel
  */
 class HomeScreenViewModel : ViewModel() {
 

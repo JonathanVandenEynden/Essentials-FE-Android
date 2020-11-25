@@ -4,13 +4,19 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.github.mikephil.charting.charts.PieChart
+import com.github.mikephil.charting.data.BarEntry
+import com.github.mikephil.charting.data.PieData
+import com.github.mikephil.charting.data.PieDataSet
+import com.github.mikephil.charting.data.PieEntry
+import com.github.mikephil.charting.utils.ColorTemplate
 import com.hogentessentials1.essentials.R
-
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+import com.hogentessentials1.essentials.databinding.FragmentDashboardBinding
 
 /**
  * A simple [Fragment] subclass.
@@ -21,13 +27,12 @@ class DashboardFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+    lateinit var viewModel: DashboardViewModel
+
+    private lateinit var binding: FragmentDashboardBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
     }
 
     override fun onCreateView(
@@ -35,27 +40,76 @@ class DashboardFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_dashboard, container, false)
+
+        binding = DataBindingUtil.inflate(
+            inflater,
+            R.layout.fragment_dashboard,
+            container,
+            false
+        )
+
+        viewModel = ViewModelProvider(this).get(DashboardViewModel::class.java)
+
+        binding.viewModel = viewModel
+
+        binding.lifecycleOwner = this
+
+        val manager = LinearLayoutManager(activity)
+
+        // binding.ciList.layoutManager = manager
+
+        /*val adapter = ChangeInitiativeAdapter(
+            ChangeInitiativeListener { changeInitiative ->
+                viewModel.onChangeInitiativeClicked(changeInitiative)
+            }
+        )
+
+        binding.ciList.adapter = adapter
+
+        adapter.submitList(viewModel.changeInitiatives)*/
+
+        (activity as AppCompatActivity).supportActionBar?.title = "Dashboard"
+
+        val chart = binding.chart as PieChart
+
+        val data = PieData(getDataSet())
+        chart.data = data
+        chart.description.text = "My chart"
+        chart.animateXY(2000, 2000)
+        chart.invalidate()
+
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment DashboardFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            DashboardFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+    }
+
+    private fun getDataSet(): PieDataSet {
+        val valueSet1 = ArrayList<PieEntry>()
+        val v1e1 = PieEntry(20f, "Sad") // Jan
+        valueSet1.add(v1e1)
+        val v1e2 = PieEntry(40f, "Happy") // Feb
+        valueSet1.add(v1e2)
+        val v1e3 = PieEntry(20f, "Amazed") // Mar
+        valueSet1.add(v1e3)
+        val v1e4 = PieEntry(20f, "Indifferent") // Apr
+        valueSet1.add(v1e4)
+        val v1e5 = BarEntry(90.000f, 4f) // May
+
+        val dataSet1 = PieDataSet(valueSet1, "Overal Mood")
+        dataSet1.setColors(*ColorTemplate.COLORFUL_COLORS)
+        return dataSet1
+    }
+
+    private fun getXAxisValues(): ArrayList<String> {
+        val xAxis = ArrayList<String>()
+        xAxis.add("JAN")
+        xAxis.add("FEB")
+        xAxis.add("MAR")
+        xAxis.add("APR")
+        xAxis.add("MAY")
+        xAxis.add("JUN")
+        return xAxis
     }
 }
