@@ -9,26 +9,26 @@ import kotlinx.android.parcel.Parcelize
  */
 
 @Parcelize
-data class Survey(
-    val id: Int = 20, // TODO niet hardcoden
-    val name: String, // TODO wegdoen
-//  val questions: ArrayList<Question>, // TODO terug insteken
-    val questions: ArrayList<SurveyQuestion>, // TODO verwijderen
-    val feedback: Question = Question("10", hashMapOf("key" to 1),"test", "1", hashMapOf("String" to 3)), // TODO niet hardcoden
-    val amountSubmitted: Int = 20 // TODO niet hardcoden
-) : Parcelable
 //data class Survey(
-//    @Json(name = "id")
-//    val id: Number,
-//    @Json(name = "questions")
-//    val questions: ArrayList<Question>,
-//    @Json(name = "feedback")
-//    val feedback: Question,
-//    @Json(name = "roadMapItemId")
-//    val roadMapItemId: Number,
-//    @Json(name = "roadMapItem")
-//    val roadMapItem: RoadMapItem
+//    val id: Int = 20, // TODO niet hardcoden
+//    val name: String, // TODO wegdoen
+////  val questions: ArrayList<Question>, // TODO terug insteken
+//    val questions: ArrayList<SurveyQuestion>, // TODO verwijderen
+//    val feedback: Question = Question("10", hashMapOf("key" to 1),"test", "1", hashMapOf("String" to 3)), // TODO niet hardcoden
+//    val amountSubmitted: Int = 20 // TODO niet hardcoden
 //) : Parcelable
+data class Survey(
+    @Json(name = "id")
+    val id: Int,
+    @Json(name = "questions")
+    val questions: List<Question>,
+    @Json(name = "feedback")
+    val feedback: Question,
+    @Json(name = "roadMapItemId")
+    val roadMapItemId: Int,
+    @Json(name = "roadMapItem")
+    val roadMapItem: RoadMapItem?
+) : Parcelable
 
 // data class Survey(
 //    var name: String,
