@@ -59,6 +59,9 @@ interface ChangeManagersEndpointInterface {
 
     @GET("ChangeManagers/{changeManagerId}")
     suspend fun getChangeManagerById(@Path("changeManagerId") changeManagerId: Int): Response<ChangeManager>
+
+    @GET("ChangeManagers/GetChangeManagerByEmail/{email}")
+    suspend fun getChangeManagerByEmail(@Path("email") email: String) : Response<ChangeManager>
 }
 
 interface OrganizationsEndpointInterface {

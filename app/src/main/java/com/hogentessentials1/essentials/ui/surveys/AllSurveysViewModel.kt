@@ -15,7 +15,7 @@ import timber.log.Timber
  * @author Simon De Wilde: added offline data used from ChangeInitiativeViewModel
  * @author Ziggy Moens
  */
-class AllSurveysViewModel(private val repo: EmployeeRepository) : ViewModel() {
+class AllSurveysViewModel(private val repo: ChangeManagerRepository) : ViewModel() {
 
 
     private val _status = MutableLiveData<Status>()
@@ -42,9 +42,13 @@ class AllSurveysViewModel(private val repo: EmployeeRepository) : ViewModel() {
 //    val organization: LiveData<Organization>
 //        get() = _organization
 
-    private val _employee = MutableLiveData<Employee>()
-    val employee: LiveData<Employee>
-        get() = _employee
+//    private val _employee = MutableLiveData<Employee>()
+//    val employee: LiveData<Employee>
+//        get() = _employee
+
+    private val _cm = MutableLiveData<List<ChangeManager>>()
+    val cm: LiveData<List<ChangeManager>>
+        get() = _cm
 
     var surveys: ArrayList<Survey> = arrayListOf(
 //        Survey(
@@ -125,8 +129,11 @@ class AllSurveysViewModel(private val repo: EmployeeRepository) : ViewModel() {
 //                        repo.getAllQuestionsFromSurveyById(1).data
 //                    _organization.value =
 //                        repo.getOrganizationById(1).data
-                    _employee.value =
-                        repo.getEmployeeByEmail("ziggy@essentials.com").data
+//                    _employee.value =
+//                        repo.getEmployeeByEmail("ziggy@essentials.com").data
+                    _cm .value =
+                        repo.getChangeManagersFromOrganizationWithId(1).data
+
                 Timber.e("ophalen successvol")
                 _status.value = Status.SUCCESS
             } catch (e: Exception) {

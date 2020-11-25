@@ -16,8 +16,8 @@ data class ChangeManager(
     val lastName: String,
     @Json(name = "email")
     val email: String,
-    @Json(name = "employeeOrganizationParts")
-    val employeeOrganizationParts: String?,
+//    @Json(name = "employeeOrganizationParts")
+//    val employeeOrganizationParts: String?,
     @Json(name = "createdChangeInitiatives")
     val createdChangeInitiatives: List<ChangeInitiative>?
 ) : Parcelable
