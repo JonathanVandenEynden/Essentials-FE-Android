@@ -35,6 +35,9 @@ interface EmployeeEndpointInterface {
 
     @GET("Employees/GetAllEmployeesFromOrganization/{organizationId}")
     suspend fun getAllEmployeesFromOrganization(@Path("organizationId") organizationId: Int): Response<List<Employee>>
+
+    @GET("Employees/GetEmployeeByEmail/{email}")
+    suspend fun getEmployeeByEmail(@Path("email") email: String) : Response<Employee>
 }
 
 interface ChangeInitiativesEndpointInterface {

@@ -20,6 +20,7 @@ val networkModule = module {
     single { provideProjectEndpointInterface(get()) }
     single { provideQuestionEndpointInterface(get())}
     single { provideOrganizationEndpointInterface(get())}
+    single { provideEmployeeEndpointInterface(get())}
 
     // TODO alle apiinterfaces appart als single (zoals hierboven)
     single { RoadMapRemoteDataSource(get()) }
@@ -27,12 +28,14 @@ val networkModule = module {
     single { ProjectRemoteDataSource(get())}
     single { QuestionRemoteDataSource(get())}
     single { OrganizationRemoteDataSource(get())}
+    single { EmployeeRemoteDataSource(get())}
 
     single { RoadMapRepository(get()) }
     single { ChangeInitiativeRepository(get())}
     single { ProjectRepository(get())}
     single { QuestionRepository(get())}
     single { OrganizationRepository(get())}
+    single { EmployeeRepository(get())}
 }
 
 /**
@@ -86,4 +89,7 @@ private fun provideQuestionEndpointInterface(retrofit: Retrofit): QuestionsEndpo
 
 private fun provideOrganizationEndpointInterface(retrofit: Retrofit) : OrganizationsEndpointInterface =
     retrofit.create(OrganizationsEndpointInterface::class.java)
+
+private fun provideEmployeeEndpointInterface(retrofit: Retrofit) : EmployeeEndpointInterface =
+    retrofit.create(EmployeeEndpointInterface::class.java)
 
