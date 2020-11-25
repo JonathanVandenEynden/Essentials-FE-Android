@@ -36,6 +36,7 @@ class SurveysChangeInitiativeFragment : Fragment() {
 
         val args = SurveysChangeInitiativeFragmentArgs.fromBundle(requireArguments())
 
+        val changemanager = args.changemanager
         val ci = args.changeInitiative
 
         viewModel.changeInitiative = ci
@@ -57,9 +58,15 @@ class SurveysChangeInitiativeFragment : Fragment() {
             { survey ->
                 survey?.let {
                     this.findNavController().navigate(
-                        SurveysChangeInitiativeFragmentDirections.actionSurveysChangeinitiativeFragmentToSurveyQuestionFragement(
-                            survey
-                        )
+                        if(changemanager){
+                            SurveysChangeInitiativeFragmentDirections.actionSurveysChangeInitiativeFragmentToMyChangesFragment(
+                                survey
+                            )
+                        }else{
+                            SurveysChangeInitiativeFragmentDirections.actionSurveysChangeinitiativeFragmentToSurveyQuestionFragement(
+                                survey
+                            )
+                        }
                     )
                     viewModel.onSurveyNavigated()
                 }

@@ -45,7 +45,7 @@ class ChangeInitiativesFragment : Fragment() {
 
         viewModel = ViewModelProvider(this).get(ChangeInitiativeViewModel::class.java)
 
-        viewModel.changemanager = changemanager;
+        viewModel.changemanager = changemanager
 
         binding.viewModel = viewModel
 
@@ -67,7 +67,7 @@ class ChangeInitiativesFragment : Fragment() {
                 changeInitiative?.let {
                     this.findNavController().navigate(
                         ChangeInitiativesFragmentDirections.actionChangeInitiativesFragmentToSurveysChangeinitiativeFragment(
-                            changeInitiative
+                            changeInitiative, changemanager
                         )
                     )
                     viewModel.onChangeInitiativeNavigated()

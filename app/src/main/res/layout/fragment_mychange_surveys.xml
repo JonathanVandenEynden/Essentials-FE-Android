@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.hogentessentials1.essentials.ui.myChangeInitiatives.MyChangesViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraint_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/survey_linearlayout_id"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:baselineAligned="false"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@+id/survey_allquestions_textview_id"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/survey_averagemoodtitle_textview_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:text="Average mood after this survey:"
+                android:textSize="18sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/orange_border"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/survey_averagemood_imageview_id"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_gravity="center"
+                    android:baselineAlignBottom="false"
+                    android:contentDescription="Emoji showing average happiness"
+                    android:textAlignment="center" />
+
+                <TextView
+                    android:id="@+id/survey_averagemood_textview_id"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="Overall happiness: 100 %"
+                    android:textAlignment="center" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/survey_allquestions_textview_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="All questions in this survey:"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/survey_linearlayout_id" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/question_list"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/orange_border"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/survey_allquestions_textview_id" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

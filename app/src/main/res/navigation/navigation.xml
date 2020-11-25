@@ -73,6 +73,11 @@
         <argument
             android:name="changeInitiative"
             app:argType="com.hogentessentials1.essentials.data.model.ChangeInitiative" />
+        <argument android:name="changemanager"
+            app:argType="boolean" />
+        <action
+            android:id="@+id/action_surveysChangeInitiativeFragment_to_myChangesFragment"
+            app:destination="@id/myChangesFragment" />
     </fragment>
     <fragment
         android:id="@+id/allSurveysFragment"
@@ -103,5 +108,13 @@
         <argument
             android:name="changeGroupMembers"
             app:argType="string[]" />
+    </fragment>
+    <fragment
+        android:id="@+id/myChangesFragment"
+        android:name="com.hogentessentials1.essentials.ui.myChangeInitiatives.MyChangesFragment"
+        android:label="myChangesFragment" >
+        <argument
+            android:name="survey"
+            app:argType="com.hogentessentials1.essentials.data.model.Survey" />
     </fragment>
 </navigation>
