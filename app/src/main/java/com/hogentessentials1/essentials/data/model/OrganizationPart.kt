@@ -2,6 +2,7 @@ package com.hogentessentials1.essentials.data.model
 
 import android.os.Parcelable
 import androidx.room.ColumnInfo
+import com.squareup.moshi.Json
 import kotlinx.android.parcel.Parcelize
 
 /**
@@ -9,10 +10,15 @@ import kotlinx.android.parcel.Parcelize
  */
 
 // @Entity(tableName = "organizationPart")
+// @ColumnInfo(name = "organization_id")
 @Parcelize
 data class OrganizationPart(
-    val id: Int,
-    @ColumnInfo(name = "organization_id") val organizationId: Int,
+    @Json(name = "name")
+    val id: String,
+    @Json(name = "name")
     val name: String,
-    val employeeOrganizationParts: ArrayList<EmployeeOrganizationPart>
+    @Json(name = "employeeOrganizationParts")
+    val employeeOrganizationParts: String,
+    @Json(name = "type")
+    val type: String
 ) : Parcelable

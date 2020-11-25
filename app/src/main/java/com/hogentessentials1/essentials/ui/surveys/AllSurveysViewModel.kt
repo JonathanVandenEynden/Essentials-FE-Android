@@ -5,10 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.hogentessentials1.essentials.data.model.*
-import com.hogentessentials1.essentials.data.model.Repositories.ChangeInitiativeRepository
-import com.hogentessentials1.essentials.data.model.Repositories.ProjectRepository
-import com.hogentessentials1.essentials.data.model.Repositories.QuestionRepository
-import com.hogentessentials1.essentials.data.model.Repositories.RoadMapRepository
+import com.hogentessentials1.essentials.data.model.Repositories.*
 
 import com.hogentessentials1.essentials.data.model.util.Status
 import kotlinx.coroutines.launch
@@ -18,7 +15,7 @@ import timber.log.Timber
  * @author Simon De Wilde: added offline data used from ChangeInitiativeViewModel
  * @author Ziggy Moens
  */
-class AllSurveysViewModel(private val repo: QuestionRepository) : ViewModel() {
+class AllSurveysViewModel(private val repo: OrganizationRepository) : ViewModel() {
 
 
     private val _status = MutableLiveData<Status>()
@@ -37,9 +34,13 @@ class AllSurveysViewModel(private val repo: QuestionRepository) : ViewModel() {
 //    val project: LiveData<List<Project>>
 //        get() = _project
 
-    private val _questions = MutableLiveData<List<Question>>()
-    val questions: LiveData<List<Question>>
-        get() = _questions
+//    private val _questions = MutableLiveData<List<Question>>()
+//    val questions: LiveData<List<Question>>
+//        get() = _questions
+
+    private val _organization = MutableLiveData<Organization>()
+    val organization: LiveData<Organization>
+        get() = _organization
 
     var surveys: ArrayList<Survey> = arrayListOf(
 //        Survey(
@@ -116,8 +117,10 @@ class AllSurveysViewModel(private val repo: QuestionRepository) : ViewModel() {
 //                    repo.getChangeInitiativesForEmployee(5).data
 //                _project.value =
 //                    repo.getProjectsFromOrganization(1).data
-                    _questions.value =
-                        repo.getAllQuestionsFromSurveyById(1).data
+//                    _questions.value =
+//                        repo.getAllQuestionsFromSurveyById(1).data
+                    _organization.value =
+                        repo.getOrganizationById(1).data
 
                 Timber.e("ophalen successvol")
                 _status.value = Status.SUCCESS
