@@ -1,41 +1,26 @@
 package com.hogentessentials1.essentials.data.model
 
 import android.os.Parcelable
+import com.squareup.moshi.Json
+
 import kotlinx.android.parcel.Parcelize
 
 /**
  * @author Ziggy Moens: Start data class & made Parcelable
  * @author Simon De Wilde : replaced parcalable implementation with annotation
  */
+
 @Parcelize
 data class Survey(
-    var name: String,
-    var questions: ArrayList<SurveyQuestion>
-) : Parcelable {
-//    constructor(parcel: Parcel) : this(
-//        parcel.readString()!!,
-//        // Solution found --> https://stackoverflow.com/questions/45459273/kotlin-parcelable-and-arraylist-of-parcelables
-//        arrayListOf<SurveyQuestion>().apply {
-//            parcel.readList(this, SurveyQuestion::class.java.classLoader)
-//        }
-//    )
-//
-//    override fun writeToParcel(parcel: Parcel, flags: Int) {
-//        parcel.writeString(name)
-//        parcel.writeList(questions)
-//    }
-//
-//    override fun describeContents(): Int {
-//        return 0
-//    }
-//
-//    companion object CREATOR : Parcelable.Creator<Survey> {
-//        override fun createFromParcel(parcel: Parcel): Survey {
-//            return Survey(parcel)
-//        }
-//
-//        override fun newArray(size: Int): Array<Survey?> {
-//            return arrayOfNulls(size)
-//        }
-//    }
-}
+    @Json(name = "id")
+    val id: Int,
+    @Json(name = "questions")
+    val questions: List<Question>,
+    @Json(name = "feedback")
+    val feedback: Question,
+    @Json(name = "roadMapItemId")
+    val roadMapItemId: Int,
+    @Json(name = "roadMapItem")
+    val roadMapItem: RoadMapItem?
+) : Parcelable
+{}

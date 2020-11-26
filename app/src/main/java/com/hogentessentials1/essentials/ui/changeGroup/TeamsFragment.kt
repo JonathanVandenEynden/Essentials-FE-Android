@@ -64,7 +64,7 @@ class TeamsFragment : Fragment(), ChangeGroupClickListener {
     private fun navigateToDetail(changeGroup: ChangeGroup) {
 
         val directions =
-            TeamsFragmentDirections.actionTeamsFragmentToTeamDetailsFragment(changeGroup.users.map { u -> u.firstName.plus(" ").plus(u.lastName) }.toTypedArray())
+            TeamsFragmentDirections.actionTeamsFragmentToTeamDetailsFragment(changeGroup.users!!.map { u -> u.firstName.plus(" ").plus(u.lastName) }.toTypedArray())
         findNavController().navigate(directions)
     }
 }

@@ -9,6 +9,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.hogentessentials1.essentials.R
+import com.hogentessentials1.essentials.data.model.Question
 import com.hogentessentials1.essentials.data.model.SurveyQuestion
 import com.hogentessentials1.essentials.databinding.SurveyQuestionBinding
 
@@ -30,8 +31,8 @@ class SurveyQuestionFragement : Fragment() {
         )
     )*/
 
-    private var questions: ArrayList<SurveyQuestion> = arrayListOf()
-    lateinit var currentQuestion: SurveyQuestion
+    private var questions: ArrayList<Question> = arrayListOf()
+    lateinit var currentQuestion: Question
     private lateinit var option0: String
     private lateinit var option5: String
     private var questionIndex = 0
@@ -44,8 +45,8 @@ class SurveyQuestionFragement : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val args = SurveyQuestionFragementArgs.fromBundle(requireArguments())
-        questions = args.survey.questions
-        numberOfQuestions = questions.size
+//        questions = args.survey.questions
+//        numberOfQuestions = questions.size
         val binding = DataBindingUtil.inflate<SurveyQuestionBinding>(
             inflater,
             R.layout.survey_question,
@@ -62,7 +63,7 @@ class SurveyQuestionFragement : Fragment() {
 
         binding.nextQuestion.setOnClickListener { view: View ->
             // if (ratingIsGiven) {
-            currentQuestion.answer = binding.ratingBarQuestion.rating.toDouble()
+            //currentQuestion.answer = binding.ratingBarQuestion.rating.toDouble()
             questionIndex++
             if (questionIndex < numberOfQuestions) {
                 currentQuestion = questions[questionIndex]
@@ -70,11 +71,11 @@ class SurveyQuestionFragement : Fragment() {
                 binding.ratingBarQuestion.rating = 0.0F
                 binding.invalidateAll()
             } else {
-                view.findNavController().navigate(
-                    SurveyQuestionFragementDirections.actionSurveyQuestionFragementToSurveyDoneFragment(
-                        questions.toTypedArray()
-                    )
-                )
+//                view.findNavController().navigate(
+//                    SurveyQuestionFragementDirections.actionSurveyQuestionFragementToSurveyDoneFragment(
+//                        questions.toTypedArray()
+//                    )
+//                )
             }
             // }
         }
@@ -88,8 +89,8 @@ class SurveyQuestionFragement : Fragment() {
 
     private fun setQuestion() {
         currentQuestion = questions[questionIndex]
-        option0 = currentQuestion.option0
-        option5 = currentQuestion.option5
+//        option0 = currentQuestion.option0
+//        option5 = currentQuestion.option5
         (activity as AppCompatActivity).supportActionBar?.title =
             getString(R.string.title_survey_question, questionIndex + 1, numberOfQuestions)
     }
