@@ -5,7 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.hogentessentials1.essentials.data.model.ChangeGroup
-import com.hogentessentials1.essentials.network.ChangeGroupApi
+import com.hogentessentials1.essentials.data.model.Repositories.ChangeGroupRepository
+import com.hogentessentials1.essentials.data.model.Repositories.SurveyRepository
 import kotlinx.coroutines.launch
 import timber.log.Timber
 import java.lang.Exception
@@ -22,7 +23,7 @@ enum class ChangeGroupApiStatus { LOADING, ERROR, DONE }
  *
  * Viewmodel for the overview of the teams
  */
-class TeamsViewModel : ViewModel() {
+class TeamsViewModel(private val repo: ChangeGroupRepository) : ViewModel() {
 
     private val _status = MutableLiveData<ChangeGroupApiStatus>()
     val status: LiveData<ChangeGroupApiStatus>
@@ -57,7 +58,7 @@ class TeamsViewModel : ViewModel() {
             Timber.e("start met ophalen")
             try {
                 _changeGroups.value =
-                    ChangeGroupApi.changeGroupApiService.getChangeGroupsForUser(4) // TODO logged in userid meegeven
+                    repo.getChangeGroupsForUser(4).data // TODO logged in userid meegeven
                 Timber.e("ophalen successvol")
                 _status.value = ChangeGroupApiStatus.DONE
             } catch (e: Exception) {

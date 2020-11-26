@@ -7,11 +7,11 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.hogentessentials1.essentials.R
 import com.hogentessentials1.essentials.databinding.AllSurveysBinding
+import org.koin.android.ext.android.inject
 
 /**
  * @author Ziggy Moens
@@ -29,7 +29,8 @@ class AllSurveysFragment : Fragment() {
         val binding: AllSurveysBinding =
             DataBindingUtil.inflate(inflater, R.layout.all_surveys, container, false)
 
-        viewModel = ViewModelProvider(this).get(AllSurveysViewModel::class.java)
+        val viewModel: AllSurveysViewModel by inject()
+//        viewModel = ViewModelProvider(this).get(AllSurveysViewModel::class.java)
 
         binding.viewModel = viewModel
 
