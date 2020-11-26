@@ -8,7 +8,7 @@ import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.Retrofit
-import retrofit2.converter.scalars.ScalarsConverterFactory
+//import retrofit2.converter.scalars.ScalarsConverterFactory
 import retrofit2.create
 import retrofit2.http.*
 
@@ -17,7 +17,7 @@ import retrofit2.http.*
  * @author Jonathan Vanden Eynden
  */
 
-private const val BASE_URL = "https://essentialsapi.azurewebsites.net/api/"
+/*private const val BASE_URL = "https://essentialsapi.azurewebsites.net/api/"
 
 private val moshi = Moshi.Builder()
     .add(KotlinJsonAdapterFactory())
@@ -27,7 +27,7 @@ private val retrofit = Retrofit.Builder()
     .addConverterFactory(ScalarsConverterFactory.create())
     .baseUrl(BASE_URL)
     .build()
-
+*/
 interface EmployeeEndpointInterface {
 
     @GET("Employees/{id}")
