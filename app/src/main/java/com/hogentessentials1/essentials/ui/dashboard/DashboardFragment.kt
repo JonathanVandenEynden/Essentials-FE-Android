@@ -7,10 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.AdapterView.OnItemSelectedListener
+import android.widget.Spinner
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.mikephil.charting.charts.PieChart
@@ -21,8 +23,11 @@ import com.github.mikephil.charting.data.PieEntry
 import com.github.mikephil.charting.utils.ColorTemplate
 import com.hogentessentials1.essentials.R
 import com.hogentessentials1.essentials.data.model.ChangeInitiative
-import com.hogentessentials1.essentials.data.model.RoadmapItem
+import com.hogentessentials1.essentials.data.model.RoadMapItem
 import com.hogentessentials1.essentials.databinding.FragmentDashboardBinding
+import com.hogentessentials1.essentials.ui.surveys.AllSurveysViewModel
+import org.koin.android.ext.android.inject
+import timber.log.Timber
 
 
 /**
@@ -35,10 +40,14 @@ import com.hogentessentials1.essentials.databinding.FragmentDashboardBinding
  */
 class DashboardFragment : Fragment() {
     private lateinit var ciList: ArrayList<ChangeInitiative>
-    private lateinit var rmiList: ArrayList<RoadmapItem>
-    lateinit var viewModel: DashboardViewModel
-    private lateinit var adapter: DashboardAdapter
+    private lateinit var rmiList: ArrayList<RoadMapItem>
+    //lateinit var viewModel: DashboardViewModel
     private lateinit var binding: FragmentDashboardBinding
+    val viewModel: DashboardViewModel by inject()
+    lateinit var adapter: DashboardAdapter
+    lateinit var rmiAdapter: DashboardRMIAdapter
+    lateinit var spinner: Spinner
+    lateinit var spinnerrmi: Spinner
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,9 +65,6 @@ class DashboardFragment : Fragment() {
             container,
             false
         )
-
-        viewModel = ViewModelProvider(this).get(DashboardViewModel::class.java)
-
         binding.viewModel = viewModel
 
         binding.lifecycleOwner = this
@@ -77,13 +83,17 @@ class DashboardFragment : Fragment() {
 
         val manager = LinearLayoutManager(activity)
 
-        ciList = viewModel.changeInitiatives
-        rmiList = viewModel.roadmapItems
+        //ciList = ArrayList(viewModel.changeInitiatives)
+        viewModel.cis.observe(viewLifecycleOwner, Observer {
+            adapter = DashboardAdapter(this.requireContext(), ArrayList(it))
+            spinner.adapter = adapter
+        })
+        //rmiList = ArrayList(viewModel.roadMapItems)
+        /*this.viewModel.rmis.observe(viewLifecycleOwner, Observer {
+            rmiAdapter = DashboardRMIAdapter(this.requireContext(), ArrayList(it))
+            spinnerrmi.adapter = rmiAdapter
+        })*/
 
-        val adapter = context?.let { DashboardAdapter(it, ciList) }
-        spinner.adapter = adapter
-        val rmiAdapter = context?.let { DashboardRMIAdapter(it, rmiList) }
-        spinnerrmi.adapter = rmiAdapter
 
         spinnerrmi.setOnItemSelectedListener(object : OnItemSelectedListener {
             override fun onItemSelected(
@@ -92,7 +102,7 @@ class DashboardFragment : Fragment() {
                 position: Int,
                 id: Long
             ) {
-                val clickedItem: RoadmapItem = parent.getItemAtPosition(position) as RoadmapItem
+                val clickedItem: RoadMapItem = parent.getItemAtPosition(position) as RoadMapItem
                 val clickedText: String = clickedItem.title
                 Toast.makeText(
                     context,
@@ -100,7 +110,8 @@ class DashboardFragment : Fragment() {
                     Toast.LENGTH_SHORT
                 ).show()
                 //showCharts(clickedItem)
-                speed.speedTo((((clickedItem.survey.questions.size - 1).toFloat()/clickedItem.survey.questions.size) *100));
+
+                speed.speedTo((((clickedItem.assessment!!.questions.size - 1).toFloat()/clickedItem.assessment.questions.size) *100));
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {}
@@ -120,6 +131,8 @@ class DashboardFragment : Fragment() {
                     "$clickedText selected",
                     Toast.LENGTH_SHORT
                 ).show()
+                rmiAdapter = DashboardRMIAdapter(parent.context, ArrayList(clickedItem.roadMap.toList()))
+                spinnerrmi.adapter = rmiAdapter
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {}
@@ -130,7 +143,7 @@ class DashboardFragment : Fragment() {
         return binding.root
     }
 
-    fun showCharts(item: RoadmapItem)
+    fun showCharts(item: RoadMapItem)
     {
         /*val chart = binding.chart
 
@@ -145,8 +158,8 @@ class DashboardFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
     }
 
-    private fun getDataSet(item: RoadmapItem): PieDataSet {
-        val length = item.survey.questions.size;
+    private fun getDataSet(item: RoadMapItem): PieDataSet {
+        val length = item.assessment!!.questions.size;
         val valueSet1 = ArrayList<PieEntry>()
         val v1e1 = PieEntry(10f, "Filled in") // Jan
         valueSet1.add(v1e1)

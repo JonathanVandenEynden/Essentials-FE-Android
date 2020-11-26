@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.hogentessentials1.essentials.R
 import com.hogentessentials1.essentials.data.model.ChangeInitiative
-import com.hogentessentials1.essentials.data.model.RoadmapItem
+import com.hogentessentials1.essentials.data.model.RoadMapItem
 import com.hogentessentials1.essentials.databinding.ChangeInitiativeListItemBinding
 import com.hogentessentials1.essentials.ui.changeInitiatives.ChangeInitiativeListener
 import kotlinx.android.synthetic.main.fragment_dashboard_spinner_item.view.*
@@ -18,9 +18,9 @@ import kotlinx.android.synthetic.main.fragment_dashboard_spinner_item.view.*
 /**
  * @author Marbod Naassens
  */
-class DashboardRMIAdapter(context: Context, list: ArrayList<RoadmapItem>) :
-    ArrayAdapter<RoadmapItem>(context, 0, list) {
-    var list: ArrayList<RoadmapItem>
+class DashboardRMIAdapter(context: Context, list: ArrayList<RoadMapItem>) :
+    ArrayAdapter<RoadMapItem>(context, 0, list) {
+    var list: ArrayList<RoadMapItem>
     var vi: LayoutInflater
 
     init {
@@ -59,12 +59,12 @@ class DashboardRMIAdapter(context: Context, list: ArrayList<RoadmapItem>) :
     }
 }
 
-class RoadmapItemDiffCallback : DiffUtil.ItemCallback<RoadmapItem>() {
-    override fun areItemsTheSame(oldItem: RoadmapItem, newItem: RoadmapItem): Boolean {
+class RoadmapItemDiffCallback : DiffUtil.ItemCallback<RoadMapItem>() {
+    override fun areItemsTheSame(oldItem: RoadMapItem, newItem: RoadMapItem): Boolean {
         return oldItem.title == newItem.title
     }
 
-    override fun areContentsTheSame(oldItem: RoadmapItem, newItem: RoadmapItem): Boolean {
+    override fun areContentsTheSame(oldItem: RoadMapItem, newItem: RoadMapItem): Boolean {
         return oldItem == newItem
     }
 }

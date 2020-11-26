@@ -1,35 +1,31 @@
 package com.hogentessentials1.essentials.data.model
 
-import android.os.Parcel
 import android.os.Parcelable
-import java.time.LocalDate
+import com.squareup.moshi.Json
+import kotlinx.android.parcel.Parcelize
+import java.text.DateFormat
 import java.util.*
 
 /**
- * @author Marbod Naassens
+ * @author Kilian Hoefman
  */
-data class RoadmapItem (var title: String, var start: String, var end: String, var survey: Survey)  : Parcelable {
 
-    constructor(parcel: Parcel) : this(parcel.readString()!!, parcel.readString()!!, parcel.readString()!!, parcel.readSerializable() as Survey) {
-    }
-
-    override fun writeToParcel(parcel: Parcel, flags: Int) {
-        parcel.writeString(title)
-        parcel.writeSerializable(start)
-        parcel.writeSerializable(end)
-    }
-
-    override fun describeContents(): Int {
-        return 0
-    }
-
-    companion object CREATOR : Parcelable.Creator<RoadmapItem> {
-        override fun createFromParcel(parcel: Parcel): RoadmapItem {
-            return RoadmapItem(parcel)
-        }
-
-        override fun newArray(size: Int): Array<RoadmapItem?> {
-            return arrayOfNulls(size)
-        }
-    }
+// @Entity(tableName = "roadMapItem")
+@Parcelize
+data class RoadMapItem(
+    @Json(name = "id")
+    val id: String,
+    @Json(name = "title")
+    val title: String,
+    @Json(name = "assessment")
+    val assessment: Assessment?,
+    @Json(name = "done")
+    val done: Boolean,
+    @Json(name = "startDate")
+    val startDate: String,
+    @Json(name = "endDate")
+    val endDate: String
+//TODO Dates casten naar echte datums, formattering tussen JSON en android is verschillend
+) : Parcelable {
+    // TODO
 }

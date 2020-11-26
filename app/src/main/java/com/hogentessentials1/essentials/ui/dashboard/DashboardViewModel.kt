@@ -1,11 +1,18 @@
 package com.hogentessentials1.essentials.ui.dashboard
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.hogentessentials1.essentials.data.model.ChangeInitiative
-import com.hogentessentials1.essentials.data.model.RoadmapItem
+import com.hogentessentials1.essentials.data.model.Repositories.ChangeInitiativeRepository
+import com.hogentessentials1.essentials.data.model.Repositories.RoadMapRepository
+import com.hogentessentials1.essentials.data.model.RoadMapItem
 import com.hogentessentials1.essentials.data.model.Survey
 import com.hogentessentials1.essentials.data.model.SurveyQuestion
+import com.hogentessentials1.essentials.data.model.util.Status
+import kotlinx.coroutines.launch
+import timber.log.Timber
 import java.time.LocalDate
 import java.time.LocalDateTime
 import java.util.*
@@ -17,9 +24,23 @@ import kotlin.collections.ArrayList
  *
  * viewmodel voor Dashboard
  */
-class DashboardViewModel : ViewModel() {
+class DashboardViewModel(private val cirepository: ChangeInitiativeRepository, val rmiRepository: RoadMapRepository) : ViewModel() {
 
-    var changeInitiatives: ArrayList<ChangeInitiative> = arrayListOf(
+    var chosenCIId: Int = 1;
+
+    private val _status = MutableLiveData<Status>()
+    val status: LiveData<Status>
+        get() = _status
+
+    private val _changeInititives = MutableLiveData<List<ChangeInitiative>>()
+    val cis: LiveData<List<ChangeInitiative>>
+        get() = _changeInititives
+
+    private val _roadMapItems = MutableLiveData<List<RoadMapItem>>()
+    val rmis: LiveData<List<RoadMapItem>>
+        get() = _roadMapItems
+
+    /*var changeInitiatives: ArrayList<ChangeInitiative> = arrayListOf(
         ChangeInitiative(
             title = "New Resto",
             surveys = arrayListOf(
@@ -148,10 +169,28 @@ class DashboardViewModel : ViewModel() {
                 )
             )
         )
-    )
+    )*/
 
     init {
-        // TODO hier data ophalen van API
+        viewModelScope.launch {
+            _status.value = Status.LOADING
+            Timber.e("start met ophalen")
+            try {
+                Timber.e(chosenCIId.toString())
+                _changeInititives.value =
+                    cirepository.getChangeInitiativesForChangeManager(6).data
+                _roadMapItems.value =
+                    rmiRepository.getRoadMaps(chosenCIId).data
+
+                Timber.e("ophalen successvol")
+                _status.value = Status.SUCCESS
+            } catch (e: Exception) {
+                Timber.e("ophalen mislukt")
+                Timber.e("${e.message}")
+
+                _status.value = Status.ERROR
+            }
+        }
     }
 
     override fun onCleared() {
