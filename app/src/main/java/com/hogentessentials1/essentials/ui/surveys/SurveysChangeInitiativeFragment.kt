@@ -34,7 +34,8 @@ class SurveysChangeInitiativeFragment : Fragment() {
 
         binding.viewModel = viewModel
 
-        val args = SurveysChangeInitiativeFragmentArgs.fromBundle(requireArguments())
+        val args =
+            SurveysChangeInitiativeFragmentArgs.fromBundle(requireArguments()) // TODO controle op niet null
 
         val changemanager = args.changemanager
         val ci = args.changeInitiative
@@ -75,15 +76,15 @@ class SurveysChangeInitiativeFragment : Fragment() {
 
         binding.surveysCISummary.adapter = adapter
 
-        adapter.submitList(viewModel.changeInitiative.surveys)
+        //adapter.submitList(viewModel.changeInitiative.surveys)
 
         binding.surveysCIName.text = getString(R.string.ci_screen, viewModel.changeInitiative.title)
 
-        binding.surveysCISurvey.text = resources.getQuantityString(
-            R.plurals.amount_surveys,
-            viewModel.changeInitiative.surveys.size,
-            viewModel.changeInitiative.surveys.size
-        )
+//        binding.surveysCISurvey.text = resources.getQuantityString(
+//            R.plurals.amount_surveys,
+//            viewModel.changeInitiative.surveys.size,
+//            viewModel.changeInitiative.surveys.size
+//        )
 
         (activity as AppCompatActivity).supportActionBar?.title = viewModel.changeInitiative.title
         return binding.root

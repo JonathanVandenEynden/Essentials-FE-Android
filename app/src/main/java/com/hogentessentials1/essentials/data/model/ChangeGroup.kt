@@ -1,13 +1,26 @@
 package com.hogentessentials1.essentials.data.model
 
+import android.os.Parcelable
+import androidx.room.ColumnInfo
+import androidx.room.PrimaryKey
+import com.squareup.moshi.Json
+import kotlinx.android.parcel.Parcelize
+
 /**
- * @author Simon De Wilde
- *
- * Dataclass for a change group
+ * @author Kilian Hoefman: start of Dataclass
  *
  */
+
+// @Entity(tableName = "changeGroup")
+//@PrimaryKey @ColumnInfo(name = "change_group_id")
+@Parcelize
 data class ChangeGroup(
-    val id: Long,
+    @Json(name = "id")
+    val id: Int,
+    @Json(name = "name")
     val name: String,
-    val members: List<String>
-)
+    @Json(name = "users")
+    val users: List<Employee>?
+) : Parcelable {
+    // TODO
+}

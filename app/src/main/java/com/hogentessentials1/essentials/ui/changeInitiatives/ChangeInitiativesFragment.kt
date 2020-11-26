@@ -16,6 +16,9 @@ import com.hogentessentials1.essentials.databinding.FragmentChangeInitiativesBin
 /**
  * @author Simon De Wilde
  * @author Ziggy Moens
+ * A simple [Fragment] subclass.
+ * Use the [ChangeInitiativesFragment] factory method to
+ * create an instance of this fragment.
  */
 class ChangeInitiativesFragment : Fragment() {
 
@@ -61,6 +64,9 @@ class ChangeInitiativesFragment : Fragment() {
             }
         )
 
+        /**
+         * @author Ziggy Moens
+         */
         viewModel.navigateToChangeInitiative.observe(
             viewLifecycleOwner,
             { changeInitiative ->
@@ -77,8 +83,12 @@ class ChangeInitiativesFragment : Fragment() {
 
         binding.ciList.adapter = adapter
 
-        adapter.submitList(viewModel.getChangeInitiatives())
+        adapter.submitList(viewModel.changeInitiatives)
 
+        /**
+         * @author Ziggy Moens
+         */
+        (activity as AppCompatActivity).supportActionBar?.title = "Change initiatives"
         if (changemanager) {
             (activity as AppCompatActivity).supportActionBar?.title = "My Change initiatives"
         } else {

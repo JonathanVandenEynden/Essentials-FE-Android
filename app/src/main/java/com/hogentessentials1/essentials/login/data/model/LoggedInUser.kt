@@ -7,6 +7,6 @@ package com.hogentessentials1.essentials.login.data.model
  */
 data class LoggedInUser(
     val userId: Number,
-    val bearerToken: String,
-    val displayName: String
+    val displayName: String,
+    val bearerToken: String
 )

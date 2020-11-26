@@ -20,6 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <!--TODO name of survey instead of id -->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/allSurvey_listitem_button"
             android:layout_width="match_parent"
@@ -27,7 +28,8 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:text="@{survey.name}"
+            android:text="@{survey.id}"
+
             android:textColor="@color/black"
             android:onClick="@{() -> clickListener.onClick(survey)}"
             app:backgroundTint="@color/brown"

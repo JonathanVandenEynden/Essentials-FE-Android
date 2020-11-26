@@ -46,7 +46,7 @@ class AllSurveysAdapter(val clickListener: AllSurveyListener) :
 
 class AllSurveyDiffCallback : DiffUtil.ItemCallback<Survey>() {
     override fun areItemsTheSame(oldItem: Survey, newItem: Survey): Boolean {
-        return oldItem.name == newItem.name
+        return oldItem.id == newItem.id
     }
 
     override fun areContentsTheSame(oldItem: Survey, newItem: Survey): Boolean {

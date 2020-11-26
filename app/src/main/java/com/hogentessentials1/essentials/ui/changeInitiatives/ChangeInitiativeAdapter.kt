@@ -56,6 +56,9 @@ class ChangeInitiativeDiffCallback : DiffUtil.ItemCallback<ChangeInitiative>() {
     }
 }
 
+/**
+ * @author Ziggy Moens
+ */
 class ChangeInitiativeListener(val clickListener: (changeInitiative: ChangeInitiative) -> Unit) {
     fun onClick(changeInitiative: ChangeInitiative) = clickListener(changeInitiative)
 }

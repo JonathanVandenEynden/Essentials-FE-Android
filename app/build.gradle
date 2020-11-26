@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-kapt'
+    id 'kotlin-android-extensions'
     id 'androidx.navigation.safeargs'
 }
 
@@ -17,8 +18,8 @@ android {
         applicationId "com.hogentessentials1.essentials"
         minSdkVersion 22
         targetSdkVersion 30
-        versionCode 12
-        versionName "1.0.12"
+        versionCode 14
+        versionName "1.0.14"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -29,6 +30,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -36,6 +38,10 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+}
+
+repositories {
+    maven { url "https://jitpack.io" }
 }
 
 dependencies {
@@ -51,11 +57,20 @@ dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     //noinspection GradleCompatible
     implementation 'com.android.support:cardview-v7:28.0.0'
+
+    implementation 'androidx.room:room-runtime:2.2.5'
+
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+
     testImplementation 'junit:junit:4.13.1'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+    implementation 'com.google.dagger:dagger-android:2.20'
+    implementation 'com.google.dagger:dagger-android-support:2.20' // if you use the support libraries
+    kapt 'com.google.dagger:dagger-android-processor:2.20'
+    kapt 'com.google.dagger:dagger-compiler:2.20'
 
     // Navigation
     implementation "androidx.navigation:navigation-fragment-ktx:$navigation_version"
@@ -70,11 +85,58 @@ dependencies {
 
     // Material
     implementation "com.google.android.material:material:$material_version"
-
+    
+    annotationProcessor 'androidx.room:room-compiler:2.2.5'
+    
     implementation 'com.github.sujithkanna:smileyrating:2.0.0'
 
+    //Retrofit
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-scalars:$retrofit_version"
+
+    //Retrofit with Moshi Convertor
+    implementation "com.squareup.moshi:moshi-kotlin:$moshi_version"
+    implementation "com.squareup.retrofit2:converter-moshi:$retrofit_version"
+
+    //OKHTTP & Logging
+    implementation "com.squareup.okhttp3:okhttp:$okhttp_version"
+    implementation "com.squareup.okhttp3:logging-interceptor:$interceptor_version"
+
+    // Koin AndroidX Scope features
+    implementation "org.koin:koin-androidx-scope:$koin_version"
+    // Koin AndroidX ViewModel features
+    implementation "org.koin:koin-androidx-viewmodel:$koin_version"
+    // Koin AndroidX Fragment features
+    implementation "org.koin:koin-androidx-fragment:$koin_version"
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+
+    //Timber
+    implementation 'com.jakewharton.timber:timber:4.7.1'
+
+    //Charts
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.0.3'
 
     // Unit testing dependencies
     testImplementation "junit:junit:$junit_version"
 
 }
+
+    
+
+    // Moshi
+//    implementation "com.squareup.moshi:moshi:$version_moshi"
+    //implementation "com.squareup.moshi:moshi-kotlin:$version_moshi"
+
+    // Retrofit with Moshi Converter
+    //implementation "com.squareup.retrofit2:converter-moshi:$version_retrofit"
+
+    // Smiley bar
+    //implementation 'com.github.sujithkanna:smileyrating:2.0.0'
+
+    // Timber
+    //implementation 'com.jakewharton.timber:timber:4.7.1'
+
+    // okHTTP
+    //implementation "com.squareup.okhttp3:okhttp:$okhttp_version"
+    //implementation "com.squareup.okhttp3:logging-interceptor:$interceptor_version"
+    
