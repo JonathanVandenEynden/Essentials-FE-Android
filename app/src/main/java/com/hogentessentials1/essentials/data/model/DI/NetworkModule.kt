@@ -1,6 +1,7 @@
 package com.hogentessentials1.essentials.data.model.DI
 
 import com.hogentessentials1.essentials.BuildConfig
+import com.hogentessentials1.essentials.data.model.ChangeGroup
 import com.hogentessentials1.essentials.data.model.Repositories.*
 import com.hogentessentials1.essentials.data.model.network.*
 import com.hogentessentials1.essentials.data.model.util.Globals
@@ -17,6 +18,7 @@ val networkModule = module {
     single { provideRetrofit(get(), Globals.BASE_URL) }
     single { provideRmiEndpointInterface(get()) }
     single { provideChangeInitiativeEndpointInterface(get())}
+    single { provideChangeGroupEndpointInterface(get())}
     single { provideProjectEndpointInterface(get()) }
     single { provideQuestionEndpointInterface(get())}
     single { provideOrganizationEndpointInterface(get())}
@@ -27,6 +29,7 @@ val networkModule = module {
     // TODO alle apiinterfaces appart als single (zoals hierboven)
     single { RoadMapRemoteDataSource(get()) }
     single { ChangeInitiativeRemoteDataSource(get())}
+    single { ChangeGroupRemoteDataSource(get())}
     single { ProjectRemoteDataSource(get())}
     single { QuestionRemoteDataSource(get())}
     single { OrganizationRemoteDataSource(get())}
@@ -37,6 +40,7 @@ val networkModule = module {
 
     single { RoadMapRepository(get()) }
     single { ChangeInitiativeRepository(get())}
+    single { ChangeGroupRepository(get())}
     single { ProjectRepository(get())}
     single { QuestionRepository(get())}
     single { OrganizationRepository(get())}
@@ -87,6 +91,9 @@ private fun provideRmiEndpointInterface(retrofit: Retrofit): RoadMapItemsEndpoin
 
 private fun provideChangeInitiativeEndpointInterface(retrofit: Retrofit): ChangeInitiativesEndpointInterface =
     retrofit.create(ChangeInitiativesEndpointInterface::class.java)
+
+private fun provideChangeGroupEndpointInterface(retrofit: Retrofit): ChangeGroupEndpointInterface =
+    retrofit.create(ChangeGroupEndpointInterface::class.java)
 
 private fun provideProjectEndpointInterface(retrofit: Retrofit): ProjectsEndpointInterface =
     retrofit.create(ProjectsEndpointInterface::class.java)

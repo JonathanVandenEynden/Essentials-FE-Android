@@ -52,7 +52,7 @@ interface ChangeInitiativesEndpointInterface {
     suspend fun getChangeInitiativesForChangeManager(@Path("changeManagerId") changeManagerId: Int): Response<List<ChangeInitiative>>
 }
 
-interface ChangeGroupApiService {
+interface ChangeGroupEndpointInterface {
 
     @GET("ChangeGroups/GetChangeGroupForUser/{userId}")
     suspend fun getChangeGroupsForUser(@Path("userId") userId: Int): Response<List<ChangeGroup>>
