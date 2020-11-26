@@ -3,8 +3,13 @@ package com.hogentessentials1.essentials.ui.dashboard
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.hogentessentials1.essentials.data.model.ChangeInitiative
+import com.hogentessentials1.essentials.data.model.RoadmapItem
 import com.hogentessentials1.essentials.data.model.Survey
 import com.hogentessentials1.essentials.data.model.SurveyQuestion
+import java.time.LocalDate
+import java.time.LocalDateTime
+import java.util.*
+import kotlin.collections.ArrayList
 
 /**
  *
@@ -96,6 +101,49 @@ class DashboardViewModel : ViewModel() {
                             option0 = "No",
                             option5 = "Yes"
                         )
+                    )
+                )
+            )
+        )
+    )
+
+    var roadmapItems: ArrayList<RoadmapItem> = arrayListOf(
+        RoadmapItem(
+            title = "Step 1",
+            start = "11-10-2020",
+            end = "11-10-2020",
+            Survey(
+                name = "Work Survey",
+                arrayListOf(
+                    SurveyQuestion(
+                        question = "Do you feel more pressure at work?",
+                        option0 = "No",
+                        option5 = "Yes"
+                    ),
+                    SurveyQuestion(
+                        question = "Would you like working form home while we are expanding?",
+                        option0 = "No",
+                        option5 = "Yes"
+                    )
+                )
+            )
+        ),
+        RoadmapItem(
+            title = "Step 2",
+            start = "11-10-2020",
+            end = "11-10-2020",
+            Survey(
+                name = "Work Survey",
+                arrayListOf(
+                    SurveyQuestion(
+                        question = "Do you feel more pressure at work?",
+                        option0 = "No",
+                        option5 = "Yes"
+                    ),
+                    SurveyQuestion(
+                        question = "Would you like working form home while we are expanding?",
+                        option0 = "No",
+                        option5 = "Yes"
                     )
                 )
             )
