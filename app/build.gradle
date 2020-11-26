@@ -79,10 +79,10 @@ dependencies {
 
     // Moshi
 //    implementation "com.squareup.moshi:moshi:$version_moshi"
-    implementation "com.squareup.moshi:moshi-kotlin:$version_moshi"
+    implementation "com.squareup.moshi:moshi-kotlin:$moshi_version"
 
     // Retrofit with Moshi Converter
-    implementation "com.squareup.retrofit2:converter-moshi:$version_retrofit"
+    implementation "com.squareup.retrofit2:converter-moshi:$retrofit_version"
 
     // Smiley bar
     implementation 'com.github.sujithkanna:smileyrating:2.0.0'
