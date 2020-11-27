@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.hogentessentials1.essentials.data.model.ChangeInitiative
 import com.hogentessentials1.essentials.data.model.Repositories.ChangeInitiativeRepository
+import com.hogentessentials1.essentials.data.model.Repositories.DashboardRepository
 import com.hogentessentials1.essentials.data.model.Repositories.RoadMapRepository
 import com.hogentessentials1.essentials.data.model.RoadMapItem
 import com.hogentessentials1.essentials.data.model.Survey
@@ -24,7 +25,7 @@ import kotlin.collections.ArrayList
  *
  * viewmodel voor Dashboard
  */
-class DashboardViewModel(private val cirepository: ChangeInitiativeRepository, val rmiRepository: RoadMapRepository) : ViewModel() {
+class DashboardViewModel(private val dashboardRepository: DashboardRepository, private val cirepository: ChangeInitiativeRepository, val rmiRepository: RoadMapRepository) : ViewModel() {
 
     var chosenCIId: Int = 1;
 
@@ -39,6 +40,14 @@ class DashboardViewModel(private val cirepository: ChangeInitiativeRepository, v
     private val _roadMapItems = MutableLiveData<List<RoadMapItem>>()
     val rmis: LiveData<List<RoadMapItem>>
         get() = _roadMapItems
+
+    private val _filledIn = MutableLiveData<Double>()
+    val fi: LiveData<Double>
+        get() = _filledIn
+
+    private val _mood = MutableLiveData<Map<Int, Int>>()
+    val m: LiveData<Map<Int, Int>>
+        get() = _mood
 
     /*var changeInitiatives: ArrayList<ChangeInitiative> = arrayListOf(
         ChangeInitiative(
@@ -181,6 +190,8 @@ class DashboardViewModel(private val cirepository: ChangeInitiativeRepository, v
                     cirepository.getChangeInitiativesForChangeManager(6).data
                 _roadMapItems.value =
                     rmiRepository.getRoadMaps(chosenCIId).data
+                _filledIn.value = dashboardRepository.getFilledInSurveys(chosenCIId).data
+                _mood.value = dashboardRepository.getMood(chosenCIId).data
 
                 Timber.e("ophalen successvol")
                 _status.value = Status.SUCCESS

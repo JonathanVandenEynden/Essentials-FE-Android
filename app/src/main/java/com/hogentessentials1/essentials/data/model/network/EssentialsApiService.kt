@@ -115,4 +115,11 @@ interface SurveyEndpointInterface {
     suspend fun getSurveyByRoadMapItemId(@Path("roadmapItemId") roadmapItemId: Int): Response<Survey>
 }
 
+interface DashboardEndpointInterface{
+    @GET("Dashboard/GetFilledInSurveysOfChangeInitiative/{id}")
+    suspend fun getFilledInSurveys(@Path("id") id: Int): Response<Double>
+    @GET("Dashboard/GetMoodFromChangeInitiative/{id}")
+    suspend fun getMood(@Path("id") id: Int): Response<Map<Int, Int>>
+}
+
 

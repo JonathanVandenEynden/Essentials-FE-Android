@@ -23,6 +23,7 @@ import com.github.mikephil.charting.data.PieEntry
 import com.github.mikephil.charting.utils.ColorTemplate
 import com.hogentessentials1.essentials.R
 import com.hogentessentials1.essentials.data.model.ChangeInitiative
+import com.hogentessentials1.essentials.data.model.Question
 import com.hogentessentials1.essentials.data.model.RoadMapItem
 import com.hogentessentials1.essentials.databinding.FragmentDashboardBinding
 import com.hogentessentials1.essentials.ui.surveys.AllSurveysViewModel
@@ -110,8 +111,12 @@ class DashboardFragment : Fragment() {
                     Toast.LENGTH_SHORT
                 ).show()
                 //showCharts(clickedItem)
-
-                speed.speedTo((((clickedItem.assessment!!.questions.size - 1).toFloat()/clickedItem.assessment.questions.size) *100));
+                var amount_filledIn: Double = 0.0;
+                viewModel.fi.observe(viewLifecycleOwner, Observer { amount_filledIn = it })
+                if (amount_filledIn != 0.0)
+                {
+                    speed.speedTo(amount_filledIn.toFloat())
+                }
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {}

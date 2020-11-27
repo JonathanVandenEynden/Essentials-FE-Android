@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.hogentessentials1.essentials.R
 import com.hogentessentials1.essentials.data.model.ChangeInitiative
-import com.hogentessentials1.essentials.databinding.ChangeInitiativeListItemBinding
 import com.hogentessentials1.essentials.ui.changeInitiatives.ChangeInitiativeListener
 import kotlinx.android.synthetic.main.fragment_dashboard_spinner_item.view.*
 
