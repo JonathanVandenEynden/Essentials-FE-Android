@@ -208,15 +208,15 @@ class DashboardViewModel(private val dashboardRepository: DashboardRepository, p
         super.onCleared()
     }
 
-    private val _navigateToChangeInitiative = MutableLiveData<ChangeInitiative>()
-    val navigateToChangeInitiative
-        get() = _navigateToChangeInitiative
+    private val _navigateToGraph = MutableLiveData<Boolean>()
+    val navigateToGraph: LiveData<Boolean>
+        get() = _navigateToGraph
 
-    fun onChangeInitiativeClicked(changeInitiative: ChangeInitiative) {
-        _navigateToChangeInitiative.value = changeInitiative
+    fun onButtonClicked() {
+        _navigateToGraph.value = true
     }
 
-    fun onChangeInitiativeNavigated() {
-        _navigateToChangeInitiative.value = null
+    fun onNavigatedToGraph() {
+        _navigateToGraph.value = false
     }
 }

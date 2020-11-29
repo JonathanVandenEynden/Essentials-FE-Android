@@ -10,10 +10,12 @@ import android.widget.AdapterView.OnItemSelectedListener
 import android.widget.Spinner
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.get
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.mikephil.charting.charts.PieChart
 import com.github.mikephil.charting.data.BarEntry
@@ -26,6 +28,7 @@ import com.hogentessentials1.essentials.data.model.ChangeInitiative
 import com.hogentessentials1.essentials.data.model.Question
 import com.hogentessentials1.essentials.data.model.RoadMapItem
 import com.hogentessentials1.essentials.databinding.FragmentDashboardBinding
+import com.hogentessentials1.essentials.ui.homeScreen.HomeScreenFragmentDirections
 import com.hogentessentials1.essentials.ui.surveys.AllSurveysViewModel
 import org.koin.android.ext.android.inject
 import timber.log.Timber
@@ -40,8 +43,10 @@ import timber.log.Timber
  * create an instance of this fragment.
  */
 class DashboardFragment : Fragment() {
-    private lateinit var ciList: ArrayList<ChangeInitiative>
-    private lateinit var rmiList: ArrayList<RoadMapItem>
+    private var ciList: ArrayList<ChangeInitiative> = arrayListOf()
+    private var rmiList: ArrayList<RoadMapItem> = arrayListOf()
+    private var selectedCI: Int = 0
+    private var selectedRMI: Int = 0
     //lateinit var viewModel: DashboardViewModel
     private lateinit var binding: FragmentDashboardBinding
     val viewModel: DashboardViewModel by inject()
@@ -86,24 +91,27 @@ class DashboardFragment : Fragment() {
 
         //ciList = ArrayList(viewModel.changeInitiatives)
         viewModel.cis.observe(viewLifecycleOwner, Observer {
+            Timber.e("test1")
             adapter = DashboardAdapter(this.requireContext(), ArrayList(it))
             spinner.adapter = adapter
+            Timber.e("Test2")
         })
         //rmiList = ArrayList(viewModel.roadMapItems)
         /*this.viewModel.rmis.observe(viewLifecycleOwner, Observer {
             rmiAdapter = DashboardRMIAdapter(this.requireContext(), ArrayList(it))
             spinnerrmi.adapter = rmiAdapter
         })*/
-
-
+        Timber.e("Test3")
+        spinner.setSelection(selectedCI)
+        Timber.e("Test4")
         spinnerrmi.setOnItemSelectedListener(object : OnItemSelectedListener {
             override fun onItemSelected(
-                parent: AdapterView<*>,
-                view: View,
+                parent: AdapterView<*>?,
+                view: View?,
                 position: Int,
                 id: Long
             ) {
-                val clickedItem: RoadMapItem = parent.getItemAtPosition(position) as RoadMapItem
+                val clickedItem: RoadMapItem = parent?.getItemAtPosition(position) as RoadMapItem
                 val clickedText: String = clickedItem.title
                 Toast.makeText(
                     context,
@@ -124,12 +132,12 @@ class DashboardFragment : Fragment() {
 
         spinner.setOnItemSelectedListener(object : OnItemSelectedListener {
             override fun onItemSelected(
-                parent: AdapterView<*>,
-                view: View,
+                parent: AdapterView<*>?,
+                view: View?,
                 position: Int,
                 id: Long
             ) {
-                val clickedItem: ChangeInitiative = parent.getItemAtPosition(position) as ChangeInitiative
+                val clickedItem: ChangeInitiative = parent?.getItemAtPosition(position) as ChangeInitiative
                 val clickedText: String = clickedItem.title
                 Toast.makeText(
                     context,
@@ -143,42 +151,36 @@ class DashboardFragment : Fragment() {
             override fun onNothingSelected(parent: AdapterView<*>?) {}
         })
 
+        spinnerrmi.setSelection(selectedRMI)
+
+        viewModel.navigateToGraph.observe(
+            viewLifecycleOwner,
+            {
+                if (it) {
+                    val navController = binding.root.findNavController()
+                    selectedCI = spinner.selectedItemPosition
+                    Timber.e(spinner.selectedItem.toString())
+                    Timber.e(selectedCI.toString())
+                    selectedRMI = spinnerrmi.selectedItemPosition
+                    navController.navigate(
+                        DashboardFragmentDirections.actionDashboardFragmentToDashboardGraphFragment(
+                            spinner.selectedItem as ChangeInitiative, spinnerrmi.selectedItem as RoadMapItem
+                        )
+                    )
+                    viewModel.onNavigatedToGraph()
+                }
+            }
+        )
+
         (activity as AppCompatActivity).supportActionBar?.title = "Dashboard"
 
         return binding.root
     }
 
-    fun showCharts(item: RoadMapItem)
-    {
-        /*val chart = binding.chart
-
-        val data = PieData(getDataSet(item))
-        chart.data = data
-        chart.description.text =  "Surveys"
-        chart.animateXY(2000, 2000)
-        chart.invalidate()*/
-    }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
     }
 
-    private fun getDataSet(item: RoadMapItem): PieDataSet {
-        val length = item.assessment!!.questions.size;
-        val valueSet1 = ArrayList<PieEntry>()
-        val v1e1 = PieEntry(10f, "Filled in") // Jan
-        valueSet1.add(v1e1)
-        val v1e2 = PieEntry(60f, "Happy") // Feb
-        valueSet1.add(v1e2)
-        val v1e3 = PieEntry(5f, "Amazed") // Mar
-        valueSet1.add(v1e3)
-        val v1e4 = PieEntry(25f, "Indifferent") // Apr
-        valueSet1.add(v1e4)
-        val v1e5 = BarEntry(90.000f, 4f) // May
-
-        val dataSet1 = PieDataSet(valueSet1, "Overal Mood")
-        dataSet1.setColors(*ColorTemplate.COLORFUL_COLORS)
-        return dataSet1
-    }
 
 }

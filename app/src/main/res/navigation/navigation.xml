@@ -83,7 +83,11 @@
         android:id="@+id/dashboardFragment"
         android:name="com.hogentessentials1.essentials.ui.dashboard.DashboardFragment"
         android:label="fragment_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_dashboard" >
+        <action
+            android:id="@+id/action_dashboardFragment_to_dashboardGraphFragment"
+            app:destination="@id/dashboardGraphFragment" />
+    </fragment>
     <fragment
         android:id="@+id/teamsFragment"
         android:name="com.hogentessentials1.essentials.ui.changeGroup.TeamsFragment"
@@ -100,5 +104,16 @@
         <argument
             android:name="changeGroupMembers"
             app:argType="string[]" />
+    </fragment>
+    <fragment
+        android:id="@+id/dashboardGraphFragment"
+        android:name="com.hogentessentials1.essentials.ui.dashboard.DashboardGraphFragment"
+        android:label="fragment_dashboard_graph">
+        <argument
+            android:name="changeInitiative"
+            app:argType="com.hogentessentials1.essentials.data.model.ChangeInitiative" />
+        <argument
+            android:name="roadMapItem"
+            app:argType="com.hogentessentials1.essentials.data.model.RoadMapItem" />
     </fragment>
 </navigation>
