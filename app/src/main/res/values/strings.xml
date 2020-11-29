@@ -46,4 +46,5 @@
     <string name="login_failed">"Login failed"</string>
     <string name="essentials_logo_text">Essentials Logo</string>
     <string name="graph">More graphs</string>
+    <string name="siteName">For more graphs <a href="https://essentialstoolkit.netlify.app/">visit essentialstoolkit.netlify.app</a></string>
 </resources>
