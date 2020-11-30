@@ -1,9 +1,12 @@
 package com.hogentessentials1.essentials.data.model.DI
 
+import android.accounts.Account
 import com.hogentessentials1.essentials.BuildConfig
 import com.hogentessentials1.essentials.data.model.Repositories.*
 import com.hogentessentials1.essentials.data.model.network.*
 import com.hogentessentials1.essentials.data.model.util.Globals
+import com.hogentessentials1.essentials.login.data.LoginDataSource
+import com.hogentessentials1.essentials.login.data.LoginRepository
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import okhttp3.Interceptor
@@ -26,6 +29,7 @@ val networkModule = module {
     single { provideEmployeeEndpointInterface(get()) }
     single { provideChangeManagerEndpointInterface(get()) }
     single { provideSurveyEndpointInterface(get()) }
+    single { provideAccountEndpointInterface(get())}
 
     // TODO alle apiinterfaces appart als single (zoals hierboven)
     single { RoadMapRemoteDataSource(get()) }
@@ -37,6 +41,7 @@ val networkModule = module {
     single { EmployeeRemoteDataSource(get()) }
     single { ChangeManagerRemoteDataSource(get()) }
     single { SurveyRemoteDataSource(get()) }
+    single { LoginDataSource(get()) }
 
     single { RoadMapRepository(get()) }
     single { ChangeInitiativeRepository(get()) }
@@ -47,6 +52,7 @@ val networkModule = module {
     single { EmployeeRepository(get()) }
     single { ChangeManagerRepository(get()) }
     single { SurveyRepository(get()) }
+    single { LoginRepository(get()) }
 }
 
 /**
@@ -123,3 +129,6 @@ private fun provideChangeManagerEndpointInterface(retrofit: Retrofit): ChangeMan
 
 private fun provideSurveyEndpointInterface(retrofit: Retrofit): SurveyEndpointInterface =
     retrofit.create(SurveyEndpointInterface::class.java)
+
+private fun provideAccountEndpointInterface(retrofit: Retrofit) : AccountEndpointInterface =
+    retrofit.create(AccountEndpointInterface::class.java)

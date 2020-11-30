@@ -115,3 +115,10 @@ interface SurveyEndpointInterface {
     @GET("Survey/GetSurveyByRoadMapItemId/{roadmapItemId}")
     suspend fun getSurveyByRoadMapItemId(@Path("roadmapItemId") roadmapItemId: Int): Response<Survey>
 }
+
+interface AccountEndpointInterface {
+    @POST("Account/Login")
+    suspend fun login(
+        @Body requestBody: RequestBody
+    ): Response<ResponseBody>
+}
