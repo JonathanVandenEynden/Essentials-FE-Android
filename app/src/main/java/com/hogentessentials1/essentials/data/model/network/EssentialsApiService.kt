@@ -53,7 +53,7 @@ interface ChangeInitiativesEndpointInterface {
 }
 
 interface ChangeGroupEndpointInterface {
-
+    // TODO remove userID --> bearertoken is added with interceptor
     @GET("ChangeGroups/GetChangeGroupForUser/{userId}")
     suspend fun getChangeGroupsForUser(@Path("userId") userId: Int): Response<List<ChangeGroup>>
 
