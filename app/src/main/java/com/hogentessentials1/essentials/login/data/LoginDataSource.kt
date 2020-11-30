@@ -1,10 +1,8 @@
 package com.hogentessentials1.essentials.login.data
 
-import com.auth0.android.jwt.JWT
+import com.hogentessentials1.essentials.data.model.util.Globals
 import com.hogentessentials1.essentials.login.data.model.LoggedInUser
-import com.hogentessentials1.essentials.util.Globals
 import java.io.IOException
-import kotlin.random.Random
 
 /**
  * @author Simon De Wilde
@@ -19,9 +17,9 @@ class LoginDataSource {
 
             // Todo checken of het gelukt is
 
-            Globals.bearerToken = response;
+            Globals.bearerToken = response
 
-            val fakeUser = LoggedInUser( Globals.username)
+            val fakeUser = LoggedInUser(Globals.username)
             return Result.Success(fakeUser)
         } catch (e: Throwable) {
             return Result.Error(IOException("Error logging in", e))
@@ -29,6 +27,6 @@ class LoginDataSource {
     }
 
     fun logout() {
-        Globals.bearerToken = "";
+        Globals.bearerToken = ""
     }
 }
