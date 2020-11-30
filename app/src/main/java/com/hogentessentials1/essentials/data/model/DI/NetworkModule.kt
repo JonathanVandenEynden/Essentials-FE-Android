@@ -16,33 +16,32 @@ val networkModule = module {
     single { provideOkHttpClient() }
     single { provideRetrofit(get(), Globals.BASE_URL) }
     single { provideRmiEndpointInterface(get()) }
-    single { provideChangeInitiativeEndpointInterface(get())}
+    single { provideChangeInitiativeEndpointInterface(get()) }
     single { provideProjectEndpointInterface(get()) }
-    single { provideQuestionEndpointInterface(get())}
-    single { provideOrganizationEndpointInterface(get())}
-    single { provideEmployeeEndpointInterface(get())}
-    single { provideChangeManagerEndpointInterface(get())}
-    single { provideSurveyEndpointInterface(get())}
+    single { provideQuestionEndpointInterface(get()) }
+    single { provideOrganizationEndpointInterface(get()) }
+    single { provideEmployeeEndpointInterface(get()) }
+    single { provideChangeManagerEndpointInterface(get()) }
+    single { provideSurveyEndpointInterface(get()) }
 
     // TODO alle apiinterfaces appart als single (zoals hierboven)
     single { RoadMapRemoteDataSource(get()) }
-    single { ChangeInitiativeRemoteDataSource(get())}
-    single { ProjectRemoteDataSource(get())}
-    single { QuestionRemoteDataSource(get())}
-    single { OrganizationRemoteDataSource(get())}
-    single { EmployeeRemoteDataSource(get())}
-    single { ChangeManagerRemoteDataSource(get())}
-    single { SurveyRemoteDataSource(get())}
-
+    single { ChangeInitiativeRemoteDataSource(get()) }
+    single { ProjectRemoteDataSource(get()) }
+    single { QuestionRemoteDataSource(get()) }
+    single { OrganizationRemoteDataSource(get()) }
+    single { EmployeeRemoteDataSource(get()) }
+    single { ChangeManagerRemoteDataSource(get()) }
+    single { SurveyRemoteDataSource(get()) }
 
     single { RoadMapRepository(get()) }
-    single { ChangeInitiativeRepository(get())}
-    single { ProjectRepository(get())}
-    single { QuestionRepository(get())}
-    single { OrganizationRepository(get())}
-    single { EmployeeRepository(get())}
-    single { ChangeManagerRepository(get())}
-    single { SurveyRepository(get())}
+    single { ChangeInitiativeRepository(get()) }
+    single { ProjectRepository(get()) }
+    single { QuestionRepository(get()) }
+    single { OrganizationRepository(get()) }
+    single { EmployeeRepository(get()) }
+    single { ChangeManagerRepository(get()) }
+    single { SurveyRepository(get()) }
 }
 
 /**
@@ -94,14 +93,14 @@ private fun provideProjectEndpointInterface(retrofit: Retrofit): ProjectsEndpoin
 private fun provideQuestionEndpointInterface(retrofit: Retrofit): QuestionsEndpointInterface =
     retrofit.create(QuestionsEndpointInterface::class.java)
 
-private fun provideOrganizationEndpointInterface(retrofit: Retrofit) : OrganizationsEndpointInterface =
+private fun provideOrganizationEndpointInterface(retrofit: Retrofit): OrganizationsEndpointInterface =
     retrofit.create(OrganizationsEndpointInterface::class.java)
 
-private fun provideEmployeeEndpointInterface(retrofit: Retrofit) : EmployeeEndpointInterface =
+private fun provideEmployeeEndpointInterface(retrofit: Retrofit): EmployeeEndpointInterface =
     retrofit.create(EmployeeEndpointInterface::class.java)
 
-private fun provideChangeManagerEndpointInterface(retrofit: Retrofit) : ChangeManagersEndpointInterface =
+private fun provideChangeManagerEndpointInterface(retrofit: Retrofit): ChangeManagersEndpointInterface =
     retrofit.create(ChangeManagersEndpointInterface::class.java)
 
-private fun provideSurveyEndpointInterface(retrofit: Retrofit) : SurveyEndpointInterface =
+private fun provideSurveyEndpointInterface(retrofit: Retrofit): SurveyEndpointInterface =
     retrofit.create(SurveyEndpointInterface::class.java)

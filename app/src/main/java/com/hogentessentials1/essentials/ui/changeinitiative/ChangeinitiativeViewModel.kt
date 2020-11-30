@@ -1,15 +1,14 @@
-package com.hogentessentials1.essentials.ui.surveys
+package com.hogentessentials1.essentials.ui.changeinitiative
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.hogentessentials1.essentials.data.model.ChangeInitiative
-import com.hogentessentials1.essentials.data.model.Survey
 
 /**
  * @author Ziggy Moens
  */
 
-class SurveysChangeinitiativeViewModel : ViewModel() {
+class ChangeinitiativeViewModel : ViewModel() {
 
     lateinit var changeInitiative: ChangeInitiative /* = ChangeInitiative(
         title = "New Resto",
@@ -51,15 +50,15 @@ class SurveysChangeinitiativeViewModel : ViewModel() {
         super.onCleared()
     }
 
-    private val _navigateToSurvey = MutableLiveData<Survey>()
-    val navigateToSurvey
-        get() = _navigateToSurvey
+    private val _navigateToRoadmap = MutableLiveData<Boolean>()
+    val navigateToRoadmap
+        get() = _navigateToRoadmap
 
-    fun onSurveyClicked(survey: Survey) {
-        _navigateToSurvey.value = survey
+    fun onRoadmapClicked() {
+        _navigateToRoadmap.value = true
     }
 
-    fun onSurveyNavigated() {
-        _navigateToSurvey.value = null
+    fun onRoadmapNavigated() {
+        _navigateToRoadmap.value = false
     }
 }

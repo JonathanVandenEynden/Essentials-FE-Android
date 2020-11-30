@@ -10,32 +10,30 @@
     <data>
 
         <variable
-            name="survey"
-            type="com.hogentessentials1.essentials.data.model.Survey" />
+            name="roadmapItem"
+            type="com.hogentessentials1.essentials.data.model.RoadMapItem" />
 
         <variable
             name="clickListener"
-            type="com.hogentessentials1.essentials.ui.surveys.AllSurveyListener" />
+            type="com.hogentessentials1.essentials.ui.roadMap.list.RoadMapListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <!--TODO name of survey instead of id -->
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/allSurvey_listitem_button"
+            android:id="@+id/surveys_item_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:text="@{survey.id}"
-
+            android:onClick="@{() -> clickListener.onClick(roadmapItem)}"
+            android:text="@{roadmapItem.title}"
             android:textColor="@color/black"
-            android:onClick="@{() -> clickListener.onClick(survey)}"
             app:backgroundTint="@color/brown"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>

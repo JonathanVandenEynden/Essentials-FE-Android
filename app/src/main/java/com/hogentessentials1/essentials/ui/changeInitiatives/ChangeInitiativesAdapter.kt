@@ -6,15 +6,14 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.hogentessentials1.essentials.data.model.ChangeInitiative
-import com.hogentessentials1.essentials.databinding.ChangeInitiativeListItemBinding
+import com.hogentessentials1.essentials.databinding.ChangeinitiativesItemBinding
 
 /**
- * @author Simon De Wilde
  * @author Ziggy Moens
- *
+ * @author Simon De Wilde
  * Converts Change Initiatives to views
  */
-class ChangeInitiativeAdapter(val clickListener: ChangeInitiativeListener) :
+class ChangeInitiativeAdapter(val clickListener: ChangeInitiativesListener) :
     ListAdapter<ChangeInitiative, ChangeInitiativeAdapter.ViewHolder>(ChangeInitiativeDiffCallback()) {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -26,10 +25,10 @@ class ChangeInitiativeAdapter(val clickListener: ChangeInitiativeListener) :
         return ViewHolder.from(parent)
     }
 
-    class ViewHolder private constructor(val binding: ChangeInitiativeListItemBinding) :
+    class ViewHolder private constructor(val binding: ChangeinitiativesItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(clickListener: ChangeInitiativeListener, item: ChangeInitiative) {
+        fun bind(clickListener: ChangeInitiativesListener, item: ChangeInitiative) {
             binding.changeInitiative = item
             binding.clickListener = clickListener
             binding.executePendingBindings()
@@ -38,7 +37,7 @@ class ChangeInitiativeAdapter(val clickListener: ChangeInitiativeListener) :
         companion object {
             fun from(parent: ViewGroup): ViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
-                val binding = ChangeInitiativeListItemBinding.inflate(layoutInflater, parent, false)
+                val binding = ChangeinitiativesItemBinding.inflate(layoutInflater, parent, false)
 
                 return ViewHolder(binding)
             }
@@ -59,6 +58,6 @@ class ChangeInitiativeDiffCallback : DiffUtil.ItemCallback<ChangeInitiative>() {
 /**
  * @author Ziggy Moens
  */
-class ChangeInitiativeListener(val clickListener: (changeInitiative: ChangeInitiative) -> Unit) {
+class ChangeInitiativesListener(val clickListener: (changeInitiative: ChangeInitiative) -> Unit) {
     fun onClick(changeInitiative: ChangeInitiative) = clickListener(changeInitiative)
 }

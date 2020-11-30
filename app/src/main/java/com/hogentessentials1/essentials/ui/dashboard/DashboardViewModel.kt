@@ -3,8 +3,6 @@ package com.hogentessentials1.essentials.ui.dashboard
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.hogentessentials1.essentials.data.model.ChangeInitiative
-import com.hogentessentials1.essentials.data.model.Survey
-import com.hogentessentials1.essentials.data.model.SurveyQuestion
 
 /**
  * @author Simon De Wilde

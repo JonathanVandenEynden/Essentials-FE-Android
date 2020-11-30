@@ -1,11 +1,8 @@
 package com.hogentessentials1.essentials.data.model
 
 import android.os.Parcelable
-import androidx.room.PrimaryKey
 import com.squareup.moshi.Json
 import kotlinx.android.parcel.Parcelize
-import java.util.*
-import kotlin.collections.ArrayList
 
 /**
  * @author Ziggy Moens: made Parcelable
@@ -33,7 +30,7 @@ data class ChangeInitiative(
     val changeType: ChangeType?,
     @Json(name = "roadMap")
     val roadMap: Array<RoadMapItem>,
-    //val surveys: ArrayList<Survey> // TODO verwijderen
+    // val surveys: ArrayList<Survey> // TODO verwijderen
     @Json(name = "progress")
     val progress: String
 

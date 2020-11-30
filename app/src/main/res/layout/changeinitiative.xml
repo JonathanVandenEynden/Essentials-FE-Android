@@ -10,7 +10,7 @@
 
         <variable
             name="viewModel"
-            type="com.hogentessentials1.essentials.ui.surveys.SurveysChangeinitiativeViewModel" />
+            type="com.hogentessentials1.essentials.ui.changeinitiative.ChangeinitiativeViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -41,37 +41,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/surveysCI_name" />
 
-        <TextView
-            android:id="@+id/surveysCI_survey"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:fontFamily="sans-serif-black"
-            android:text="@string/surveys"
-            android:textAlignment="center"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button" />
-
-        <ScrollView
-            android:id="@+id/scrollView2"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="32dp"
-            android:fadeScrollbars="false"
-            android:textAlignment="center"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/surveysCI_survey">
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/surveysCI_summary"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical" />
-        </ScrollView>
 
         <ScrollView
             android:id="@+id/scrollView4"
@@ -80,7 +49,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginBottom="32dp"
             android:fadeScrollbars="false"
-            app:layout_constraintBottom_toTopOf="@+id/button"
+            app:layout_constraintBottom_toTopOf="@+id/roadmapbutton"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/information">
@@ -114,7 +83,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight=".50"
-                        android:text="Ziggy Moens"
+                        android:text="@{viewModel.changeInitiative.changeSponsor.firstName}"
                         android:textAlignment="center" />
                 </LinearLayout>
 
@@ -143,7 +112,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight=".50"
-                        android:text="22/10/2020"
+                        android:text="@{viewModel.changeInitiative.startDate.substring(0,10)}"
                         android:textAlignment="center" />
 
                 </LinearLayout>
@@ -172,7 +141,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight=".50"
-                        android:text="30/11/2020"
+                        android:text="@{viewModel.changeInitiative.endDate.substring(0,10)}"
                         android:textAlignment="center" />
 
                 </LinearLayout>
@@ -202,7 +171,7 @@
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="8dp"
                         android:layout_marginEnd="16dp"
-                        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in massa nec purus efficitur dictum at at nulla. Sed aliquam ligula sed odio tincidunt maximus. Duis maximus augue augue, a commodo velit tincidunt eu. Morbi dictum, urna sit amet pellentesque convallis, nisl risus bibendum ligula, ac laoreet quam mi a sem. Maecenas ac velit tristique, feugiat massa a, tincidunt ipsum." />
+                        android:text="@{viewModel.changeInitiative.description}" />
 
                 </LinearLayout>
 
@@ -210,21 +179,22 @@
         </ScrollView>
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/roadmapbutton"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
+            android:layout_marginBottom="24dp"
+            android:onClick="@{()->viewModel.onRoadmapClicked()}"
             android:text="@string/roadmap"
             android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.65"
             app:strokeColor="@color/brown"
-            app:strokeWidth="2dp"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
+            app:strokeWidth="2dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -6,10 +6,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
         <variable
             name="surveyDone"
-            type="com.hogentessentials1.essentials.ui.surveys.SurveyDoneFragment" />
+            type="com.hogentessentials1.essentials.ui.survey.SurveyDoneFragment" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

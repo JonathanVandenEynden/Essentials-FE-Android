@@ -1,4 +1,4 @@
-package com.hogentessentials1.essentials.ui.surveys
+package com.hogentessentials1.essentials.ui.survey
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,7 +9,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.hogentessentials1.essentials.R
-import com.hogentessentials1.essentials.databinding.SurveyDoneBinding
+import com.hogentessentials1.essentials.databinding.SurveyEndBinding
 
 /**
  * @author Ziggy Moens
@@ -21,25 +21,19 @@ class SurveyDoneFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        val binding: SurveyDoneBinding =
-            DataBindingUtil.inflate(inflater, R.layout.survey_done, container, false)
+    ): View {
+        val binding: SurveyEndBinding =
+            DataBindingUtil.inflate(inflater, R.layout.survey_end, container, false)
         binding.surveyDoneButton.setOnClickListener { view: View ->
             view.findNavController().navigate(
                 SurveyDoneFragmentDirections.actionSurveyDoneFragmentToHomeScreenFragment()
             )
         }
+        summary = ""
         binding.surveyDone = this
 
         val args = SurveyDoneFragmentArgs.fromBundle(requireArguments())
-        val questions = args.questions
-
-        var ret = "Your answers: \n"
-
-        for (q in questions) {
-            ret += q.question + ": " + q.answer.toString() + "/5\n"
-        }
-        summary = ret
+        val roadMapItem = args.roadmapitem
 
         (activity as AppCompatActivity).supportActionBar?.title =
             getString(R.string.survey_finished)

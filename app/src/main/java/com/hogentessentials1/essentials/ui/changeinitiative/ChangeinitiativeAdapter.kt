@@ -1,4 +1,4 @@
-package com.hogentessentials1.essentials.ui.surveys
+package com.hogentessentials1.essentials.ui.changeinitiative
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,14 +6,14 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.hogentessentials1.essentials.data.model.Survey
-import com.hogentessentials1.essentials.databinding.AllSurveysListitemBinding
+import com.hogentessentials1.essentials.databinding.SurveysChangeinitiativeListitemBinding
 
 /**
  * @author Ziggy Moens
  */
 
-class AllSurveysAdapter(val clickListener: AllSurveyListener) :
-    ListAdapter<Survey, AllSurveysAdapter.ViewHolder>(AllSurveyDiffCallback()) {
+class SurveysChangeinitiativeAdapter(val clickListener: SurveyListener) :
+    ListAdapter<Survey, SurveysChangeinitiativeAdapter.ViewHolder>(SurveyDiffCallback()) {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = getItem(position)
@@ -24,10 +24,10 @@ class AllSurveysAdapter(val clickListener: AllSurveyListener) :
         return ViewHolder.from(parent)
     }
 
-    class ViewHolder private constructor(val binding: AllSurveysListitemBinding) :
+    class ViewHolder private constructor(val binding: SurveysChangeinitiativeListitemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(clickListener: AllSurveyListener, item: Survey) {
+        fun bind(clickListener: SurveyListener, item: Survey) {
             binding.survey = item
             binding.clickListener = clickListener
             binding.executePendingBindings()
@@ -37,14 +37,14 @@ class AllSurveysAdapter(val clickListener: AllSurveyListener) :
             fun from(parent: ViewGroup): ViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
                 val binding =
-                    AllSurveysListitemBinding.inflate(layoutInflater, parent, false)
+                    SurveysChangeinitiativeListitemBinding.inflate(layoutInflater, parent, false)
                 return ViewHolder(binding)
             }
         }
     }
 }
 
-class AllSurveyDiffCallback : DiffUtil.ItemCallback<Survey>() {
+class SurveyDiffCallback : DiffUtil.ItemCallback<Survey>() {
     override fun areItemsTheSame(oldItem: Survey, newItem: Survey): Boolean {
         return oldItem.id == newItem.id
     }
@@ -54,6 +54,6 @@ class AllSurveyDiffCallback : DiffUtil.ItemCallback<Survey>() {
     }
 }
 
-class AllSurveyListener(val clickListener: (survey: Survey) -> Unit) {
+class SurveyListener(val clickListener: (survey: Survey) -> Unit) {
     fun onClick(survey: Survey) = clickListener(survey)
 }
