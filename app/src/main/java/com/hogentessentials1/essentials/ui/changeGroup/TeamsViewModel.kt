@@ -7,16 +7,11 @@ import androidx.lifecycle.viewModelScope
 import com.hogentessentials1.essentials.data.model.ChangeGroup
 import com.hogentessentials1.essentials.data.model.Repositories.ChangeGroupRepository
 import com.hogentessentials1.essentials.data.model.Repositories.SurveyRepository
+import com.hogentessentials1.essentials.data.model.util.Resource
 import kotlinx.coroutines.launch
 import timber.log.Timber
 import java.lang.Exception
 
-/**
- * Author Simon De Wilde
- *
- * Apistatus enum
- */
-enum class ChangeGroupApiStatus { LOADING, ERROR, DONE }
 
 /**
  * @author Simon De Wilde
@@ -25,17 +20,11 @@ enum class ChangeGroupApiStatus { LOADING, ERROR, DONE }
  */
 class TeamsViewModel(private val repo: ChangeGroupRepository) : ViewModel() {
 
-    private val _status = MutableLiveData<ChangeGroupApiStatus>()
-    val status: LiveData<ChangeGroupApiStatus>
-        get() = _status
 
-    private val _changeGroups = MutableLiveData<List<ChangeGroup>>()
-    val changeGroups: LiveData<List<ChangeGroup>>
-        get() = _changeGroups
+    val changeGroups: LiveData<Resource<List<ChangeGroup>>> = repo.getChangeGroups()
 
     init {
 
-        getChangeGroupsForLoggedInUser()
 
 //        val mockMembers = arrayListOf<String>()
 //        mockMembers.add("Simon")
@@ -52,22 +41,22 @@ class TeamsViewModel(private val repo: ChangeGroupRepository) : ViewModel() {
 //        _changeGroups.value = mockChangeGroups
     }
 
-    private fun getChangeGroupsForLoggedInUser() {
-        viewModelScope.launch {
-            _status.value = ChangeGroupApiStatus.LOADING
-            Timber.e("start met ophalen")
-            try {
-                _changeGroups.value =
-                    repo.getChangeGroupsForUser(4).data // TODO logged in userid meegeven
-                Timber.e("ophalen successvol")
-                _status.value = ChangeGroupApiStatus.DONE
-            } catch (e: Exception) {
-                Timber.e("ophalen mislukt")
-                Timber.e("${e.message}")
-
-                _status.value = ChangeGroupApiStatus.ERROR
-                _changeGroups.value = ArrayList()
-            }
-        }
-    }
+//    private fun getChangeGroupsForLoggedInUser() {
+//        viewModelScope.launch {
+//            _status.value = ChangeGroupApiStatus.LOADING
+//            Timber.e("start met ophalen")
+//            try {
+//                _changeGroups.value =
+//                    repo.getChangeGroupsForUser().data
+//                Timber.e("ophalen successvol")
+//                _status.value = ChangeGroupApiStatus.DONE
+//            } catch (e: Exception) {
+//                Timber.e("ophalen mislukt")
+//                Timber.e("${e.message}")
+//
+//                _status.value = ChangeGroupApiStatus.ERROR
+//                _changeGroups.value = ArrayList()
+//            }
+//        }
+//    }
 }

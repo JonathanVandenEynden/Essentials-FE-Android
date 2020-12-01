@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.hogentessentials1.essentials.R
 import com.hogentessentials1.essentials.data.model.ChangeGroup
+import com.hogentessentials1.essentials.data.model.util.Status
 import com.hogentessentials1.essentials.databinding.TeamsFragmentBinding
 import org.koin.android.ext.android.inject
 
@@ -51,7 +52,13 @@ class TeamsFragment : Fragment(), ChangeGroupClickListener {
         viewModel.changeGroups.observe(
             viewLifecycleOwner,
             Observer {
-                adapter.submitList(it)
+                it?.let { resource ->
+                    when (resource.status){
+                        Status.SUCCESS -> {
+                            adapter.submitList(resource.data)
+                        }
+                    }
+                }
             }
         )
 

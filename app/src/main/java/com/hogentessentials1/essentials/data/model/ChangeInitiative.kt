@@ -1,7 +1,8 @@
 package com.hogentessentials1.essentials.data.model
 
 import android.os.Parcelable
-import androidx.room.PrimaryKey
+import androidx.room.*
+import androidx.room.ForeignKey.CASCADE
 import com.squareup.moshi.Json
 import kotlinx.android.parcel.Parcelize
 import java.util.*
@@ -12,9 +13,10 @@ import kotlin.collections.ArrayList
  * @author Kilian Hoefman: start of Dataclass
  */
 
-// @Entity(tableName = "changeInitiative")
+@Entity(tableName = "changeInitiative")
 @Parcelize
 data class ChangeInitiative(
+    @PrimaryKey @ColumnInfo(name = "change_initiative_id")
     @Json(name = "id")
     val id: Int,
     @Json(name = "name")
@@ -33,7 +35,6 @@ data class ChangeInitiative(
     val changeType: ChangeType?,
     @Json(name = "roadMap")
     val roadMap: Array<RoadMapItem>,
-    //val surveys: ArrayList<Survey> // TODO verwijderen
     @Json(name = "progress")
     val progress: String
 

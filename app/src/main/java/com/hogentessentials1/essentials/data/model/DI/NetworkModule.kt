@@ -1,19 +1,23 @@
 package com.hogentessentials1.essentials.data.model.DI
 
 import com.hogentessentials1.essentials.BuildConfig
-import com.hogentessentials1.essentials.data.model.ChangeGroup
+import com.hogentessentials1.essentials.data.model.network.EssentialsDatabase
 import com.hogentessentials1.essentials.data.model.Repositories.*
 import com.hogentessentials1.essentials.data.model.network.*
+import com.hogentessentials1.essentials.data.model.network.local.ChangeGroupLocalDataSource
+import com.hogentessentials1.essentials.data.model.network.local.ChangeInitiativeLocalDataSource
 import com.hogentessentials1.essentials.data.model.util.Globals
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
+import org.koin.android.ext.koin.androidApplication
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 
 val networkModule = module {
+    // retrofit and interfaces
     single { provideOkHttpClient() }
     single { provideRetrofit(get(), Globals.BASE_URL) }
     single { provideRmiEndpointInterface(get()) }
@@ -26,7 +30,7 @@ val networkModule = module {
     single { provideChangeManagerEndpointInterface(get())}
     single { provideSurveyEndpointInterface(get())}
 
-    // TODO alle apiinterfaces appart als single (zoals hierboven)
+    // remote datasources
     single { RoadMapRemoteDataSource(get()) }
     single { ChangeInitiativeRemoteDataSource(get())}
     single { ChangeGroupRemoteDataSource(get())}
@@ -37,10 +41,19 @@ val networkModule = module {
     single { ChangeManagerRemoteDataSource(get())}
     single { SurveyRemoteDataSource(get())}
 
+    // local datasources
+    single { ChangeInitiativeLocalDataSource(get())}
+    single { ChangeGroupLocalDataSource(get()) }
 
+
+    // Daos
+    single { EssentialsDatabase.getInstance(androidApplication()).ChangeInitiativeDao()}
+    single { EssentialsDatabase.getInstance(androidApplication()).ChangeGroupDao()}
+
+    // repos
     single { RoadMapRepository(get()) }
-    single { ChangeInitiativeRepository(get())}
-    single { ChangeGroupRepository(get())}
+    single { ChangeInitiativeRepository(get(), get())}
+    single { ChangeGroupRepository(get(), get())}
     single { ProjectRepository(get())}
     single { QuestionRepository(get())}
     single { OrganizationRepository(get())}

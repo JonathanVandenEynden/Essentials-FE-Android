@@ -3,7 +3,9 @@ package com.hogentessentials1.essentials.data.model.Repositories
 import com.hogentessentials1.essentials.data.model.ChangeInitiative
 import com.hogentessentials1.essentials.data.model.network.ChangeInitiativeRemoteDataSource
 import com.hogentessentials1.essentials.data.model.network.RoadMapRemoteDataSource
+import com.hogentessentials1.essentials.data.model.network.local.ChangeInitiativeLocalDataSource
 import com.hogentessentials1.essentials.data.model.util.Resource
+import com.hogentessentials1.essentials.data.model.util.performGetOperation
 import javax.inject.Singleton
 
 /**
@@ -11,17 +13,22 @@ import javax.inject.Singleton
  */
 
 @Singleton
-class ChangeInitiativeRepository(val remoteDataSource: ChangeInitiativeRemoteDataSource) {
+class ChangeInitiativeRepository(
+    val remoteDataSource: ChangeInitiativeRemoteDataSource,
+    val localDataSource: ChangeInitiativeLocalDataSource
+) {
 
-    suspend fun getChangeInitiativeById(changeInitiativeId: Int) : Resource<ChangeInitiative>{
-      return remoteDataSource.getChangeInitiativeById(changeInitiativeId)
+    suspend fun getChangeInitiativeById(changeInitiativeId: Int): Resource<ChangeInitiative> {
+        return remoteDataSource.getChangeInitiativeById(changeInitiativeId)
     }
 
-    suspend fun getChangeInitiativesForEmployee(employeeId: Int): Resource<List<ChangeInitiative>>{
-        return remoteDataSource.getChangeInitiativesForEmployee(employeeId)
+    suspend fun getChangeInitiatives(): Resource<List<ChangeInitiative>> {
+        return remoteDataSource.getChangeInitiatives()
     }
 
-    suspend fun getChangeInitiativesForChangeManager(changeManagerId: Int) : Resource<List<ChangeInitiative>>{
-        return remoteDataSource.getChangeInitiativesForChangeManager(changeManagerId)
-    }
+    fun getPharmacies() = performGetOperation(
+        databaseQuery = { localDataSource.getChangeInitiatives() },
+        networkCall = { remoteDataSource.getChangeInitiatives() },
+        saveCallResult = { localDataSource.saveChangeInitiatives(it) }
+    )
 }
