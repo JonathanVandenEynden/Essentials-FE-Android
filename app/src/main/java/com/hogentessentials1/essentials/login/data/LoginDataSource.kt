@@ -21,22 +21,18 @@ class LoginDataSource(val aApiService: AccountEndpointInterface) : BaseDataSourc
 
     suspend fun login(username: String, password: String): Result<LoggedInUser> {
         try {
-            val jsonObject = JSONObject()
-            jsonObject.put("email", username)
-            jsonObject.put("password", password)
-            val jsonObjectString = jsonObject.toString()
-            val requestBody = jsonObjectString.toRequestBody("application/json".toMediaTypeOrNull())
 
+            val response =  aApiService.login(getRequestBody(username, password))
 
-            val response =  aApiService.login(requestBody)
-            Timber.e(response.message())
+            if (response.isSuccessful){
+                Globals.bearerToken = response.body()!!.charStream().readText()
 
-            // Todo checken of het gelukt is
+                val fakeUser = LoggedInUser(Globals.username)
+                return Result.Success(fakeUser)
+            } else{
+                throw Exception()
+            }
 
-            Globals.bearerToken = response.message()
-
-            val fakeUser = LoggedInUser(Globals.username)
-            return Result.Success(fakeUser)
         } catch (e: Throwable) {
             return Result.Error(IOException("Error logging in", e))
         }
@@ -44,5 +40,12 @@ class LoginDataSource(val aApiService: AccountEndpointInterface) : BaseDataSourc
 
     fun logout() {
         Globals.bearerToken = ""
+    }
+
+    private fun getRequestBody(username: String, password: String): RequestBody {
+        val jsonObject = JSONObject()
+        jsonObject.put("email", username)
+        jsonObject.put("password", password)
+        return jsonObject.toString().toRequestBody("application/json".toMediaTypeOrNull())
     }
 }
