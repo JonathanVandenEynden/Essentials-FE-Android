@@ -17,17 +17,6 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/option5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-
-            app:layout_constraintEnd_toEndOf="@+id/ratingBar_question"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="@+id/ratingBar_question"
-            app:layout_constraintTop_toBottomOf="@+id/ratingBar_question" />
-
-        <TextView
             android:id="@+id/survey_question"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -53,28 +42,58 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <TextView
-            android:id="@+id/option0"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-
-            app:layout_constraintEnd_toEndOf="@+id/ratingBar_question"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/ratingBar_question"
-            app:layout_constraintTop_toBottomOf="@+id/ratingBar_question" />
-
-        <RatingBar
-            android:id="@+id/ratingBar_question"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:stepSize="0.5"
-            android:contentDescription="@string/ratingbar_question"
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             app:layout_constraintBottom_toTopOf="@+id/next_question"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.502"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/survey_question" />
+            app:layout_constraintTop_toBottomOf="@+id/survey_question">
+
+            <EditText
+                android:id="@+id/open_question"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:autofillHints=""
+                android:ems="10"
+                android:inputType="textMultiLine" />
+
+            <RatingBar
+                android:id="@+id/ratingBar_question"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:contentDescription="@string/ratingbar_question"
+                android:stepSize="0.5" />
+
+            <RadioGroup
+                android:id="@+id/yesno_question"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true">
+
+                <RadioButton
+                    android:id="@+id/yes_yesno"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/yes" />
+
+                <RadioButton
+                    android:id="@+id/no_yesno"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/no" />
+
+            </RadioGroup>
+
+            <RadioGroup
+                android:id="@+id/mc_question"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true" />
+
+        </RelativeLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

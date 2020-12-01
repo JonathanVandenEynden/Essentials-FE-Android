@@ -35,7 +35,7 @@ class ChangeInitiativesViewModel(private val repo: ChangeInitiativeRepository) :
             Timber.e("Change initiative - start met ophalen")
             try {
                 _changeinitiavtives.value =
-                    repo.getChangeInitiativesForEmployee(5).data
+                    repo.getChangeInitiativesForEmployee(4).data
                 Timber.e("Change initiative - ophalen successvol")
                 Timber.e(changeinitiatives.value.toString())
                 _status.value = Status.SUCCESS

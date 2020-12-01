@@ -4,13 +4,17 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.RadioButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.hogentessentials1.essentials.R
 import com.hogentessentials1.essentials.data.model.Question
+import com.hogentessentials1.essentials.data.model.RoadMapItem
 import com.hogentessentials1.essentials.databinding.SurveyQuestionBinding
+import com.hogentessentials1.essentials.ui.roadMap.RoadMapFragmentDirections
+import kotlinx.android.synthetic.main.survey_question.view.*
 import timber.log.Timber
 
 /**
@@ -18,27 +22,14 @@ import timber.log.Timber
  */
 
 class SurveyQuestionFragement : Fragment() {
-    /*private val questions: MutableList<SurveyQuestion> = mutableListOf(
-        SurveyQuestion(
-            question = "What do you think of the new food?",
-            option0 = "uneatable",
-            option5 = "delicious"
-        ),
-        SurveyQuestion(
-            question = "What do you think of the personnel working in the new cafeteria",
-            option0 = "unfriendly",
-            option5 = "friendly"
-        )
-    )*/
 
-    private var questions: ArrayList<Question> = arrayListOf()
+    private var questions: List<Question> = arrayListOf()
+    private lateinit var roadMapItem: RoadMapItem
     private lateinit var binding: SurveyQuestionBinding
     lateinit var currentQuestion: Question
-    private lateinit var option0: String
-    private lateinit var option5: String
     private var questionIndex = 0
     private var numberOfQuestions = 0
-    private var ratingIsGiven = false
+    private var errorOccured = false
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -51,41 +42,20 @@ class SurveyQuestionFragement : Fragment() {
             container,
             false
         )
-
-        val args = SurveyQuestionFragementArgs.fromBundle(requireArguments())
-        val roadMapItem = args.roadmapitem
-        binding.surveyQuestion.text = roadMapItem.assessment.toString()
-
-        Timber.e(roadMapItem.assessment.toString())
-        Timber.e(roadMapItem.toString())
-        binding.nextQuestion.setOnClickListener { view: View ->
-            view.findNavController().navigate(
-                SurveyQuestionFragementDirections.actionSurveyQuestionFragmentToSurveyEndFragment(
-                    roadMapItem
-                )
-            )
-        }
-
-        /*Timber.e(roadMapItem.assessment.toString())
         try {
-            val questions = roadMapItem.assessment!!.questions
-            numberOfQuestions = questions.size
-
+            val args = SurveyQuestionFragementArgs.fromBundle(requireArguments())
+            roadMapItem = args.roadmapitem
+            questions = roadMapItem.assessment!!.questions
 
             binding.currentQuestion = this
+            numberOfQuestions = questions.size
+
             setQuestion()
 
-            binding.ratingBarQuestion.setOnRatingBarChangeListener { _, _, _ ->
-                (ratingGiven())
-            }
-
             binding.nextQuestion.setOnClickListener { view: View ->
-                // if (ratingIsGiven) {
-                //currentQuestion.answer = binding.ratingBarQuestion.rating.toDouble()
                 if (questionIndex < numberOfQuestions) {
                     currentQuestion = questions[questionIndex]
                     setQuestion()
-                    binding.ratingBarQuestion.rating = 0.0F
                     binding.invalidateAll()
                 } else {
                     view.findNavController().navigate(
@@ -94,22 +64,81 @@ class SurveyQuestionFragement : Fragment() {
                         )
                     )
                 }
-
-                // }
-*/
+            }
+        } catch (e: Exception) {
+            errorOccured = true
+        }
         return binding.root
     }
 
-    private fun ratingGiven() {
-        ratingIsGiven = true
+    private fun setContent() {
+        binding.yesnoQuestion.visibility = View.INVISIBLE
+        binding.ratingBarQuestion.visibility = View.INVISIBLE
+        binding.mcQuestion.visibility = View.INVISIBLE
+        binding.openQuestion.visibility = View.INVISIBLE
+        if (currentQuestion.type == "0") {
+            binding.yesnoQuestion.visibility = View.VISIBLE
+        } else if (currentQuestion.type == "1") {
+            binding.ratingBarQuestion.visibility = View.VISIBLE
+        } else if (currentQuestion.type == "2") {
+            binding.mcQuestion.visibility = View.VISIBLE
+            Timber.e(currentQuestion.possibleAnswers.keys.toString())
+            for (x in currentQuestion.possibleAnswers.keys) {
+                val r = RadioButton(context)
+                r.text = x
+                binding.mcQuestion.mc_question.addView(r)
+            }
+        } else if (currentQuestion.type == "3") {
+            binding.openQuestion.visibility = View.VISIBLE
+        }
+        binding.surveyQuestion.text = currentQuestion.questionString
     }
 
     private fun setQuestion() {
         currentQuestion = questions[questionIndex]
-        questionIndex++
-//        option0 = currentQuestion.option0
-//        option5 = currentQuestion.option5
         (activity as AppCompatActivity).supportActionBar?.title =
             getString(R.string.title_survey_question, questionIndex + 1, numberOfQuestions)
+        questionIndex++
+        setContent()
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        if (errorOccured) {
+            view?.findNavController()
+                ?.navigate(RoadMapFragmentDirections.actionRoadMapFragmentToNotFoundFragment())
+        }
     }
 }
+
+/*Timber.e(roadMapItem.assessment.toString())
+try {
+val questions = roadMapItem.assessment!!.questions
+numberOfQuestions = questions.size
+
+
+binding.currentQuestion = this
+setQuestion()
+
+binding.ratingBarQuestion.setOnRatingBarChangeListener { _, _, _ ->
+    (ratingGiven())
+}
+
+binding.nextQuestion.setOnClickListener { view: View ->
+    // if (ratingIsGiven) {
+    //currentQuestion.answer = binding.ratingBarQuestion.rating.toDouble()
+    if (questionIndex < numberOfQuestions) {
+        currentQuestion = questions[questionIndex]
+        setQuestion()
+        binding.ratingBarQuestion.rating = 0.0F
+        binding.invalidateAll()
+    } else {
+        view.findNavController().navigate(
+            SurveyQuestionFragementDirections.actionSurveyQuestionFragmentToSurveyEndFragment(
+                roadMapItem
+            )
+        )
+    }
+
+    // }
+*/

@@ -33,7 +33,7 @@ class RoadMapListViewModel(private val repo: ChangeInitiativeRepository) : ViewM
             Timber.e("All roadmapitems - start met ophalen")
             try {
                 _changeinitiatives.value =
-                    repo.getChangeInitiativesForEmployee(5).data
+                    repo.getChangeInitiativesForEmployee(4).data
                 Timber.e("All roadmapitems - ophalen successvol")
 
                 val temp_rmi = arrayListOf<RoadMapItem>()
