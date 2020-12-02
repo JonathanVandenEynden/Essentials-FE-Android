@@ -1,7 +1,6 @@
 package com.hogentessentials1.essentials.data.model.util
 
 import com.auth0.android.jwt.JWT
-import java.lang.Exception
 
 class Globals {
     companion object {
@@ -20,6 +19,18 @@ class Globals {
                     return ""
                 }
                 return ""
+            }
+
+        val userid: Int?
+            get() {
+                try {
+                    val jwt = JWT(bearerToken)
+                    jwt.getClaim("nameid").let {
+                        return it.asInt()
+                    }
+                } catch (e: Exception) {
+                    return 0
+                }
             }
     }
 }

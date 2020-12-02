@@ -14,7 +14,7 @@ data class Assessment(
     @Json(name = "id")
     val id: String, // TODO Primary key toevoegen
     @Json(name = "questions")
-    val questions: List<Question>,
+    var questions: List<Question>,
     @Json(name = "feedback")
     val feedback: Question?,
     @Json(name = "roadMapItemId")

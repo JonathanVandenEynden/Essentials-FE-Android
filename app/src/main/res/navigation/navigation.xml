@@ -18,14 +18,13 @@
         tools:layout="@layout/changeinitiatives_list">
         <argument
             android:name="changemanager"
-            android:defaultValue="false"
             app:argType="boolean" />
-        <action
-            android:id="@+id/action_changeInitiatives_to_notFoundFragment"
-            app:destination="@id/notFoundFragment" />
         <action
             android:id="@+id/action_changeInitiatives_to_changeInitiativeFragment"
             app:destination="@id/changeInitiativeFragment" />
+        <action
+            android:id="@+id/action_changeInitiatives_to_notFoundFragment"
+            app:destination="@id/notFoundFragment" />
     </fragment>
     <fragment
         android:id="@+id/homeScreenFragment"
@@ -58,9 +57,6 @@
         <argument
             android:name="roadmapitem"
             app:argType="com.hogentessentials1.essentials.data.model.RoadMapItem" />
-        <action
-            android:id="@+id/action_surveyQuestionFragment_to_notFoundFragment"
-            app:destination="@id/notFoundFragment" />
     </fragment>
     <fragment
         android:id="@+id/surveyEndFragment"
@@ -72,9 +68,6 @@
         <argument
             android:name="roadmapitem"
             app:argType="com.hogentessentials1.essentials.data.model.RoadMapItem" />
-        <action
-            android:id="@+id/action_surveyEndFragment_to_notFoundFragment"
-            app:destination="@id/notFoundFragment" />
     </fragment>
     <fragment
         android:id="@+id/changeInitiativeFragment"
@@ -89,9 +82,6 @@
         <argument
             android:name="changeinitiative"
             app:argType="com.hogentessentials1.essentials.data.model.ChangeInitiative" />
-        <action
-            android:id="@+id/action_changeInitiativeFragment_to_notFoundFragment"
-            app:destination="@id/notFoundFragment" />
     </fragment>
     <fragment
         android:id="@+id/dashboardFragment"
@@ -160,5 +150,16 @@
         <action
             android:id="@+id/action_roadMapFragment_to_notFoundFragment"
             app:destination="@id/notFoundFragment" />
+        <action
+            android:id="@+id/action_roadMapFragment_to_surveyComplete"
+            app:destination="@id/surveyComplete" />
+    </fragment>
+    <fragment
+        android:id="@+id/surveyComplete"
+        android:name="com.hogentessentials1.essentials.ui.survey.SurveyComplete"
+        android:label="SurveyComplete">
+        <action
+            android:id="@+id/action_surveyComplete_to_homeScreenFragment"
+            app:destination="@id/homeScreenFragment" />
     </fragment>
 </navigation>

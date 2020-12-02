@@ -10,8 +10,10 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.hogentessentials1.essentials.R
+import com.hogentessentials1.essentials.data.model.Question
 import com.hogentessentials1.essentials.data.model.RoadMapItem
 import com.hogentessentials1.essentials.databinding.RoadmapBinding
+import timber.log.Timber
 
 /**
  * @author Ziggy Moens
@@ -34,6 +36,20 @@ class RoadMapFragment : Fragment() {
 
         val viewModel = ViewModelProvider(this).get(RoadMapViewModel::class.java)
 
+        val q_original: List<Question> = roadmapitem.assessment!!.questions
+        val q: ArrayList<Question> = arrayListOf()
+
+        Timber.e(roadmapitem.assessment?.questions!!.toString())
+        for (question in roadmapitem.assessment?.questions!!) {
+            Timber.e("lus")
+            if (!question.questionRegistered!!.containsKey("1")) {
+                Timber.e("geen 1 gevonden")
+                q.add(question)
+            }
+        }
+
+        roadmapitem.assessment!!.questions = q
+
         viewModel.roadMapItem = roadmapitem
 
         binding.viewModel = viewModel
@@ -42,12 +58,19 @@ class RoadMapFragment : Fragment() {
             viewLifecycleOwner,
             {
                 if (it) {
-                    binding.root.findNavController().navigate(
-                        RoadMapFragmentDirections.actionRoadMapFragmentToSurveyQuestionFragment(
-                            changemanager,
-                            roadmapitem
+                    if (q.size == 0) {
+                        roadmapitem.assessment!!.questions = q_original
+                        binding.root.findNavController().navigate(
+                            RoadMapFragmentDirections.actionRoadMapFragmentToSurveyComplete()
                         )
-                    )
+                    } else {
+                        binding.root.findNavController().navigate(
+                            RoadMapFragmentDirections.actionRoadMapFragmentToSurveyQuestionFragment(
+                                changemanager,
+                                roadmapitem
+                            )
+                        )
+                    }
                     viewModel.onNavigatedToSurvey()
                 }
             }

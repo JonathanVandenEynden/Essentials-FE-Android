@@ -6,11 +6,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.hogentessentials1.essentials.R
-import com.hogentessentials1.essentials.data.model.util.Status
 import com.hogentessentials1.essentials.login.data.LoginRepository
 import com.hogentessentials1.essentials.login.data.Result
 import kotlinx.coroutines.launch
-import timber.log.Timber
 
 /**
  * @author Simon De Wilde
@@ -31,8 +29,6 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
 //    val status: LiveData<Status>
 //        get() = _status
 
-
-
     fun login(username: String, password: String) {
         // can be launched in a separate asynchronous job
         viewModelScope.launch {
@@ -45,7 +41,6 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
                 _loginResult.value = LoginResult(error = R.string.login_failed)
             }
         }
-
     }
 
     fun loginDataChanged(username: String, password: String) {

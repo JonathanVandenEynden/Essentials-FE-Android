@@ -10,13 +10,13 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.hogentessentials1.essentials.R
+import com.hogentessentials1.essentials.data.model.util.Globals
 import com.hogentessentials1.essentials.databinding.ChangeinitiativesListBinding
 import org.koin.android.ext.android.inject
 import timber.log.Timber
 
 /**
  * @author Ziggy Moens
- * @author Simon De Wilde
  */
 class ChangeInitiativesFragment : Fragment() {
 
@@ -39,13 +39,11 @@ class ChangeInitiativesFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        val changemanager: Boolean?
+        Timber.e(Globals.userid.toString())
+
+        val changemanager: Boolean
         val args = ChangeInitiativesFragmentArgs.fromBundle(requireArguments())
         changemanager = args.changemanager
-
-        if (changemanager != true && changemanager != false) {
-            ChangeInitiativesFragmentDirections.actionChangeInitiativesToNotFoundFragment()
-        }
 
         binding = DataBindingUtil.inflate(
             inflater,
@@ -64,15 +62,12 @@ class ChangeInitiativesFragment : Fragment() {
 
         binding.ciList.layoutManager = manager
 
-        val adapter = ChangeInitiativeAdapter(
+        adapter = ChangeInitiativeAdapter(
             ChangeInitiativesListener { changeInitiative ->
                 viewModel.onChangeInitiativeClicked(changeInitiative)
             }
         )
 
-        /**
-         * @author Ziggy Moens
-         */
         viewModel.navigateToChangeInitiative.observe(
             viewLifecycleOwner,
             { changeInitiative ->
@@ -90,24 +85,26 @@ class ChangeInitiativesFragment : Fragment() {
 
         binding.ciList.adapter = adapter
 
-        Timber.e(viewModel.changeinitiatives.value.toString())
+        if (changemanager) {
+            (activity as AppCompatActivity).supportActionBar?.title = "My Change initiatives"
+            viewModel.changeinitiativesChangeManager(6)
+        } else {
+            (activity as AppCompatActivity).supportActionBar?.title = "Change initiatives"
+            viewModel.changeinitiativesEmployee(4)
+        }
 
         viewModel.changeinitiatives.observe(
             viewLifecycleOwner,
             { adapter.submitList(it) }
         )
 
-        // adapter.submitList(viewModel.changeinitiatives.value)
-
-        /**
-         * @author Ziggy Moens
-         */
-        (activity as AppCompatActivity).supportActionBar?.title = "Change initiatives"
-
         return binding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        if (viewModel.changeinitiatives.value?.size == 0) {
+            findNavController().navigate(ChangeInitiativesFragmentDirections.actionChangeInitiativesToNotFoundFragment())
+        }
     }
 }

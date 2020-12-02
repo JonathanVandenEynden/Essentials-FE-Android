@@ -1,6 +1,5 @@
 package com.hogentessentials1.essentials.data.model.DI
 
-import android.accounts.Account
 import com.hogentessentials1.essentials.BuildConfig
 import com.hogentessentials1.essentials.data.model.Repositories.*
 import com.hogentessentials1.essentials.data.model.network.*
@@ -29,7 +28,7 @@ val networkModule = module {
     single { provideEmployeeEndpointInterface(get()) }
     single { provideChangeManagerEndpointInterface(get()) }
     single { provideSurveyEndpointInterface(get()) }
-    single { provideAccountEndpointInterface(get())}
+    single { provideAccountEndpointInterface(get()) }
 
     // TODO alle apiinterfaces appart als single (zoals hierboven)
     single { RoadMapRemoteDataSource(get()) }
@@ -130,5 +129,5 @@ private fun provideChangeManagerEndpointInterface(retrofit: Retrofit): ChangeMan
 private fun provideSurveyEndpointInterface(retrofit: Retrofit): SurveyEndpointInterface =
     retrofit.create(SurveyEndpointInterface::class.java)
 
-private fun provideAccountEndpointInterface(retrofit: Retrofit) : AccountEndpointInterface =
+private fun provideAccountEndpointInterface(retrofit: Retrofit): AccountEndpointInterface =
     retrofit.create(AccountEndpointInterface::class.java)

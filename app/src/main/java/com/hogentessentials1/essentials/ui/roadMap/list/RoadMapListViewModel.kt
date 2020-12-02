@@ -27,7 +27,7 @@ class RoadMapListViewModel(private val repo: ChangeInitiativeRepository) : ViewM
     val RoadMapItems: LiveData<List<RoadMapItem>>
         get() = _roadmapitems
 
-    init {
+    fun getAllSurveys() {
         viewModelScope.launch {
             _status.value = Status.LOADING
             Timber.e("All roadmapitems - start met ophalen")

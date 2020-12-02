@@ -94,6 +94,7 @@ class RoadMapListFragment : Fragment() {
         if (!allSurveys) {
             adapter.submitList(roadmapItems)
         } else {
+            viewModel.getAllSurveys()
             viewModel.RoadMapItems.observe(
                 viewLifecycleOwner,
                 { adapter.submitList(it) }

@@ -15,7 +15,6 @@ import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import com.hogentessentials1.essentials.MainActivity
 import com.hogentessentials1.essentials.R
 import org.koin.android.ext.android.inject
@@ -42,7 +41,7 @@ class LoginActivity : AppCompatActivity() {
         val login = findViewById<Button>(R.id.login)
         val loading = findViewById<ProgressBar>(R.id.loading)
 
-        val loginViewModel : LoginViewModel by inject()
+        val loginViewModel: LoginViewModel by inject()
 //                = ViewModelProvider(this, LoginViewModelFactory())
 //            .get(LoginViewModel::class.java)
 

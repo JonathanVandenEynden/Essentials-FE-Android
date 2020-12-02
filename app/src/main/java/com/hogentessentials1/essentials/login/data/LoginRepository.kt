@@ -1,7 +1,6 @@
 package com.hogentessentials1.essentials.login.data
 
 import com.hogentessentials1.essentials.login.data.model.LoggedInUser
-import okhttp3.internal.wait
 
 /**
  * @author Simon De Wilde

@@ -50,4 +50,8 @@
     <string name="not_found">The requested page is not found</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
+    <string name="amount_of_questions">Amount of questions</string>
+    <string name="your_answer">Your answer</string>
+    <string name="survey_completed">Survey was already completed</string>
+    <string name="feedback_question">How do you feel about this change initiative?</string>
 </resources>

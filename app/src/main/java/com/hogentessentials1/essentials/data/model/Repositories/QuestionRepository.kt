@@ -15,4 +15,8 @@ class QuestionRepository(val remoteDataSource: QuestionRemoteDataSource) {
     suspend fun getAllQuestionsFromSurveyById(surveyId: Int): Resource<List<Question>> {
         return remoteDataSource.getAllQuestionsFromSurveyById(surveyId)
     }
+
+    suspend fun postAnswerToQuestion(question: Int, answer: String) {
+        return remoteDataSource.postAnswerToQuestion(question, answer)
+    }
 }

@@ -6,11 +6,7 @@ import com.hogentessentials1.essentials.data.model.Repositories.QuestionReposito
 import kotlinx.coroutines.launch
 import timber.log.Timber
 
-/**
- * @author Ziggy Moens
- */
-
-class SurveyQuestionViewModel(private val repo: QuestionRepository) : ViewModel() {
+class SurveyDoneViewModel(private val repo: QuestionRepository) : ViewModel() {
 
     fun answer(questionId: Int, answer: String) {
         try {

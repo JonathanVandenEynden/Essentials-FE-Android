@@ -51,7 +51,9 @@ class HomeScreenFragment : Fragment() {
                 if (it) {
                     val navController = binding.root.findNavController()
                     navController.navigate(
-                        HomeScreenFragmentDirections.actionHomeScreenFragmentToChangeInitiativesFragment()
+                        HomeScreenFragmentDirections.actionHomeScreenFragmentToChangeInitiativesFragment(
+                            false
+                        )
                     )
                     viewModel.onNavigatedToChangeInitiatives()
                 }
@@ -121,8 +123,9 @@ class HomeScreenFragment : Fragment() {
             {
                 if (it) {
                     binding.root.findNavController().navigate(
-                        HomeScreenFragmentDirections.actionHomeScreenFragmentToChangeInitiativesFragment()
-                            .setChangemanager(true)
+                        HomeScreenFragmentDirections.actionHomeScreenFragmentToChangeInitiativesFragment(
+                            true
+                        )
                     )
                     viewModel.onNavigatedToMyChangeInitiatives()
                 }
