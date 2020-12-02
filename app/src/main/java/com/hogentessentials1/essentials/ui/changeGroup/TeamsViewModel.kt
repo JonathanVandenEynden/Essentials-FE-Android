@@ -6,7 +6,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.hogentessentials1.essentials.data.model.ChangeGroup
 import com.hogentessentials1.essentials.data.model.Repositories.ChangeGroupRepository
-import com.hogentessentials1.essentials.data.model.Repositories.SurveyRepository
 import kotlinx.coroutines.launch
 import timber.log.Timber
 import java.lang.Exception
