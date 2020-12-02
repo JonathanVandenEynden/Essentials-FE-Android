@@ -69,7 +69,7 @@ class SurveysChangeInitiativeFragment : Fragment() {
 
         binding.surveysCISummary.adapter = adapter
 
-        //adapter.submitList(viewModel.changeInitiative.surveys)
+        // adapter.submitList(viewModel.changeInitiative.surveys)
 
         binding.surveysCIName.text = getString(R.string.ci_screen, viewModel.changeInitiative.title)
 

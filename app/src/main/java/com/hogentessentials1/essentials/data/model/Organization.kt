@@ -1,11 +1,10 @@
 package com.hogentessentials1.essentials.data.model
 
 import android.os.Parcelable
-import androidx.room.Entity
 import com.squareup.moshi.Json
 import kotlinx.android.parcel.Parcelize
 
-//@Entity(tableName = "organization")
+// @Entity(tableName = "organization")
 @Parcelize
 data class Organization(
     @Json(name = "id")
@@ -16,7 +15,7 @@ data class Organization(
     val employees: Array<Employee>?,
     @Json(name = "changeManagers")
     val changeManagers: Array<ChangeManager>,
-    //No organizationParts needed in android application
+    // No organizationParts needed in android application
     @Json(name = "portfolio")
     val portfolio: Portfolio?
 ) : Parcelable
