@@ -120,11 +120,11 @@ class DashboardFragment : Fragment() {
                 ).show()
                 //showCharts(clickedItem)
                 var amount_filledIn: Double = 0.0;
-                viewModel.fi.observe(viewLifecycleOwner, Observer { amount_filledIn = it })
-                if (amount_filledIn != 0.0)
-                {
-                    speed.speedTo(amount_filledIn.toFloat())
-                }
+                viewModel.fi.observe(viewLifecycleOwner, Observer {
+                    amount_filledIn = it
+                    speed.speedTo(it.toFloat())
+                })
+
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {}
@@ -144,10 +144,11 @@ class DashboardFragment : Fragment() {
                     "$clickedText selected",
                     Toast.LENGTH_SHORT
                 ).show()
+                viewModel.chosenCIId = clickedItem.id
+                refreshVM()
                 rmiAdapter = DashboardRMIAdapter(parent.context, ArrayList(clickedItem.roadMap.toList()))
                 spinnerrmi.adapter = rmiAdapter
             }
-
             override fun onNothingSelected(parent: AdapterView<*>?) {}
         })
 
@@ -180,6 +181,11 @@ class DashboardFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+    }
+
+    fun refreshVM()
+    {
+        viewModel.fillDashboard()
     }
 
 

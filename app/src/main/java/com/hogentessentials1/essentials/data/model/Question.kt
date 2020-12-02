@@ -27,5 +27,5 @@ data class Question(
     @Json(name = "type")
     val type: String,
     @Json(name = "questionRegistered")
-    val questionRegistered: Map<String, Int>?
+    val questionRegistered: Map<String, String>?
 ) : Parcelable

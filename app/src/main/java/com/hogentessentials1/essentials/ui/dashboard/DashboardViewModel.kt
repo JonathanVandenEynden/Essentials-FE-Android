@@ -190,9 +190,7 @@ class DashboardViewModel(private val dashboardRepository: DashboardRepository, p
                     cirepository.getChangeInitiativesForChangeManager(6).data
                 _roadMapItems.value =
                     rmiRepository.getRoadMaps(chosenCIId).data
-                _filledIn.value = dashboardRepository.getFilledInSurveys(chosenCIId).data
-                _mood.value = dashboardRepository.getMood(chosenCIId).data
-
+                fillDashboard()
                 Timber.e("ophalen successvol")
                 _status.value = Status.SUCCESS
             } catch (e: Exception) {
@@ -201,6 +199,14 @@ class DashboardViewModel(private val dashboardRepository: DashboardRepository, p
 
                 _status.value = Status.ERROR
             }
+        }
+    }
+
+    fun fillDashboard()
+    {
+        viewModelScope.launch {
+            _filledIn.value = dashboardRepository.getFilledInSurveys(chosenCIId).data
+            _mood.value = dashboardRepository.getMood(chosenCIId).data
         }
     }
 
