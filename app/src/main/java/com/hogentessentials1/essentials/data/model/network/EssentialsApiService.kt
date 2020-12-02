@@ -1,13 +1,10 @@
 package com.hogentessentials1.essentials.data.model.network
 
 import com.hogentessentials1.essentials.data.model.*
-import com.squareup.moshi.Moshi
-import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import okhttp3.RequestBody
 import okhttp3.ResponseBody
 import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.scalars.ScalarsConverterFactory
+// import retrofit2.converter.scalars.ScalarsConverterFactory
 import retrofit2.http.*
 
 /**
@@ -15,7 +12,7 @@ import retrofit2.http.*
  * @author Jonathan Vanden Eynden
  */
 
-private const val BASE_URL = "https://essentialsapi.azurewebsites.net/api/"
+/*private const val BASE_URL = "https://essentialsapi.azurewebsites.net/api/"
 
 private val moshi = Moshi.Builder()
     .add(KotlinJsonAdapterFactory())
@@ -25,7 +22,7 @@ private val retrofit = Retrofit.Builder()
     .addConverterFactory(ScalarsConverterFactory.create())
     .baseUrl(BASE_URL)
     .build()
-
+*/
 interface EmployeeEndpointInterface {
 
     @GET("Employees/{id}")
@@ -48,6 +45,12 @@ interface ChangeInitiativesEndpointInterface {
 
     @GET("ChangeInitiatives/GetChangeInitiativesForChangeManager/{changeManagerId}")
     suspend fun getChangeInitiativesForChangeManager(@Path("changeManagerId") changeManagerId: Int): Response<List<ChangeInitiative>>
+}
+
+interface ChangeGroupEndpointInterface {
+    // TODO remove userID --> bearertoken is added with interceptor
+    @GET("ChangeGroups/GetChangeGroupForUser/{userId}")
+    suspend fun getChangeGroupsForUser(@Path("userId") userId: Int): Response<List<ChangeGroup>>
 }
 
 interface ChangeManagersEndpointInterface {
@@ -111,4 +114,11 @@ interface SurveyEndpointInterface {
 
     @GET("Survey/GetSurveyByRoadMapItemId/{roadmapItemId}")
     suspend fun getSurveyByRoadMapItemId(@Path("roadmapItemId") roadmapItemId: Int): Response<Survey>
+}
+
+interface AccountEndpointInterface {
+    @POST("Account/Login")
+    suspend fun login(
+        @Body requestBody: RequestBody
+    ): Response<ResponseBody>
 }

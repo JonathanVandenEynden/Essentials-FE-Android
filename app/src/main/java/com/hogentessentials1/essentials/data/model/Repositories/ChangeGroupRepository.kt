@@ -1,7 +1,8 @@
 package com.hogentessentials1.essentials.data.model.Repositories
 
-import com.hogentessentials1.essentials.data.model.DAOs.ChangeGroupDao
-import javax.inject.Inject
+import com.hogentessentials1.essentials.data.model.ChangeGroup
+import com.hogentessentials1.essentials.data.model.network.ChangeGroupRemoteDataSource
+import com.hogentessentials1.essentials.data.model.util.Resource
 import javax.inject.Singleton
 
 /**
@@ -9,9 +10,7 @@ import javax.inject.Singleton
  */
 
 @Singleton
-class ChangeGroupRepository @Inject constructor(private val changeGroupDao: ChangeGroupDao) {
+class ChangeGroupRepository(val remoteDataSource: ChangeGroupRemoteDataSource) {
 
-    fun getChangeGroups() = changeGroupDao.getChangeGroups()
-
-    fun getChangeGroup(changeGroupId: Int) = changeGroupDao.getChangeGroup(changeGroupId)
+    suspend fun getChangeGroupsForUser(userId: Int): Resource<List<ChangeGroup>> = remoteDataSource.getChangeGroupsForUser(userId)
 }
