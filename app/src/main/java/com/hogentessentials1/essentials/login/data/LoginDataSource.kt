@@ -27,8 +27,8 @@ class LoginDataSource(val aApiService: AccountEndpointInterface) : BaseDataSourc
             if (response.isSuccessful){
                 Globals.bearerToken = response.body()!!.charStream().readText()
 
-                val fakeUser = LoggedInUser(Globals.username)
-                return Result.Success(fakeUser)
+                val user = LoggedInUser(Globals.username)
+                return Result.Success(user)
             } else{
                 throw Exception()
             }
