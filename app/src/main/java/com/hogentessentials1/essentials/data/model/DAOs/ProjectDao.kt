@@ -16,5 +16,5 @@ interface ProjectDao {
     fun getProject(id: Int): LiveData<Project>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertAll(projects: List<Project>)
+    fun insertAll(projects: List<Project>)
 }

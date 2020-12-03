@@ -20,5 +20,5 @@ interface RoadMapDao {
     fun getRoadMap(roadMapId: Int): LiveData<RoadMapItem>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertAll(roadMapItems: List<RoadMapItem>)
+    fun insertAll(roadMapItems: List<RoadMapItem>)
 }

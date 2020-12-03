@@ -20,5 +20,5 @@ interface EmployeeDao {
     fun getEmployee(employeeId: Int): LiveData<Employee>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertAll(employees: List<Employee>)
+    fun insertAll(employees: List<Employee>)
 }

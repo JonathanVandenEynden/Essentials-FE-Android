@@ -4,8 +4,7 @@ import com.hogentessentials1.essentials.BuildConfig
 import com.hogentessentials1.essentials.data.model.network.EssentialsDatabase
 import com.hogentessentials1.essentials.data.model.Repositories.*
 import com.hogentessentials1.essentials.data.model.network.*
-import com.hogentessentials1.essentials.data.model.network.local.ChangeGroupLocalDataSource
-import com.hogentessentials1.essentials.data.model.network.local.ChangeInitiativeLocalDataSource
+import com.hogentessentials1.essentials.data.model.network.local.*
 import com.hogentessentials1.essentials.data.model.util.Globals
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -44,20 +43,27 @@ val networkModule = module {
     // local datasources
     single { ChangeInitiativeLocalDataSource(get())}
     single { ChangeGroupLocalDataSource(get()) }
+    single { EmployeeLocalDataSource(get())}
+    single { RoadMapLocalDataSource(get()) }
+    single { ProjectLocalDataSource(get())}
+
 
 
     // Daos
     single { EssentialsDatabase.getInstance(androidApplication()).ChangeInitiativeDao()}
     single { EssentialsDatabase.getInstance(androidApplication()).ChangeGroupDao()}
+    single { EssentialsDatabase.getInstance(androidApplication()).EmployeeDao()}
+    single { EssentialsDatabase.getInstance(androidApplication()).ProjectDao()}
+    single { EssentialsDatabase.getInstance(androidApplication()).RoadMapDao()}
 
     // repos
-    single { RoadMapRepository(get()) }
+    single { RoadMapRepository(get(), get()) }
     single { ChangeInitiativeRepository(get(), get())}
     single { ChangeGroupRepository(get(), get())}
-    single { ProjectRepository(get())}
+    single { ProjectRepository(get(), get())}
     single { QuestionRepository(get())}
     single { OrganizationRepository(get())}
-    single { EmployeeRepository(get())}
+    single { EmployeeRepository(get(), get())}
     single { ChangeManagerRepository(get())}
     single { SurveyRepository(get())}
 }
