@@ -189,7 +189,7 @@ class DashboardViewModel(private val dashboardRepository: DashboardRepository, p
                 _status.value = Status.SUCCESS
             } catch (e: Exception) {
                 Timber.e("ophalen mislukt")
-                Timber.e("${e}")
+                Timber.e("$e")
 
                 _status.value = Status.ERROR
             }

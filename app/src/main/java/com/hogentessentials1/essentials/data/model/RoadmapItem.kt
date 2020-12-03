@@ -27,5 +27,4 @@ data class RoadMapItem(
     val startDate: String,
     @Json(name = "endDate")
     val endDate: String
-) : Parcelable {
-}
+) : Parcelable

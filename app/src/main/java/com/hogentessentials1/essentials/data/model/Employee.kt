@@ -23,5 +23,4 @@ data class Employee(
     val lastName: String,
     @Json(name = "email")
     val email: String
-) : Parcelable {
-}
+) : Parcelable

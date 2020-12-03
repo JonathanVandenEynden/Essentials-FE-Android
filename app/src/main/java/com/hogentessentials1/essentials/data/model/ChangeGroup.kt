@@ -22,5 +22,4 @@ data class ChangeGroup(
     val name: String,
     @Json(name = "users")
     val users: Array<Employee>?
-) : Parcelable {
-}
+) : Parcelable
