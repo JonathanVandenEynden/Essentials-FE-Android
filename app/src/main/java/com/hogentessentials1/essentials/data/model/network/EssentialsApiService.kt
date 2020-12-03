@@ -40,7 +40,7 @@ interface ChangeInitiativesEndpointInterface {
     @GET("ChangeInitiatives/{id}")
     suspend fun getChangeInitiativeById(@Path("id") id: Int): Response<ChangeInitiative>
 
-    @GET("ChangeInitiatives/GetChangeInitiatives/")
+    @GET("ChangeInitiatives/GetChangeInitiativesForChangeManager")
     suspend fun getChangeInitiatives(): Response<List<ChangeInitiative>>
 
 //    @GET("ChangeInitiatives/GetChangeInitiativesForChangeManager/{changeManagerId}")
