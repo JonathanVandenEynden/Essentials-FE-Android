@@ -20,7 +20,7 @@ class LoginDataSource(val aApiService: AccountEndpointInterface) : BaseDataSourc
     suspend fun login(username: String, password: String): Result<LoggedInUser> {
         try {
 
-            val response = aApiService.login(getRequestBody(username, "P@ssword1"))
+            val response = aApiService.login(getRequestBody(username, password))
 
             if (response.isSuccessful) {
                 Globals.bearerToken = response.body()!!.charStream().readText()
