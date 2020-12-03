@@ -124,6 +124,11 @@ dependencies {
     // Authentication
     implementation "com.auth0.android:jwtdecode:$authentication_version"
 
+    // Espresso
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'
+    androidTestImplementation 'androidx.test:runner:1.1.2'
+    androidTestImplementation 'androidx.test:rules:1.1.0'
+
 }
 
 
