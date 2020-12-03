@@ -8,11 +8,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.hogentessentials1.essentials.R
 import com.hogentessentials1.essentials.data.model.ChangeGroup
 import com.hogentessentials1.essentials.databinding.TeamsFragmentBinding
+import org.koin.android.ext.android.inject
 
 /**
  * @author Simon De Wilde
@@ -26,6 +26,7 @@ class TeamsFragment : Fragment(), ChangeGroupClickListener {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        (activity as AppCompatActivity).supportActionBar?.title = "Teams"
 
         val binding: TeamsFragmentBinding =
             DataBindingUtil.inflate(inflater, R.layout.teams_fragment, container, false)
@@ -35,7 +36,7 @@ class TeamsFragment : Fragment(), ChangeGroupClickListener {
         // TODO dao's
 //        val dataSource = EssentialsDatabase.getInstance(application).ChangeGroupDao
 
-        val viewModel = ViewModelProvider(this).get(TeamsViewModel::class.java)
+        val viewModel: TeamsViewModel by inject()
 
         binding.viewmodel = viewModel
 
@@ -51,8 +52,6 @@ class TeamsFragment : Fragment(), ChangeGroupClickListener {
                 adapter.submitList(it)
             }
         )
-
-        (activity as AppCompatActivity).supportActionBar?.title = "Teams"
 
         return binding.root
     }

@@ -6,15 +6,15 @@ import com.hogentessentials1.essentials.data.model.util.Resource
 
 class ChangeManagerRepository(val remoteDataSource: ChangeManagerRemoteDataSource) {
 
-    suspend fun getChangeManagerById(changeManagerId: Int) : Resource<ChangeManager> {
+    suspend fun getChangeManagerById(changeManagerId: Int): Resource<ChangeManager> {
         return remoteDataSource.getChangeManagerById(changeManagerId)
     }
 
-    suspend fun getChangeManagersFromOrganizationWithId(organizationId: Int) : Resource<List<ChangeManager>> {
+    suspend fun getChangeManagersFromOrganizationWithId(organizationId: Int): Resource<List<ChangeManager>> {
         return remoteDataSource.getChangeManagersFromOrganizationWithId(organizationId)
     }
 
-    suspend fun getChangeManagerByEmail(email: String) : Resource<ChangeManager> {
+    suspend fun getChangeManagerByEmail(email: String): Resource<ChangeManager> {
         return remoteDataSource.getChangeManagerByEmail(email)
     }
 }

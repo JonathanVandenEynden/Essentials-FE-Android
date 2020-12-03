@@ -1,15 +1,10 @@
 package com.hogentessentials1.essentials.data.model.network
 
 import com.hogentessentials1.essentials.data.model.*
-import com.squareup.moshi.Moshi
-import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import okhttp3.RequestBody
 import okhttp3.ResponseBody
-import retrofit2.Call
 import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.scalars.ScalarsConverterFactory
-import retrofit2.create
+// import retrofit2.converter.scalars.ScalarsConverterFactory
 import retrofit2.http.*
 
 /**
@@ -17,7 +12,7 @@ import retrofit2.http.*
  * @author Jonathan Vanden Eynden
  */
 
-private const val BASE_URL = "https://essentialsapi.azurewebsites.net/api/"
+/*private const val BASE_URL = "https://essentialsapi.azurewebsites.net/api/"
 
 private val moshi = Moshi.Builder()
     .add(KotlinJsonAdapterFactory())
@@ -27,7 +22,7 @@ private val retrofit = Retrofit.Builder()
     .addConverterFactory(ScalarsConverterFactory.create())
     .baseUrl(BASE_URL)
     .build()
-
+*/
 interface EmployeeEndpointInterface {
 
     @GET("Employees/{id}")
@@ -37,7 +32,7 @@ interface EmployeeEndpointInterface {
     suspend fun getAllEmployeesFromOrganization(@Path("organizationId") organizationId: Int): Response<List<Employee>>
 
     @GET("Employees/GetEmployeeByEmail/{email}")
-    suspend fun getEmployeeByEmail(@Path("email") email: String) : Response<Employee>
+    suspend fun getEmployeeByEmail(@Path("email") email: String): Response<Employee>
 }
 
 interface ChangeInitiativesEndpointInterface {
@@ -52,6 +47,12 @@ interface ChangeInitiativesEndpointInterface {
     suspend fun getChangeInitiativesForChangeManager(@Path("changeManagerId") changeManagerId: Int): Response<List<ChangeInitiative>>
 }
 
+interface ChangeGroupEndpointInterface {
+    // TODO remove userID --> bearertoken is added with interceptor
+    @GET("ChangeGroups/GetChangeGroupForUser/{userId}")
+    suspend fun getChangeGroupsForUser(@Path("userId") userId: Int): Response<List<ChangeGroup>>
+}
+
 interface ChangeManagersEndpointInterface {
 
     @GET("ChangeManagers/GetChangeManagersFromOrganization/{organizationId}")
@@ -61,7 +62,7 @@ interface ChangeManagersEndpointInterface {
     suspend fun getChangeManagerById(@Path("changeManagerId") changeManagerId: Int): Response<ChangeManager>
 
     @GET("ChangeManagers/GetChangeManagerByEmail/{email}")
-    suspend fun getChangeManagerByEmail(@Path("email") email: String) : Response<ChangeManager>
+    suspend fun getChangeManagerByEmail(@Path("email") email: String): Response<ChangeManager>
 }
 
 interface OrganizationsEndpointInterface {
@@ -122,4 +123,9 @@ interface DashboardEndpointInterface{
     suspend fun getMood(@Path("id") id: Int): Response<Map<Int, Int>>
 }
 
-
+interface AccountEndpointInterface {
+    @POST("Account/Login")
+    suspend fun login(
+        @Body requestBody: RequestBody
+    ): Response<ResponseBody>
+}

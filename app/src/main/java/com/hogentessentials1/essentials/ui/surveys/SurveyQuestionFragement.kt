@@ -7,10 +7,8 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.navigation.findNavController
 import com.hogentessentials1.essentials.R
 import com.hogentessentials1.essentials.data.model.Question
-import com.hogentessentials1.essentials.data.model.SurveyQuestion
 import com.hogentessentials1.essentials.databinding.SurveyQuestionBinding
 
 /**
@@ -63,7 +61,7 @@ class SurveyQuestionFragement : Fragment() {
 
         binding.nextQuestion.setOnClickListener { view: View ->
             // if (ratingIsGiven) {
-            //currentQuestion.answer = binding.ratingBarQuestion.rating.toDouble()
+            // currentQuestion.answer = binding.ratingBarQuestion.rating.toDouble()
             questionIndex++
             if (questionIndex < numberOfQuestions) {
                 currentQuestion = questions[questionIndex]

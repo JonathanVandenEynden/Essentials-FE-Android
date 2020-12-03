@@ -6,7 +6,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.hogentessentials1.essentials.data.model.*
 import com.hogentessentials1.essentials.data.model.Repositories.*
-
 import com.hogentessentials1.essentials.data.model.util.Status
 import kotlinx.coroutines.launch
 import timber.log.Timber
@@ -16,7 +15,6 @@ import timber.log.Timber
  * @author Ziggy Moens
  */
 class AllSurveysViewModel(private val repo: SurveyRepository) : ViewModel() {
-
 
     private val _status = MutableLiveData<Status>()
     val status: LiveData<Status>
@@ -137,8 +135,8 @@ class AllSurveysViewModel(private val repo: SurveyRepository) : ViewModel() {
 //                        repo.getEmployeeByEmail("ziggy@essentials.com").data
 //                    _cm .value =
 //                        repo.getChangeManagersFromOrganizationWithId(1).data
-                    _surveyz.value =
-                        repo.getAllSurveys().data
+                _surveyz.value =
+                    repo.getAllSurveys().data
 
                 Timber.e("ophalen successvol")
                 _status.value = Status.SUCCESS
@@ -149,7 +147,6 @@ class AllSurveysViewModel(private val repo: SurveyRepository) : ViewModel() {
                 _status.value = Status.ERROR
             }
         }
-
     }
 
 //    private fun getRoadMapItemsById(id: Int) {
