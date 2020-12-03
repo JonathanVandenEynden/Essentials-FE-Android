@@ -1,6 +1,7 @@
 package com.hogentessentials1.essentials.login.data
 
 import com.hogentessentials1.essentials.login.data.model.LoggedInUser
+import okhttp3.internal.wait
 
 /**
  * @author Simon De Wilde
@@ -29,7 +30,7 @@ class LoginRepository(val dataSource: LoginDataSource) {
         dataSource.logout()
     }
 
-    fun login(username: String, password: String): Result<LoggedInUser> {
+    suspend fun login(username: String, password: String): Result<LoggedInUser> {
         // handle login
         val result = dataSource.login(username, password)
 

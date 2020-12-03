@@ -17,6 +17,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.hogentessentials1.essentials.MainActivity
 import com.hogentessentials1.essentials.R
+import org.koin.android.ext.android.inject
 
 /**
  * @author Simon De Wilde
@@ -35,8 +36,9 @@ class LoginActivity : AppCompatActivity() {
         val login = findViewById<Button>(R.id.login)
         val loading = findViewById<ProgressBar>(R.id.loading)
 
-        loginViewModel = ViewModelProvider(this, LoginViewModelFactory())
-            .get(LoginViewModel::class.java)
+        val loginViewModel : LoginViewModel by inject()
+//                = ViewModelProvider(this, LoginViewModelFactory())
+//            .get(LoginViewModel::class.java)
 
         loginViewModel.loginFormState.observe(
             this@LoginActivity,
@@ -56,7 +58,7 @@ class LoginActivity : AppCompatActivity() {
         )
 
         // TODO weghalen zodat het niet automatisch wordt ingevuld
-        username.setText("sukrit@essentials.com")
+        username.setText("Sukrit.bhattacharya@hogent.com")
 
         loginViewModel.loginResult.observe(
             this@LoginActivity,
