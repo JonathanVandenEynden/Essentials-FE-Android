@@ -28,11 +28,14 @@ import com.hogentessentials1.essentials.databinding.FragmentDashboardGraphBindin
 import com.hogentessentials1.essentials.ui.surveys.SurveysChangeInitiativeFragmentArgs
 import com.hsalf.smilerating.SmileRating
 import org.koin.android.ext.android.inject
+import timber.log.Timber
 
 class DashboardGraphFragment: Fragment() {
     //lateinit var viewModel: DashboardViewModel
     private lateinit var binding: FragmentDashboardGraphBinding
     val viewModel: DashboardViewModel by inject()
+    var ci: ChangeInitiative? = null
+    var rmi: RoadMapItem? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -57,8 +60,6 @@ class DashboardGraphFragment: Fragment() {
 
         val manager = LinearLayoutManager(activity)
 
-        var ci: ChangeInitiative? = null
-        var rmi: RoadMapItem? = null
         arguments?.getParcelable<ChangeInitiative>("changeInitiative")?.let {
             ci = it
         }
@@ -94,11 +95,14 @@ class DashboardGraphFragment: Fragment() {
     }
 
     private fun getDataSet(item: RoadMapItem): PieDataSet {
+        viewModel.chosenCIId = ci!!.id
+        refreshVM()
         var mood : Map<Int, Int> = mapOf()
         viewModel.m.observe(viewLifecycleOwner, Observer { mood = it })
+        Timber.e("Test:" + mood.toString())
         val moods : List<String> = listOf("\uD83D\uDE26", "\uD83D\uDE41", "\uD83D\uDE10", "\uD83D\uDE42", "\uD83D\uDE04")
         val valueSet1 = ArrayList<PieEntry>()
-        if (!mood.isNullOrEmpty())
+        if (!mood.isEmpty())
         {
             for (m in mood) {
                 val ve = PieEntry(m.value.toFloat(), moods[m.key])
@@ -120,5 +124,10 @@ class DashboardGraphFragment: Fragment() {
         val linkTextView = binding.siteLink
         linkTextView.setMovementMethod(LinkMovementMethod.getInstance());
         linkTextView.setLinkTextColor(Color.BLUE)
+    }
+
+    fun refreshVM()
+    {
+        viewModel.fillDashboard()
     }
 }
