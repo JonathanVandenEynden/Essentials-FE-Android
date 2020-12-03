@@ -4,25 +4,25 @@ import com.hogentessentials1.essentials.data.model.*
 import okhttp3.RequestBody
 import okhttp3.ResponseBody
 import retrofit2.Response
-// import retrofit2.converter.scalars.ScalarsConverterFactory
 import retrofit2.http.*
 
 /**
  * @author Kilian Hoefman
  * @author Jonathan Vanden Eynden
+ * @author Simon De Wilde
  */
 
-/*private const val BASE_URL = "https://essentialsapi.azurewebsites.net/api/"
+//private const val BASE_URL = "https://essentialsapi.azurewebsites.net/api/"
 
-private val moshi = Moshi.Builder()
-    .add(KotlinJsonAdapterFactory())
-    .build()
+//private val moshi = Moshi.Builder()
+//    .add(KotlinJsonAdapterFactory())
+//    .build()
+//
+//private val retrofit = Retrofit.Builder()
+//    .addConverterFactory(ScalarsConverterFactory.create())
+//    .baseUrl(BASE_URL)
+//    .build()
 
-private val retrofit = Retrofit.Builder()
-    .addConverterFactory(ScalarsConverterFactory.create())
-    .baseUrl(BASE_URL)
-    .build()
-*/
 interface EmployeeEndpointInterface {
 
     @GET("Employees/{id}")
@@ -32,7 +32,7 @@ interface EmployeeEndpointInterface {
     suspend fun getAllEmployeesFromOrganization(@Path("organizationId") organizationId: Int): Response<List<Employee>>
 
     @GET("Employees/GetEmployeeByEmail/{email}")
-    suspend fun getEmployeeByEmail(@Path("email") email: String): Response<Employee>
+    suspend fun getEmployeeByEmail(@Path("email") email: String) : Response<Employee>
 }
 
 interface ChangeInitiativesEndpointInterface {
@@ -40,17 +40,17 @@ interface ChangeInitiativesEndpointInterface {
     @GET("ChangeInitiatives/{id}")
     suspend fun getChangeInitiativeById(@Path("id") id: Int): Response<ChangeInitiative>
 
-    @GET("ChangeInitiatives/GetChangeInitiativesForEmployee/{employeeId}")
-    suspend fun getChangeInitiativesForEmployee(@Path("employeeId") employeeId: Int): Response<List<ChangeInitiative>>
+    @GET("ChangeInitiatives/GetChangeInitiatives/")
+    suspend fun getChangeInitiatives(): Response<List<ChangeInitiative>>
 
-    @GET("ChangeInitiatives/GetChangeInitiativesForChangeManager/{changeManagerId}")
-    suspend fun getChangeInitiativesForChangeManager(@Path("changeManagerId") changeManagerId: Int): Response<List<ChangeInitiative>>
+//    @GET("ChangeInitiatives/GetChangeInitiativesForChangeManager/{changeManagerId}")
+//    suspend fun getChangeInitiativesForChangeManager(@Path("changeManagerId") changeManagerId: Int): Response<List<ChangeInitiative>>
 }
 
 interface ChangeGroupEndpointInterface {
-    // TODO remove userID --> bearertoken is added with interceptor
-    @GET("ChangeGroups/GetChangeGroupForUser/{userId}")
-    suspend fun getChangeGroupsForUser(@Path("userId") userId: Int): Response<List<ChangeGroup>>
+    @GET("ChangeGroups/GetChangeGroupForUser")
+    suspend fun getChangeGroupsForUser(): Response<List<ChangeGroup>>
+
 }
 
 interface ChangeManagersEndpointInterface {
@@ -62,7 +62,7 @@ interface ChangeManagersEndpointInterface {
     suspend fun getChangeManagerById(@Path("changeManagerId") changeManagerId: Int): Response<ChangeManager>
 
     @GET("ChangeManagers/GetChangeManagerByEmail/{email}")
-    suspend fun getChangeManagerByEmail(@Path("email") email: String): Response<ChangeManager>
+    suspend fun getChangeManagerByEmail(@Path("email") email: String) : Response<ChangeManager>
 }
 
 interface OrganizationsEndpointInterface {

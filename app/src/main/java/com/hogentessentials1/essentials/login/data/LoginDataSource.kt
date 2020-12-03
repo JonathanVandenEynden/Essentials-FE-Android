@@ -25,7 +25,10 @@ class LoginDataSource(val aApiService: AccountEndpointInterface) : BaseDataSourc
             val response =  aApiService.login(getRequestBody(username, password))
 
             if (response.isSuccessful){
-                Globals.bearerToken = response.body()!!.charStream().readText()
+                var body = response.body()!!.charStream().readText()
+                var bearer = body.removePrefix("\"").removeSuffix("\"")
+                Timber.i(bearer)
+                Globals.bearerToken = bearer
 
                 val user = LoggedInUser(Globals.username)
                 return Result.Success(user)
