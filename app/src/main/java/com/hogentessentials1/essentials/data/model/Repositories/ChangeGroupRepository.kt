@@ -2,7 +2,9 @@ package com.hogentessentials1.essentials.data.model.Repositories
 
 import com.hogentessentials1.essentials.data.model.ChangeGroup
 import com.hogentessentials1.essentials.data.model.network.ChangeGroupRemoteDataSource
+import com.hogentessentials1.essentials.data.model.network.local.ChangeGroupLocalDataSource
 import com.hogentessentials1.essentials.data.model.util.Resource
+import com.hogentessentials1.essentials.data.model.util.performGetOperation
 import javax.inject.Singleton
 
 /**
@@ -10,7 +12,17 @@ import javax.inject.Singleton
  */
 
 @Singleton
-class ChangeGroupRepository(val remoteDataSource: ChangeGroupRemoteDataSource) {
+class ChangeGroupRepository(
+    val remoteDataSource: ChangeGroupRemoteDataSource,
+    val localDataSource: ChangeGroupLocalDataSource
+) {
 
-    suspend fun getChangeGroupsForUser(userId: Int): Resource<List<ChangeGroup>> = remoteDataSource.getChangeGroupsForUser(userId)
+    suspend fun getChangeGroupsForUser(): Resource<List<ChangeGroup>> =
+        remoteDataSource.getChangeGroupsForUser()
+
+    fun getChangeGroups() = performGetOperation(
+        databaseQuery = { localDataSource.getChangeGroups() },
+        networkCall = { remoteDataSource.getChangeGroupsForUser() },
+        saveCallResult = { localDataSource.saveChangeGroups(it) }
+    )
 }
