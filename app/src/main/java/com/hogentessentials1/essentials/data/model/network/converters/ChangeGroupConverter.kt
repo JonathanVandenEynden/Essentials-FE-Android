@@ -3,7 +3,6 @@ package com.hogentessentials1.essentials.data.model.network.converters
 import androidx.room.TypeConverter
 import com.google.gson.Gson
 import com.hogentessentials1.essentials.data.model.ChangeGroup
-import com.hogentessentials1.essentials.data.model.ChangeInitiative
 
 class ChangeGroupConverter {
     @TypeConverter

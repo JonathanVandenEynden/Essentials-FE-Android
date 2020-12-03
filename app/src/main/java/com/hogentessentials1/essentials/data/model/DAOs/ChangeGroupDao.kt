@@ -20,5 +20,5 @@ interface ChangeGroupDao {
     fun getChangeGroup(changeGroupId: Int): LiveData<ChangeGroup>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-     fun insertAll(changeGroups: List<ChangeGroup>)
+    fun insertAll(changeGroups: List<ChangeGroup>)
 }

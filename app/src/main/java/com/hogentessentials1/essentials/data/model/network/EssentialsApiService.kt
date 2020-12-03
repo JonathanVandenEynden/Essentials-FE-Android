@@ -12,13 +12,13 @@ import retrofit2.http.*
  * @author Simon De Wilde
  */
 
-//private const val BASE_URL = "https://essentialsapi.azurewebsites.net/api/"
+// private const val BASE_URL = "https://essentialsapi.azurewebsites.net/api/"
 
-//private val moshi = Moshi.Builder()
+// private val moshi = Moshi.Builder()
 //    .add(KotlinJsonAdapterFactory())
 //    .build()
 //
-//private val retrofit = Retrofit.Builder()
+// private val retrofit = Retrofit.Builder()
 //    .addConverterFactory(ScalarsConverterFactory.create())
 //    .baseUrl(BASE_URL)
 //    .build()
@@ -32,7 +32,7 @@ interface EmployeeEndpointInterface {
     suspend fun getAllEmployeesFromOrganization(@Path("organizationId") organizationId: Int): Response<List<Employee>>
 
     @GET("Employees/GetEmployeeByEmail/{email}")
-    suspend fun getEmployeeByEmail(@Path("email") email: String) : Response<Employee>
+    suspend fun getEmployeeByEmail(@Path("email") email: String): Response<Employee>
 }
 
 interface ChangeInitiativesEndpointInterface {
@@ -40,17 +40,16 @@ interface ChangeInitiativesEndpointInterface {
     @GET("ChangeInitiatives/{id}")
     suspend fun getChangeInitiativeById(@Path("id") id: Int): Response<ChangeInitiative>
 
-    @GET("ChangeInitiatives/GetChangeInitiativesForChangeManager")
-    suspend fun getChangeInitiatives(): Response<List<ChangeInitiative>>
+    @GET("ChangeInitiatives/GetChangeInitiativesForEmployee")
+    suspend fun getChangeInitiativesForEmployee(): Response<List<ChangeInitiative>>
 
-//    @GET("ChangeInitiatives/GetChangeInitiativesForChangeManager/{changeManagerId}")
-//    suspend fun getChangeInitiativesForChangeManager(@Path("changeManagerId") changeManagerId: Int): Response<List<ChangeInitiative>>
+    @GET("ChangeInitiatives/GetChangeInitiativesForChangeManager")
+    suspend fun getChangeInitiativesForChangeManager(): Response<List<ChangeInitiative>>
 }
 
 interface ChangeGroupEndpointInterface {
     @GET("ChangeGroups/GetChangeGroupForUser")
     suspend fun getChangeGroupsForUser(): Response<List<ChangeGroup>>
-
 }
 
 interface ChangeManagersEndpointInterface {
@@ -62,7 +61,7 @@ interface ChangeManagersEndpointInterface {
     suspend fun getChangeManagerById(@Path("changeManagerId") changeManagerId: Int): Response<ChangeManager>
 
     @GET("ChangeManagers/GetChangeManagerByEmail/{email}")
-    suspend fun getChangeManagerByEmail(@Path("email") email: String) : Response<ChangeManager>
+    suspend fun getChangeManagerByEmail(@Path("email") email: String): Response<ChangeManager>
 }
 
 interface OrganizationsEndpointInterface {
@@ -116,9 +115,10 @@ interface SurveyEndpointInterface {
     suspend fun getSurveyByRoadMapItemId(@Path("roadmapItemId") roadmapItemId: Int): Response<Survey>
 }
 
-interface DashboardEndpointInterface{
+interface DashboardEndpointInterface {
     @GET("Dashboard/GetFilledInSurveysOfChangeInitiative/{id}")
     suspend fun getFilledInSurveys(@Path("id") id: Int): Response<Double>
+
     @GET("Dashboard/GetMoodFromChangeInitiative/{id}")
     suspend fun getMood(@Path("id") id: Int): Response<Map<Int, Int>>
 }

@@ -1,17 +1,10 @@
 package com.hogentessentials1.essentials.ui.changeGroup
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import com.hogentessentials1.essentials.data.model.ChangeGroup
 import com.hogentessentials1.essentials.data.model.Repositories.ChangeGroupRepository
-import com.hogentessentials1.essentials.data.model.Repositories.SurveyRepository
 import com.hogentessentials1.essentials.data.model.util.Resource
-import kotlinx.coroutines.launch
-import timber.log.Timber
-import java.lang.Exception
-
 
 /**
  * @author Simon De Wilde
@@ -20,11 +13,9 @@ import java.lang.Exception
  */
 class TeamsViewModel(private val repo: ChangeGroupRepository) : ViewModel() {
 
-
     val changeGroups: LiveData<Resource<List<ChangeGroup>>> = repo.getChangeGroups()
 
     init {
-
 
 //        val mockMembers = arrayListOf<String>()
 //        mockMembers.add("Simon")

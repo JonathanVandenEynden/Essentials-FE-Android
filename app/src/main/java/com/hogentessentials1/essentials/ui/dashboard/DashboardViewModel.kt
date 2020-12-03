@@ -9,16 +9,9 @@ import com.hogentessentials1.essentials.data.model.Repositories.ChangeInitiative
 import com.hogentessentials1.essentials.data.model.Repositories.DashboardRepository
 import com.hogentessentials1.essentials.data.model.Repositories.RoadMapRepository
 import com.hogentessentials1.essentials.data.model.RoadMapItem
-import com.hogentessentials1.essentials.data.model.Survey
-import com.hogentessentials1.essentials.data.model.SurveyQuestion
 import com.hogentessentials1.essentials.data.model.util.Status
 import kotlinx.coroutines.launch
 import timber.log.Timber
-import java.time.LocalDate
-import java.time.LocalDateTime
-import java.util.*
-import kotlin.collections.ArrayList
-
 
 /**
  *
@@ -28,7 +21,7 @@ import kotlin.collections.ArrayList
  */
 class DashboardViewModel(private val dashboardRepository: DashboardRepository, private val cirepository: ChangeInitiativeRepository, val rmiRepository: RoadMapRepository) : ViewModel() {
 
-    var chosenCIId: Int = 1;
+    var chosenCIId: Int = 1
 
     private val _status = MutableLiveData<Status>()
     val status: LiveData<Status>
@@ -188,7 +181,7 @@ class DashboardViewModel(private val dashboardRepository: DashboardRepository, p
             try {
                 Timber.e(chosenCIId.toString())
                 _changeInititives.value =
-                    cirepository.getChangeInitiatives().data
+                    cirepository.getChangeInitiativesForEmployee().data
                 _roadMapItems.value =
                     rmiRepository.getRoadMaps(chosenCIId).data
                 fillDashboard()
@@ -196,15 +189,14 @@ class DashboardViewModel(private val dashboardRepository: DashboardRepository, p
                 _status.value = Status.SUCCESS
             } catch (e: Exception) {
                 Timber.e("ophalen mislukt")
-                Timber.e("${e.message}")
+                Timber.e("${e}")
 
                 _status.value = Status.ERROR
             }
         }
     }
 
-    fun fillDashboard()
-    {
+    fun fillDashboard() {
         viewModelScope.launch {
             _filledIn.value = dashboardRepository.getFilledInSurveys(chosenCIId).data
             _mood.value = dashboardRepository.getMood(chosenCIId).data

@@ -20,6 +20,6 @@ class MyApplication : Application() {
                 viewModelModule
             )
         }
-        Timber.plant(Timber.DebugTree());
+        Timber.plant(Timber.DebugTree())
     }
 }

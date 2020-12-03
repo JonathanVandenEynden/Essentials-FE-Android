@@ -15,6 +15,7 @@ class RoadMapRepository(val remoteDataSource: RoadMapRemoteDataSource) {
     suspend fun getRoadMapItemById(id: Int): Resource<RoadMapItem> {
         return remoteDataSource.getRoadMapItemById(id)
     }
+
     suspend fun getRoadMaps(id: Int): Resource<List<RoadMapItem>> {
         return remoteDataSource.getRoadMapItemsForChangeInitatitveWithId(id)
     }

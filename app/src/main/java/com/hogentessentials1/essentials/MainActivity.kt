@@ -11,6 +11,7 @@ import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.navigation.NavigationView
 import com.hogentessentials1.essentials.databinding.ActivityMainBinding
+import com.hogentessentials1.essentials.ui.homeScreen.HomeScreenFragmentDirections
 
 /**
  * @author Simon De Wilde
@@ -27,9 +28,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             this,
             R.layout.activity_main
         )
-
-        // TODO De logged in user opslaan en publicly available maken voor de requests
-        val loggedInUser = intent.getSerializableExtra("loggedInUser")
 
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.navHostFragment) as NavHostFragment
@@ -56,11 +54,16 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         binding.drawerLayout.closeDrawers()
 
         when (item.itemId) {
-            R.id.changeInitiativesDrawer -> navController.navigate(R.id.changeInitiativesFragment)
+            R.id.changeInitiativesDrawer -> navController.navigate(R.id.changeInitiatives)
             R.id.dashboardDrawer -> navController.navigate(R.id.dashboardFragment)
-            R.id.allSurveysDrawer -> navController.navigate(R.id.allSurveysFragment)
+            R.id.allSurveysDrawer -> navController.navigate(
+                HomeScreenFragmentDirections.actionHomeScreenFragmentToRoadMapListFragment(
+                    true,
+                    false,
+                    null
+                )
+            )
             R.id.teamsDrawer -> navController.navigate(R.id.teamsFragment)
-            // TODO extra
         }
         return true
     }

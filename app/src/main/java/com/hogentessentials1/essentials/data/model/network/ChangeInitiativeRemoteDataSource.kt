@@ -2,9 +2,12 @@ package com.hogentessentials1.essentials.data.model.network
 
 class ChangeInitiativeRemoteDataSource(val ciApiService: ChangeInitiativesEndpointInterface) : BaseDataSource() {
 
-    suspend fun getChangeInitiativeById(id: Int) = getResult { ciApiService.getChangeInitiativeById(id) }
+    suspend fun getChangeInitiativeById(id: Int) =
+        getResult { ciApiService.getChangeInitiativeById(id) }
 
-    suspend fun getChangeInitiatives() = getResult { ciApiService.getChangeInitiatives()}
+    suspend fun getChangeInitiativesForEmployee() =
+        getResult { ciApiService.getChangeInitiativesForEmployee() }
 
-//    suspend fun getChangeInitiativesForChangeManager(changeManagerId: Int) = getResult { ciApiService.getChangeInitiativesForChangeManager(changeManagerId) }
+    suspend fun getChangeInitiativesForChangeManager() =
+        getResult { ciApiService.getChangeInitiativesForChangeManager() }
 }

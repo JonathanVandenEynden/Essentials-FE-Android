@@ -2,10 +2,8 @@ package com.hogentessentials1.essentials.data.model.Repositories
 
 import com.hogentessentials1.essentials.data.model.ChangeInitiative
 import com.hogentessentials1.essentials.data.model.network.ChangeInitiativeRemoteDataSource
-import com.hogentessentials1.essentials.data.model.network.RoadMapRemoteDataSource
 import com.hogentessentials1.essentials.data.model.network.local.ChangeInitiativeLocalDataSource
 import com.hogentessentials1.essentials.data.model.util.Resource
-import com.hogentessentials1.essentials.data.model.util.performGetOperation
 import javax.inject.Singleton
 
 /**
@@ -22,13 +20,17 @@ class ChangeInitiativeRepository(
         return remoteDataSource.getChangeInitiativeById(changeInitiativeId)
     }
 
-    suspend fun getChangeInitiatives(): Resource<List<ChangeInitiative>> {
-        return remoteDataSource.getChangeInitiatives()
+    suspend fun getChangeInitiativesForEmployee(): Resource<List<ChangeInitiative>> {
+        return remoteDataSource.getChangeInitiativesForEmployee()
     }
 
-    fun getPharmacies() = performGetOperation(
-        databaseQuery = { localDataSource.getChangeInitiatives() },
-        networkCall = { remoteDataSource.getChangeInitiatives() },
-        saveCallResult = { localDataSource.saveChangeInitiatives(it) }
-    )
+    suspend fun getChangeInitiativesForChangeManager(): Resource<List<ChangeInitiative>> {
+        return remoteDataSource.getChangeInitiativesForChangeManager()
+    }
+
+//    fun getPharmacies() = performGetOperation(
+//        databaseQuery = { localDataSource.getChangeInitiatives() },
+//        networkCall = { remoteDataSource.getChangeInitiativesForEmployee() },
+//        saveCallResult = { localDataSource.saveChangeInitiatives(it) }
+//    )
 }
