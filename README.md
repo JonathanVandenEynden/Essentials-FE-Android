@@ -1,6 +1,6 @@
 <h1 align="center">
   <br>
-  <img src="https://github.com/HoGent-Projecten3/projecten3-2021-android-e1/blob/develop/app/src/main/res/drawable/logo_zonder_tekst.png" alt="Essentials Logo"></a>
+  <img src="https://raw.githubusercontent.com/HoGent-Projecten3/projecten3-2021-android-e1/master/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png?token=ALK2DS3CZF5VYKXD4OS5G7S72IGXK" alt="Essentials Logo"></a>
   <br>
   Essentials
 </h1>
