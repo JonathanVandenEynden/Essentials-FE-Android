@@ -55,7 +55,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         when (item.itemId) {
             R.id.changeInitiativesDrawer -> navController.navigate(R.id.changeInitiatives)
-            R.id.dashboardDrawer -> navController.navigate(R.id.dashboardFragment)
             R.id.allSurveysDrawer -> navController.navigate(
                 HomeScreenFragmentDirections.actionHomeScreenFragmentToRoadMapListFragment(
                     true,

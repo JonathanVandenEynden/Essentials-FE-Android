@@ -12,7 +12,7 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class Assessment(
     @Json(name = "id")
-    val id: String, // TODO Primary key toevoegen
+    val id: String,
     @Json(name = "questions")
     var questions: List<Question>,
     @Json(name = "feedback")

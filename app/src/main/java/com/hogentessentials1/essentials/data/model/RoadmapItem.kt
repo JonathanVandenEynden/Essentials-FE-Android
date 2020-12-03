@@ -27,7 +27,5 @@ data class RoadMapItem(
     val startDate: String,
     @Json(name = "endDate")
     val endDate: String
-// TODO Dates casten naar echte datums, formattering tussen JSON en android is verschillend
 ) : Parcelable {
-    // TODO
 }

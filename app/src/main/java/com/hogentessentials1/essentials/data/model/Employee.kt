@@ -23,8 +23,5 @@ data class Employee(
     val lastName: String,
     @Json(name = "email")
     val email: String
-    // @Json(name = "employeeOrganizationParts")
-    // val employeeOrganizationParts: List<EmployeeOrganizationPart>?
 ) : Parcelable {
-    // TODO invullen met logische gegevens
 }
