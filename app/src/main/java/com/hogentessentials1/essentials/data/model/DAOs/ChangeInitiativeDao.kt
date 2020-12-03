@@ -9,12 +9,12 @@ import com.hogentessentials1.essentials.data.model.ChangeInitiative
 
 @Dao
 interface ChangeInitiativeDao {
-    @Query("SELECT * FROM changeInitiative ORDER BY id")
+    @Query("SELECT * FROM changeInitiative ORDER BY change_initiative_id")
     fun getChangeInitatives(): LiveData<List<ChangeInitiative>>
 
-    @Query("SELECT * FROM changeInitiative WHERE id = :changeInitiativeId")
+    @Query("SELECT * FROM changeInitiative WHERE change_initiative_id = :changeInitiativeId")
     fun getChangeInitative(changeInitiativeId: Int): LiveData<ChangeInitiative>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertAll(changeInitiatives: List<ChangeInitiative>)
+    fun insertAll(changeInitiatives: List<ChangeInitiative>)
 }

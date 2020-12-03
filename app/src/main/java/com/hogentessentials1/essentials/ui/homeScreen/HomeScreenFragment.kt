@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
@@ -139,7 +138,7 @@ class HomeScreenFragment : Fragment() {
          */
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
 
-        binding.labelName.text = getString(R.string.hello, "Sukrit")
+        binding.labelName.text = getString(R.string.hello, Globals.username)
 
         return binding.root
     }

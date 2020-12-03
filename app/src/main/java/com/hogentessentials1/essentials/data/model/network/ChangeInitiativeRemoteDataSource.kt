@@ -5,9 +5,8 @@ class ChangeInitiativeRemoteDataSource(val ciApiService: ChangeInitiativesEndpoi
     suspend fun getChangeInitiativeById(id: Int) =
         getResult { ciApiService.getChangeInitiativeById(id) }
 
-    suspend fun getChangeInitiativesForEmployee(employeeId: Int) =
-        getResult { ciApiService.getChangeInitiativesForEmployee(employeeId) }
+    suspend fun getChangeInitiatives() = getResult { ciApiService.getChangeInitiatives()}
 
-    suspend fun getChangeInitiativesForChangeManager(changeManagerId: Int) =
-        getResult { ciApiService.getChangeInitiativesForChangeManager(changeManagerId) }
+    suspend fun getChangeInitiativesForChangeManager() =
+        getResult { ciApiService.getChangeInitiativesForChangeManager() }
 }
