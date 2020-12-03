@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    @author Simon De Wilde
+    @author Ziggy Moens
+
+    navigation for the application
+-->
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/homeScreenFragment">
+
+    <fragment
+        android:id="@+id/changeInitiativesFragment"
+        android:name="com.hogentessentials1.essentials.ui.changeInitiatives.ChangeInitiativesFragment"
+        android:label="fragment_change_initiatives"
+        tools:layout="@layout/fragment_change_initiatives">
+        <action
+            android:id="@+id/action_changeInitiativesFragment_to_surveysChangeinitiativeFragment"
+            app:destination="@id/surveysChangeInitiativeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/homeScreenFragment"
+        android:name="com.hogentessentials1.essentials.ui.homeScreen.HomeScreenFragment"
+        android:label="fragment_home_screen"
+        tools:layout="@layout/fragment_home_screen">
+        <action
+            android:id="@+id/action_homeScreenFragment_to_changeInitiativesFragment"
+            app:destination="@id/changeInitiativesFragment" />
+        <action
+            android:id="@+id/action_homeScreenFragment_to_allSurveysFragment"
+            app:destination="@id/allSurveysFragment" />
+        <action
+            android:id="@+id/action_homeScreenFragment_to_dashboardFragment"
+            app:destination="@id/dashboardFragment" />
+        <action
+            android:id="@+id/action_homeScreenFragment_to_teamsFragment"
+            app:destination="@id/teamsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/surveyQuestionFragment"
+        android:name="com.hogentessentials1.essentials.ui.surveys.SurveyQuestionFragement"
+        android:label="SurveyQuestionFragment">
+        <action
+            android:id="@+id/action_surveyQuestionFragement_to_surveyDoneFragment"
+            app:destination="@id/surveyDoneFragment" />
+        <argument
+            android:name="survey"
+            app:argType="com.hogentessentials1.essentials.data.model.Survey" />
+    </fragment>
+    <fragment
+        android:id="@+id/surveyDoneFragment"
+        android:name="com.hogentessentials1.essentials.ui.surveys.SurveyDoneFragment"
+        android:label="SurveyDoneFragment">
+        <action
+            android:id="@+id/action_surveyDoneFragment_to_homeScreenFragment"
+            app:destination="@id/homeScreenFragment" />
+        <argument
+            android:name="questions"
+            app:argType="com.hogentessentials1.essentials.data.model.SurveyQuestion[]" />
+    </fragment>
+    <fragment
+        android:id="@+id/surveysChangeInitiativeFragment"
+        android:name="com.hogentessentials1.essentials.ui.surveys.SurveysChangeInitiativeFragment"
+        android:label="SurveysChangeinitiativeFragment">
+        <action
+            android:id="@+id/action_surveysChangeinitiativeFragment_to_surveyQuestionFragement"
+            app:destination="@id/surveyQuestionFragment" />
+        <argument
+            android:name="changeInitiative"
+            app:argType="com.hogentessentials1.essentials.data.model.ChangeInitiative" />
+    </fragment>
+    <fragment
+        android:id="@+id/allSurveysFragment"
+        android:name="com.hogentessentials1.essentials.ui.surveys.AllSurveysFragment"
+        android:label="AllSurveysFragment">
+        <action
+            android:id="@+id/action_allSurveysFragment_to_surveyQuestionFragment"
+            app:destination="@id/surveyQuestionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/dashboardFragment"
+        android:name="com.hogentessentials1.essentials.ui.dashboard.DashboardFragment"
+        android:label="fragment_dashboard"
+        tools:layout="@layout/fragment_dashboard" />
+    <fragment
+        android:id="@+id/teamsFragment"
+        android:name="com.hogentessentials1.essentials.ui.changeGroup.TeamsFragment"
+        android:label="teams_fragment"
+        tools:layout="@layout/teams_fragment" >
+        <action
+            android:id="@+id/action_teamsFragment_to_teamDetailsFragment"
+            app:destination="@id/teamDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/teamDetailsFragment"
+        android:name="com.hogentessentials1.essentials.ui.changeGroup.changeGroupDetail.TeamDetailsFragment"
+        android:label="TeamDetailsFragment" >
+        <argument
+            android:name="changeGroupMembers"
+            app:argType="string[]" />
+    </fragment>
+</navigation>

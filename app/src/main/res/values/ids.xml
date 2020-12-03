@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="label_name" type="id" />
+    <item name="constraint_change_initiatives" type="id" />
+    <item name="constraint_dashboard" type="id" />
+    <item name="icon_change_initiatives" type="id" />
+    <item name="icon_dasboard" type="id" />
+    <item name="navView" type="id" />
+</resources>
