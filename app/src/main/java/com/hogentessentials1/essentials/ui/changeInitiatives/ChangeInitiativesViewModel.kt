@@ -25,26 +25,7 @@ class ChangeInitiativesViewModel(private val repo: ChangeInitiativeRepository) :
     val changeinitiatives: LiveData<List<ChangeInitiative>>
         get() = _changeinitiavtives
 
-    private val _changeinitiavtivesCM = MutableLiveData<List<ChangeInitiative>>()
-    val changeinitiativesCM: LiveData<List<ChangeInitiative>>
-        get() = _changeinitiavtivesCM
-
     init {
-        viewModelScope.launch {
-            _status.value = Status.LOADING
-            Timber.e("Change initiative - start met ophalen")
-            try {
-                _changeinitiavtives.value =
-                    repo.getChangeInitiativesForEmployee().data
-                Timber.e("Change initiative - ophalen successvol")
-                Timber.e(changeinitiatives.value.toString())
-                _status.value = Status.SUCCESS
-            } catch (e: Exception) {
-                Timber.e("Change initiatives - ophalen mislukt")
-                Timber.e("$e")
-                _status.value = Status.ERROR
-            }
-        }
     }
 
     fun changeinitiativesEmployee() {
