@@ -48,8 +48,7 @@ interface ChangeInitiativesEndpointInterface {
 }
 
 interface ChangeGroupEndpointInterface {
-    // TODO remove userID --> bearertoken is added with interceptor
-    @GET("ChangeGroups/GetChangeGroupForUser/4")
+    @GET("ChangeGroups/GetChangeGroupForUser")
     suspend fun getChangeGroupsForUser(): Response<List<ChangeGroup>>
 
 }
@@ -117,4 +116,9 @@ interface SurveyEndpointInterface {
     suspend fun getSurveyByRoadMapItemId(@Path("roadmapItemId") roadmapItemId: Int): Response<Survey>
 }
 
-
+interface AccountEndpointInterface {
+    @POST("Account/Login")
+    suspend fun login(
+        @Body requestBody: RequestBody
+    ): Response<ResponseBody>
+}

@@ -7,7 +7,7 @@ import com.hogentessentials1.essentials.data.model.util.Resource
 
 class OrganizationRepository(val remoteDataSource: OrganizationRemoteDataSource) : BaseDataSource() {
 
-    suspend fun getOrganizationById(organizationId: Int) : Resource<Organization> {
+    suspend fun getOrganizationById(organizationId: Int): Resource<Organization> {
         return remoteDataSource.getOrganizationById(organizationId)
     }
 }

@@ -8,7 +8,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.hogentessentials1.essentials.R
 import com.hogentessentials1.essentials.data.model.ChangeGroup
@@ -40,7 +39,6 @@ class TeamsFragment : Fragment(), ChangeGroupClickListener {
 
         val viewModel: TeamsViewModel by inject()
 
-
         binding.viewmodel = viewModel
 
         binding.lifecycleOwner = this
@@ -61,8 +59,6 @@ class TeamsFragment : Fragment(), ChangeGroupClickListener {
                 }
             }
         )
-
-
 
         return binding.root
     }

@@ -1,11 +1,10 @@
 package com.hogentessentials1.essentials.data.model
 
 import android.os.Parcelable
-import androidx.room.Entity
 import com.squareup.moshi.Json
 import kotlinx.android.parcel.Parcelize
 
-//@Entity
+// @Entity
 @Parcelize
 data class ChangeManager(
     @Json(name = "id")

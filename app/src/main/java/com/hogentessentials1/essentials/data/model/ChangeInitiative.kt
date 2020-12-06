@@ -2,11 +2,9 @@ package com.hogentessentials1.essentials.data.model
 
 import android.os.Parcelable
 import androidx.room.*
-import androidx.room.ForeignKey.CASCADE
 import com.squareup.moshi.Json
 import kotlinx.android.parcel.Parcelize
 import java.util.*
-import kotlin.collections.ArrayList
 
 /**
  * @author Ziggy Moens: made Parcelable
