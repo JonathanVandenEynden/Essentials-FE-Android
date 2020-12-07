@@ -10,7 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.hogentessentials1.essentials.R
-import com.hogentessentials1.essentials.data.model.util.Globals
+import com.hogentessentials1.essentials.util.Globals
 import com.hogentessentials1.essentials.databinding.FragmentHomeScreenBinding
 
 /**

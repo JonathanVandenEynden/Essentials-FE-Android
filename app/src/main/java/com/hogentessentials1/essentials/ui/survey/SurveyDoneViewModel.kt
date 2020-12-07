@@ -2,7 +2,7 @@ package com.hogentessentials1.essentials.ui.survey
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.hogentessentials1.essentials.data.model.Repositories.QuestionRepository
+import com.hogentessentials1.essentials.data.repositories.QuestionRepository
 import kotlinx.coroutines.launch
 import timber.log.Timber
 

@@ -5,8 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.hogentessentials1.essentials.data.model.ChangeInitiative
-import com.hogentessentials1.essentials.data.model.Repositories.ChangeInitiativeRepository
-import com.hogentessentials1.essentials.data.model.util.Status
+import com.hogentessentials1.essentials.data.repositories.ChangeInitiativeRepository
+import com.hogentessentials1.essentials.util.Status
 import kotlinx.coroutines.launch
 import timber.log.Timber
 

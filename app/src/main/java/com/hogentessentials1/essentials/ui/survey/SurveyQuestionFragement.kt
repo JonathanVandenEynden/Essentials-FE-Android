@@ -24,6 +24,7 @@ import org.koin.android.ext.android.inject
  * @author Ziggy Moens
  */
 
+@Suppress("DEPRECATION")
 class SurveyQuestionFragement : Fragment() {
 
     private var questions: List<Question> = arrayListOf()
@@ -63,7 +64,7 @@ class SurveyQuestionFragement : Fragment() {
 
         setQuestion()
 
-        binding.nextQuestion.setOnClickListener { view: View ->
+        binding.nextQuestion.setOnClickListener { _: View ->
             handleNextQuestion()
         }
         return binding.root

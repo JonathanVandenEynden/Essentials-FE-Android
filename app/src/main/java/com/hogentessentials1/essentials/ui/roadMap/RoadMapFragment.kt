@@ -12,7 +12,7 @@ import androidx.navigation.findNavController
 import com.hogentessentials1.essentials.R
 import com.hogentessentials1.essentials.data.model.Question
 import com.hogentessentials1.essentials.data.model.RoadMapItem
-import com.hogentessentials1.essentials.data.model.util.Globals
+import com.hogentessentials1.essentials.util.Globals
 import com.hogentessentials1.essentials.databinding.RoadmapBinding
 
 /**
