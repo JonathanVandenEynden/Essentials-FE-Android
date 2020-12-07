@@ -1,16 +1,6 @@
 package com.hogentessentials1.essentials.DI
 
 import com.hogentessentials1.essentials.BuildConfig
-import com.hogentessentials1.essentials.data.repositories.ChangeGroupRepository
-import com.hogentessentials1.essentials.data.repositories.ChangeInitiativeRepository
-import com.hogentessentials1.essentials.data.repositories.ChangeManagerRepository
-import com.hogentessentials1.essentials.data.repositories.DashboardRepository
-import com.hogentessentials1.essentials.data.repositories.EmployeeRepository
-import com.hogentessentials1.essentials.data.repositories.OrganizationRepository
-import com.hogentessentials1.essentials.data.repositories.ProjectRepository
-import com.hogentessentials1.essentials.data.repositories.QuestionRepository
-import com.hogentessentials1.essentials.data.repositories.RoadMapRepository
-import com.hogentessentials1.essentials.data.repositories.SurveyRepository
 import com.hogentessentials1.essentials.data.network.AccountEndpointInterface
 import com.hogentessentials1.essentials.data.network.ChangeGroupEndpointInterface
 import com.hogentessentials1.essentials.data.network.ChangeGroupRemoteDataSource
@@ -35,9 +25,19 @@ import com.hogentessentials1.essentials.data.network.SurveyEndpointInterface
 import com.hogentessentials1.essentials.data.network.SurveyRemoteDataSource
 import com.hogentessentials1.essentials.data.network.local.ChangeGroupLocalDataSource
 import com.hogentessentials1.essentials.data.network.local.ChangeInitiativeLocalDataSource
-import com.hogentessentials1.essentials.util.Globals
+import com.hogentessentials1.essentials.data.repositories.ChangeGroupRepository
+import com.hogentessentials1.essentials.data.repositories.ChangeInitiativeRepository
+import com.hogentessentials1.essentials.data.repositories.ChangeManagerRepository
+import com.hogentessentials1.essentials.data.repositories.DashboardRepository
+import com.hogentessentials1.essentials.data.repositories.EmployeeRepository
+import com.hogentessentials1.essentials.data.repositories.OrganizationRepository
+import com.hogentessentials1.essentials.data.repositories.ProjectRepository
+import com.hogentessentials1.essentials.data.repositories.QuestionRepository
+import com.hogentessentials1.essentials.data.repositories.RoadMapRepository
+import com.hogentessentials1.essentials.data.repositories.SurveyRepository
 import com.hogentessentials1.essentials.ui.login.data.LoginDataSource
 import com.hogentessentials1.essentials.ui.login.data.LoginRepository
+import com.hogentessentials1.essentials.util.Globals
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import okhttp3.Interceptor

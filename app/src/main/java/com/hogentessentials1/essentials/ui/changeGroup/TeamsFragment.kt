@@ -10,8 +10,8 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.hogentessentials1.essentials.R
 import com.hogentessentials1.essentials.data.model.ChangeGroup
-import com.hogentessentials1.essentials.util.Status
 import com.hogentessentials1.essentials.databinding.TeamsFragmentBinding
+import com.hogentessentials1.essentials.util.Status
 import org.koin.android.ext.android.inject
 
 /**

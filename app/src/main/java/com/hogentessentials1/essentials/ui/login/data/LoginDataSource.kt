@@ -2,14 +2,14 @@ package com.hogentessentials1.essentials.ui.login.data
 
 import com.hogentessentials1.essentials.data.network.AccountEndpointInterface
 import com.hogentessentials1.essentials.data.network.BaseDataSource
-import com.hogentessentials1.essentials.util.Globals
 import com.hogentessentials1.essentials.ui.login.data.model.LoggedInUser
+import com.hogentessentials1.essentials.util.Globals
+import java.io.IOException
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.RequestBody
 import okhttp3.RequestBody.Companion.toRequestBody
 import org.json.JSONObject
 import timber.log.Timber
-import java.io.IOException
 
 /**
  * @author Simon De Wilde

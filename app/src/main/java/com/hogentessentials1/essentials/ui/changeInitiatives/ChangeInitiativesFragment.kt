@@ -10,8 +10,8 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.hogentessentials1.essentials.R
-import com.hogentessentials1.essentials.util.Globals
 import com.hogentessentials1.essentials.databinding.ChangeinitiativesListBinding
+import com.hogentessentials1.essentials.util.Globals
 import org.koin.android.ext.android.inject
 import timber.log.Timber
 

@@ -5,10 +5,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.hogentessentials1.essentials.data.model.ChangeInitiative
+import com.hogentessentials1.essentials.data.model.RoadMapItem
 import com.hogentessentials1.essentials.data.repositories.ChangeInitiativeRepository
 import com.hogentessentials1.essentials.data.repositories.DashboardRepository
 import com.hogentessentials1.essentials.data.repositories.RoadMapRepository
-import com.hogentessentials1.essentials.data.model.RoadMapItem
 import com.hogentessentials1.essentials.util.Status
 import kotlinx.coroutines.launch
 import timber.log.Timber
