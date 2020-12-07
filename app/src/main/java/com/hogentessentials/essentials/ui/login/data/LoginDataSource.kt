@@ -5,16 +5,11 @@ import com.hogentessentials.essentials.data.network.BaseDataSource
 import com.hogentessentials.essentials.ui.login.data.model.LoggedInUser
 import com.hogentessentials.essentials.util.Globals
 import java.io.IOException
-import com.hogentessentials1.essentials.data.model.network.AccountEndpointInterface
-import com.hogentessentials1.essentials.data.model.network.BaseDataSource
-import com.hogentessentials1.essentials.data.model.util.Globals
-import com.hogentessentials1.essentials.login.data.model.LoggedInUser
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.RequestBody
 import okhttp3.RequestBody.Companion.toRequestBody
 import org.json.JSONObject
 import timber.log.Timber
-import java.io.IOException
 
 /**
  * @author Simon De Wilde

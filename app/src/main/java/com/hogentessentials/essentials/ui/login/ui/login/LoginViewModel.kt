@@ -8,11 +8,7 @@ import androidx.lifecycle.viewModelScope
 import com.hogentessentials.essentials.R
 import com.hogentessentials.essentials.ui.login.data.LoginRepository
 import com.hogentessentials.essentials.ui.login.data.Result
-import com.hogentessentials1.essentials.R
-import com.hogentessentials1.essentials.login.data.LoginRepository
-import com.hogentessentials1.essentials.login.data.Result
 import kotlinx.coroutines.launch
-import timber.log.Timber
 
 /**
  * @author Simon De Wilde

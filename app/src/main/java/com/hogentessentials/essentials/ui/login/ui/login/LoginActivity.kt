@@ -19,8 +19,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.Observer
-import com.hogentessentials1.essentials.MainActivity
-import com.hogentessentials1.essentials.R
 import com.hogentessentials.essentials.MainActivity
 import com.hogentessentials.essentials.R
 import org.koin.android.ext.android.inject

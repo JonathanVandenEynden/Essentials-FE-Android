@@ -13,6 +13,8 @@ import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.navigation.NavigationView
 import com.hogentessentials.essentials.databinding.ActivityMainBinding
 import com.hogentessentials.essentials.ui.homeScreen.HomeScreenFragmentDirections
+import com.hogentessentials.essentials.ui.login.ui.login.LoginActivity
+import com.hogentessentials.essentials.util.Globals
 
 /**
  * @author Simon De Wilde
