@@ -36,7 +36,7 @@ class LoginDataSource(val aApiService: AccountEndpointInterface) : BaseDataSourc
                 throw Exception()
             }
 
-        } catch (e: Throwable) {
+        } catch (e: Exception) {
             return Result.Error(IOException("Error logging in", e))
         }
     }
