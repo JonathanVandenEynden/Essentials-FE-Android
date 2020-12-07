@@ -11,7 +11,7 @@
 
         <variable
             name="viewmodel"
-            type="com.hogentessentials1.essentials.ui.changeGroup.TeamsViewModel" />
+            type="com.hogentessentials.essentials.ui.changeGroup.TeamsViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

@@ -15,11 +15,11 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.hogentessentials1.essentials"
+        applicationId "com.hogentessentials.essentials"
         minSdkVersion 22
         targetSdkVersion 30
-        versionCode 14
-        versionName "1.0.14"
+        versionCode 15
+        versionName "1.0.15"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -123,6 +123,7 @@ dependencies {
 
     //Charts
     implementation 'com.github.PhilJay:MPAndroidChart:v3.0.3'
+    implementation 'com.github.anastr:speedviewlib:1.1.7'
 
     // Unit testing dependencies
     testImplementation "junit:junit:$junit_version"
