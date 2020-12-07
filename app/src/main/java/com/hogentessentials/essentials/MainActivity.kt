@@ -40,6 +40,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         NavigationUI.setupActionBarWithNavController(this, navController, binding.drawerLayout)
         binding.navView.setNavigationItemSelectedListener(this)
     }
+
     override fun onSupportNavigateUp(): Boolean {
         return NavigationUI.navigateUp(navController, binding.drawerLayout)
     }
@@ -83,7 +84,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         binding.drawerLayout.closeDrawers()
 
         when (item.itemId) {
-            R.id.changeInitiativesDrawer -> navController.navigate(R.id.changeInitiatives)
+            R.id.changeInitiativesDrawer -> navController.navigate(
+                HomeScreenFragmentDirections.actionHomeScreenFragmentToChangeInitiativesFragment(
+                    false
+                )
+            )
             R.id.allSurveysDrawer -> navController.navigate(
                 HomeScreenFragmentDirections.actionHomeScreenFragmentToRoadMapListFragment(
                     true,

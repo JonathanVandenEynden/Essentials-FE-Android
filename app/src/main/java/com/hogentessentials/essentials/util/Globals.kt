@@ -1,7 +1,7 @@
 package com.hogentessentials.essentials.util
 
 import com.auth0.android.jwt.JWT
-import java.util.*
+import java.util.Date
 
 /**
  * @author Simon De Wilde
