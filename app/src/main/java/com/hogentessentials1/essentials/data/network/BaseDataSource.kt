@@ -1,6 +1,5 @@
 package com.hogentessentials1.essentials.data.network
 
-import android.util.Log
 import com.hogentessentials1.essentials.util.Resource
 import retrofit2.Response
 import timber.log.Timber
