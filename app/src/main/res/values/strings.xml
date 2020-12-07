@@ -58,4 +58,5 @@
     <string name="feedback_question">How do you feel about this change initiative?</string>
     <string name="filled_in_by">Amount of people that completed the survey</string>
     <string name="survey_already_filled">Survey already filled in</string>
+    <string name="log_out">Log out</string>
 </resources>
