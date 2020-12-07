@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.hogentessentials.essentials">
+    package="com.hogentessentials1.essentials">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name="com.hogentessentials.essentials.MyApplication"
+        android:name="com.hogentessentials1.essentials.MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Essentials">
         <activity
-            android:name="com.hogentessentials.essentials.ui.login.ui.login.LoginActivity">
+            android:name="com.hogentessentials1.essentials.ui.login.ui.login.LoginActivity">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,7 +22,7 @@
             </intent-filter>
 
         </activity>
-        <activity android:name="com.hogentessentials.essentials.MainActivity">
+        <activity android:name="com.hogentessentials1.essentials.MainActivity">
 
         </activity>
 

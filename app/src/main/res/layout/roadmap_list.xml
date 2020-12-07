@@ -10,7 +10,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.hogentessentials.essentials.ui.roadMap.list.RoadMapListViewModel" />
+            type="com.hogentessentials1.essentials.ui.roadMap.list.RoadMapListViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
