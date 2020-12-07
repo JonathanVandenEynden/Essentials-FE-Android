@@ -2,9 +2,7 @@ package com.hogentessentials1.essentials.ui.dashboard
 
 import android.graphics.Color
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.AdapterView
 import android.widget.AdapterView.OnItemSelectedListener
 import android.widget.Spinner
@@ -15,7 +13,11 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.NavController
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.NavigationUI
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.mikephil.charting.charts.PieChart
 import com.github.mikephil.charting.data.BarEntry
@@ -54,6 +56,7 @@ class DashboardFragment : Fragment() {
     lateinit var rmiAdapter: DashboardRMIAdapter
     lateinit var spinner: Spinner
     lateinit var spinnerrmi: Spinner
+    private lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -173,6 +176,9 @@ class DashboardFragment : Fragment() {
             }
         )
 
+        navController = this.findNavController()
+        setHasOptionsMenu(true)
+
         (activity as AppCompatActivity).supportActionBar?.title = "Dashboard"
 
         return binding.root
@@ -181,6 +187,20 @@ class DashboardFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.overflow_menu, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        item.isChecked = true
+
+        when (item.itemId) {
+            R.id.infoFragment -> navController.navigate(R.id.homeScreenFragment)
+        }
+        return true
     }
 
     fun refreshVM()

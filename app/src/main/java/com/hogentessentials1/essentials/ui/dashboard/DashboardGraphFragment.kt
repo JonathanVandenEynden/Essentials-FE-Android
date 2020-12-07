@@ -3,15 +3,15 @@ package com.hogentessentials1.essentials.ui.dashboard
 import android.graphics.Color
 import android.os.Bundle
 import android.text.method.LinkMovementMethod
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.navigation.NavController
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.mikephil.charting.components.Legend
 import com.github.mikephil.charting.data.BarEntry
@@ -36,6 +36,8 @@ class DashboardGraphFragment: Fragment() {
     val viewModel: DashboardViewModel by inject()
     var ci: ChangeInitiative? = null
     var rmi: RoadMapItem? = null
+    private lateinit var navController: NavController
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -74,10 +76,26 @@ class DashboardGraphFragment: Fragment() {
         }
 
         setupHyperlink()
+        navController = this.findNavController()
+        setHasOptionsMenu(true)
 
         (activity as AppCompatActivity).supportActionBar?.title = "Dashboard"
 
         return binding.root
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.overflow_menu, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        item.isChecked = true
+
+        when (item.itemId) {
+            R.id.infoFragment -> navController.navigate(R.id.homeScreenFragment)
+        }
+        return true
     }
 
     fun showCharts(item: RoadMapItem)
