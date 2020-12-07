@@ -30,8 +30,6 @@ class DashboardGraphFragment: Fragment() {
     val viewModel: DashboardViewModel by inject()
     var ci: ChangeInitiative? = null
     var rmi: RoadMapItem? = null
-    private lateinit var navController: NavController
-
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -69,7 +67,6 @@ class DashboardGraphFragment: Fragment() {
             showCharts(rmi!!)
         }
 
-        navController = this.findNavController()
         setHasOptionsMenu(true)
 
         (activity as AppCompatActivity).supportActionBar?.title = "Dashboard"
@@ -83,16 +80,14 @@ class DashboardGraphFragment: Fragment() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        item.isChecked = true
-
         when (item.itemId) {
-            R.id.infoFragment -> navController.navigate(R.id.homeScreenFragment)
+            R.id.infoFragment -> this.findNavController().navigate(R.id.homeScreenFragment)
             R.id.websiteFragment -> {
                 val uri: Uri = Uri.parse("https://essentialstoolkit.netlify.app/")
                 startActivity(Intent(Intent.ACTION_VIEW, uri))
             }
         }
-        return true
+        return super.onOptionsItemSelected(item)
     }
 
     fun showCharts(item: RoadMapItem)

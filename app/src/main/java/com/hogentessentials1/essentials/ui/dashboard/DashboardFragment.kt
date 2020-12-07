@@ -10,6 +10,7 @@ import android.widget.AdapterView.OnItemSelectedListener
 import android.widget.Spinner
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.GravityCompat
 import androidx.core.view.get
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -21,6 +22,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.github.anastr.speedviewlib.Speedometer
 import com.github.mikephil.charting.charts.PieChart
 import com.github.mikephil.charting.data.BarEntry
 import com.github.mikephil.charting.data.PieData
@@ -58,7 +60,6 @@ class DashboardFragment : Fragment() {
     lateinit var rmiAdapter: DashboardRMIAdapter
     lateinit var spinner: Spinner
     lateinit var spinnerrmi: Spinner
-    private lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -178,7 +179,6 @@ class DashboardFragment : Fragment() {
             }
         )
 
-        navController = this.findNavController()
         setHasOptionsMenu(true)
 
         (activity as AppCompatActivity).supportActionBar?.title = "Dashboard"
@@ -197,16 +197,14 @@ class DashboardFragment : Fragment() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        item.isChecked = true
-
         when (item.itemId) {
-            R.id.infoFragment -> navController.navigate(R.id.homeScreenFragment)
+            R.id.infoFragment -> this.findNavController().navigate(R.id.homeScreenFragment)
             R.id.websiteFragment -> {
                 val uri: Uri = Uri.parse("https://essentialstoolkit.netlify.app/")
                 startActivity(Intent(Intent.ACTION_VIEW, uri))
             }
         }
-        return true
+        return super.onOptionsItemSelected(item)
     }
 
     fun refreshVM()

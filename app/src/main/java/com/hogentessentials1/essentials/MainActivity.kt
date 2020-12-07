@@ -1,5 +1,7 @@
 package com.hogentessentials1.essentials
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
@@ -7,6 +9,7 @@ import androidx.core.view.GravityCompat
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.navigation.NavigationView
@@ -28,8 +31,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.layout.activity_main
         )
 
-        // TODO De logged in user opslaan en publicly available maken voor de requests
-        val loggedInUser = intent.getSerializableExtra("loggedInUser")
 
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.navHostFragment) as NavHostFragment
@@ -41,6 +42,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onSupportNavigateUp(): Boolean {
         return NavigationUI.navigateUp(navController, binding.drawerLayout)
     }
+
 
     override fun onBackPressed() {
         if (binding.drawerLayout.isDrawerOpen(GravityCompat.START)) {
@@ -57,10 +59,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         when (item.itemId) {
             R.id.changeInitiativesDrawer -> navController.navigate(R.id.changeInitiativesFragment)
-            R.id.dashboardDrawer -> navController.navigate(R.id.dashboardFragment)
             R.id.allSurveysDrawer -> navController.navigate(R.id.allSurveysFragment)
             R.id.teamsDrawer -> navController.navigate(R.id.teamsFragment)
-            // TODO extra
         }
         return true
     }
