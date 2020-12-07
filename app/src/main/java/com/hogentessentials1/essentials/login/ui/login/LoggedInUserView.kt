@@ -9,5 +9,5 @@ import java.io.Serializable
  */
 
 data class LoggedInUserView(
-    val displayName: String,
+    val displayName: String
 ) : Serializable

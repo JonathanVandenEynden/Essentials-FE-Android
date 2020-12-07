@@ -134,9 +134,9 @@ class HomeScreenFragment : Fragment() {
         )
 
         if (Globals.type != "changeManager") {
-            binding.myChanges.visibility = View.INVISIBLE
-            binding.dashboard.visibility = View.INVISIBLE
-            binding.titleCm.visibility = View.INVISIBLE
+            binding.myChanges.visibility = View.GONE
+            binding.dashboard.visibility = View.GONE
+            binding.titleCm.visibility = View.GONE
         }
 
         (activity as AppCompatActivity).supportActionBar?.title = "Essentials"

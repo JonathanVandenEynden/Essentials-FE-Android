@@ -53,23 +53,18 @@ class SurveyQuestionFragement : Fragment() {
             container,
             false
         )
-        try {
-            viewModel = getViewModel()
+        viewModel = getViewModel()
+        val args = SurveyQuestionFragementArgs.fromBundle(requireArguments())
+        roadMapItem = args.roadmapitem
+        questions = roadMapItem.assessment!!.questions
 
-            val args = SurveyQuestionFragementArgs.fromBundle(requireArguments())
-            roadMapItem = args.roadmapitem
-            questions = roadMapItem.assessment!!.questions
+        binding.currentQuestion = this
+        numberOfQuestions = questions.size
 
-            binding.currentQuestion = this
-            numberOfQuestions = questions.size
+        setQuestion()
 
-            setQuestion()
-
-            binding.nextQuestion.setOnClickListener { view: View ->
-                handleNextQuestion()
-            }
-        } catch (e: Exception) {
-            errorOccured = true
+        binding.nextQuestion.setOnClickListener { view: View ->
+            handleNextQuestion()
         }
         return binding.root
     }

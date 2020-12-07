@@ -12,6 +12,7 @@ import com.hogentessentials1.essentials.R
 import com.hogentessentials1.essentials.databinding.SurveyEndBinding
 import com.hsalf.smileyrating.SmileyRating
 import org.koin.android.ext.android.inject
+import timber.log.Timber
 
 /**
  * @author Ziggy Moens
@@ -32,23 +33,29 @@ class SurveyDoneFragment : Fragment() {
     ): View {
         val args = SurveyDoneFragmentArgs.fromBundle(requireArguments())
         val roadMapItem = args.roadmapitem
+        val feedback = roadMapItem.assessment!!.feedback
 
         val binding: SurveyEndBinding =
             DataBindingUtil.inflate(inflater, R.layout.survey_end, container, false)
+
+        viewModel = getViewModel()
+
         binding.surveyDoneButton.setOnClickListener { view: View ->
             val smiley: SmileyRating.Type = binding.feedbackRating.getSelectedSmiley()
             val rating: Int = smiley.getRating()
 
             answer = rating.toString()
 
-            viewModel.answer(roadMapItem.assessment!!.feedback?.id!!.toInt(), answer)
+            if (feedback != null) {
+                viewModel.answer(feedback.id.toInt(), answer)
+            } else (
+                    Timber.e("feedback error")
+                    )
 
             view.findNavController().navigate(
                 SurveyDoneFragmentDirections.actionSurveyDoneFragmentToHomeScreenFragment()
             )
         }
-
-        viewModel = getViewModel()
 
         (activity as AppCompatActivity).supportActionBar?.title =
             getString(R.string.survey_finished)

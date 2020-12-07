@@ -14,11 +14,11 @@ import com.hogentessentials1.essentials.data.model.Question
 import com.hogentessentials1.essentials.data.model.RoadMapItem
 import com.hogentessentials1.essentials.data.model.util.Globals
 import com.hogentessentials1.essentials.databinding.RoadmapBinding
-import timber.log.Timber
 
 /**
  * @author Ziggy Moens
  */
+@Suppress("DEPRECATION")
 class RoadMapFragment : Fragment() {
 
     private lateinit var roadmapitem: RoadMapItem
@@ -39,20 +39,29 @@ class RoadMapFragment : Fragment() {
 
         val q_original: List<Question> = roadmapitem.assessment!!.questions
         val q: ArrayList<Question> = arrayListOf()
+        var filledIn = 0
 
         for (question in roadmapitem.assessment?.questions!!) {
-            Timber.e(Globals.userid.toString())
-            if (!question.questionRegistered!!.keys.contains(Globals.userid.toString())) {
-                Timber.e(question.questionRegistered.keys.toString())
+            if (filledIn < question.questionRegistered!!.keys.size)
+                filledIn = question.questionRegistered.keys.size
+            if (!question.questionRegistered.keys.contains(Globals.userid.toString())) {
                 q.add(question)
             }
         }
+
+        binding.amountQuestions.text = q_original.size.toString()
+        binding.filledIn.text = filledIn.toString()
 
         roadmapitem.assessment!!.questions = q
 
         viewModel.roadMapItem = roadmapitem
 
         binding.viewModel = viewModel
+
+        if (q.size == 0) {
+            binding.surveyRoadmap.setBackgroundColor(resources.getColor(R.color.green))
+            binding.surveyRoadmap.setText(resources.getText(R.string.survey_already_filled))
+        }
 
         viewModel.navigateToSurvey.observe(
             viewLifecycleOwner,

@@ -49,6 +49,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginBottom="32dp"
             android:fadeScrollbars="false"
+            android:fillViewport="true"
             app:layout_constraintBottom_toTopOf="@+id/roadmapbutton"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -61,7 +62,7 @@
                 <LinearLayout
                     android:id="@+id/linearLayout2"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="0dp"
                     android:layout_marginTop="8dp"
                     android:layout_weight="1"
                     android:orientation="horizontal"
@@ -90,7 +91,7 @@
                 <LinearLayout
                     android:id="@+id/linearLayout"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="0dp"
                     android:layout_marginTop="13dp"
                     android:layout_weight="1"
                     android:orientation="horizontal"
@@ -120,7 +121,7 @@
                 <LinearLayout
                     android:id="@+id/linearLayout3"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="0dp"
                     android:layout_marginTop="16dp"
                     android:orientation="horizontal"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -149,7 +150,7 @@
                 <LinearLayout
                     android:id="@+id/linearLayout4"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="0dp"
                     android:layout_marginTop="16dp"
                     android:orientation="vertical"
                     app:layout_constraintEnd_toEndOf="parent"
