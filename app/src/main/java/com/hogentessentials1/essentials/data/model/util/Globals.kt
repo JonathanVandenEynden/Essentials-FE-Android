@@ -19,7 +19,7 @@ class Globals {
 
         var bearerToken: String
             get() {
-                if (!isValid()) {
+                if (!bearertokenIsValid()) {
                     this.bearerToken = ""
                 }
 
@@ -28,7 +28,7 @@ class Globals {
             this.bt = value
         }
 
-        fun isValid(): Boolean {
+        fun bearertokenIsValid(): Boolean {
             try {
                 val jwt = JWT(this.bt)
                 jwt.expiresAt?.let {

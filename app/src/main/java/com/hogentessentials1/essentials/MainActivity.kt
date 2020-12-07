@@ -1,5 +1,6 @@
 package com.hogentessentials1.essentials
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
@@ -10,7 +11,9 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.navigation.NavigationView
+import com.hogentessentials1.essentials.data.model.util.Globals
 import com.hogentessentials1.essentials.databinding.ActivityMainBinding
+import com.hogentessentials1.essentials.login.ui.login.LoginActivity
 
 /**
  * @author Simon De Wilde
@@ -38,6 +41,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         NavigationUI.setupActionBarWithNavController(this, navController, binding.drawerLayout)
         binding.navView.setNavigationItemSelectedListener(this)
     }
+
     override fun onSupportNavigateUp(): Boolean {
         return NavigationUI.navigateUp(navController, binding.drawerLayout)
     }
@@ -47,6 +51,21 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             binding.drawerLayout.closeDrawer(GravityCompat.START)
         } else {
             super.onBackPressed()
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        /**
+         * @author Simon De Wilde
+         *  If the app is resumed after a long time, and the stored bearertoken has become invalid,
+         *  the application will return to the loginscreen
+         */
+        if (!Globals.bearertokenIsValid()) {
+            val toLoginActivity = Intent(this@MainActivity, LoginActivity::class.java)
+            toLoginActivity
+            startActivity(toLoginActivity)
         }
     }
 
