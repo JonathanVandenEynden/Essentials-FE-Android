@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- @author Simon De Wilde -->
+<?xml version="1.0" encoding="utf-8"?><!-- @author Simon De Wilde -->
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/changeInitiativesDrawer"
@@ -17,9 +16,8 @@
         android:id="@+id/teamsDrawer"
         android:icon="@drawable/people_black_48dp"
         android:title="@string/my_teams" />
-<!--    TODO extra element-->
-<!--    <item-->
-<!--        android:id="@+id/changeInitiativesFragment"-->
-<!--        android:icon="@drawable/sync_black_18dp"-->
-<!--        android:title="@string/my_changes" />-->
+    <item
+        android:id="@+id/logout"
+        android:icon="@drawable/logout_black_48dp"
+        android:title="@string/log_out" />
 </menu>

@@ -3,6 +3,7 @@ package com.hogentessentials1.essentials
 import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.databinding.DataBindingUtil
@@ -63,10 +64,20 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
          *  the application will return to the loginscreen
          */
         if (!Globals.bearertokenIsValid()) {
-            val toLoginActivity = Intent(this@MainActivity, LoginActivity::class.java)
-            toLoginActivity
-            startActivity(toLoginActivity)
+            toLoginActivity()
         }
+    }
+
+    private fun toLoginActivity() {
+        Toast.makeText(
+            applicationContext,
+            "Logged out successfully",
+            Toast.LENGTH_LONG
+        ).show()
+
+        val toLoginActivity = Intent(this@MainActivity, LoginActivity::class.java)
+        toLoginActivity
+        startActivity(toLoginActivity)
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
@@ -79,7 +90,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.dashboardDrawer -> navController.navigate(R.id.dashboardFragment)
             R.id.allSurveysDrawer -> navController.navigate(R.id.allSurveysFragment)
             R.id.teamsDrawer -> navController.navigate(R.id.teamsFragment)
-            // TODO extra
+            R.id.logout -> {
+                Globals.bearerToken = ""
+                toLoginActivity()
+            }
         }
         return true
     }
