@@ -13,7 +13,7 @@ class Globals {
                 try {
                     val jwt = JWT(bearerToken)
                     jwt.subject?.let {
-                        return it.split(".")[0]
+                        return it.split("@")[0]
                     }
                 } catch (e: Exception) {
                     return ""
