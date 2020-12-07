@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-    @author Simon De Wilde
     @author Ziggy Moens
+    @author Simon De Wilde
 
     navigation for the application
 -->
@@ -12,81 +12,89 @@
     app:startDestination="@id/homeScreenFragment">
 
     <fragment
-        android:id="@+id/changeInitiativesFragment"
-        android:name="com.hogentessentials1.essentials.ui.changeInitiatives.ChangeInitiativesFragment"
-        android:label="fragment_change_initiatives"
-        tools:layout="@layout/fragment_change_initiatives">
+        android:id="@+id/changeInitiatives"
+        android:name="com.hogentessentials.essentials.ui.changeInitiatives.ChangeInitiativesFragment"
+        android:label="changeinitiatives"
+        tools:layout="@layout/changeinitiatives_list">
+        <argument
+            android:name="changemanager"
+            app:argType="boolean" />
         <action
-            android:id="@+id/action_changeInitiativesFragment_to_surveysChangeinitiativeFragment"
-            app:destination="@id/surveysChangeInitiativeFragment" />
+            android:id="@+id/action_changeInitiatives_to_changeInitiativeFragment"
+            app:destination="@id/changeInitiativeFragment" />
+        <action
+            android:id="@+id/action_changeInitiatives_to_notFoundFragment"
+            app:destination="@id/notFoundFragment" />
     </fragment>
     <fragment
         android:id="@+id/homeScreenFragment"
-        android:name="com.hogentessentials1.essentials.ui.homeScreen.HomeScreenFragment"
+        android:name="com.hogentessentials.essentials.ui.homeScreen.HomeScreenFragment"
         android:label="fragment_home_screen"
         tools:layout="@layout/fragment_home_screen">
         <action
             android:id="@+id/action_homeScreenFragment_to_changeInitiativesFragment"
-            app:destination="@id/changeInitiativesFragment" />
-        <action
-            android:id="@+id/action_homeScreenFragment_to_allSurveysFragment"
-            app:destination="@id/allSurveysFragment" />
+            app:destination="@id/changeInitiatives" />
         <action
             android:id="@+id/action_homeScreenFragment_to_dashboardFragment"
             app:destination="@id/dashboardFragment" />
         <action
             android:id="@+id/action_homeScreenFragment_to_teamsFragment"
             app:destination="@id/teamsFragment" />
+        <action
+            android:id="@+id/action_homeScreenFragment_to_roadMapListFragment"
+            app:destination="@id/roadMapListFragment" />
     </fragment>
     <fragment
         android:id="@+id/surveyQuestionFragment"
-        android:name="com.hogentessentials1.essentials.ui.surveys.SurveyQuestionFragement"
+        android:name="com.hogentessentials.essentials.ui.survey.SurveyQuestionFragement"
         android:label="SurveyQuestionFragment">
         <action
-            android:id="@+id/action_surveyQuestionFragement_to_surveyDoneFragment"
-            app:destination="@id/surveyDoneFragment" />
+            android:id="@+id/action_surveyQuestionFragment_to_surveyEndFragment"
+            app:destination="@id/surveyEndFragment" />
         <argument
-            android:name="survey"
-            app:argType="com.hogentessentials1.essentials.data.model.Survey" />
+            android:name="changemanager"
+            app:argType="boolean" />
+        <argument
+            android:name="roadmapitem"
+            app:argType="com.hogentessentials.essentials.data.model.RoadMapItem" />
     </fragment>
     <fragment
-        android:id="@+id/surveyDoneFragment"
-        android:name="com.hogentessentials1.essentials.ui.surveys.SurveyDoneFragment"
-        android:label="SurveyDoneFragment">
+        android:id="@+id/surveyEndFragment"
+        android:name="com.hogentessentials.essentials.ui.survey.SurveyDoneFragment"
+        android:label="SurveyEndFragment">
         <action
             android:id="@+id/action_surveyDoneFragment_to_homeScreenFragment"
             app:destination="@id/homeScreenFragment" />
         <argument
-            android:name="questions"
-            app:argType="com.hogentessentials1.essentials.data.model.SurveyQuestion[]" />
+            android:name="roadmapitem"
+            app:argType="com.hogentessentials.essentials.data.model.RoadMapItem" />
     </fragment>
     <fragment
-        android:id="@+id/surveysChangeInitiativeFragment"
-        android:name="com.hogentessentials1.essentials.ui.surveys.SurveysChangeInitiativeFragment"
-        android:label="SurveysChangeinitiativeFragment">
+        android:id="@+id/changeInitiativeFragment"
+        android:name="com.hogentessentials.essentials.ui.changeinitiative.ChangeInitiativeFragment"
+        android:label="changeinitiativeFragment">
         <action
-            android:id="@+id/action_surveysChangeinitiativeFragment_to_surveyQuestionFragement"
-            app:destination="@id/surveyQuestionFragment" />
+            android:id="@+id/action_changeInitiativeFragment_to_roadMapListFragment"
+            app:destination="@id/roadMapListFragment" />
         <argument
-            android:name="changeInitiative"
-            app:argType="com.hogentessentials1.essentials.data.model.ChangeInitiative" />
-    </fragment>
-    <fragment
-        android:id="@+id/allSurveysFragment"
-        android:name="com.hogentessentials1.essentials.ui.surveys.AllSurveysFragment"
-        android:label="AllSurveysFragment">
-        <action
-            android:id="@+id/action_allSurveysFragment_to_surveyQuestionFragment"
-            app:destination="@id/surveyQuestionFragment" />
+            android:name="changemanager"
+            app:argType="boolean" />
+        <argument
+            android:name="changeinitiative"
+            app:argType="com.hogentessentials.essentials.data.model.ChangeInitiative" />
     </fragment>
     <fragment
         android:id="@+id/dashboardFragment"
-        android:name="com.hogentessentials1.essentials.ui.dashboard.DashboardFragment"
+        android:name="com.hogentessentials.essentials.ui.dashboard.DashboardFragment"
         android:label="fragment_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_dashboard" >
+        <action
+            android:id="@+id/action_dashboardFragment_to_dashboardGraphFragment"
+            app:destination="@id/dashboardGraphFragment" />
+    </fragment>
     <fragment
         android:id="@+id/teamsFragment"
-        android:name="com.hogentessentials1.essentials.ui.changeGroup.TeamsFragment"
+        android:name="com.hogentessentials.essentials.ui.changeGroup.TeamsFragment"
         android:label="teams_fragment"
         tools:layout="@layout/teams_fragment" >
         <action
@@ -95,10 +103,78 @@
     </fragment>
     <fragment
         android:id="@+id/teamDetailsFragment"
-        android:name="com.hogentessentials1.essentials.ui.changeGroup.changeGroupDetail.TeamDetailsFragment"
-        android:label="TeamDetailsFragment" >
+        android:name="com.hogentessentials.essentials.ui.changeGroup.changeGroupDetail.TeamDetailsFragment"
+        android:label="TeamDetailsFragment">
         <argument
             android:name="changeGroupMembers"
             app:argType="string[]" />
+    </fragment>
+    <fragment
+        android:id="@+id/notFoundFragment"
+        android:name="com.hogentessentials.essentials.ui.notFound.NotFoundFragment"
+        android:label="NotFoundFragment">
+        <action
+            android:id="@+id/action_notFoundFragment_to_homeScreenFragment"
+            app:destination="@id/homeScreenFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/roadMapListFragment"
+        android:name="com.hogentessentials.essentials.ui.roadMap.list.RoadMapListFragment"
+        android:label="RoadMapListFragment">
+        <argument
+            android:name="allSurveys"
+            app:argType="boolean" />
+        <action
+            android:id="@+id/action_roadMapListFragment_to_roadMapFragment"
+            app:destination="@id/roadMapFragment" />
+        <argument
+            android:name="changemanager"
+            app:argType="boolean" />
+        <argument
+            android:name="roadmapitems"
+            app:argType="com.hogentessentials.essentials.data.model.RoadMapItem[]"
+            app:nullable="true" />
+        <action
+            android:id="@+id/action_roadMapListFragment_to_notFoundFragment"
+            app:destination="@id/notFoundFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/roadMapFragment"
+        android:name="com.hogentessentials.essentials.ui.roadMap.RoadMapFragment"
+        android:label="RoadMapFragment">
+        <action
+            android:id="@+id/action_roadMapFragment_to_surveyQuestionFragment"
+            app:destination="@id/surveyQuestionFragment" />
+        <argument
+            android:name="changemanager"
+            app:argType="boolean" />
+        <argument
+            android:name="roadmapitem"
+            app:argType="com.hogentessentials.essentials.data.model.RoadMapItem" />
+        <action
+            android:id="@+id/action_roadMapFragment_to_notFoundFragment"
+            app:destination="@id/notFoundFragment" />
+        <action
+            android:id="@+id/action_roadMapFragment_to_surveyComplete"
+            app:destination="@id/surveyComplete" />
+    </fragment>
+    <fragment
+        android:id="@+id/surveyComplete"
+        android:name="com.hogentessentials.essentials.ui.survey.SurveyComplete"
+        android:label="SurveyComplete">
+        <action
+            android:id="@+id/action_surveyComplete_to_homeScreenFragment"
+            app:destination="@id/homeScreenFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/dashboardGraphFragment"
+        android:name="com.hogentessentials.essentials.ui.dashboard.DashboardGraphFragment"
+        android:label="fragment_dashboard_graph">
+        <argument
+            android:name="changeInitiative"
+            app:argType="com.hogentessentials.essentials.data.model.ChangeInitiative" />
+        <argument
+            android:name="roadMapItem"
+            app:argType="com.hogentessentials.essentials.data.model.RoadMapItem" />
     </fragment>
 </navigation>

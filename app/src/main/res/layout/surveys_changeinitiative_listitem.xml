@@ -11,11 +11,11 @@
 
         <variable
             name="survey"
-            type="com.hogentessentials1.essentials.data.model.Survey" />
+            type="com.hogentessentials.essentials.data.model.Survey" />
 
         <variable
             name="clickListener"
-            type="com.hogentessentials1.essentials.ui.surveys.SurveyListener" />
+            type="com.hogentessentials.essentials.ui.changeinitiative.SurveyListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
