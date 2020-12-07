@@ -1,8 +1,8 @@
 package com.hogentessentials1.essentials.ui.dashboard
 
-import android.graphics.Color
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
-import android.text.method.LinkMovementMethod
 import android.view.*
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
@@ -10,25 +10,19 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.NavController
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.github.mikephil.charting.components.Legend
-import com.github.mikephil.charting.data.BarEntry
 import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
 import com.github.mikephil.charting.utils.ColorTemplate
-import com.google.android.material.internal.TextDrawableHelper
 import com.hogentessentials1.essentials.R
 import com.hogentessentials1.essentials.data.model.ChangeInitiative
 import com.hogentessentials1.essentials.data.model.RoadMapItem
-import com.hogentessentials1.essentials.databinding.FragmentDashboardBinding
 import com.hogentessentials1.essentials.databinding.FragmentDashboardGraphBinding
-import com.hogentessentials1.essentials.ui.surveys.SurveysChangeInitiativeFragmentArgs
-import com.hsalf.smilerating.SmileRating
 import org.koin.android.ext.android.inject
 import timber.log.Timber
+
 
 class DashboardGraphFragment: Fragment() {
     //lateinit var viewModel: DashboardViewModel
@@ -75,7 +69,6 @@ class DashboardGraphFragment: Fragment() {
             showCharts(rmi!!)
         }
 
-        setupHyperlink()
         navController = this.findNavController()
         setHasOptionsMenu(true)
 
@@ -94,6 +87,10 @@ class DashboardGraphFragment: Fragment() {
 
         when (item.itemId) {
             R.id.infoFragment -> navController.navigate(R.id.homeScreenFragment)
+            R.id.websiteFragment -> {
+                val uri: Uri = Uri.parse("https://essentialstoolkit.netlify.app/")
+                startActivity(Intent(Intent.ACTION_VIEW, uri))
+            }
         }
         return true
     }
@@ -118,7 +115,13 @@ class DashboardGraphFragment: Fragment() {
         var mood : Map<Int, Int> = mapOf()
         viewModel.m.observe(viewLifecycleOwner, Observer { mood = it })
         Timber.e("Test:" + mood.toString())
-        val moods : List<String> = listOf("\uD83D\uDE26", "\uD83D\uDE41", "\uD83D\uDE10", "\uD83D\uDE42", "\uD83D\uDE04")
+        val moods : List<String> = listOf(
+            "\uD83D\uDE26",
+            "\uD83D\uDE41",
+            "\uD83D\uDE10",
+            "\uD83D\uDE42",
+            "\uD83D\uDE04"
+        )
         val valueSet1 = ArrayList<PieEntry>()
         if (!mood.isEmpty())
         {
@@ -136,12 +139,6 @@ class DashboardGraphFragment: Fragment() {
         val dataSet1 = PieDataSet(valueSet1, "Overal Mood")
         dataSet1.setColors(*ColorTemplate.COLORFUL_COLORS)
         return dataSet1
-    }
-
-    fun setupHyperlink() {
-        val linkTextView = binding.siteLink
-        linkTextView.setMovementMethod(LinkMovementMethod.getInstance());
-        linkTextView.setLinkTextColor(Color.BLUE)
     }
 
     fun refreshVM()

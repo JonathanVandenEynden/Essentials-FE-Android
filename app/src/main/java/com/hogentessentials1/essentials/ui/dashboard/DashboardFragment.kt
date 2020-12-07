@@ -1,6 +1,8 @@
 package com.hogentessentials1.essentials.ui.dashboard
 
+import android.content.Intent
 import android.graphics.Color
+import android.net.Uri
 import android.os.Bundle
 import android.view.*
 import android.widget.AdapterView
@@ -199,6 +201,10 @@ class DashboardFragment : Fragment() {
 
         when (item.itemId) {
             R.id.infoFragment -> navController.navigate(R.id.homeScreenFragment)
+            R.id.websiteFragment -> {
+                val uri: Uri = Uri.parse("https://essentialstoolkit.netlify.app/")
+                startActivity(Intent(Intent.ACTION_VIEW, uri))
+            }
         }
         return true
     }
