@@ -83,6 +83,7 @@ private fun provideOkHttpClient() = if (BuildConfig.DEBUG) {
         // Interceptor to add header to each request
         .addInterceptor(
             Interceptor {
+
                 val original: Request = it.request()
                 val newRequest: Request = original.newBuilder()
                     .header("Authorization", "Bearer ${Globals.bearerToken}")

@@ -1,18 +1,21 @@
 package com.hogentessentials1.essentials.login.ui.login
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
 import android.view.inputmethod.EditorInfo
+import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.hogentessentials1.essentials.MainActivity
@@ -67,15 +70,18 @@ class LoginActivity : AppCompatActivity() {
 
                 loading.visibility = View.GONE
                 if (loginResult.error != null) {
+                    hideKeyboard()
+                    password.selectAll()
                     showLoginFailed(loginResult.error)
+
                 }
                 if (loginResult.success != null) {
                     updateUiWithUser(loginResult.success)
+                    setResult(Activity.RESULT_OK)
+                    // Complete and destroy login activity once successful
+                    finish()
                 }
-                setResult(Activity.RESULT_OK)
 
-                // Complete and destroy login activity once successful
-                finish()
             }
         )
 
@@ -147,4 +153,17 @@ fun EditText.afterTextChanged(afterTextChanged: (String) -> Unit) {
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {}
         }
     )
+}
+
+fun Fragment.hideKeyboard() {
+    view?.let { activity?.hideKeyboard(it) }
+}
+
+fun Activity.hideKeyboard() {
+    hideKeyboard(currentFocus ?: View(this))
+}
+
+fun Context.hideKeyboard(view: View) {
+    val inputMethodManager = getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+    inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
 }
