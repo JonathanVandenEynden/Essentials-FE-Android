@@ -8,7 +8,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.hogentessentials1.essentials.ui.survey.SurveyDoneViewModel" />
+            type="com.hogentessentials.essentials.ui.survey.SurveyDoneViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

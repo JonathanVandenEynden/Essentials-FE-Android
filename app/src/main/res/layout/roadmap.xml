@@ -9,7 +9,7 @@
 
         <variable
             name="viewModel"
-            type="com.hogentessentials1.essentials.ui.roadMap.RoadMapViewModel" />
+            type="com.hogentessentials.essentials.ui.roadMap.RoadMapViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

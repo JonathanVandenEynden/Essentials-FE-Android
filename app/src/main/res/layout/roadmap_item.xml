@@ -11,11 +11,11 @@
 
         <variable
             name="roadmapItem"
-            type="com.hogentessentials1.essentials.data.model.RoadMapItem" />
+            type="com.hogentessentials.essentials.data.model.RoadMapItem" />
 
         <variable
             name="clickListener"
-            type="com.hogentessentials1.essentials.ui.roadMap.list.RoadMapListener" />
+            type="com.hogentessentials.essentials.ui.roadMap.list.RoadMapListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

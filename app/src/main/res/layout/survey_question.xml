@@ -8,7 +8,7 @@
     <data>
         <variable
             name="currentQuestion"
-            type="com.hogentessentials1.essentials.ui.survey.SurveyQuestionFragement" />
+            type="com.hogentessentials.essentials.ui.survey.SurveyQuestionFragement" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

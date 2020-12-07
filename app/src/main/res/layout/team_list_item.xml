@@ -10,7 +10,7 @@
 
         <variable
             name="changeGroup"
-            type="com.hogentessentials1.essentials.data.model.ChangeGroup" />
+            type="com.hogentessentials.essentials.data.model.ChangeGroup" />
     </data>
 
     <Button

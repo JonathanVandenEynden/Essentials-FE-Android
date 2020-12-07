@@ -10,7 +10,7 @@
 
         <variable
             name="viewModel"
-            type="com.hogentessentials1.essentials.ui.changeinitiative.ChangeinitiativeViewModel" />
+            type="com.hogentessentials.essentials.ui.changeinitiative.ChangeinitiativeViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

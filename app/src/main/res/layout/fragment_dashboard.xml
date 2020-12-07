@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.hogentessentials1.essentials.ui.dashboard.DashboardViewModel" />
+            type="com.hogentessentials.essentials.ui.dashboard.DashboardViewModel" />
     </data>
 
     <FrameLayout
