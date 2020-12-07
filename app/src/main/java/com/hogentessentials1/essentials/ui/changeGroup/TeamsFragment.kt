@@ -51,7 +51,7 @@ class TeamsFragment : Fragment(), ChangeGroupClickListener {
             viewLifecycleOwner,
             Observer {
                 it?.let { resource ->
-                    when (resource.status){
+                    when (resource.status) {
                         Status.SUCCESS -> {
                             adapter.submitList(resource.data)
                         }

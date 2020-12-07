@@ -1,10 +1,9 @@
 package com.hogentessentials1.essentials.data.model.DI
 
-import android.accounts.Account
 import com.hogentessentials1.essentials.BuildConfig
-import com.hogentessentials1.essentials.data.model.network.EssentialsDatabase
 import com.hogentessentials1.essentials.data.model.Repositories.*
 import com.hogentessentials1.essentials.data.model.network.*
+import com.hogentessentials1.essentials.data.model.network.EssentialsDatabase
 import com.hogentessentials1.essentials.data.model.network.local.ChangeGroupLocalDataSource
 import com.hogentessentials1.essentials.data.model.network.local.ChangeInitiativeLocalDataSource
 import com.hogentessentials1.essentials.data.model.util.Globals
@@ -34,7 +33,7 @@ val networkModule = module {
     single { provideEmployeeEndpointInterface(get()) }
     single { provideChangeManagerEndpointInterface(get()) }
     single { provideSurveyEndpointInterface(get()) }
-    single { provideAccountEndpointInterface(get())}
+    single { provideAccountEndpointInterface(get()) }
 
     // remote datasources
     single { RoadMapRemoteDataSource(get()) }
@@ -48,26 +47,24 @@ val networkModule = module {
     single { SurveyRemoteDataSource(get()) }
     single { LoginDataSource(get()) }
 
-
     // local datasources
-    single { ChangeInitiativeLocalDataSource(get())}
+    single { ChangeInitiativeLocalDataSource(get()) }
     single { ChangeGroupLocalDataSource(get()) }
 
-
     // Daos
-    single { EssentialsDatabase.getInstance(androidApplication()).ChangeInitiativeDao()}
-    single { EssentialsDatabase.getInstance(androidApplication()).ChangeGroupDao()}
+    single { EssentialsDatabase.getInstance(androidApplication()).ChangeInitiativeDao() }
+    single { EssentialsDatabase.getInstance(androidApplication()).ChangeGroupDao() }
 
     // repos
     single { RoadMapRepository(get()) }
-    single { ChangeInitiativeRepository(get(), get())}
-    single { ChangeGroupRepository(get(), get())}
-    single { ProjectRepository(get())}
-    single { QuestionRepository(get())}
-    single { OrganizationRepository(get())}
-    single { EmployeeRepository(get())}
-    single { ChangeManagerRepository(get())}
-    single { SurveyRepository(get())}
+    single { ChangeInitiativeRepository(get(), get()) }
+    single { ChangeGroupRepository(get(), get()) }
+    single { ProjectRepository(get()) }
+    single { QuestionRepository(get()) }
+    single { OrganizationRepository(get()) }
+    single { EmployeeRepository(get()) }
+    single { ChangeManagerRepository(get()) }
+    single { SurveyRepository(get()) }
     single { LoginRepository(get()) }
 }
 
@@ -147,5 +144,5 @@ private fun provideChangeManagerEndpointInterface(retrofit: Retrofit): ChangeMan
 private fun provideSurveyEndpointInterface(retrofit: Retrofit): SurveyEndpointInterface =
     retrofit.create(SurveyEndpointInterface::class.java)
 
-private fun provideAccountEndpointInterface(retrofit: Retrofit) : AccountEndpointInterface =
+private fun provideAccountEndpointInterface(retrofit: Retrofit): AccountEndpointInterface =
     retrofit.create(AccountEndpointInterface::class.java)

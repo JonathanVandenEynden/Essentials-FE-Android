@@ -1,12 +1,7 @@
 package com.hogentessentials1.essentials.data.model.util
 
-import android.content.Intent
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import com.auth0.android.jwt.JWT
-import com.hogentessentials1.essentials.MainActivity
 import java.lang.Exception
-import java.time.LocalDateTime
 import java.util.*
 
 /**
@@ -25,13 +20,13 @@ class Globals {
         var bearerToken: String
             get() {
                 if (!isValid()) {
-                    this.bearerToken = "";
+                    this.bearerToken = ""
                 }
 
-                return bt;
-            }set(value) {
-                this.bt = value
-            }
+                return bt
+            } set(value) {
+            this.bt = value
+        }
 
         fun isValid(): Boolean {
             try {
@@ -41,7 +36,7 @@ class Globals {
                     if (it > today) {
                         return true
                     } else {
-                        throw Exception();
+                        throw Exception()
                     }
                 }
             } catch (e: Exception) {
