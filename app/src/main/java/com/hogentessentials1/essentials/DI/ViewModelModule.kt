@@ -9,7 +9,16 @@ import com.hogentessentials1.essentials.ui.survey.SurveyDoneViewModel
 import com.hogentessentials1.essentials.ui.survey.SurveyQuestionViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
-
+/**
+ * @author Simon De Wilde
+ * @author Kilian Hoefman
+ * @author Jonathan VEVL
+ * @author Marbod Naasens
+ * @author Ziggy Moens
+ * @author Sébastien De Pauw
+ *
+ * Definitions of the viewmodel module
+ */
 val viewModelModule = module {
     viewModel { DashboardViewModel(get(), get(), get()) }
     viewModel { ChangeInitiativesViewModel(get()) }

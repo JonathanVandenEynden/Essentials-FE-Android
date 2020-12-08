@@ -49,6 +49,16 @@ import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 
+/**
+ * @author Simon De Wilde
+ * @author Kilian Hoefman
+ * @author Jonathan VEVL
+ * @author Marbod Naasens
+ * @author Ziggy Moens
+ * @author Sébastien De Pauw
+ *
+ * Definitions of the network module
+ */
 val networkModule = module {
     // retrofit and interfaces
     single { provideOkHttpClient() }
