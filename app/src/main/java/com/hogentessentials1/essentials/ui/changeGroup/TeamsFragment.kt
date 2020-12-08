@@ -58,10 +58,15 @@ class TeamsFragment : Fragment(), ChangeGroupClickListener {
         return binding.root
     }
 
+
     override fun onClick(changeGroup: ChangeGroup) {
         navigateToDetail(changeGroup)
     }
 
+    /**
+     * Navigates to the detail screen of a given changeGroup (team)
+     * @param changeGroup
+     */
     private fun navigateToDetail(changeGroup: ChangeGroup) {
 
         val directions =

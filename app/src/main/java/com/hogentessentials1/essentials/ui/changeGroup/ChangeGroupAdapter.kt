@@ -18,9 +18,18 @@ class ChangeGroupAdapter(private var clickClickListener: ChangeGroupClickListene
         parent: ViewGroup,
         viewType: Int
     ): ChangeGroupViewHolder {
-        return ChangeGroupViewHolder(TeamListItemBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+        return ChangeGroupViewHolder(
+            TeamListItemBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
+        )
     }
 
+    /**
+     * binds a new item in the viewholder
+     */
     override fun onBindViewHolder(holder: ChangeGroupViewHolder, position: Int) {
         val changeGroup = getItem(position)
         holder.bindData(changeGroup)
@@ -31,15 +40,31 @@ class ChangeGroupAdapter(private var clickClickListener: ChangeGroupClickListene
 }
 
 class ChangeGroupDIffCallback : DiffUtil.ItemCallback<ChangeGroup>() {
+    /**
+     * @param newItem
+     * @param oldItem
+     * @return true if the id's of the items are the same
+     * are 2 items the same?
+     */
     override fun areItemsTheSame(oldItem: ChangeGroup, newItem: ChangeGroup): Boolean {
         return oldItem.id == newItem.id
     }
 
+    /**
+     * @param newItem
+     * @param oldItem
+     * @return true if the 2 items are the same
+     * are the contents 2 items the same?
+     */
     override fun areContentsTheSame(oldItem: ChangeGroup, newItem: ChangeGroup): Boolean {
         return oldItem == newItem
     }
 }
 
+/**
+ * @author Simon De Wilde
+ * simple click listener for a change group
+ */
 interface ChangeGroupClickListener {
     fun onClick(changeGroup: ChangeGroup)
 }
