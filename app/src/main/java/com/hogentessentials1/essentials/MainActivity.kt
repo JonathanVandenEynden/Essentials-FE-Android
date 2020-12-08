@@ -19,7 +19,6 @@ import com.hogentessentials1.essentials.ui.login.ui.login.LoginActivity
 import com.hogentessentials1.essentials.util.Globals
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 
 /**

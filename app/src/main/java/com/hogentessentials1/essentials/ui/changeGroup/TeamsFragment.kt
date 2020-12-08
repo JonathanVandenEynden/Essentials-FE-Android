@@ -47,9 +47,9 @@ class TeamsFragment : Fragment(), ChangeGroupClickListener {
                 it?.let { resource ->
                     when (resource.status) {
                         Status.SUCCESS -> {
-                            if(resource.data?.isEmpty() == true){
+                            if (resource.data?.isEmpty() == true) {
                                 binding.noTeamsBanner.visibility = View.VISIBLE
-                            } else{
+                            } else {
                                 binding.noTeamsBanner.visibility = View.GONE
                             }
                             adapter.submitList(resource.data)
