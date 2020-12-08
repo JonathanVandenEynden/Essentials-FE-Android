@@ -21,4 +21,7 @@ interface EmployeeDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAll(employees: List<Employee>)
+
+    @Query("DELETE FROM employee")
+    suspend fun deleteAll()
 }
