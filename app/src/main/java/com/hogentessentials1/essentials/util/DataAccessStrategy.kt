@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
 import androidx.lifecycle.map
 import kotlinx.coroutines.Dispatchers
+import timber.log.Timber
 
 fun <T, A> performGetOperation(
     databaseQuery: () -> LiveData<T>,

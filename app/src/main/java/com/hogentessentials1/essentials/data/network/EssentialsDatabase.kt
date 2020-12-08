@@ -86,4 +86,12 @@ abstract class EssentialsDatabase : RoomDatabase() {
 //            }
 //        }
     }
+
+    suspend fun truncate() {
+        this.EmployeeDao().deleteAll()
+        this.ChangeGroupDao().deleteAll()
+        this.ChangeInitiativeDao().deleteAll()
+        this.ProjectDao().deleteAll()
+        this.RoadMapDao().deleteAll()
+    }
 }

@@ -1,10 +1,8 @@
 package com.hogentessentials1.essentials.DAOs
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.lifecycle.ViewModel
+import androidx.room.*
 import com.hogentessentials1.essentials.data.model.ChangeGroup
 
 /**
@@ -21,4 +19,7 @@ interface ChangeGroupDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(changeGroups: List<ChangeGroup>)
+
+    @Query("DELETE FROM changeGroup")
+    suspend fun deleteAll()
 }
