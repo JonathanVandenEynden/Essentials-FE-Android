@@ -35,18 +35,22 @@ class MyChangesFragment: Fragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_mychange_surveys, container, false)
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
-        binding.surveyAveragemoodImageviewId.setImageResource(when(viewModel.survey.questions.get(viewModel.survey.questions.lastIndex).answer){
-            0.0 -> R.drawable.ic_happiness_0
-            1.0 -> R.drawable.ic_happiness_1
-            2.0 -> R.drawable.ic_happiness_2
-            3.0 -> R.drawable.ic_happiness_3
-            4.0 -> R.drawable.ic_happiness_4
-            5.0 -> R.drawable.ic_happiness_5
+        var meanFeedback: Double = 0.0
+        viewModel.survey.feedback.questionRegistered?.forEach { (k,v) -> meanFeedback += v }
+        if(meanFeedback != 0.0)
+            meanFeedback = meanFeedback/ viewModel.survey.feedback.questionRegistered?.size!!
+        binding.surveyAveragemoodImageviewId.setImageResource(when(Math.floor(meanFeedback.toDouble()).toInt()){
+            0 -> R.drawable.ic_happiness_0
+            1 -> R.drawable.ic_happiness_1
+            2 -> R.drawable.ic_happiness_2
+            3 -> R.drawable.ic_happiness_3
+            4 -> R.drawable.ic_happiness_4
+            5 -> R.drawable.ic_happiness_5
             else -> R.drawable.ic_happiness_none
         })
-        binding.surveyAveragemoodTextviewId.text = "Overall happiness: " + calculatePercent()
+        binding.surveyAveragemoodTextviewId.text = "Overall happiness: " + calculatePercent(meanFeedback)
 
-        (activity as AppCompatActivity).supportActionBar?.title = viewModel.survey.name
+        (activity as AppCompatActivity).supportActionBar?.title = viewModel.survey.roadMapItem?.title
 
         val adapter = MyChangesAdapter()
         binding.questionList.adapter = adapter
@@ -55,11 +59,11 @@ class MyChangesFragment: Fragment() {
         return binding.root
     }
 
-    fun calculatePercent(): String {
+    fun calculatePercent(meanFeedback: Double): String {
         var ret = ""
-        when(viewModel.survey.questions.get(viewModel.survey.questions.lastIndex).answer){
+        when(meanFeedback){
             -1.0 -> ret = "not yet applicable"
-            else -> ret = (viewModel.survey.questions.get(viewModel.survey.questions.lastIndex).answer / 5 * 100).toString() + " %"
+            else -> ret = (meanFeedback / 5 * 100).toString() + " %"
         }
         return ret
     }
