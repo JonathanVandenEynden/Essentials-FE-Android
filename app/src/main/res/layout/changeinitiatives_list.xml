@@ -11,7 +11,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.hogentessentials.essentials.ui.changeInitiatives.ChangeInitiativesViewModel" />
+            type="com.hogentessentials1.essentials.ui.changeInitiatives.ChangeInitiativesViewModel" />
     </data>
 
     <FrameLayout

@@ -8,7 +8,7 @@
 
         <variable
             name="NotFoundFragment"
-            type="com.hogentessentials.essentials.ui.notFound.NotFoundFragment" />
+            type="com.hogentessentials1.essentials.ui.notFound.NotFoundFragment" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

@@ -4,14 +4,13 @@
     layout for showing all teams in a recyclerviews
 -->
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
         <variable
             name="viewmodel"
-            type="com.hogentessentials.essentials.ui.changeGroup.TeamsViewModel" />
+            type="com.hogentessentials1.essentials.ui.changeGroup.TeamsViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

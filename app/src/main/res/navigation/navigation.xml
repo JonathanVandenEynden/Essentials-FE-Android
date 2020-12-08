@@ -13,7 +13,7 @@
 
     <fragment
         android:id="@+id/changeInitiatives"
-        android:name="com.hogentessentials.essentials.ui.changeInitiatives.ChangeInitiativesFragment"
+        android:name="com.hogentessentials1.essentials.ui.changeInitiatives.ChangeInitiativesFragment"
         android:label="changeinitiatives"
         tools:layout="@layout/changeinitiatives_list">
         <argument
@@ -28,7 +28,7 @@
     </fragment>
     <fragment
         android:id="@+id/homeScreenFragment"
-        android:name="com.hogentessentials.essentials.ui.homeScreen.HomeScreenFragment"
+        android:name="com.hogentessentials1.essentials.ui.homeScreen.HomeScreenFragment"
         android:label="fragment_home_screen"
         tools:layout="@layout/fragment_home_screen">
         <action
@@ -46,7 +46,7 @@
     </fragment>
     <fragment
         android:id="@+id/surveyQuestionFragment"
-        android:name="com.hogentessentials.essentials.ui.survey.SurveyQuestionFragement"
+        android:name="com.hogentessentials1.essentials.ui.survey.SurveyQuestionFragement"
         android:label="SurveyQuestionFragment">
         <action
             android:id="@+id/action_surveyQuestionFragment_to_surveyEndFragment"
@@ -56,22 +56,22 @@
             app:argType="boolean" />
         <argument
             android:name="roadmapitem"
-            app:argType="com.hogentessentials.essentials.data.model.RoadMapItem" />
+            app:argType="com.hogentessentials1.essentials.data.model.RoadMapItem" />
     </fragment>
     <fragment
         android:id="@+id/surveyEndFragment"
-        android:name="com.hogentessentials.essentials.ui.survey.SurveyDoneFragment"
+        android:name="com.hogentessentials1.essentials.ui.survey.SurveyDoneFragment"
         android:label="SurveyEndFragment">
         <action
             android:id="@+id/action_surveyDoneFragment_to_homeScreenFragment"
             app:destination="@id/homeScreenFragment" />
         <argument
             android:name="roadmapitem"
-            app:argType="com.hogentessentials.essentials.data.model.RoadMapItem" />
+            app:argType="com.hogentessentials1.essentials.data.model.RoadMapItem" />
     </fragment>
     <fragment
         android:id="@+id/changeInitiativeFragment"
-        android:name="com.hogentessentials.essentials.ui.changeinitiative.ChangeInitiativeFragment"
+        android:name="com.hogentessentials1.essentials.ui.changeinitiative.ChangeInitiativeFragment"
         android:label="changeinitiativeFragment">
         <action
             android:id="@+id/action_changeInitiativeFragment_to_roadMapListFragment"
@@ -81,11 +81,11 @@
             app:argType="boolean" />
         <argument
             android:name="changeinitiative"
-            app:argType="com.hogentessentials.essentials.data.model.ChangeInitiative" />
+            app:argType="com.hogentessentials1.essentials.data.model.ChangeInitiative" />
     </fragment>
     <fragment
         android:id="@+id/dashboardFragment"
-        android:name="com.hogentessentials.essentials.ui.dashboard.DashboardFragment"
+        android:name="com.hogentessentials1.essentials.ui.dashboard.DashboardFragment"
         android:label="fragment_dashboard"
         tools:layout="@layout/fragment_dashboard" >
         <action
@@ -94,7 +94,7 @@
     </fragment>
     <fragment
         android:id="@+id/teamsFragment"
-        android:name="com.hogentessentials.essentials.ui.changeGroup.TeamsFragment"
+        android:name="com.hogentessentials1.essentials.ui.changeGroup.TeamsFragment"
         android:label="teams_fragment"
         tools:layout="@layout/teams_fragment" >
         <action
@@ -103,7 +103,7 @@
     </fragment>
     <fragment
         android:id="@+id/teamDetailsFragment"
-        android:name="com.hogentessentials.essentials.ui.changeGroup.changeGroupDetail.TeamDetailsFragment"
+        android:name="com.hogentessentials1.essentials.ui.changeGroup.changeGroupDetail.TeamDetailsFragment"
         android:label="TeamDetailsFragment">
         <argument
             android:name="changeGroupMembers"
@@ -111,7 +111,7 @@
     </fragment>
     <fragment
         android:id="@+id/notFoundFragment"
-        android:name="com.hogentessentials.essentials.ui.notFound.NotFoundFragment"
+        android:name="com.hogentessentials1.essentials.ui.notFound.NotFoundFragment"
         android:label="NotFoundFragment">
         <action
             android:id="@+id/action_notFoundFragment_to_homeScreenFragment"
@@ -119,7 +119,7 @@
     </fragment>
     <fragment
         android:id="@+id/roadMapListFragment"
-        android:name="com.hogentessentials.essentials.ui.roadMap.list.RoadMapListFragment"
+        android:name="com.hogentessentials1.essentials.ui.roadMap.list.RoadMapListFragment"
         android:label="RoadMapListFragment">
         <argument
             android:name="allSurveys"
@@ -132,7 +132,7 @@
             app:argType="boolean" />
         <argument
             android:name="roadmapitems"
-            app:argType="com.hogentessentials.essentials.data.model.RoadMapItem[]"
+            app:argType="com.hogentessentials1.essentials.data.model.RoadMapItem[]"
             app:nullable="true" />
         <action
             android:id="@+id/action_roadMapListFragment_to_notFoundFragment"
@@ -140,7 +140,7 @@
     </fragment>
     <fragment
         android:id="@+id/roadMapFragment"
-        android:name="com.hogentessentials.essentials.ui.roadMap.RoadMapFragment"
+        android:name="com.hogentessentials1.essentials.ui.roadMap.RoadMapFragment"
         android:label="RoadMapFragment">
         <action
             android:id="@+id/action_roadMapFragment_to_surveyQuestionFragment"
@@ -150,7 +150,7 @@
             app:argType="boolean" />
         <argument
             android:name="roadmapitem"
-            app:argType="com.hogentessentials.essentials.data.model.RoadMapItem" />
+            app:argType="com.hogentessentials1.essentials.data.model.RoadMapItem" />
         <action
             android:id="@+id/action_roadMapFragment_to_notFoundFragment"
             app:destination="@id/notFoundFragment" />
@@ -160,7 +160,7 @@
     </fragment>
     <fragment
         android:id="@+id/surveyComplete"
-        android:name="com.hogentessentials.essentials.ui.survey.SurveyComplete"
+        android:name="com.hogentessentials1.essentials.ui.survey.SurveyComplete"
         android:label="SurveyComplete">
         <action
             android:id="@+id/action_surveyComplete_to_homeScreenFragment"
@@ -168,13 +168,13 @@
     </fragment>
     <fragment
         android:id="@+id/dashboardGraphFragment"
-        android:name="com.hogentessentials.essentials.ui.dashboard.DashboardGraphFragment"
+        android:name="com.hogentessentials1.essentials.ui.dashboard.DashboardGraphFragment"
         android:label="fragment_dashboard_graph">
         <argument
             android:name="changeInitiative"
-            app:argType="com.hogentessentials.essentials.data.model.ChangeInitiative" />
+            app:argType="com.hogentessentials1.essentials.data.model.ChangeInitiative" />
         <argument
             android:name="roadMapItem"
-            app:argType="com.hogentessentials.essentials.data.model.RoadMapItem" />
+            app:argType="com.hogentessentials1.essentials.data.model.RoadMapItem" />
     </fragment>
 </navigation>
