@@ -16,6 +16,4 @@ class ProjectRepository(val remoteDataSource: ProjectRemoteDataSource, val local
     suspend fun getProjectById(projectId: Int): Resource<Project> {
         return remoteDataSource.getProjectById(projectId)
     }
-
-    // TODO meerdere acties bij ophalen
 }

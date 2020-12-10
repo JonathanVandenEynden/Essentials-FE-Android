@@ -24,6 +24,4 @@ class EmployeeRepository(val remoteDataSource: EmployeeRemoteDataSource, val loc
     suspend fun getEmployeeByEmail(email: String): Resource<Employee> {
         return remoteDataSource.getEmployeeByEmail(email)
     }
-
-    // TODO cachen bij ophalen
 }
