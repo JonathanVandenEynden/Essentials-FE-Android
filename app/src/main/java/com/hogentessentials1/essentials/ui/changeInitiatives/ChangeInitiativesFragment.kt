@@ -115,7 +115,29 @@ class ChangeInitiativesFragment : Fragment() {
 //            viewModel.changeinitiativesChangeManager
         } else {
             (activity as AppCompatActivity).supportActionBar?.title = "Change initiatives"
-            viewModel.changeinitiativesEmployee
+            viewModel.changeinitiativesEmployee.observe(
+                viewLifecycleOwner,
+                {
+                    it?.let { resource ->
+                        when (resource.status) {
+                            Status.SUCCESS -> {
+                                if (resource.data?.isEmpty() == true) {
+                                    binding.noChangesBanner.visibility = View.VISIBLE
+                                } else {
+                                    binding.noChangesBanner.visibility = View.GONE
+                                }
+                                adapter.submitList(resource.data)
+                            }
+                            Status.LOADING -> {
+                                binding.noChangesBanner.visibility = View.GONE
+                            }
+                            Status.ERROR -> {
+                                binding.noChangesBanner.visibility = View.VISIBLE
+                            }
+                        }
+                    }
+                }
+            )
         }
 
 //        viewModel.changeinitiatives.observe(
