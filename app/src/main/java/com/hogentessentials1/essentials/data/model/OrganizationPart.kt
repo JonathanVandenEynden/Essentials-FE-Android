@@ -1,6 +1,7 @@
 package com.hogentessentials1.essentials.data.model
 
 import android.os.Parcelable
+import androidx.room.Entity
 import com.squareup.moshi.Json
 import kotlinx.android.parcel.Parcelize
 
@@ -8,7 +9,7 @@ import kotlinx.android.parcel.Parcelize
  * @author Kilian Hoefman
  */
 
-// @Entity(tableName = "organizationPart")
+@Entity(tableName = "organizationPart")
 // @ColumnInfo(name = "organization_id")
 @Parcelize
 data class OrganizationPart(

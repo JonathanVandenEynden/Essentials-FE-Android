@@ -1,7 +1,9 @@
 package com.hogentessentials1.essentials
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.databinding.DataBindingUtil
@@ -10,7 +12,14 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.navigation.NavigationView
+import com.hogentessentials1.essentials.data.network.EssentialsDatabase
 import com.hogentessentials1.essentials.databinding.ActivityMainBinding
+import com.hogentessentials1.essentials.ui.homeScreen.HomeScreenFragmentDirections
+import com.hogentessentials1.essentials.ui.login.ui.login.LoginActivity
+import com.hogentessentials1.essentials.util.Globals
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 /**
  * @author Simon De Wilde
@@ -28,9 +37,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.layout.activity_main
         )
 
-        // TODO De logged in user opslaan en publicly available maken voor de requests
-        val loggedInUser = intent.getSerializableExtra("loggedInUser")
-
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.navHostFragment) as NavHostFragment
         navController = navHostFragment.navController
@@ -38,6 +44,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         NavigationUI.setupActionBarWithNavController(this, navController, binding.drawerLayout)
         binding.navView.setNavigationItemSelectedListener(this)
     }
+
     override fun onSupportNavigateUp(): Boolean {
         return NavigationUI.navigateUp(navController, binding.drawerLayout)
     }
@@ -50,17 +57,62 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+
+        /**
+         * @author Simon De Wilde
+         *  If the app is resumed after a long time, and the stored bearertoken has become invalid,
+         *  the application will return to the loginscreen
+         */
+        if (!Globals.bearertokenIsValid()) {
+            Globals.bearerToken = ""
+            // Remove all data from logged in user
+            CoroutineScope(Dispatchers.IO).launch {
+                EssentialsDatabase.getInstance(applicationContext).truncate()
+            }
+            toLoginActivity()
+        }
+    }
+
+    private fun toLoginActivity() {
+        Toast.makeText(
+            applicationContext,
+            "Logged out successfully",
+            Toast.LENGTH_LONG
+        ).show()
+
+        val toLoginActivity = Intent(this@MainActivity, LoginActivity::class.java)
+        startActivity(toLoginActivity)
+    }
+
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         item.isChecked = true
 
         binding.drawerLayout.closeDrawers()
 
         when (item.itemId) {
-            R.id.changeInitiativesDrawer -> navController.navigate(R.id.changeInitiativesFragment)
-            R.id.dashboardDrawer -> navController.navigate(R.id.dashboardFragment)
-            R.id.allSurveysDrawer -> navController.navigate(R.id.allSurveysFragment)
+            R.id.changeInitiativesDrawer -> navController.navigate(
+                HomeScreenFragmentDirections.actionHomeScreenFragmentToChangeInitiativesFragment(
+                    false
+                )
+            )
+            R.id.allSurveysDrawer -> navController.navigate(
+                HomeScreenFragmentDirections.actionHomeScreenFragmentToRoadMapListFragment(
+                    true,
+                    false,
+                    null
+                )
+            )
             R.id.teamsDrawer -> navController.navigate(R.id.teamsFragment)
-            // TODO extra
+            R.id.logout -> {
+                Globals.bearerToken = ""
+                // Remove all data from logged in user when explicitly logged out
+                CoroutineScope(Dispatchers.IO).launch {
+                    EssentialsDatabase.getInstance(applicationContext).truncate()
+                }
+                toLoginActivity()
+            }
         }
         return true
     }

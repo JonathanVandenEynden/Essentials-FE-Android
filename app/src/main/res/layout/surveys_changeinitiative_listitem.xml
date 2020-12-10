@@ -15,7 +15,7 @@
 
         <variable
             name="clickListener"
-            type="com.hogentessentials1.essentials.ui.surveys.SurveyListener" />
+            type="com.hogentessentials1.essentials.ui.changeinitiative.SurveyListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
