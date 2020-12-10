@@ -91,7 +91,6 @@ class HomeScreenFragment : Fragment() {
                     }
                     viewModel.onNavigatedToDasboard()
                 }
-
             }
         )
 
@@ -154,7 +153,6 @@ class HomeScreenFragment : Fragment() {
             binding.myChanges.visibility = View.GONE
             binding.dashboard.visibility = View.GONE
             binding.titleCm.visibility = View.GONE
-
         }
 
         (activity as AppCompatActivity).supportActionBar?.title = "Essentials"
@@ -189,5 +187,4 @@ class HomeScreenFragment : Fragment() {
         }
         return false
     }
-
 }

@@ -115,7 +115,6 @@ class RoadMapListFragment : Fragment() {
                                     resource.data?.map { ci -> list.addAll(ci.roadMap) }
                                     adapter.submitList(list)
                                 }
-
                             }
                             Status.LOADING -> {
                                 binding.noRmiBanner.visibility = View.GONE
