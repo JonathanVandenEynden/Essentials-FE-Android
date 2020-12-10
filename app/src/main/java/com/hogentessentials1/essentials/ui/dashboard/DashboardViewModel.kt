@@ -181,7 +181,7 @@ class DashboardViewModel(private val dashboardRepository: DashboardRepository, p
             try {
                 Timber.e(chosenCIId.toString())
                 _changeInititives.value =
-                    cirepository.getChangeInitiativesForChangeManager().data
+                    cirepository.getChangeInitiativesForChangeManager().value?.data
                 _roadMapItems.value =
                     rmiRepository.getRoadMaps(chosenCIId).data
                 fillDashboard()
