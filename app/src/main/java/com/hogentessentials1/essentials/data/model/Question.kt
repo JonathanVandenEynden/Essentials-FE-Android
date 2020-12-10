@@ -1,21 +1,15 @@
 package com.hogentessentials1.essentials.data.model
 
 import android.os.Parcelable
-import androidx.room.PrimaryKey
+import androidx.room.Entity
 import com.squareup.moshi.Json
 import kotlinx.android.parcel.Parcelize
-import kotlinx.android.parcel.RawValue
-import kotlinx.android.parcel.TypeParceler
-import java.util.*
-import kotlin.collections.ArrayList
-import kotlin.collections.HashMap
-import kotlin.collections.HashSet
 
 /**
  * @author Kilian Hoefman
  */
 
-// @Entity(tableName = "questions")
+@Entity(tableName = "questions")
 @Parcelize
 data class Question(
     @Json(name = "id")
@@ -27,5 +21,5 @@ data class Question(
     @Json(name = "type")
     val type: String,
     @Json(name = "questionRegistered")
-    val questionRegistered: Map<String, Int>?
+    val questionRegistered: Map<String, String>?
 ) : Parcelable

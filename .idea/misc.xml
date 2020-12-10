@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ProjectPlainTextFileTypeManager">
-    <file url="file://$PROJECT_DIR$/app/src/main/java/com/hogentessentials1/essentials/data/model/Relations/ChangeInitiativesWithChangeType.kt" />
-    <file url="file://$PROJECT_DIR$/app/src/main/java/com/hogentessentials1/essentials/data/model/Relations/OrganizationWithChangeManagers.kt" />
-    <file url="file://$PROJECT_DIR$/app/src/main/java/com/hogentessentials1/essentials/data/model/Relations/OrganizationWithEmployees.kt" />
-    <file url="file://$PROJECT_DIR$/app/src/main/java/com/hogentessentials1/essentials/data/model/Relations/OrganizationWithOrganizationParts.kt" />
-    <file url="file://$PROJECT_DIR$/app/src/main/java/com/hogentessentials1/essentials/data/model/Relations/OrganizationWithPortfolios.kt" />
-    <file url="file://$PROJECT_DIR$/app/src/main/java/com/hogentessentials1/essentials/data/model/Relations/PortfolioWithProjects.kt" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/hogentessentials1/essentials/data/relations/ChangeInitiativesWithChangeType.kt" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/hogentessentials1/essentials/data/relations/OrganizationWithChangeManagers.kt" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/hogentessentials1/essentials/data/relations/OrganizationWithEmployees.kt" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/hogentessentials1/essentials/data/relations/OrganizationWithOrganizationParts.kt" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/hogentessentials1/essentials/data/relations/OrganizationWithPortfolios.kt" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/hogentessentials1/essentials/data/relations/PortfolioWithProjects.kt" />
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />

@@ -9,7 +9,7 @@ import kotlinx.android.parcel.Parcelize
  * @author Kilian Hoefman
  */
 
-//@Entity(tableName = "answer")
+@Entity(tableName = "answer")
 @Parcelize
 data class Answer(
     @PrimaryKey val id: Int,

@@ -2,7 +2,6 @@ package com.hogentessentials1.essentials.data.model
 
 import android.os.Parcelable
 import com.squareup.moshi.Json
-
 import kotlinx.android.parcel.Parcelize
 
 /**
@@ -23,4 +22,3 @@ data class Survey(
     @Json(name = "roadMapItem")
     val roadMapItem: RoadMapItem?
 ) : Parcelable
-{}

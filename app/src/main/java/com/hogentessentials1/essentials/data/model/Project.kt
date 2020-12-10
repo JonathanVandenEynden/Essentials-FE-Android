@@ -10,11 +10,10 @@ import kotlinx.android.parcel.Parcelize
 /**
  * @author Kilian Hoefman
  */
-//@Entity(tableName = "project")
+@Entity(tableName = "project")
 @Parcelize
 data class Project(
-    @Json(name = "_name")
-    val _name: String,
+    @PrimaryKey @ColumnInfo(name = "project_id")
     @Json(name = "id")
     val Id: Int,
     @Json(name = "name")

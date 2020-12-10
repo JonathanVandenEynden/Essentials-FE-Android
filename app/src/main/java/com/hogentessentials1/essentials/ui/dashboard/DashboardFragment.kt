@@ -1,35 +1,40 @@
 package com.hogentessentials1.essentials.ui.dashboard
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.AdapterView.OnItemSelectedListener
+import android.widget.Spinner
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.github.mikephil.charting.charts.PieChart
-import com.github.mikephil.charting.data.BarEntry
-import com.github.mikephil.charting.data.PieData
-import com.github.mikephil.charting.data.PieDataSet
-import com.github.mikephil.charting.data.PieEntry
-import com.github.mikephil.charting.utils.ColorTemplate
+import androidx.navigation.findNavController
 import com.hogentessentials1.essentials.R
+import com.hogentessentials1.essentials.data.model.ChangeInitiative
+import com.hogentessentials1.essentials.data.model.RoadMapItem
 import com.hogentessentials1.essentials.databinding.FragmentDashboardBinding
+import org.koin.android.ext.android.inject
+import timber.log.Timber
 
 /**
- * A simple [Fragment] subclass.
- * Use the [DashboardFragment.newInstance] factory method to
- * create an instance of this fragment.
+ * @author Marbod Naassens
  */
 class DashboardFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-    lateinit var viewModel: DashboardViewModel
-
+    private var ciList: ArrayList<ChangeInitiative> = arrayListOf()
+    private var rmiList: ArrayList<RoadMapItem> = arrayListOf()
+    private var selectedCI: Int = 0
+    private var selectedRMI: Int = 0
+    // lateinit var viewModel: DashboardViewModel
     private lateinit var binding: FragmentDashboardBinding
+    val viewModel: DashboardViewModel by inject()
+    lateinit var adapter: DashboardAdapter
+    lateinit var rmiAdapter: DashboardRMIAdapter
+    lateinit var spinner: Spinner
+    lateinit var spinnerrmi: Spinner
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,7 +44,7 @@ class DashboardFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         binding = DataBindingUtil.inflate(
             inflater,
@@ -47,36 +52,121 @@ class DashboardFragment : Fragment() {
             container,
             false
         )
-
-        viewModel = ViewModelProvider(this).get(DashboardViewModel::class.java)
-
         binding.viewModel = viewModel
 
         binding.lifecycleOwner = this
 
-        val manager = LinearLayoutManager(activity)
+        val spinner = binding.spinnerCi
+        val spinnerrmi = binding.spinnerRmi
+        val speed = binding.speedView
+        speed.unit = "% of Surveys filled in"
+        speed.isWithTremble = false
+        speed.setMaxSpeed(100)
+        speed.lowSpeedPercent = 33
+        speed.mediumSpeedPercent = 66
+        speed.lowSpeedColor = Color.RED
+        speed.mediumSpeedColor = Color.YELLOW
+        speed.highSpeedColor = Color.GREEN
 
-        // binding.ciList.layoutManager = manager
+        // ciList = ArrayList(viewModel.changeInitiatives)
+        viewModel.cis.observe(
+            viewLifecycleOwner,
+            {
+                Timber.e("test1")
+                adapter = DashboardAdapter(this.requireContext(), ArrayList(it))
+                spinner.adapter = adapter
+                Timber.e("Test2")
+            }
+        )
+        // rmiList = ArrayList(viewModel.roadMapItems)
+        /*this.viewModel.rmis.observe(viewLifecycleOwner, Observer {
+            rmiAdapter = DashboardRMIAdapter(this.requireContext(), ArrayList(it))
+            spinnerrmi.adapter = rmiAdapter
+        })*/
+        Timber.e("Test3")
+        spinner.setSelection(selectedCI)
+        Timber.e("Test4")
+        spinnerrmi.setOnItemSelectedListener(
+            object : OnItemSelectedListener {
+                override fun onItemSelected(
+                    parent: AdapterView<*>?,
+                    view: View?,
+                    position: Int,
+                    id: Long
+                ) {
+                    val clickedItem: RoadMapItem =
+                        parent?.getItemAtPosition(position) as RoadMapItem
+                    val clickedText: String = clickedItem.title
+                    Toast.makeText(
+                        context,
+                        "$clickedText selected",
+                        Toast.LENGTH_SHORT
+                    ).show()
+// showCharts(clickedItem)
+                    var amount_filledIn: Double = 0.0
+                    viewModel.fi.observe(
+                        viewLifecycleOwner,
+                        {
+                            amount_filledIn = it
+                            speed.speedTo(it.toFloat())
+                        }
+                    )
+                }
 
-        /*val adapter = ChangeInitiativeAdapter(
-            ChangeInitiativeListener { changeInitiative ->
-                viewModel.onChangeInitiativeClicked(changeInitiative)
+                override fun onNothingSelected(parent: AdapterView<*>?) {}
             }
         )
 
-        binding.ciList.adapter = adapter
+        spinner.setOnItemSelectedListener(
+            object : OnItemSelectedListener {
+                override fun onItemSelected(
+                    parent: AdapterView<*>?,
+                    view: View?,
+                    position: Int,
+                    id: Long
+                ) {
+                    val clickedItem: ChangeInitiative =
+                        parent?.getItemAtPosition(position) as ChangeInitiative
+                    val clickedText: String = clickedItem.title
+                    Toast.makeText(
+                        context,
+                        "$clickedText selected",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    viewModel.chosenCIId = clickedItem.id
+                    refreshVM()
+                    rmiAdapter =
+                        DashboardRMIAdapter(parent.context, ArrayList(clickedItem.roadMap.toList()))
+                    spinnerrmi.adapter = rmiAdapter
+                }
 
-        adapter.submitList(viewModel.changeInitiatives)*/
+                override fun onNothingSelected(parent: AdapterView<*>?) {}
+            }
+        )
+
+        spinnerrmi.setSelection(selectedRMI)
+
+        viewModel.navigateToGraph.observe(
+            viewLifecycleOwner,
+            {
+                if (it) {
+                    val navController = binding.root.findNavController()
+                    selectedCI = spinner.selectedItemPosition
+                    Timber.e(spinner.selectedItem.toString())
+                    Timber.e(selectedCI.toString())
+                    selectedRMI = spinnerrmi.selectedItemPosition
+                    navController.navigate(
+                        DashboardFragmentDirections.actionDashboardFragmentToDashboardGraphFragment(
+                            spinner.selectedItem as ChangeInitiative,
+                            spinnerrmi.selectedItem as RoadMapItem
+                        )
+                    )
+                    viewModel.onNavigatedToGraph()
+                }
+            }
+        )
 
         (activity as AppCompatActivity).supportActionBar?.title = "Dashboard"
-
-        val chart = binding.chart as PieChart
-
-        val data = PieData(getDataSet())
-        chart.data = data
-        chart.description.text = "My chart"
-        chart.animateXY(2000, 2000)
-        chart.invalidate()
 
         return binding.root
     }
@@ -85,31 +175,7 @@ class DashboardFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
     }
 
-    private fun getDataSet(): PieDataSet {
-        val valueSet1 = ArrayList<PieEntry>()
-        val v1e1 = PieEntry(20f, "Sad") // Jan
-        valueSet1.add(v1e1)
-        val v1e2 = PieEntry(40f, "Happy") // Feb
-        valueSet1.add(v1e2)
-        val v1e3 = PieEntry(20f, "Amazed") // Mar
-        valueSet1.add(v1e3)
-        val v1e4 = PieEntry(20f, "Indifferent") // Apr
-        valueSet1.add(v1e4)
-        val v1e5 = BarEntry(90.000f, 4f) // May
-
-        val dataSet1 = PieDataSet(valueSet1, "Overal Mood")
-        dataSet1.setColors(*ColorTemplate.COLORFUL_COLORS)
-        return dataSet1
-    }
-
-    private fun getXAxisValues(): ArrayList<String> {
-        val xAxis = ArrayList<String>()
-        xAxis.add("JAN")
-        xAxis.add("FEB")
-        xAxis.add("MAR")
-        xAxis.add("APR")
-        xAxis.add("MAY")
-        xAxis.add("JUN")
-        return xAxis
+    fun refreshVM() {
+        viewModel.fillDashboard()
     }
 }
