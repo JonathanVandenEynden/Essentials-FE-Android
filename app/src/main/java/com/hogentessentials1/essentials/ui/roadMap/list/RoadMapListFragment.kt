@@ -106,6 +106,7 @@ class RoadMapListFragment : Fragment() {
                             Status.SUCCESS -> {
                                 if (resource.data?.isEmpty() == true) {
                                     binding.noRmiBanner.visibility = View.VISIBLE
+                                    adapter.submitList(arrayListOf())
                                 } else {
                                     binding.noRmiBanner.visibility = View.GONE
 
@@ -114,6 +115,7 @@ class RoadMapListFragment : Fragment() {
                                     resource.data?.map { ci -> list.addAll(ci.roadMap) }
                                     adapter.submitList(list)
                                 }
+
                             }
                             Status.LOADING -> {
                                 binding.noRmiBanner.visibility = View.GONE

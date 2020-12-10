@@ -1,6 +1,8 @@
 package com.hogentessentials1.essentials.ui.dashboard
 
+import android.content.Context
 import android.graphics.Color
+import android.net.ConnectivityManager
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +12,7 @@ import android.widget.AdapterView.OnItemSelectedListener
 import android.widget.Spinner
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
@@ -20,6 +23,7 @@ import com.hogentessentials1.essentials.databinding.FragmentDashboardBinding
 import com.hogentessentials1.essentials.util.Status
 import org.koin.android.ext.android.inject
 import timber.log.Timber
+
 
 /**
  * @author Marbod Naassens
