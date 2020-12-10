@@ -1,6 +1,9 @@
 package com.hogentessentials1.essentials.DI
 
 import com.hogentessentials1.essentials.BuildConfig
+import com.hogentessentials1.essentials.data.model.network.local.EmployeeLocalDataSource
+import com.hogentessentials1.essentials.data.model.network.local.ProjectLocalDataSource
+import com.hogentessentials1.essentials.data.model.network.local.RoadMapLocalDataSource
 import com.hogentessentials1.essentials.data.network.AccountEndpointInterface
 import com.hogentessentials1.essentials.data.network.ChangeGroupEndpointInterface
 import com.hogentessentials1.essentials.data.network.ChangeGroupRemoteDataSource
@@ -38,13 +41,6 @@ import com.hogentessentials1.essentials.data.repositories.SurveyRepository
 import com.hogentessentials1.essentials.ui.login.data.LoginDataSource
 import com.hogentessentials1.essentials.ui.login.data.LoginRepository
 import com.hogentessentials1.essentials.util.Globals
-import com.hogentessentials1.essentials.data.model.network.EssentialsDatabase
-import com.hogentessentials1.essentials.data.model.Repositories.*
-import com.hogentessentials1.essentials.data.model.network.*
-import com.hogentessentials1.essentials.data.model.network.local.*
-import com.hogentessentials1.essentials.data.model.util.Globals
-import com.hogentessentials1.essentials.login.data.LoginDataSource
-import com.hogentessentials1.essentials.login.data.LoginRepository
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import okhttp3.Interceptor
@@ -88,28 +84,27 @@ val networkModule = module {
     // local datasources
     single { ChangeInitiativeLocalDataSource(get()) }
     single { ChangeGroupLocalDataSource(get()) }
-    single { EmployeeLocalDataSource(get())}
+    single { EmployeeLocalDataSource(get()) }
     single { RoadMapLocalDataSource(get()) }
-    single { ProjectLocalDataSource(get())}
-
+    single { ProjectLocalDataSource(get()) }
 
     // Daos
-    single { EssentialsDatabase.getInstance(androidApplication()).ChangeInitiativeDao()}
-    single { EssentialsDatabase.getInstance(androidApplication()).ChangeGroupDao()}
-    single { EssentialsDatabase.getInstance(androidApplication()).EmployeeDao()}
-    single { EssentialsDatabase.getInstance(androidApplication()).ProjectDao()}
-    single { EssentialsDatabase.getInstance(androidApplication()).RoadMapDao()}
+    single { EssentialsDatabase.getInstance(androidApplication()).ChangeInitiativeDao() }
+    single { EssentialsDatabase.getInstance(androidApplication()).ChangeGroupDao() }
+    single { EssentialsDatabase.getInstance(androidApplication()).EmployeeDao() }
+    single { EssentialsDatabase.getInstance(androidApplication()).ProjectDao() }
+    single { EssentialsDatabase.getInstance(androidApplication()).RoadMapDao() }
 
     // repos
     single { RoadMapRepository(get(), get()) }
-    single { ChangeInitiativeRepository(get(), get())}
-    single { ChangeGroupRepository(get(), get())}
-    single { ProjectRepository(get(), get())}
-    single { QuestionRepository(get())}
-    single { OrganizationRepository(get())}
-    single { EmployeeRepository(get(), get())}
-    single { ChangeManagerRepository(get())}
-    single { SurveyRepository(get())}
+    single { ChangeInitiativeRepository(get(), get()) }
+    single { ChangeGroupRepository(get(), get()) }
+    single { ProjectRepository(get(), get()) }
+    single { QuestionRepository(get()) }
+    single { OrganizationRepository(get()) }
+    single { EmployeeRepository(get(), get()) }
+    single { ChangeManagerRepository(get()) }
+    single { SurveyRepository(get()) }
     single { LoginRepository(get()) }
     single { DashboardRepository(get()) }
 }

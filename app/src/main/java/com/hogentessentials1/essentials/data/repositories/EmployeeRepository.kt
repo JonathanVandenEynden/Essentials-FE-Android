@@ -1,6 +1,7 @@
 package com.hogentessentials1.essentials.data.repositories
 
 import com.hogentessentials1.essentials.data.model.Employee
+import com.hogentessentials1.essentials.data.model.network.local.EmployeeLocalDataSource
 import com.hogentessentials1.essentials.data.network.EmployeeRemoteDataSource
 import com.hogentessentials1.essentials.util.Resource
 import javax.inject.Singleton
@@ -10,7 +11,7 @@ import javax.inject.Singleton
  */
 
 @Singleton
-class EmployeeRepository(val remoteDataSource: EmployeeRemoteDataSource) {
+class EmployeeRepository(val remoteDataSource: EmployeeRemoteDataSource, val localDataSource: EmployeeLocalDataSource) {
 
     suspend fun getEmployee(employeeId: Int): Resource<Employee> {
         return remoteDataSource.getEmployee(employeeId)
@@ -23,4 +24,6 @@ class EmployeeRepository(val remoteDataSource: EmployeeRemoteDataSource) {
     suspend fun getEmployeeByEmail(email: String): Resource<Employee> {
         return remoteDataSource.getEmployeeByEmail(email)
     }
+
+    // TODO cachen bij ophalen
 }
