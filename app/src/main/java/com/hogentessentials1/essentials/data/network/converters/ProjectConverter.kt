@@ -4,14 +4,25 @@ import androidx.room.TypeConverter
 import com.google.gson.Gson
 import com.hogentessentials1.essentials.data.model.Project
 
+/**
+ *  Type converter for Project to string and vice versa
+ */
 class ProjectConverter {
+    /**
+     * Converts a string to a Project
+     * @param value the json-string
+     */
     @TypeConverter
     fun stringToProject(value: String): Project {
         return Gson().fromJson(value, Project::class.java)
     }
 
+    /**
+     * Converts a project to a json-string
+     * @param project
+     */
     @TypeConverter
-    fun projectToString(fields: Project): String {
-        return Gson().toJson(fields)
+    fun projectToString(project: Project): String {
+        return Gson().toJson(project)
     }
 }
