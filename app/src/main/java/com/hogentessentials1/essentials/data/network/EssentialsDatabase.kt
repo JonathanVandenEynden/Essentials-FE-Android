@@ -27,6 +27,8 @@ import com.hogentessentials1.essentials.data.network.converters.RoadMapItemConve
 /**
  * @author Simon De Wilde
  * @author Kilian Hoefman
+ *
+ * The database for the application
  */
 
 @Database(
@@ -56,6 +58,11 @@ abstract class EssentialsDatabase : RoomDatabase() {
         @Volatile
         private var INSTANCE: EssentialsDatabase? = null
 
+        /**
+         * Creates an instance of the database if necessary and returns it
+         * @param context
+         * @return instance of the database
+         */
         fun getInstance(context: Context): EssentialsDatabase =
             INSTANCE ?: synchronized(this) {
                 INSTANCE ?: buildDatabase(context).also {
@@ -63,6 +70,11 @@ abstract class EssentialsDatabase : RoomDatabase() {
                 }
             }
 
+        /**
+         * builds the database
+         * @param appContext
+         * @return built database
+         */
         private fun buildDatabase(appContext: Context) =
             Room.databaseBuilder(appContext, EssentialsDatabase::class.java, "essentials_db")
                 .fallbackToDestructiveMigration()

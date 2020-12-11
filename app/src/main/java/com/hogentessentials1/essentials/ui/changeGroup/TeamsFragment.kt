@@ -58,7 +58,6 @@ class TeamsFragment : Fragment(), ChangeGroupClickListener {
         return binding.root
     }
 
-
     override fun onClick(changeGroup: ChangeGroup) {
         navigateToDetail(changeGroup)
     }

@@ -8,8 +8,11 @@ import javax.inject.Singleton
 
 /**
  * @author Kilian Hoefman
+ * @author Simon De Wilde
+ *
+ * Repository for change initiatives
  */
-
+// TODO meer documentatie (moet nog mergen met develop)
 @Singleton
 class ChangeInitiativeRepository(
     val remoteDataSource: ChangeInitiativeRemoteDataSource,

@@ -9,6 +9,9 @@ import javax.inject.Singleton
 
 /**
  * @author Kilian Hoefman
+ * @author Simon De Wilde
+ *
+ * Repository for change groups
  */
 
 @Singleton
@@ -17,9 +20,17 @@ class ChangeGroupRepository(
     val localDataSource: ChangeGroupLocalDataSource
 ) {
 
+    /**
+     * get all change groups for the logged in user
+     * @return resource with list of answers
+     */
     suspend fun getChangeGroupsForUser(): Resource<List<ChangeGroup>> =
         remoteDataSource.getChangeGroupsForUser()
 
+    /**
+     * get all change groups for the logged in user, caching the apicall in the process
+     * @return LiveData with a resource
+     */
     fun getChangeGroups() = performGetOperation(
         databaseQuery = { localDataSource.getChangeGroups() },
         networkCall = { remoteDataSource.getChangeGroupsForUser() },

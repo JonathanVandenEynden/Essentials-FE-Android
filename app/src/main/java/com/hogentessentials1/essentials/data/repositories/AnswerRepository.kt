@@ -6,12 +6,23 @@ import javax.inject.Singleton
 
 /**
  * @author Kilian Hoefman
+ *
+ * Repository for answers
  */
 
 @Singleton
 class AnswerRepository @Inject constructor(private val answerDao: AnswerDao) {
 
+    /**
+     * get all answers
+     * @return liveData with list of answers
+     */
     fun getAnswers() = answerDao.getAnswers()
 
+    /**
+     * get answer by id
+     * @param answerId
+     * @return LiveData with answer
+     */
     fun getAnswer(answerId: Int) = answerDao.getAnswer(answerId)
 }

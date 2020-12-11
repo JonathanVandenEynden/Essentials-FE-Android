@@ -7,16 +7,28 @@ import javax.inject.Singleton
 
 /**
  * @author Kilian Hoefman
+ *
+ * Repository for road map items
  */
 
 @Singleton
 class RoadMapRepository(val remoteDataSource: RoadMapRemoteDataSource) {
 
-    suspend fun getRoadMapItemById(id: Int): Resource<RoadMapItem> {
-        return remoteDataSource.getRoadMapItemById(id)
+    /**
+     * get road map item by id
+     * @param roadMapItemId
+     * @return Resource with road map item
+     */
+    suspend fun getRoadMapItemById(roadMapItemId: Int): Resource<RoadMapItem> {
+        return remoteDataSource.getRoadMapItemById(roadMapItemId)
     }
 
-    suspend fun getRoadMaps(id: Int): Resource<List<RoadMapItem>> {
-        return remoteDataSource.getRoadMapItemsForChangeInitatitveWithId(id)
+    /**
+     * get all road map items for a change initiative
+     * @param changeInitiativeId
+     * @return Resource with list of road map items
+     */
+    suspend fun getRoadMaps(changeInitiativeId: Int): Resource<List<RoadMapItem>> {
+        return remoteDataSource.getRoadMapItemsForChangeInitatitveWithId(changeInitiativeId)
     }
 }

@@ -10,11 +10,11 @@ class QuestionRemoteDataSource(val questionApiService: QuestionsEndpointInterfac
     suspend fun getAllQuestionsFromSurveyById(surveyId: Int) =
         getResult { questionApiService.getAllQuestionsFromSurveyById(surveyId) }
 
-    suspend fun postAnswerToQuestion(question: Int, answer: String) {
+    suspend fun postAnswerToQuestion(questionId: Int, answer: String) {
         val answerArray = JSONArray()
         answerArray.put(answer)
         val jsonObjectString = answerArray.toString()
         val requestBody = jsonObjectString.toRequestBody("application/json".toMediaTypeOrNull())
-        questionApiService.postAnswerToQuestion(question, requestBody)
+        questionApiService.postAnswerToQuestion(questionId, requestBody)
     }
 }

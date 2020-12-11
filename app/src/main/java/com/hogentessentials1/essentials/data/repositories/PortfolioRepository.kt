@@ -6,12 +6,22 @@ import javax.inject.Singleton
 
 /**
  * @author Kilian Hoefman
+ *
+ * Repository for portfolios
  */
-
 @Singleton
 class PortfolioRepository @Inject constructor(private val portfolioDao: PortfolioDao) {
 
+    /**
+     * get all portfolios
+     * @return liveData with list of portfolios
+     */
     fun getPortfolios() = portfolioDao.getPortfolios()
 
+    /**
+     * get portfolio by id
+     * @param portfolioId
+     * @return LiveData with portfolio
+     */
     fun getPortfolio(portfolioId: Int) = portfolioDao.getPortfolio(portfolioId)
 }
