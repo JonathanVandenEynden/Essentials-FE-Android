@@ -97,19 +97,15 @@ class DashboardFragment : Fragment() {
 
         //ciList = ArrayList(viewModel.changeInitiatives)
         viewModel.cis.observe(viewLifecycleOwner, Observer {
-            Timber.e("test1")
             adapter = DashboardAdapter(this.requireContext(), ArrayList(it))
             spinner.adapter = adapter
-            Timber.e("Test2")
         })
         //rmiList = ArrayList(viewModel.roadMapItems)
         /*this.viewModel.rmis.observe(viewLifecycleOwner, Observer {
             rmiAdapter = DashboardRMIAdapter(this.requireContext(), ArrayList(it))
             spinnerrmi.adapter = rmiAdapter
         })*/
-        Timber.e("Test3")
         spinner.setSelection(selectedCI)
-        Timber.e("Test4")
         spinnerrmi.setOnItemSelectedListener(object : OnItemSelectedListener {
             override fun onItemSelected(
                 parent: AdapterView<*>?,

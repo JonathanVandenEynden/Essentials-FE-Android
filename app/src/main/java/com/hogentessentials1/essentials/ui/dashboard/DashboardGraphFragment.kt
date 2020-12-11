@@ -30,6 +30,7 @@ class DashboardGraphFragment: Fragment() {
     val viewModel: DashboardViewModel by inject()
     var ci: ChangeInitiative? = null
     var rmi: RoadMapItem? = null
+    var mood: Map<Int, Int>? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -66,6 +67,7 @@ class DashboardGraphFragment: Fragment() {
             binding.textView2.text = ci?.title
             showCharts(rmi!!)
         }
+        binding.chart.setNoDataText("No moods available for Change")
 
         setHasOptionsMenu(true)
 
@@ -107,9 +109,6 @@ class DashboardGraphFragment: Fragment() {
     private fun getDataSet(item: RoadMapItem): PieDataSet {
         viewModel.chosenCIId = ci!!.id
         refreshVM()
-        var mood : Map<Int, Int> = mapOf()
-        viewModel.m.observe(viewLifecycleOwner, Observer { mood = it })
-        Timber.e("Test:" + mood.toString())
         val moods : List<String> = listOf(
             "\uD83D\uDE26",
             "\uD83D\uDE41",
@@ -117,17 +116,19 @@ class DashboardGraphFragment: Fragment() {
             "\uD83D\uDE42",
             "\uD83D\uDE04"
         )
+        getMood()
         val valueSet1 = ArrayList<PieEntry>()
-        if (!mood.isEmpty())
+        if (mood!!.isNotEmpty())
         {
-            for (m in mood) {
-                val ve = PieEntry(m.value.toFloat(), moods[m.key])
+            for (m in mood!!) {
+                val ve = PieEntry(m.value.toFloat(), moods[m.key - 1])
                 valueSet1.add(ve)
             }
             val dataSet1 = PieDataSet(valueSet1, "Overal Mood")
             dataSet1.valueTextSize = 20f
             dataSet1.setColors(*ColorTemplate.COLORFUL_COLORS)
             return dataSet1
+
         }
         val ve = PieEntry(100f, "N/A")
         valueSet1.add(ve)
@@ -139,5 +140,12 @@ class DashboardGraphFragment: Fragment() {
     fun refreshVM()
     {
         viewModel.fillDashboard()
+    }
+
+    fun getMood()
+    {
+        viewModel.m.observe(viewLifecycleOwner, Observer {
+            mood = it
+        })
     }
 }
