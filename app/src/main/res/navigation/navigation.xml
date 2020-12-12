@@ -2,7 +2,7 @@
 <!--
     @author Ziggy Moens
     @author Simon De Wilde
-
+    @author Sébastien De Pauw
     navigation for the application
 -->
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
@@ -77,16 +77,10 @@
             android:id="@+id/action_changeInitiativeFragment_to_roadMapListFragment"
             app:destination="@id/roadMapListFragment" />
         <argument
-            android:name="changemanager"
-            app:argType="boolean" />
-        <argument
             android:name="changeinitiative"
             app:argType="com.hogentessentials1.essentials.data.model.ChangeInitiative" />
         <argument android:name="changemanager"
             app:argType="boolean" />
-        <action
-            android:id="@+id/action_surveysChangeInitiativeFragment_to_myChangesFragment"
-            app:destination="@id/myChangesFragment" />
     </fragment>
     <fragment
         android:id="@+id/dashboardFragment"
@@ -147,9 +141,6 @@
         android:id="@+id/roadMapFragment"
         android:name="com.hogentessentials1.essentials.ui.roadMap.RoadMapFragment"
         android:label="RoadMapFragment">
-        <action
-            android:id="@+id/action_roadMapFragment_to_surveyQuestionFragment"
-            app:destination="@id/surveyQuestionFragment" />
         <argument
             android:name="changemanager"
             app:argType="boolean" />
@@ -157,11 +148,17 @@
             android:name="roadmapitem"
             app:argType="com.hogentessentials1.essentials.data.model.RoadMapItem" />
         <action
+            android:id="@+id/action_roadMapFragment_to_surveyQuestionFragment"
+            app:destination="@id/surveyQuestionFragment" />
+        <action
             android:id="@+id/action_roadMapFragment_to_notFoundFragment"
             app:destination="@id/notFoundFragment" />
         <action
             android:id="@+id/action_roadMapFragment_to_surveyComplete"
             app:destination="@id/surveyComplete" />
+        <action
+            android:id="@+id/action_roadMapFragment_to_myChangesQuestionListFragment"
+            app:destination="@id/myChangesQuestionListFragment" />
     </fragment>
     <fragment
         android:id="@+id/surveyComplete"
@@ -181,5 +178,24 @@
         <argument
             android:name="roadMapItem"
             app:argType="com.hogentessentials1.essentials.data.model.RoadMapItem" />
+    </fragment>
+    <fragment
+        android:id="@+id/myChangesFragment"
+        android:name="com.hogentessentials1.essentials.ui.myChangeInitiatives.MyChangesQuestionFragment"
+        android:label="MyChangesFragment">
+        <argument
+            android:name="question"
+            app:argType="com.hogentessentials1.essentials.data.model.Question" />
+    </fragment>
+    <fragment
+        android:id="@+id/myChangesQuestionListFragment"
+        android:name="com.hogentessentials1.essentials.ui.myChangeInitiatives.list.MyChangesQuestionListFragment"
+        android:label="MyChangesQuestionListFragment" >
+        <argument
+            android:name="roadMapItem"
+            app:argType="com.hogentessentials1.essentials.data.model.RoadMapItem" />
+        <action
+            android:id="@+id/action_myChangesQuestionListFragment_to_myChangesFragment"
+            app:destination="@id/myChangesFragment" />
     </fragment>
 </navigation>

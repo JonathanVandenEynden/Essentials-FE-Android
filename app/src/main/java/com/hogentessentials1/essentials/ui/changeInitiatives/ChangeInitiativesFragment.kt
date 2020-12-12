@@ -54,8 +54,6 @@ class ChangeInitiativesFragment : Fragment() {
 
         viewModel = getViewModel()
 
-        viewModel.changemanager = changemanager
-
         binding.viewModel = viewModel
 
         binding.lifecycleOwner = this
@@ -76,8 +74,8 @@ class ChangeInitiativesFragment : Fragment() {
                 changeInitiative?.let {
                     this.findNavController().navigate(
                         ChangeInitiativesFragmentDirections.actionChangeInitiativesToChangeInitiativeFragment(
-                            changemanager,
-                            changeInitiative
+                            changeInitiative,
+                            changemanager
                         )
                     )
                     viewModel.onChangeInitiativeNavigated()

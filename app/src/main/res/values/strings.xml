@@ -11,6 +11,7 @@
     <string name="survey_finished">The survey is finished</string>
     <string name="back_survey_finished">Back to homescreen</string>
     <string name="surveys">Surveys</string>
+    <string name="view_survey">View survey</string>
     <string name="titleSurvey">Title of survey</string>
     <string name="title_change">ChangeInitiative Title</string>
     <string name="changes">Changes</string>
@@ -60,4 +61,7 @@
     <string name="survey_already_filled">Survey already filled in</string>
     <string name="log_out">Log out</string>
     <string name="no_teams_available">There are no teams available at the moment</string>
+    <string name="myChange_question_example">What do you think of this change?</string>
+    <string name="myChange_answer">Answer</string>
+    <string name="myChange_timesChosen">Times chosen</string>
 </resources>

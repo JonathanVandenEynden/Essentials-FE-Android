@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+    @author Sébastien De Pauw
+-->
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
         <variable
             name="question"
-            type="com.hogentessentials1.essentials.data.model.SurveyQuestion" />
+            type="com.hogentessentials1.essentials.data.model.Question" />
+
+        <variable
+            name="clickListener"
+            type="com.hogentessentials1.essentials.ui.myChangeInitiatives.list.MyChangesQuestionListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -13,25 +20,18 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/question_string"
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/surveys_item_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="8dp"
-            android:background="@drawable/rounded_corner_orange_background"
-            android:paddingStart="8dp"
-            android:paddingLeft="8dp"
-            android:paddingTop="10dp"
-            android:paddingEnd="8dp"
-            android:paddingRight="8dp"
-            android:paddingBottom="10dp"
+            android:layout_marginStart="@dimen/dp8"
+            android:layout_marginEnd="@dimen/dp8"
+            android:onClick="@{() -> clickListener.onClick(question)}"
+            android:text="@{question.questionString}"
             android:textColor="@color/black"
-            android:textSize="14sp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:backgroundTint="@color/brown"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
