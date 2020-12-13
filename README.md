@@ -1,6 +1,6 @@
 <h1 align="center">
   <br>
-  <img src="https://raw.githubusercontent.com/HoGent-Projecten3/projecten3-2021-android-e1/master/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png?token=ALK2DS3CZF5VYKXD4OS5G7S72IGXK" alt="Essentials Logo"></a>
+  <img src="app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" alt="Essentials Logo"></a>
   <br>
   Essentials
 </h1>
@@ -28,7 +28,7 @@
 | Closed Test - Alpha | [Alpha Application - Android](https://play.google.com/store/apps/details?id=com.hogentessentials1.essentials) |
 | Closed Test - Alpha | [Alpha Application - Internet](https://play.google.com/apps/testing/com.hogentessentials1.essentials) |
 | Open Test - Beta | *Not yet released* |
-| Production | *Not yet released* |
+| Production | [Production version](https://play.google.com/store/apps/details?id=com.hogentessentials1.essentials) |
 
 The testing of this project is invite-only, please send an email to [Ziggy Moens](mailto:ziggy.moens@student.hogent.be?SUBJECT=Essentials%20E1:%20I%20want%20to%20become%20a%20tester!)
 
