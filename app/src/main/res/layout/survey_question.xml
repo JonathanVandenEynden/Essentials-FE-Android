@@ -8,7 +8,7 @@
     <data>
         <variable
             name="currentQuestion"
-            type="com.hogentessentials1.essentials.ui.surveys.SurveyQuestionFragement" />
+            type="com.hogentessentials1.essentials.ui.survey.SurveyQuestionFragement" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -16,35 +16,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/option5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-
-            app:layout_constraintEnd_toEndOf="@+id/ratingBar_question"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="@+id/ratingBar_question"
-            app:layout_constraintTop_toBottomOf="@+id/ratingBar_question" />
-
-        <TextView
-            android:id="@+id/survey_question"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="64dp"
-            android:layout_marginEnd="16dp"
-
-            android:textAlignment="center"
-            android:textSize="24sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
         <com.google.android.material.button.MaterialButton
             android:id="@+id/next_question"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_marginBottom="32dp"
             android:text="@string/next_question"
             android:textColor="@color/black"
@@ -53,28 +28,143 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <TextView
-            android:id="@+id/option0"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-
-            app:layout_constraintEnd_toEndOf="@+id/ratingBar_question"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/ratingBar_question"
-            app:layout_constraintTop_toBottomOf="@+id/ratingBar_question" />
-
-        <RatingBar
-            android:id="@+id/ratingBar_question"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:stepSize="0.5"
-            android:contentDescription="@string/ratingbar_question"
+        <ScrollView
+            android:id="@+id/scrollView2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="8dp"
+            android:fillViewport="true"
             app:layout_constraintBottom_toTopOf="@+id/next_question"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.502"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/survey_question" />
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/zoom_constr"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/survey_question"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginEnd="16dp"
+                    android:textAlignment="center"
+                    android:textSize="24sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/open_question"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="32dp"
+                    android:hint="@string/your_answer"
+                    app:boxStrokeColor="@color/brown"
+                    app:boxStrokeWidth="2dp"
+                    app:layout_constraintBottom_toBottomOf="@id/zoom_constr"
+                    app:layout_constraintEnd_toEndOf="@id/zoom_constr"
+                    app:layout_constraintStart_toStartOf="@id/zoom_constr"
+                    app:layout_constraintTop_toTopOf="@id/survey_question">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/open_question_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <RatingBar
+                    android:id="@+id/ratingBar_question"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="32dp"
+                    android:contentDescription="@string/ratingbar_question"
+                    android:stepSize="0.5"
+                    app:layout_constraintBottom_toBottomOf="@id/zoom_constr"
+                    app:layout_constraintEnd_toEndOf="@id/zoom_constr"
+                    app:layout_constraintStart_toStartOf="@id/zoom_constr"
+                    app:layout_constraintTop_toTopOf="@id/survey_question" />
+
+                <LinearLayout
+                    android:id="@+id/yesno_question"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="32dp"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toBottomOf="@id/zoom_constr"
+                    app:layout_constraintEnd_toEndOf="@id/zoom_constr"
+                    app:layout_constraintStart_toStartOf="@id/zoom_constr"
+                    app:layout_constraintTop_toTopOf="@id/survey_question">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/yes_button"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
+                        android:layout_width="0dp"
+                        android:layout_height="150dp"
+                        android:layout_margin="8dp"
+                        android:layout_weight="1"
+                        android:text="@string/yes"
+                        android:textColor="@color/black"
+                        app:icon="@drawable/ic_check"
+                        app:iconSize="50dp"
+                        app:iconTint="@color/green"
+                        app:strokeColor="@color/brown"
+                        app:strokeWidth="2dp" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/no_button"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
+                        android:layout_width="0dp"
+                        android:layout_height="150dp"
+                        android:layout_margin="8dp"
+                        android:layout_weight="1"
+                        android:text="@string/no"
+                        android:textColor="@color/black"
+                        app:icon="@drawable/ic_close"
+                        app:iconSize="50dp"
+                        app:iconTint="@color/red"
+                        app:strokeColor="@color/brown"
+                        app:strokeWidth="2dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/mc_question"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginEnd="32dp"
+                    android:layout_marginBottom="32dp"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="@id/zoom_constr"
+                    app:layout_constraintEnd_toEndOf="@id/zoom_constr"
+                    app:layout_constraintStart_toStartOf="@id/zoom_constr"
+                    app:layout_constraintTop_toTopOf="@id/survey_question" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

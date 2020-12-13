@@ -7,11 +7,11 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.hogentessentials1.essentials.R
 import com.hogentessentials1.essentials.data.model.ChangeGroup
 import com.hogentessentials1.essentials.databinding.TeamsFragmentBinding
+import com.hogentessentials1.essentials.util.Status
 import org.koin.android.ext.android.inject
 
 /**
@@ -25,16 +25,11 @@ class TeamsFragment : Fragment(), ChangeGroupClickListener {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         (activity as AppCompatActivity).supportActionBar?.title = "Teams"
 
         val binding: TeamsFragmentBinding =
             DataBindingUtil.inflate(inflater, R.layout.teams_fragment, container, false)
-
-        val application = requireNotNull(this.activity).application
-
-        // TODO dao's
-//        val dataSource = EssentialsDatabase.getInstance(application).ChangeGroupDao
 
         val viewModel: TeamsViewModel by inject()
 
@@ -48,8 +43,25 @@ class TeamsFragment : Fragment(), ChangeGroupClickListener {
 
         viewModel.changeGroups.observe(
             viewLifecycleOwner,
-            Observer {
-                adapter.submitList(it)
+            {
+                it?.let { resource ->
+                    when (resource.status) {
+                        Status.SUCCESS -> {
+                            if (resource.data?.isEmpty() == true) {
+                                binding.noTeamsBanner.visibility = View.VISIBLE
+                            } else {
+                                binding.noTeamsBanner.visibility = View.GONE
+                            }
+                            adapter.submitList(resource.data)
+                        }
+                        Status.LOADING -> {
+                            binding.noTeamsBanner.visibility = View.GONE
+                        }
+                        Status.ERROR -> {
+                            binding.noTeamsBanner.visibility = View.VISIBLE
+                        }
+                    }
+                }
             }
         )
 
