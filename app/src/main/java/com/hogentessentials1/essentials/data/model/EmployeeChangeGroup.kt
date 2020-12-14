@@ -13,4 +13,4 @@ data class EmployeeChangeGroup(
     val employee: Employee? = null,
     val changeGroupId: Int,
     val changeGroup: ChangeGroup? = null
-) : Parcelable {}
+) : Parcelable

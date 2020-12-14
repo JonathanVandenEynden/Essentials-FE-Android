@@ -2,7 +2,6 @@ package com.hogentessentials1.essentials.data.network.converters
 
 import androidx.room.TypeConverter
 import com.google.gson.Gson
-import com.hogentessentials1.essentials.data.model.Employee
 import com.hogentessentials1.essentials.data.model.EmployeeChangeGroup
 
 /**
