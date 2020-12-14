@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -20,6 +21,7 @@ import org.koin.android.ext.android.inject
  * Fragment for showing the overview of teams
  */
 class TeamsFragment : Fragment(), ChangeGroupClickListener {
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -49,16 +51,23 @@ class TeamsFragment : Fragment(), ChangeGroupClickListener {
                         Status.SUCCESS -> {
                             if (resource.data?.isEmpty() == true) {
                                 binding.noTeamsBanner.visibility = View.VISIBLE
+                                binding.logoLayout.visibility = View.GONE
                             } else {
                                 binding.noTeamsBanner.visibility = View.GONE
+                                binding.logoLayout.visibility = View.GONE
                             }
                             adapter.submitList(resource.data)
                         }
                         Status.LOADING -> {
+                            binding.logoLayout.visibility = View.VISIBLE
+                            val rotate = AnimationUtils.loadAnimation(context, R.anim.rotate_logo)
+                            binding.imageView2.animation = rotate
                             binding.noTeamsBanner.visibility = View.GONE
                         }
                         Status.ERROR -> {
-                            binding.noTeamsBanner.visibility = View.VISIBLE
+                            binding.logoLayout.visibility = View.VISIBLE
+                            val rotate = AnimationUtils.loadAnimation(context, R.anim.rotate_logo)
+                            binding.imageView2.animation = rotate
                         }
                     }
                 }
