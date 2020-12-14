@@ -158,7 +158,9 @@
             app:destination="@id/surveyComplete" />
         <action
             android:id="@+id/action_roadMapFragment_to_myChangesQuestionListFragment"
-            app:destination="@id/myChangesQuestionListFragment" />
+            app:destination="@id/myChangesQuestionListFragment"
+            app:popUpTo="@id/roadMapFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/surveyComplete"

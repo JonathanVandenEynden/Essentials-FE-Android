@@ -64,4 +64,6 @@
     <string name="myChange_question_example">What do you think of this change?</string>
     <string name="myChange_answer">Answer</string>
     <string name="myChange_timesChosen">Times chosen</string>
+    <string name="myChange_answers">Answers</string>
+    <string name="question">Question: </string>
 </resources>

@@ -18,6 +18,7 @@ import com.hogentessentials1.essentials.databinding.FragmentMychangeQuestionsLis
 import com.hogentessentials1.essentials.databinding.FragmentMychangeSurveyBinding
 import com.hogentessentials1.essentials.ui.myChangeInitiatives.list.*
 import org.koin.android.ext.android.inject
+import timber.log.Timber
 
 /**
  * @author Sébastien De Pauw
@@ -26,6 +27,8 @@ import org.koin.android.ext.android.inject
 class MyChangesQuestionListFragment : Fragment() {
 
     lateinit var viewModel: MyChangesQuestionListViewModel
+
+    private var questions: List<Question> = arrayListOf()
 
     private lateinit var binding: FragmentMychangeSurveyBinding
 
@@ -56,6 +59,8 @@ class MyChangesQuestionListFragment : Fragment() {
 
         val args = MyChangesQuestionListFragmentArgs.fromBundle(requireArguments())
         val roadmapItem: RoadMapItem = args.roadMapItem
+
+        questions = roadmapItem.assessment!!.questions
 
         binding.viewModel = viewModel
 
@@ -106,13 +111,7 @@ class MyChangesQuestionListFragment : Fragment() {
             else -> R.drawable.ic_happiness_none
         })
 
-        viewModel.getAllQuestions((roadmapItem.assessment?.id)?.toInt())
-        viewModel.Questions.observe(
-                viewLifecycleOwner,
-                {
-                    adapter.submitList(it)
-                }
-            )
+        adapter.submitList(roadmapItem.assessment!!.questions.filter { e -> e.type.toInt() != 3 })
 
         (activity as AppCompatActivity).supportActionBar?.title = roadmapItem.title
 

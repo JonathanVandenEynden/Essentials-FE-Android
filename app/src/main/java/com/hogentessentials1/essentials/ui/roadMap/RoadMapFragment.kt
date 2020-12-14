@@ -59,7 +59,7 @@ class RoadMapFragment : Fragment() {
 
         binding.viewModel = viewModel
 
-        if (q.size == 0) {
+        if (q.size == 0 && !changemanager) {
             binding.surveyRoadmap.setBackgroundColor(resources.getColor(R.color.green))
             binding.surveyRoadmap.setText(resources.getText(R.string.survey_already_filled))
         }
@@ -92,6 +92,7 @@ class RoadMapFragment : Fragment() {
              viewLifecycleOwner,
                 {
                     if(it){
+                        roadmapitem.assessment!!.questions = q_original
                         binding.root.findNavController().navigate(
                             RoadMapFragmentDirections.actionRoadMapFragmentToMyChangesQuestionListFragment(roadmapitem)
                         )
