@@ -102,12 +102,10 @@ class DashboardFragment : Fragment() {
                         "$clickedText selected",
                         Toast.LENGTH_SHORT
                     ).show()
-// showCharts(clickedItem)
-                    var amount_filledIn: Double = 0.0
+                    // showCharts(clickedItem)
                     viewModel.fi.observe(
                         viewLifecycleOwner,
                         {
-                            amount_filledIn = it
                             speed.speedTo(it.toFloat())
                         }
                     )

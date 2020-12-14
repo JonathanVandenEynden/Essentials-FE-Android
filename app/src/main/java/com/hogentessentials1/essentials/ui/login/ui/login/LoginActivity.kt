@@ -8,12 +8,10 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
+import android.view.animation.AnimationUtils
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ProgressBar
-import android.widget.Toast
+import android.widget.*
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
@@ -44,7 +42,7 @@ class LoginActivity : AppCompatActivity() {
         val username = findViewById<EditText>(R.id.username)
         val password = findViewById<EditText>(R.id.password)
         val login = findViewById<Button>(R.id.login)
-        val loading = findViewById<ProgressBar>(R.id.loading)
+        val logo2 = findViewById<ImageView>(R.id.imageView2)
 
         val loginViewModel: LoginViewModel by inject()
 //                = ViewModelProvider(this, LoginViewModelFactory())
@@ -75,7 +73,6 @@ class LoginActivity : AppCompatActivity() {
             Observer {
                 val loginResult = it ?: return@Observer
 
-                loading.visibility = View.GONE
                 if (loginResult.error != null) {
                     hideKeyboard()
                     password.selectAll()
@@ -106,6 +103,8 @@ class LoginActivity : AppCompatActivity() {
             }
 
             setOnEditorActionListener { _, actionId, _ ->
+                val rotate = AnimationUtils.loadAnimation(this.context, R.anim.rotate_logo)
+                logo2.animation = rotate
                 when (actionId) {
                     EditorInfo.IME_ACTION_DONE ->
                         loginViewModel.login(
@@ -117,7 +116,8 @@ class LoginActivity : AppCompatActivity() {
             }
 
             login.setOnClickListener {
-                loading.visibility = View.VISIBLE
+                val rotate = AnimationUtils.loadAnimation(this.context, R.anim.rotate_logo)
+                logo2.animation = rotate
                 loginViewModel.login(username.text.toString(), password.text.toString())
             }
         }
