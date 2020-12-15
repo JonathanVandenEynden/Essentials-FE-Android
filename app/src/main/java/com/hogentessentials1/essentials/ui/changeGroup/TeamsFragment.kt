@@ -12,8 +12,11 @@ import androidx.navigation.fragment.findNavController
 import com.hogentessentials1.essentials.R
 import com.hogentessentials1.essentials.data.model.ChangeGroup
 import com.hogentessentials1.essentials.databinding.TeamsFragmentBinding
+import com.hogentessentials1.essentials.ui.LoadingFragment
 import com.hogentessentials1.essentials.util.Status
+import kotlinx.coroutines.awaitAll
 import org.koin.android.ext.android.inject
+import timber.log.Timber
 
 /**
  * @author Simon De Wilde
@@ -22,6 +25,7 @@ import org.koin.android.ext.android.inject
  */
 class TeamsFragment : Fragment(), ChangeGroupClickListener {
 
+    private val loadingDialogFragment by lazy { LoadingFragment() }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -49,25 +53,21 @@ class TeamsFragment : Fragment(), ChangeGroupClickListener {
                 it?.let { resource ->
                     when (resource.status) {
                         Status.SUCCESS -> {
+                            showLoading(false)
                             if (resource.data?.isEmpty() == true) {
                                 binding.noTeamsBanner.visibility = View.VISIBLE
-                                binding.logoLayout.visibility = View.GONE
                             } else {
                                 binding.noTeamsBanner.visibility = View.GONE
-                                binding.logoLayout.visibility = View.GONE
                             }
                             adapter.submitList(resource.data)
                         }
                         Status.LOADING -> {
-                            binding.logoLayout.visibility = View.VISIBLE
-                            val rotate = AnimationUtils.loadAnimation(context, R.anim.rotate_logo)
-                            binding.imageView2.animation = rotate
+                            showLoading(true)
                             binding.noTeamsBanner.visibility = View.GONE
                         }
                         Status.ERROR -> {
-                            binding.logoLayout.visibility = View.VISIBLE
-                            val rotate = AnimationUtils.loadAnimation(context, R.anim.rotate_logo)
-                            binding.imageView2.animation = rotate
+                            showLoading(false)
+                            binding.noTeamsBanner.visibility = View.VISIBLE
                         }
                     }
                 }
@@ -75,6 +75,19 @@ class TeamsFragment : Fragment(), ChangeGroupClickListener {
         )
 
         return binding.root
+    }
+
+    fun showLoading(b: Boolean)
+    {
+        if (b) {
+            if (!loadingDialogFragment.isAdded) {
+                loadingDialogFragment.show(requireActivity().supportFragmentManager, "loader")
+            }
+        } else {
+            if (loadingDialogFragment.isAdded) {
+                loadingDialogFragment.dismissAllowingStateLoss()
+            }
+        }
     }
 
     override fun onClick(changeGroup: ChangeGroup) {
