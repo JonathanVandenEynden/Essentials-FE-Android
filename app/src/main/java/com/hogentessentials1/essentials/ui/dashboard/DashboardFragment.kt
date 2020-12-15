@@ -17,6 +17,7 @@ import com.hogentessentials1.essentials.R
 import com.hogentessentials1.essentials.data.model.ChangeInitiative
 import com.hogentessentials1.essentials.data.model.RoadMapItem
 import com.hogentessentials1.essentials.databinding.FragmentDashboardBinding
+import com.hogentessentials1.essentials.util.Status
 import org.koin.android.ext.android.inject
 import timber.log.Timber
 
@@ -28,6 +29,7 @@ class DashboardFragment : Fragment() {
     private var rmiList: ArrayList<RoadMapItem> = arrayListOf()
     private var selectedCI: Int = 0
     private var selectedRMI: Int = 0
+
     // lateinit var viewModel: DashboardViewModel
     private lateinit var binding: FragmentDashboardBinding
     val viewModel: DashboardViewModel by inject()
@@ -72,10 +74,18 @@ class DashboardFragment : Fragment() {
         viewModel.cis.observe(
             viewLifecycleOwner,
             {
-                Timber.e("test1")
-                adapter = DashboardAdapter(this.requireContext(), ArrayList(it))
-                spinner.adapter = adapter
-                Timber.e("Test2")
+
+                when (it.status) {
+                    Status.SUCCESS -> {
+                        Timber.e("test1")
+
+                        adapter = DashboardAdapter(this.requireContext(), ArrayList(it.data!!))
+                        spinner.adapter = adapter
+                        Timber.e("Test2")
+                    }
+                    else -> {
+                    }
+                }
             }
         )
         // rmiList = ArrayList(viewModel.roadMapItems)

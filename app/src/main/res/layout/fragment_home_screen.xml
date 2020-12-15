@@ -84,9 +84,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="8dp"
                     android:layout_marginEnd="16dp"
-                    android:layout_marginBottom="16dp"
+                    android:layout_marginBottom="24dp"
                     android:fontFamily="sans-serif-black"
                     android:onClick="@{()->viewModel.onMyChangeInitiativesClicked()}"
                     android:text="@string/my_changes"
@@ -99,7 +98,6 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/dashboard"
                     app:strokeColor="@color/brown"
                     app:strokeWidth="2.5dp" />
 
@@ -132,8 +130,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
                     android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="16dp"
                     android:fontFamily="sans-serif-black"
                     android:onClick="@{()->viewModel.onDasboardClicked()}"
                     android:text="@string/dashboard"
@@ -143,10 +141,10 @@
                     app:icon="@drawable/dashboard_black_18dp"
                     app:iconSize="60dp"
                     app:iconTint="@color/black"
+                    app:layout_constraintBottom_toTopOf="@+id/my_changes"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/title_cm"
                     app:strokeColor="@color/brown"
                     app:strokeWidth="2.5dp" />
 
@@ -177,14 +175,14 @@
                     android:id="@+id/title_cm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="64dp"
+                    android:layout_marginBottom="16dp"
                     android:fontFamily="sans-serif-black"
                     android:text="@string/changemanager_functions"
                     android:textSize="16sp"
                     android:visibility="visible"
+                    app:layout_constraintBottom_toTopOf="@+id/dashboard"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/my_team" />
+                    app:layout_constraintStart_toStartOf="parent" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
