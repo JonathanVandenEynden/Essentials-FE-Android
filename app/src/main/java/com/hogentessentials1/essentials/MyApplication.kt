@@ -8,6 +8,13 @@ import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
 import timber.log.Timber
 
+/**
+ * @author Simon De Wilde
+ * @author Killian Hoefman
+ *
+ * The application class of the application, called in the androidManifest.
+ * This starts Koin (DI) with the right modules and loggers and plants a Timber debug tree
+ */
 class MyApplication : Application() {
 
     override fun onCreate() {
@@ -20,6 +27,8 @@ class MyApplication : Application() {
                 viewModelModule
             )
         }
-        Timber.plant(Timber.DebugTree())
+        if (BuildConfig.DEBUG) {
+            Timber.plant(Timber.DebugTree())
+        }
     }
 }

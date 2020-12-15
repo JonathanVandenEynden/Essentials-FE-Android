@@ -23,6 +23,8 @@ import kotlinx.coroutines.launch
 
 /**
  * @author Simon De Wilde
+ *
+ * The main activity of the application
  */
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
