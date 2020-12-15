@@ -67,6 +67,6 @@ class LoginActivityTest{
         onView(withId(R.id.password)).perform(typeText("P@ssword1"))
         onView(withId(R.id.login)).perform(click())
         Thread.sleep(2000)
-        onView(withId(R.id.changes)).check(matches(isDisplayed()))
+        onView(withId(R.id.constrainedlayout)).check(matches(isDisplayed()))
     }
 }
