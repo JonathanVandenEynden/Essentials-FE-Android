@@ -13,6 +13,8 @@ import com.hogentessentials1.essentials.databinding.NotFound404Binding
 
 /**
  * @author Ziggy Moens
+ * Not found fragment
+ * route to this fragment when something does not exist
  */
 
 class NotFoundFragment : Fragment() {

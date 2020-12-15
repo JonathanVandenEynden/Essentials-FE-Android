@@ -17,6 +17,8 @@ import timber.log.Timber
 
 /**
  * @author Ziggy Moens
+ * Fragment for the overview of change initiatives.
+ * used for both employee and change manager (add boolean to action safe-args)
  */
 class ChangeInitiativesFragment : Fragment() {
 

@@ -6,45 +6,13 @@ import com.hogentessentials1.essentials.data.model.ChangeInitiative
 
 /**
  * @author Ziggy Moens
+ *
+ * Viewmodel for the change initiative (detail) fragment
  */
 
 class ChangeinitiativeViewModel : ViewModel() {
 
-    lateinit var changeInitiative: ChangeInitiative /* = ChangeInitiative(
-        title = "New Resto",
-        surveys = arrayListOf(
-            Survey(
-                name = "Personnel Survey",
-                arrayListOf(
-                    SurveyQuestion(
-                        question = "What do you think of the new personnel?",
-                        option0 = "Uneatable",
-                        option5 = "Delicious"
-                    ),
-                    SurveyQuestion(
-                        question = "Would you recommend the new resto to your colleagues?",
-                        option0 = "No",
-                        option5 = "Yes"
-                    )
-                )
-            ),
-            Survey(
-                name = "Food Survey",
-                arrayListOf(
-                    SurveyQuestion(
-                        question = "What do you think of the new food?",
-                        option0 = "Uneatable",
-                        option5 = "Delicious"
-                    ),
-                    SurveyQuestion(
-                        question = "Would you recommend the food to your colleagues?",
-                        option0 = "No",
-                        option5 = "Yes"
-                    )
-                )
-            )
-        )
-    )*/
+    lateinit var changeInitiative: ChangeInitiative
 
     override fun onCleared() {
         super.onCleared()

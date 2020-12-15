@@ -14,7 +14,7 @@ import com.hogentessentials1.essentials.databinding.TeamDetailsFragmentBinding
 /**
  * @author Simon De Wilde
  *
- * Fragment for showing the team members
+ * Fragment for showing the team members of a change group
  */
 class TeamDetailsFragment : Fragment() {
 

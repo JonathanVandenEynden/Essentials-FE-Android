@@ -14,6 +14,8 @@ import com.hogentessentials1.essentials.databinding.ChangeinitiativeBinding
 
 /**
  * @author Ziggy Moens
+ *
+ * Fragment for the details of a changeInitiative
  */
 
 class ChangeInitiativeFragment : Fragment() {

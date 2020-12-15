@@ -18,6 +18,7 @@ import org.koin.android.ext.android.inject
  * @author Simon De Wilde
  *
  * Fragment for showing the overview of teams
+ * Also a listener when a change group is tapped
  */
 class TeamsFragment : Fragment(), ChangeGroupClickListener {
 
@@ -68,6 +69,11 @@ class TeamsFragment : Fragment(), ChangeGroupClickListener {
         return binding.root
     }
 
+    /**
+     * @author Simon De Wilde
+     * navigates to a change group detail screen when it is clicked
+     * @param changeGroup
+     */
     override fun onClick(changeGroup: ChangeGroup) {
         navigateToDetail(changeGroup)
     }

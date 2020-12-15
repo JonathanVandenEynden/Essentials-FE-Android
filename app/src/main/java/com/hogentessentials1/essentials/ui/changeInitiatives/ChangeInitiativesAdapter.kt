@@ -12,6 +12,7 @@ import com.hogentessentials1.essentials.databinding.ChangeinitiativesItemBinding
  * @author Ziggy Moens
  * @author Simon De Wilde
  * Converts Change Initiatives to views
+ * @param clickListener listener for when a change initiative is tapped
  */
 class ChangeInitiativeAdapter(val clickListener: ChangeInitiativesListener) :
     ListAdapter<ChangeInitiative, ChangeInitiativeAdapter.ViewHolder>(ChangeInitiativeDiffCallback()) {
@@ -57,6 +58,8 @@ class ChangeInitiativeDiffCallback : DiffUtil.ItemCallback<ChangeInitiative>() {
 
 /**
  * @author Ziggy Moens
+ * listener for when a change initiative is tapped
+ * @param clickListener
  */
 class ChangeInitiativesListener(val clickListener: (changeInitiative: ChangeInitiative) -> Unit) {
     fun onClick(changeInitiative: ChangeInitiative) = clickListener(changeInitiative)
