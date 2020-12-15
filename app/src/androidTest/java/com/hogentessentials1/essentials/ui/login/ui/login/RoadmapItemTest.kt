@@ -37,7 +37,7 @@ class RoadmapItemTest {
     fun roadmapItemTest() {
         val appCompatEditText = onView(
             allOf(
-                withId(R.id.username), withText("Sukrit.bhattacharya@hogent.com"),
+                withId(R.id.username),
                 childAtPosition(
                     childAtPosition(
                         withClassName(`is`("android.widget.ScrollView")),
