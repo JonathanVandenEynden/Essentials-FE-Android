@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.hogentessentials1.essentials.R
 import com.hogentessentials1.essentials.data.model.RoadMapItem
 import com.hogentessentials1.essentials.databinding.RoadmapListBinding
+import com.hogentessentials1.essentials.util.Status
 import org.koin.android.ext.android.inject
 
 /**
@@ -97,17 +98,46 @@ class RoadMapListFragment : Fragment() {
         if (!allSurveys) {
             adapter.submitList(roadmapItems)
         } else {
-            viewModel.getAllSurveys()
-            viewModel.RoadMapItems.observe(
+            viewModel.allCI.observe(
                 viewLifecycleOwner,
-                { adapter.submitList(it) }
+                {
+                    it?.let { resource ->
+                        when (resource.status) {
+                            Status.SUCCESS -> {
+                                if (resource.data?.isEmpty() == true) {
+                                    binding.noRmiBanner.visibility = View.VISIBLE
+                                    adapter.submitList(arrayListOf())
+                                } else {
+                                    binding.noRmiBanner.visibility = View.GONE
+
+                                    // Get all RMI
+                                    var list = arrayListOf<RoadMapItem>()
+                                    resource.data?.map { ci -> list.addAll(ci.roadMap) }
+                                    adapter.submitList(list)
+                                }
+                            }
+                            Status.LOADING -> {
+                                binding.noRmiBanner.visibility = View.GONE
+                            }
+                            Status.ERROR -> {
+                                binding.noRmiBanner.visibility = View.VISIBLE
+                            }
+                        }
+                    }
+                }
             )
+
+//            viewModel.getAllSurveys()
+//            viewModel.RoadMapItems.observe(
+//                viewLifecycleOwner,
+//                { adapter.submitList(it) }
+//            )
         }
 
         /**
          * @author Ziggy Moens
          */
-        (activity as AppCompatActivity).supportActionBar?.title = "Roadmap"
+        (activity as AppCompatActivity).supportActionBar?.title = "Road map"
 
         return binding.root
     }

@@ -60,4 +60,6 @@
     <string name="survey_already_filled">Survey already filled in</string>
     <string name="log_out">Log out</string>
     <string name="no_teams_available">There are no teams available at the moment</string>
+    <string name="no_changes_available">There are no changes available at the moment</string>
+    <string name="no_surveys_available">There are no surveys available at the moment</string>
 </resources>
