@@ -34,4 +34,7 @@ interface ChangeGroupDao {
      */
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(changeGroups: List<ChangeGroup>)
+
+    @Query("DELETE FROM changeGroup")
+    suspend fun deleteAll()
 }

@@ -19,7 +19,7 @@ import com.hogentessentials1.essentials.data.network.converters.AssessmentConver
 import com.hogentessentials1.essentials.data.network.converters.ChangeGroupConverter
 import com.hogentessentials1.essentials.data.network.converters.ChangeInitiativeConverter
 import com.hogentessentials1.essentials.data.network.converters.ChangeTypeConverter
-import com.hogentessentials1.essentials.data.network.converters.EmployeeArrayConverter
+import com.hogentessentials1.essentials.data.network.converters.EmployeeChangeGroupArrayConverter
 import com.hogentessentials1.essentials.data.network.converters.EmployeeConverter
 import com.hogentessentials1.essentials.data.network.converters.ProjectConverter
 import com.hogentessentials1.essentials.data.network.converters.RoadMapItemConverter
@@ -33,7 +33,7 @@ import com.hogentessentials1.essentials.data.network.converters.RoadMapItemConve
 
 @Database(
     entities = [Project::class, Employee::class, ChangeInitiative::class, RoadMapItem::class, ChangeGroup::class],
-    version = 1,
+    version = 3,
     exportSchema = false
 )
 @TypeConverters(
@@ -43,7 +43,7 @@ import com.hogentessentials1.essentials.data.network.converters.RoadMapItemConve
     ProjectConverter::class,
     RoadMapItemConverter::class,
     AssessmentConverter::class,
-    EmployeeArrayConverter::class,
+    EmployeeChangeGroupArrayConverter::class,
     ChangeTypeConverter::class
 )
 
@@ -97,5 +97,13 @@ abstract class EssentialsDatabase : RoomDatabase() {
 //                return instance
 //            }
 //        }
+    }
+
+    suspend fun truncate() {
+        this.EmployeeDao().deleteAll()
+        this.ChangeGroupDao().deleteAll()
+        this.ChangeInitiativeDao().deleteAll()
+        this.ProjectDao().deleteAll()
+        this.RoadMapDao().deleteAll()
     }
 }

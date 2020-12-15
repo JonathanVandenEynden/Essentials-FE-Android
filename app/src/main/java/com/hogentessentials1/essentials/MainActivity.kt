@@ -12,10 +12,14 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.navigation.NavigationView
+import com.hogentessentials1.essentials.data.network.EssentialsDatabase
 import com.hogentessentials1.essentials.databinding.ActivityMainBinding
 import com.hogentessentials1.essentials.ui.homeScreen.HomeScreenFragmentDirections
 import com.hogentessentials1.essentials.ui.login.ui.login.LoginActivity
 import com.hogentessentials1.essentials.util.Globals
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 /**
  * @author Simon De Wilde
@@ -62,6 +66,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
          *  the application will return to the loginscreen
          */
         if (!Globals.bearertokenIsValid()) {
+            Globals.bearerToken = ""
+            // Remove all data from logged in user
+            CoroutineScope(Dispatchers.IO).launch {
+                EssentialsDatabase.getInstance(applicationContext).truncate()
+            }
             toLoginActivity()
         }
     }
@@ -98,6 +107,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.teamsDrawer -> navController.navigate(R.id.teamsFragment)
             R.id.logout -> {
                 Globals.bearerToken = ""
+                // Remove all data from logged in user when explicitly logged out
+                CoroutineScope(Dispatchers.IO).launch {
+                    EssentialsDatabase.getInstance(applicationContext).truncate()
+                }
                 toLoginActivity()
             }
         }
