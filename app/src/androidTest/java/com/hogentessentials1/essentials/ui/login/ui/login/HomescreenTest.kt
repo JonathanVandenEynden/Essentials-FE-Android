@@ -20,6 +20,10 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 
+/**
+ * @author Jonathan Vanden Eynden
+ */
+
 @LargeTest
 @RunWith(AndroidJUnit4::class)
 class HomescreenTest {
