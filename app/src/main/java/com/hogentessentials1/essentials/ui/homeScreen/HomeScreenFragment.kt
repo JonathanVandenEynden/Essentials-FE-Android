@@ -52,6 +52,7 @@ class HomeScreenFragment : Fragment() {
 
         /**
          * @author Simon De Wilde
+         * @author Ziggy Moens, added safeArgs
          * navigatie naar Change Initiatives
          */
         viewModel.navigateToChangeInitiatives.observe(
@@ -96,6 +97,7 @@ class HomeScreenFragment : Fragment() {
 
         /**
          * @author Simon De Wilde
+         * @author Ziggy Moens, added safeArgs
          * navigatie naar Surveys
          */
         viewModel.navigateToSurveys.observe(
@@ -149,12 +151,18 @@ class HomeScreenFragment : Fragment() {
             }
         )
 
+        /**
+         * @author Ziggy Moens
+         */
         if (Globals.type != "changeManager") {
             binding.myChanges.visibility = View.GONE
             binding.dashboard.visibility = View.GONE
             binding.titleCm.visibility = View.GONE
         }
 
+        /**
+         * @author Ziggy Moens
+         */
         (activity as AppCompatActivity).supportActionBar?.title = "Essentials"
 
         /**
