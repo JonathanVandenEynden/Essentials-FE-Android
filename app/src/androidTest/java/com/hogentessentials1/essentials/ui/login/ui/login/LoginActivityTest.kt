@@ -1,6 +1,5 @@
-package com.hogentessentials1.essentials.login.ui.login
+package com.hogentessentials1.essentials.ui.login.ui.login
 
-import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.*
 import androidx.test.espresso.assertion.ViewAssertions.matches
@@ -67,7 +66,7 @@ class LoginActivityTest{
         onView(withId(R.id.username)).perform(typeText("Sukrit.bhattacharya@hogent.com"))
         onView(withId(R.id.password)).perform(typeText("P@ssword1"))
         onView(withId(R.id.login)).perform(click())
-        //TODO juiste layout vinden
-        //onView(withId(R.id.drawerLayout)).check(matches(isDisplayed()))
+        Thread.sleep(2000)
+        onView(withId(R.id.changes)).check(matches(isDisplayed()))
     }
 }
