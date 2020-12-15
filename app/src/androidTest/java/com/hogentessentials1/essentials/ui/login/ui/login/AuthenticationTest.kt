@@ -12,6 +12,9 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 
+/**
+ * @author Jonathan Vanden Eynden
+ */
 
 @RunWith(AndroidJUnit4ClassRunner::class)
 class AuthenticationTest {
