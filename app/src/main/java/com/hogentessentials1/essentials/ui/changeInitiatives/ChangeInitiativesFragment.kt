@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.hogentessentials1.essentials.R
 import com.hogentessentials1.essentials.databinding.ChangeinitiativesListBinding
 import com.hogentessentials1.essentials.util.Globals
+import com.hogentessentials1.essentials.util.Status
 import org.koin.android.ext.android.inject
 import timber.log.Timber
 
@@ -87,16 +88,62 @@ class ChangeInitiativesFragment : Fragment() {
 
         if (changemanager) {
             (activity as AppCompatActivity).supportActionBar?.title = "My Change initiatives"
-            viewModel.changeinitiativesChangeManager()
+
+            viewModel.changeinitiativesChangeManager.observe(
+                viewLifecycleOwner,
+                {
+                    it?.let { resource ->
+                        when (resource.status) {
+                            Status.SUCCESS -> {
+                                if (resource.data?.isEmpty() == true) {
+                                    binding.noChangesBanner.visibility = View.VISIBLE
+                                } else {
+                                    binding.noChangesBanner.visibility = View.GONE
+                                }
+                                adapter.submitList(resource.data)
+                            }
+                            Status.LOADING -> {
+                                binding.noChangesBanner.visibility = View.GONE
+                            }
+                            Status.ERROR -> {
+                                binding.noChangesBanner.visibility = View.VISIBLE
+                            }
+                        }
+                    }
+                }
+            )
+//            viewModel.changeinitiativesChangeManager
         } else {
             (activity as AppCompatActivity).supportActionBar?.title = "Change initiatives"
-            viewModel.changeinitiativesEmployee()
+            viewModel.changeinitiativesEmployee.observe(
+                viewLifecycleOwner,
+                {
+                    it?.let { resource ->
+                        when (resource.status) {
+                            Status.SUCCESS -> {
+                                if (resource.data?.isEmpty() == true) {
+                                    binding.noChangesBanner.visibility = View.VISIBLE
+                                } else {
+                                    binding.noChangesBanner.visibility = View.GONE
+                                }
+                                adapter.submitList(resource.data)
+                            }
+                            Status.LOADING -> {
+                                binding.noChangesBanner.visibility = View.GONE
+                            }
+                            Status.ERROR -> {
+                                binding.noChangesBanner.visibility = View.VISIBLE
+                            }
+                        }
+                    }
+                }
+            )
         }
 
-        viewModel.changeinitiatives.observe(
-            viewLifecycleOwner,
-            { adapter.submitList(it) }
-        )
+//        viewModel.changeinitiatives.observe(
+//            viewLifecycleOwner,
+//            { adapter.submitList(it) }
+//        )
 
         return binding.root
     }
