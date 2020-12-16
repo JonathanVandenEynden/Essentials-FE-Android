@@ -53,6 +53,7 @@ class TeamsFragment : Fragment(), ChangeGroupClickListener {
                 it?.let { resource ->
                     when (resource.status) {
                         Status.SUCCESS -> {
+
                             showLoading(false)
                             if (resource.data?.isEmpty() == true) {
                                 binding.noTeamsBanner.visibility = View.VISIBLE
@@ -67,7 +68,7 @@ class TeamsFragment : Fragment(), ChangeGroupClickListener {
                         }
                         Status.ERROR -> {
                             showLoading(false)
-                            binding.noTeamsBanner.visibility = View.VISIBLE
+                            //binding.noTeamsBanner.visibility = View.VISIBLE
                         }
                     }
                 }

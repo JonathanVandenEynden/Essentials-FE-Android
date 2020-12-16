@@ -30,8 +30,6 @@ data class ChangeInitiative(
     val changeGroup: ChangeGroup?,
     @Json(name = "changeSponsor")
     val changeSponsor: Employee?,
-    @Json(name = "changeType")
-    val changeType: ChangeType?,
     @Json(name = "roadMap")
     val roadMap: Array<RoadMapItem>,
     @Json(name = "progress")

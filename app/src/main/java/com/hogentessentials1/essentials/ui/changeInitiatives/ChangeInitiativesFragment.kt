@@ -11,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.hogentessentials1.essentials.R
 import com.hogentessentials1.essentials.databinding.ChangeinitiativesListBinding
+import com.hogentessentials1.essentials.ui.LoadingFragment
 import com.hogentessentials1.essentials.util.Globals
 import com.hogentessentials1.essentials.util.Status
 import org.koin.android.ext.android.inject
@@ -24,6 +25,7 @@ class ChangeInitiativesFragment : Fragment() {
     private lateinit var binding: ChangeinitiativesListBinding
     private lateinit var viewModel: ChangeInitiativesViewModel
     private lateinit var adapter: ChangeInitiativeAdapter
+    private val loadingDialogFragment by lazy { LoadingFragment() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,8 +41,6 @@ class ChangeInitiativesFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
-        Timber.e(Globals.userid.toString())
 
         val changemanager: Boolean
         val args = ChangeInitiativesFragmentArgs.fromBundle(requireArguments())
@@ -86,6 +86,14 @@ class ChangeInitiativesFragment : Fragment() {
 
         binding.ciList.adapter = adapter
 
+        /*if (changemanager) {
+            (activity as AppCompatActivity).supportActionBar?.title = "My Change initiatives"
+            viewModel.changeinitiativesChangeManager()
+        } else {
+            (activity as AppCompatActivity).supportActionBar?.title = "Change initiatives"
+            viewModel.changeinitiativesEmployee()
+        }*/
+
         if (changemanager) {
             (activity as AppCompatActivity).supportActionBar?.title = "My Change initiatives"
 
@@ -95,44 +103,44 @@ class ChangeInitiativesFragment : Fragment() {
                     it?.let { resource ->
                         when (resource.status) {
                             Status.SUCCESS -> {
-                                if (resource.data?.isEmpty() == true) {
-                                    binding.noChangesBanner.visibility = View.VISIBLE
-                                } else {
-                                    binding.noChangesBanner.visibility = View.GONE
-                                }
+                                Timber.e(resource.data.toString())
+                                showLoading(false)
                                 adapter.submitList(resource.data)
+                                if (resource.data?.isEmpty() == true) {
+                                } else {
+                                }
                             }
                             Status.LOADING -> {
-                                binding.noChangesBanner.visibility = View.GONE
+                                showLoading(true)
                             }
                             Status.ERROR -> {
-                                binding.noChangesBanner.visibility = View.VISIBLE
+                                showLoading(false)
                             }
                         }
                     }
                 }
             )
-//            viewModel.changeinitiativesChangeManager
         } else {
             (activity as AppCompatActivity).supportActionBar?.title = "Change initiatives"
+
             viewModel.changeinitiativesEmployee.observe(
                 viewLifecycleOwner,
                 {
                     it?.let { resource ->
                         when (resource.status) {
                             Status.SUCCESS -> {
+                                showLoading(false)
                                 if (resource.data?.isEmpty() == true) {
-                                    binding.noChangesBanner.visibility = View.VISIBLE
                                 } else {
-                                    binding.noChangesBanner.visibility = View.GONE
                                 }
                                 adapter.submitList(resource.data)
                             }
                             Status.LOADING -> {
-                                binding.noChangesBanner.visibility = View.GONE
+                                showLoading(true)
                             }
                             Status.ERROR -> {
-                                binding.noChangesBanner.visibility = View.VISIBLE
+                                showLoading(false)
+                                findNavController().navigate(ChangeInitiativesFragmentDirections.actionChangeInitiativesToNotFoundFragment())
                             }
                         }
                     }
@@ -140,10 +148,14 @@ class ChangeInitiativesFragment : Fragment() {
             )
         }
 
-//        viewModel.changeinitiatives.observe(
-//            viewLifecycleOwner,
-//            { adapter.submitList(it) }
-//        )
+        /*viewModel.changeinitiatives.observe(
+            viewLifecycleOwner,
+            {
+                showLoading(true)
+                adapter.submitList(it)
+                showLoading(false)
+            }
+        )*/
 
         return binding.root
     }
@@ -154,4 +166,70 @@ class ChangeInitiativesFragment : Fragment() {
             findNavController().navigate(ChangeInitiativesFragmentDirections.actionChangeInitiativesToNotFoundFragment())
         }
     }
+    fun showLoading(b: Boolean)
+    {
+        if (b) {
+            if (!loadingDialogFragment.isAdded) {
+                loadingDialogFragment.show(requireActivity().supportFragmentManager, "loader")
+            }
+        } else {
+            if (loadingDialogFragment.isAdded) {
+                loadingDialogFragment.dismissAllowingStateLoss()
+            }
+        }
+    }
+
+    /*       if (changemanager) {
+            (activity as AppCompatActivity).supportActionBar?.title = "My Change initiatives"
+
+            viewModel.changeinitiavtivesCM.observe(
+                viewLifecycleOwner,
+                {
+                    it?.let { resource ->
+                        when (resource.status) {
+                            Status.SUCCESS -> {
+                                showLoading(false)
+                                if (resource.data?.isEmpty() == true) {
+                                    findNavController().navigate(ChangeInitiativesFragmentDirections.actionChangeInitiativesToNotFoundFragment())
+                                } else {
+                                }
+                                adapter.submitList(resource.data)
+                            }
+                            Status.LOADING -> {
+                                showLoading(true)
+                            }
+                            Status.ERROR -> {
+                                showLoading(false)
+                            }
+                        }
+                    }
+                }
+            )
+        } else {
+            (activity as AppCompatActivity).supportActionBar?.title = "Change initiatives"
+
+            viewModel.changeinitiavtivesE.observe(
+                viewLifecycleOwner,
+                {
+                    it?.let { resource ->
+                        when (resource.status) {
+                            Status.SUCCESS -> {
+                                showLoading(false)
+                                if (resource.data?.isEmpty() == true) {
+                                    findNavController().navigate(ChangeInitiativesFragmentDirections.actionChangeInitiativesToNotFoundFragment())
+                                } else {
+                                }
+                                adapter.submitList(resource.data)
+                            }
+                            Status.LOADING -> {
+                                showLoading(true)
+                            }
+                            Status.ERROR -> {
+                                showLoading(false)
+                            }
+                        }
+                    }
+                }
+            )
+        }*/
 }

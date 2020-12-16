@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.hogentessentials1.essentials.R
 import com.hogentessentials1.essentials.databinding.ChangeinitiativeBinding
+import com.hogentessentials1.essentials.ui.LoadingFragment
 
 /**
  * @author Ziggy Moens
@@ -65,4 +66,5 @@ class ChangeInitiativeFragment : Fragment() {
         (activity as AppCompatActivity).supportActionBar?.title = viewModel.changeInitiative.title
         return binding.root
     }
+
 }
