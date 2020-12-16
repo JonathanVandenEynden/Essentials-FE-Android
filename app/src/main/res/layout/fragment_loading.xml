@@ -10,7 +10,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.LoadingFragment">
+        tools:context=".ui.LoadingFragment"
+        >
 
         <ImageView
             android:id="@+id/imageView"
@@ -21,7 +22,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_logo_bg" />
+            app:srcCompat="@drawable/ic_logo_bg"
+            />
 
         <ImageView
             android:id="@+id/imageView2"

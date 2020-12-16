@@ -10,4 +10,9 @@
         <item name="strokeColor">@color/brown</item>
         <item name="strokeWidth">2dp</item>
     </style>
+
+    <style name="AppModalStyle"
+        parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@drawable/rounded_dialog</item>
+    </style>
 </resources>

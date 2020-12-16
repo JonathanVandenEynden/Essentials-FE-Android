@@ -40,7 +40,6 @@ import timber.log.Timber
             rotate = AnimationUtils.loadAnimation(this.context, R.anim.rotate_logo)
             binding.imageView2.animation = rotate
             isCancelable = false
-
             return binding.root
         }
 

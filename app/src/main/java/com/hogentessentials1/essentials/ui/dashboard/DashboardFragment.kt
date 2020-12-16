@@ -80,13 +80,14 @@ class DashboardFragment : Fragment() {
 
                 when (it.status) {
                     Status.SUCCESS -> {
-                        Timber.e("test1")
-
                         adapter = DashboardAdapter(this.requireContext(), ArrayList(it.data!!))
                         spinner.adapter = adapter
-                        Timber.e("Test2")
                     }
-                    else -> {
+                    Status.LOADING -> {
+                        showLoading(true)
+                    }
+                    Status.ERROR -> {
+                        showLoading(false)
                     }
                 }
             }
@@ -96,9 +97,7 @@ class DashboardFragment : Fragment() {
             rmiAdapter = DashboardRMIAdapter(this.requireContext(), ArrayList(it))
             spinnerrmi.adapter = rmiAdapter
         })*/
-        Timber.e("Test3")
         spinner.setSelection(selectedCI)
-        Timber.e("Test4")
         spinnerrmi.setOnItemSelectedListener(
             object : OnItemSelectedListener {
                 override fun onItemSelected(
@@ -149,6 +148,7 @@ class DashboardFragment : Fragment() {
                     rmiAdapter =
                         DashboardRMIAdapter(parent.context, ArrayList(clickedItem.roadMap.toList()))
                     spinnerrmi.adapter = rmiAdapter
+                    showLoading(false)
                 }
 
                 override fun onNothingSelected(parent: AdapterView<*>?) {}

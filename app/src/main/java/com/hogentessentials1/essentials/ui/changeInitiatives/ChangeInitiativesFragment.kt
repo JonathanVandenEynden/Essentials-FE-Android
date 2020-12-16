@@ -14,6 +14,7 @@ import com.hogentessentials1.essentials.databinding.ChangeinitiativesListBinding
 import com.hogentessentials1.essentials.ui.LoadingFragment
 import com.hogentessentials1.essentials.util.Globals
 import com.hogentessentials1.essentials.util.Status
+import org.koin.android.ext.android.bind
 import org.koin.android.ext.android.inject
 import timber.log.Timber
 
@@ -103,7 +104,6 @@ class ChangeInitiativesFragment : Fragment() {
                     it?.let { resource ->
                         when (resource.status) {
                             Status.SUCCESS -> {
-                                Timber.e(resource.data.toString())
                                 showLoading(false)
                                 adapter.submitList(resource.data)
                                 if (resource.data?.isEmpty() == true) {
@@ -131,6 +131,7 @@ class ChangeInitiativesFragment : Fragment() {
                             Status.SUCCESS -> {
                                 showLoading(false)
                                 if (resource.data?.isEmpty() == true) {
+                                    binding.noChangesBanner.visibility = View.VISIBLE
                                 } else {
                                 }
                                 adapter.submitList(resource.data)
@@ -166,6 +167,7 @@ class ChangeInitiativesFragment : Fragment() {
             findNavController().navigate(ChangeInitiativesFragmentDirections.actionChangeInitiativesToNotFoundFragment())
         }
     }
+
     fun showLoading(b: Boolean)
     {
         if (b) {
