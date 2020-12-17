@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.animation.AnimationUtils
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -14,9 +13,7 @@ import com.hogentessentials1.essentials.data.model.ChangeGroup
 import com.hogentessentials1.essentials.databinding.TeamsFragmentBinding
 import com.hogentessentials1.essentials.ui.LoadingFragment
 import com.hogentessentials1.essentials.util.Status
-import kotlinx.coroutines.awaitAll
 import org.koin.android.ext.android.inject
-import timber.log.Timber
 
 /**
  * @author Simon De Wilde
@@ -68,7 +65,7 @@ class TeamsFragment : Fragment(), ChangeGroupClickListener {
                         }
                         Status.ERROR -> {
                             showLoading(false)
-                            //binding.noTeamsBanner.visibility = View.VISIBLE
+                            // binding.noTeamsBanner.visibility = View.VISIBLE
                         }
                     }
                 }
@@ -78,16 +75,15 @@ class TeamsFragment : Fragment(), ChangeGroupClickListener {
         return binding.root
     }
 
-    fun showLoading(b: Boolean)
-    {
+    fun showLoading(b: Boolean) {
         if (b) {
             if (!loadingDialogFragment.isAdded) {
                 loadingDialogFragment.show(requireActivity().supportFragmentManager, "loader")
             }
         } else {
-            //if (loadingDialogFragment.isAdded) {
-                loadingDialogFragment.dismissAllowingStateLoss()
-            //}
+            // if (loadingDialogFragment.isAdded) {
+            loadingDialogFragment.dismissAllowingStateLoss()
+            // }
         }
     }
 

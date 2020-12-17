@@ -10,9 +10,7 @@ import com.hogentessentials1.essentials.data.repositories.ChangeInitiativeReposi
 import com.hogentessentials1.essentials.data.repositories.DashboardRepository
 import com.hogentessentials1.essentials.data.repositories.RoadMapRepository
 import com.hogentessentials1.essentials.util.Resource
-import com.hogentessentials1.essentials.util.Status
 import kotlinx.coroutines.launch
-import timber.log.Timber
 
 /**
  *
@@ -21,7 +19,7 @@ import timber.log.Timber
  * viewmodel voor Dashboard
  */
 class DashboardViewModel(private val dashboardRepository: DashboardRepository, private val cirepository: ChangeInitiativeRepository, val rmiRepository: RoadMapRepository) : ViewModel() {
-    //val changeInitiatives: LiveData<Resource<List<ChangeInitiative>>> = this.cirepository.getCIForChangeManager()
+    // val changeInitiatives: LiveData<Resource<List<ChangeInitiative>>> = this.cirepository.getCIForChangeManager()
 
     var chosenCIId: Int = 1
 //

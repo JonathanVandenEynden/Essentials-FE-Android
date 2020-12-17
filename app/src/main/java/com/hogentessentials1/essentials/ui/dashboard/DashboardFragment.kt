@@ -17,8 +17,8 @@ import com.hogentessentials1.essentials.R
 import com.hogentessentials1.essentials.data.model.ChangeInitiative
 import com.hogentessentials1.essentials.data.model.RoadMapItem
 import com.hogentessentials1.essentials.databinding.FragmentDashboardBinding
-import com.hogentessentials1.essentials.util.Status
 import com.hogentessentials1.essentials.ui.LoadingFragment
+import com.hogentessentials1.essentials.util.Status
 import org.koin.android.ext.android.inject
 import timber.log.Timber
 
@@ -39,7 +39,6 @@ class DashboardFragment : Fragment() {
     lateinit var spinner: Spinner
     lateinit var spinnerrmi: Spinner
     private val loadingDialogFragment by lazy { LoadingFragment() }
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -190,20 +189,17 @@ class DashboardFragment : Fragment() {
         viewModel.fillDashboard()
     }
 
-    fun showLoading(b: Boolean)
-    {
+    fun showLoading(b: Boolean) {
         if (b) {
             if (!loadingDialogFragment.isAdded) {
                 loadingDialogFragment.show(requireActivity().supportFragmentManager, "loader")
             }
         } else {
-            //if (loadingDialogFragment.isAdded) {
-                loadingDialogFragment.dismissAllowingStateLoss()
-            //}
+            // if (loadingDialogFragment.isAdded) {
+            loadingDialogFragment.dismissAllowingStateLoss()
+            // }
         }
     }
-
-
 
     /*        viewModel.changeInitiatives.observe(
             viewLifecycleOwner,

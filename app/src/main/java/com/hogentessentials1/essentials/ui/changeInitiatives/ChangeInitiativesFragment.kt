@@ -7,24 +7,14 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.ui.NavigationUI
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.hogentessentials1.essentials.R
 import com.hogentessentials1.essentials.databinding.ChangeinitiativesListBinding
 import com.hogentessentials1.essentials.ui.LoadingFragment
-import com.hogentessentials1.essentials.ui.notFound.NotFoundFragmentDirections
-import com.hogentessentials1.essentials.util.Globals
 import com.hogentessentials1.essentials.util.Status
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.async
-import kotlinx.coroutines.launch
-import okhttp3.internal.wait
-import org.koin.android.ext.android.bind
 import org.koin.android.ext.android.inject
-import timber.log.Timber
 
 /**
  * @author Ziggy Moens
@@ -115,9 +105,7 @@ class ChangeInitiativesFragment : Fragment() {
                                 showLoading(false)
                                 if (resource.data?.isEmpty() == true) {
                                     binding.listbutton.visibility = View.VISIBLE
-                                }
-                                else
-                                {
+                                } else {
                                     binding.listbutton.visibility = View.GONE
                                 }
                                 adapter.submitList(resource.data)
@@ -184,16 +172,15 @@ class ChangeInitiativesFragment : Fragment() {
         }
     }
 
-    fun showLoading(b: Boolean)
-    {
+    fun showLoading(b: Boolean) {
         if (b) {
             if (!loadingDialogFragment.isAdded) {
                 loadingDialogFragment.show(requireActivity().supportFragmentManager, "loader")
             }
         } else {
-            //if (loadingDialogFragment.isAdded) {
-                loadingDialogFragment.dismissAllowingStateLoss()
-            //}
+            // if (loadingDialogFragment.isAdded) {
+            loadingDialogFragment.dismissAllowingStateLoss()
+            // }
         }
     }
 }
