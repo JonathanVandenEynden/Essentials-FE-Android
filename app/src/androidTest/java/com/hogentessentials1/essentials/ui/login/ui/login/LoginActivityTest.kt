@@ -1,9 +1,14 @@
 package com.hogentessentials1.essentials.ui.login.ui.login
 
 import androidx.test.espresso.Espresso.onView
-import androidx.test.espresso.action.ViewActions.*
+import androidx.test.espresso.action.ViewActions.clearText
+import androidx.test.espresso.action.ViewActions.click
+import androidx.test.espresso.action.ViewActions.typeText
 import androidx.test.espresso.assertion.ViewAssertions.matches
-import androidx.test.espresso.matcher.ViewMatchers.*
+import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
+import androidx.test.espresso.matcher.ViewMatchers.isEnabled
+import androidx.test.espresso.matcher.ViewMatchers.withId
+import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner
 import com.hogentessentials1.essentials.R
@@ -17,7 +22,7 @@ import org.junit.runner.RunWith
  */
 
 @RunWith(AndroidJUnit4ClassRunner::class)
-class LoginActivityTest{
+class LoginActivityTest {
 
     @get: Rule
     val activityRule = ActivityScenarioRule(LoginActivity::class.java)
@@ -38,12 +43,12 @@ class LoginActivityTest{
     }
 
     @Test
-    fun test_isUsernameTextFieldInView(){
+    fun test_isUsernameTextFieldInView() {
         onView(withId(R.id.username)).check(matches(isDisplayed()))
     }
 
     @Test
-    fun test_isPasswordTextFieldInView(){
+    fun test_isPasswordTextFieldInView() {
         onView(withId(R.id.password)).check(matches(isDisplayed()))
     }
 
@@ -53,7 +58,7 @@ class LoginActivityTest{
     }
 
     @Test
-    fun test_isSignInButtonEnabled_withInputInUsernameAndPasswordTextField(){
+    fun test_isSignInButtonEnabled_withInputInUsernameAndPasswordTextField() {
         onView(withId(R.id.username)).perform(clearText()) // TODO weghalen nadat username niet meer automatisch is ingevuld
         onView(withId(R.id.username)).perform(typeText("username"))
         onView(withId(R.id.password)).perform(typeText("password"))
@@ -61,7 +66,7 @@ class LoginActivityTest{
     }
 
     @Test
-    fun test_navMainActivity(){
+    fun test_navMainActivity() {
         onView(withId(R.id.username)).perform(clearText()) // TODO weghalen nadat username niet meer automatisch is ingevuld
         onView(withId(R.id.username)).perform(typeText("Sukrit.bhattacharya@hogent.com"))
         onView(withId(R.id.password)).perform(typeText("P@ssword1"))
