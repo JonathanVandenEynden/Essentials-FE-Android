@@ -146,6 +146,8 @@ class ChangeInitiativesFragment : Fragment() {
                                 showLoading(false)
                                 if (resource.data?.isEmpty() == true) {
                                     binding.listbutton.visibility = View.VISIBLE
+                                } else {
+                                    binding.listbutton.visibility = View.GONE
                                 }
                                 adapter.submitList(resource.data)
                             }
