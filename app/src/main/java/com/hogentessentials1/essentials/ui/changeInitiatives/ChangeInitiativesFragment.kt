@@ -7,13 +7,21 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.NavigationUI
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.hogentessentials1.essentials.R
 import com.hogentessentials1.essentials.databinding.ChangeinitiativesListBinding
 import com.hogentessentials1.essentials.ui.LoadingFragment
+import com.hogentessentials1.essentials.ui.notFound.NotFoundFragmentDirections
 import com.hogentessentials1.essentials.util.Globals
 import com.hogentessentials1.essentials.util.Status
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
+import okhttp3.internal.wait
 import org.koin.android.ext.android.bind
 import org.koin.android.ext.android.inject
 import timber.log.Timber
@@ -105,16 +113,22 @@ class ChangeInitiativesFragment : Fragment() {
                         when (resource.status) {
                             Status.SUCCESS -> {
                                 showLoading(false)
-                                adapter.submitList(resource.data)
                                 if (resource.data?.isEmpty() == true) {
-                                } else {
+                                    binding.listbutton.visibility = View.VISIBLE
                                 }
+                                else
+                                {
+                                    binding.listbutton.visibility = View.GONE
+                                }
+                                adapter.submitList(resource.data)
                             }
                             Status.LOADING -> {
                                 showLoading(true)
+                                binding.listbutton.visibility = View.GONE
                             }
                             Status.ERROR -> {
                                 showLoading(false)
+                                binding.listbutton.visibility = View.VISIBLE
                             }
                         }
                     }
@@ -131,17 +145,17 @@ class ChangeInitiativesFragment : Fragment() {
                             Status.SUCCESS -> {
                                 showLoading(false)
                                 if (resource.data?.isEmpty() == true) {
-                                    binding.noChangesBanner.visibility = View.VISIBLE
-                                } else {
+                                    binding.listbutton.visibility = View.VISIBLE
                                 }
                                 adapter.submitList(resource.data)
                             }
                             Status.LOADING -> {
                                 showLoading(true)
+                                binding.listbutton.visibility = View.GONE
                             }
                             Status.ERROR -> {
                                 showLoading(false)
-                                findNavController().navigate(ChangeInitiativesFragmentDirections.actionChangeInitiativesToNotFoundFragment())
+                                binding.listbutton.visibility = View.VISIBLE
                             }
                         }
                     }
@@ -175,63 +189,9 @@ class ChangeInitiativesFragment : Fragment() {
                 loadingDialogFragment.show(requireActivity().supportFragmentManager, "loader")
             }
         } else {
-            if (loadingDialogFragment.isAdded) {
+            //if (loadingDialogFragment.isAdded) {
                 loadingDialogFragment.dismissAllowingStateLoss()
-            }
+            //}
         }
     }
-
-    /*       if (changemanager) {
-            (activity as AppCompatActivity).supportActionBar?.title = "My Change initiatives"
-
-            viewModel.changeinitiavtivesCM.observe(
-                viewLifecycleOwner,
-                {
-                    it?.let { resource ->
-                        when (resource.status) {
-                            Status.SUCCESS -> {
-                                showLoading(false)
-                                if (resource.data?.isEmpty() == true) {
-                                    findNavController().navigate(ChangeInitiativesFragmentDirections.actionChangeInitiativesToNotFoundFragment())
-                                } else {
-                                }
-                                adapter.submitList(resource.data)
-                            }
-                            Status.LOADING -> {
-                                showLoading(true)
-                            }
-                            Status.ERROR -> {
-                                showLoading(false)
-                            }
-                        }
-                    }
-                }
-            )
-        } else {
-            (activity as AppCompatActivity).supportActionBar?.title = "Change initiatives"
-
-            viewModel.changeinitiavtivesE.observe(
-                viewLifecycleOwner,
-                {
-                    it?.let { resource ->
-                        when (resource.status) {
-                            Status.SUCCESS -> {
-                                showLoading(false)
-                                if (resource.data?.isEmpty() == true) {
-                                    findNavController().navigate(ChangeInitiativesFragmentDirections.actionChangeInitiativesToNotFoundFragment())
-                                } else {
-                                }
-                                adapter.submitList(resource.data)
-                            }
-                            Status.LOADING -> {
-                                showLoading(true)
-                            }
-                            Status.ERROR -> {
-                                showLoading(false)
-                            }
-                        }
-                    }
-                }
-            )
-        }*/
 }

@@ -85,9 +85,9 @@ class TeamsFragment : Fragment(), ChangeGroupClickListener {
                 loadingDialogFragment.show(requireActivity().supportFragmentManager, "loader")
             }
         } else {
-            if (loadingDialogFragment.isAdded) {
+            //if (loadingDialogFragment.isAdded) {
                 loadingDialogFragment.dismissAllowingStateLoss()
-            }
+            //}
         }
     }
 
