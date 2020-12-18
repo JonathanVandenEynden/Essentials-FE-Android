@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "605703954577",
+    "project_id": "essentials-ce9cf",
+    "storage_bucket": "essentials-ce9cf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:605703954577:android:6b7b44ac12dbf9f0819f30",
+        "android_client_info": {
+          "package_name": "com.hogentessentials1.essentials"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "605703954577-hn5g5gvi2cqdsv6bvd7rdn6pk4kmhumf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAFg7wbNxhT8rHAOBg2oDx-SP81QyTPxr0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "605703954577-hn5g5gvi2cqdsv6bvd7rdn6pk4kmhumf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
