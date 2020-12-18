@@ -32,6 +32,9 @@ interface ChangeInitiativeDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(changeInitiatives: List<ChangeInitiative>)
 
+    /**
+     * deletes all entries from the database
+     */
     @Query("DELETE FROM changeInitiative")
     suspend fun deleteAll()
 }

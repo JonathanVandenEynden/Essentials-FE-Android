@@ -33,6 +33,9 @@ interface RoadMapDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAll(roadMapItems: List<RoadMapItem>)
 
+    /**
+     * deletes all entries from the database
+     */
     @Query("DELETE FROM roadMapItem")
     suspend fun deleteAll()
 }
