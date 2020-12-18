@@ -31,7 +31,7 @@ import com.hogentessentials1.essentials.data.network.converters.RoadMapItemConve
 
 @Database(
     entities = [Project::class, Employee::class, ChangeInitiative::class, RoadMapItem::class, ChangeGroup::class],
-    version = 3,
+    version = 4,
     exportSchema = false
 )
 @TypeConverters(
