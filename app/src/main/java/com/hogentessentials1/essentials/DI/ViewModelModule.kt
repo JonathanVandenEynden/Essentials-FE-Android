@@ -1,5 +1,6 @@
 package com.hogentessentials1.essentials.DI
 
+import com.hogentessentials1.essentials.DeviceTokenViewModel
 import com.hogentessentials1.essentials.ui.changeGroup.TeamsViewModel
 import com.hogentessentials1.essentials.ui.changeInitiatives.ChangeInitiativesViewModel
 import com.hogentessentials1.essentials.ui.dashboard.DashboardViewModel
@@ -18,4 +19,5 @@ val viewModelModule = module {
     viewModel { TeamsViewModel(get()) }
     viewModel { LoginViewModel(get()) }
     viewModel { SurveyDoneViewModel(get()) }
+    viewModel { DeviceTokenViewModel(get()) }
 }

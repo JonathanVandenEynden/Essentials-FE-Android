@@ -26,7 +26,9 @@ import com.hogentessentials1.essentials.data.network.EssentialsDatabase
 import com.hogentessentials1.essentials.databinding.ActivityMainBinding
 import com.hogentessentials1.essentials.ui.homeScreen.HomeScreenFragmentDirections
 import com.hogentessentials1.essentials.ui.login.ui.login.LoginActivity
+import com.hogentessentials1.essentials.ui.survey.SurveyDoneViewModel
 import com.hogentessentials1.essentials.util.Globals
+import org.koin.android.ext.android.inject
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -39,6 +41,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
+    private val viewModel: DeviceTokenViewModel by inject()
+
     companion object{
         val CHANNEL_ID: String = "essentialstoolkit_notifs"
     }
@@ -63,7 +67,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         FirebaseMessaging.getInstance().token.addOnCompleteListener(
             OnCompleteListener {
                 if (it.isSuccessful) {
-                    Timber.e(it.result)
+                    Timber.e("test" + Globals.userid!!.toString() + " " + it.result)
+                    viewModel.post(Globals.userid!!, it.result!!)
                 }
                 else
                 {
