@@ -85,7 +85,7 @@ class RoadMapFragment : Fragment() {
             }
         )
 
-        (activity as AppCompatActivity).supportActionBar?.title = "Roadmap"
+        (activity as AppCompatActivity).supportActionBar?.title = "Road map item"
         return binding.root
     }
 

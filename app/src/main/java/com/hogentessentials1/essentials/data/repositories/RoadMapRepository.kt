@@ -1,8 +1,10 @@
 package com.hogentessentials1.essentials.data.repositories
 
 import com.hogentessentials1.essentials.data.model.RoadMapItem
+import com.hogentessentials1.essentials.data.model.network.local.RoadMapLocalDataSource
 import com.hogentessentials1.essentials.data.network.RoadMapRemoteDataSource
 import com.hogentessentials1.essentials.util.Resource
+import com.hogentessentials1.essentials.util.performGetOperation
 import javax.inject.Singleton
 
 /**
@@ -12,7 +14,7 @@ import javax.inject.Singleton
  */
 
 @Singleton
-class RoadMapRepository(val remoteDataSource: RoadMapRemoteDataSource) {
+class RoadMapRepository(val remoteDataSource: RoadMapRemoteDataSource, val localDataSource: RoadMapLocalDataSource) {
 
     /**
      * get road map item by id
@@ -23,12 +25,17 @@ class RoadMapRepository(val remoteDataSource: RoadMapRemoteDataSource) {
         return remoteDataSource.getRoadMapItemById(roadMapItemId)
     }
 
+//    suspend fun getRoadMaps(id: Int): Resource<List<RoadMapItem>> {
+//        return remoteDataSource.getRoadMapItemsForChangeInitatitveWithId(id)
+//    }
     /**
      * get all road map items for a change initiative
      * @param changeInitiativeId
      * @return Resource with list of road map items
      */
-    suspend fun getRoadMaps(changeInitiativeId: Int): Resource<List<RoadMapItem>> {
-        return remoteDataSource.getRoadMapItemsForChangeInitatitveWithId(changeInitiativeId)
-    }
+    fun getRoadMaps(id: Int) = performGetOperation(
+        databaseQuery = { localDataSource.getRoadMaps() },
+        networkCall = { remoteDataSource.getRoadMapItemsForChangeInitatitveWithId(id) },
+        saveCallResult = { localDataSource.saveRoadMaps(it) }
+    )
 }

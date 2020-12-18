@@ -4,6 +4,7 @@ import com.hogentessentials1.essentials.data.model.ChangeInitiative
 import com.hogentessentials1.essentials.data.network.ChangeInitiativeRemoteDataSource
 import com.hogentessentials1.essentials.data.network.local.ChangeInitiativeLocalDataSource
 import com.hogentessentials1.essentials.util.Resource
+import com.hogentessentials1.essentials.util.performGetOperation
 import javax.inject.Singleton
 
 /**
@@ -23,17 +24,23 @@ class ChangeInitiativeRepository(
         return remoteDataSource.getChangeInitiativeById(changeInitiativeId)
     }
 
-    suspend fun getChangeInitiativesForEmployee(): Resource<List<ChangeInitiative>> {
-        return remoteDataSource.getChangeInitiativesForEmployee()
-    }
+//    suspend fun getChangeInitiativesForEmployee(): Resource<List<ChangeInitiative>> {
+//        return remoteDataSource.getChangeInitiativesForEmployee()
+//    }
 
-    suspend fun getChangeInitiativesForChangeManager(): Resource<List<ChangeInitiative>> {
-        return remoteDataSource.getChangeInitiativesForChangeManager()
-    }
+//    suspend fun getChangeInitiativesForChangeManager(): Resource<List<ChangeInitiative>> {
+//        return remoteDataSource.getChangeInitiativesForChangeManager()
+//    }
 
-//    fun getPharmacies() = performGetOperation(
-//        databaseQuery = { localDataSource.getChangeInitiatives() },
-//        networkCall = { remoteDataSource.getChangeInitiativesForEmployee() },
-//        saveCallResult = { localDataSource.saveChangeInitiatives(it) }
-//    )
+    fun getChangeInitiativesForEmployee() = performGetOperation(
+        databaseQuery = { localDataSource.getChangeInitiatives() },
+        networkCall = { remoteDataSource.getChangeInitiativesForEmployee() },
+        saveCallResult = { localDataSource.saveChangeInitiatives(it) }
+    )
+
+    fun getChangeInitiativesForChangeManager() = performGetOperation(
+        databaseQuery = { localDataSource.getChangeInitiatives() },
+        networkCall = { remoteDataSource.getChangeInitiativesForChangeManager() },
+        saveCallResult = { localDataSource.saveChangeInitiatives(it) }
+    )
 }
