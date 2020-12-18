@@ -4,7 +4,11 @@ import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
 /**
+ * enum for different types of organization parts
+ *
  * @author Kilian Hoefman
+ *
+ * @property enum
  */
 
 @Parcelize

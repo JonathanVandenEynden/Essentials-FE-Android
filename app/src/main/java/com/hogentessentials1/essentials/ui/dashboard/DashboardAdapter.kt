@@ -11,6 +11,7 @@ import com.hogentessentials1.essentials.R
 import com.hogentessentials1.essentials.data.model.ChangeInitiative
 
 /**
+ * adapter class to create dashboards
  * @author Marbod Naassens
  */
 class DashboardAdapter(context: Context, list: ArrayList<ChangeInitiative>) :

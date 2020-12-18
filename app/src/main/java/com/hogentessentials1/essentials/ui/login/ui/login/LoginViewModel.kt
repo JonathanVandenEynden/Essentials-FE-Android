@@ -11,7 +11,10 @@ import com.hogentessentials1.essentials.ui.login.data.Result
 import kotlinx.coroutines.launch
 
 /**
+ * View model for the login page
  * @author Simon De Wilde
+ *
+ * @property loginRepository
  */
 class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel() {
 

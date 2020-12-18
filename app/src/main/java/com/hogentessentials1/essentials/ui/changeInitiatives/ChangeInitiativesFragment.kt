@@ -17,9 +17,9 @@ import org.koin.android.ext.android.inject
 import timber.log.Timber
 
 /**
- * @author Ziggy Moens
  * Fragment for the overview of change initiatives.
  * used for both employee and change manager (add boolean to action safe-args)
+ * @author Ziggy Moens
  */
 class ChangeInitiativesFragment : Fragment() {
 

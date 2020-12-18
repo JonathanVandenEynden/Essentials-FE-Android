@@ -5,9 +5,10 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 /**
+ * Repository for employee organization parts
  * @author Kilian Hoefman
  *
- * Repository for answers
+ * @property employeeOrganizationPartDao
  */
 
 @Singleton

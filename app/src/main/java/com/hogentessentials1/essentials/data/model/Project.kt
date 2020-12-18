@@ -8,7 +8,13 @@ import com.squareup.moshi.Json
 import kotlinx.android.parcel.Parcelize
 
 /**
+ * A project where multiple changes are happening
+ *
  * @author Kilian Hoefman
+ *
+ * @property Id
+ * @property name
+ * @property changeInitiatives a list of all changes of the project
  */
 @Entity(tableName = "project")
 @Parcelize

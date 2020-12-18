@@ -4,7 +4,15 @@ import android.os.Parcelable
 import com.squareup.moshi.Json
 import kotlinx.android.parcel.Parcelize
 
-// @Entity
+/**
+ * The change manager of an organization who can start changes
+ *
+ * @property id
+ * @property firstName
+ * @property lastName
+ * @property email
+ * @property createdChangeInitiatives a list of changes this change manager has started
+ */
 @Parcelize
 data class ChangeManager(
     @Json(name = "id")

@@ -8,8 +8,21 @@ import com.squareup.moshi.Json
 import kotlinx.android.parcel.Parcelize
 
 /**
+ * describes a change in an organization
+ *
  * @author Ziggy Moens: made Parcelable
  * @author Kilian Hoefman: start of Dataclass
+ *
+ * @property id
+ * @property title
+ * @property description what is the change about
+ * @property startDate a date in string-format
+ * @property endDate a date in string-format
+ * @property progress the progress (percentage) in string
+ * @property changeGroup which change group is affected by this change
+ * @property changeSponsor who is the sponsor for this change
+ * @property changeType economic, personal, technological, organizational
+ * @property roadMap a list of road map items
  */
 
 @Entity(tableName = "changeInitiative")
@@ -38,35 +51,3 @@ data class ChangeInitiative(
     val progress: String
 
 ) : Parcelable
-
-// data class ChangeInitiative(
-//    var title: String,
-//    var surveys: ArrayList<Survey> = arrayListOf()
-// ) : Parcelable {
-//    constructor(parcel: Parcel) : this(
-//        parcel.readString()!!,
-//        arrayListOf<Survey>().apply {
-//            parcel.readList(this, SurveyQuestion::class.java.classLoader)
-//        }
-//    ) {
-//    }
-//
-//    override fun writeToParcel(parcel: Parcel, flags: Int) {
-//        parcel.writeString(title)
-//        parcel.writeList(surveys)
-//    }
-//
-//    override fun describeContents(): Int {
-//        return 0
-//    }
-//
-//    companion object CREATOR : Parcelable.Creator<ChangeInitiative> {
-//        override fun createFromParcel(parcel: Parcel): ChangeInitiative {
-//            return ChangeInitiative(parcel)
-//        }
-//
-//        override fun newArray(size: Int): Array<ChangeInitiative?> {
-//            return arrayOfNulls(size)
-//        }
-//    }
-// }

@@ -9,9 +9,11 @@ import com.hogentessentials1.essentials.util.Resource
 import com.hogentessentials1.essentials.util.Status
 
 /**
+ * view model for list of change initiatives
  * @author Ziggy Moens
  * @author Simon De Wilde
- * viewmodel for list of change initiatives
+ *
+ * @property repo
  */
 class ChangeInitiativesViewModel(private val repo: ChangeInitiativeRepository) : ViewModel() {
 

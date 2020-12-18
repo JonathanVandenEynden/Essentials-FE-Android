@@ -5,9 +5,10 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 /**
+ * Repository for change type
  * @author Kilian Hoefman
  *
- * Repository for change type
+ * @property changeTypeDao
  */
 @Singleton
 class ChangeTypeRepository @Inject constructor(private val changeTypeDao: ChangeTypeDao) {

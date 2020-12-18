@@ -5,9 +5,10 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 /**
+ * Repository for organization parts
  * @author Kilian Hoefman
  *
- * Repository for organization parts
+ * @property organizationPartDao
  */
 
 @Singleton

@@ -22,6 +22,7 @@ import org.koin.android.ext.android.inject
 import timber.log.Timber
 
 /**
+ * fragment for dashboards
  * @author Marbod Naassens
  */
 class DashboardFragment : Fragment() {

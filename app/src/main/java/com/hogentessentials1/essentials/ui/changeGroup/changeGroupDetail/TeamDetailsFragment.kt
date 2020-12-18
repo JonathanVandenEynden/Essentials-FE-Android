@@ -12,9 +12,9 @@ import com.hogentessentials1.essentials.R
 import com.hogentessentials1.essentials.databinding.TeamDetailsFragmentBinding
 
 /**
+ * Fragment for showing the team members of a change group
  * @author Simon De Wilde
  *
- * Fragment for showing the team members of a change group
  */
 class TeamDetailsFragment : Fragment() {
 

@@ -6,9 +6,10 @@ import com.hogentessentials1.essentials.util.Resource
 import javax.inject.Singleton
 
 /**
+ * Repository for answers
  * @author Kilian Hoefman
  *
- * Repository for answers
+ * @property remoteDataSource
  */
 @Singleton
 class QuestionRepository(val remoteDataSource: QuestionRemoteDataSource) {

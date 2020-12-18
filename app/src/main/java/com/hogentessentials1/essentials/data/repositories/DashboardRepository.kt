@@ -4,20 +4,27 @@ import com.hogentessentials1.essentials.data.network.DashboardRemoteDataSource
 import com.hogentessentials1.essentials.util.Resource
 
 /**
- *  // TODO author
- *  Repository for dashboard
+ * Repository for dashboard
+ *
+ * @property remoteDataSource
  */
 class DashboardRepository(val remoteDataSource: DashboardRemoteDataSource) {
 
     /**
-     * TODO documentatie
+     * gets all filled in surveys from a change initiative with a given id
+     *
+     * @param changeInitiativeId
+     * @return a resource
      */
     suspend fun getFilledInSurveys(changeInitiativeId: Int): Resource<Double> {
         return remoteDataSource.getFilledInSurveys(changeInitiativeId)
     }
 
     /**
-     * TODO documentatie
+     * gets the mood for a change initiative with a given id
+     *
+     * @param changeInitiativeId
+     * @return the mood in dictionary format
      */
     suspend fun getMood(changeInitiativeId: Int): Resource<Map<Int, Int>> {
         return remoteDataSource.getMood(changeInitiativeId)

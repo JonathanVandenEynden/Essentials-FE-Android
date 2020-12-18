@@ -15,6 +15,8 @@ import org.koin.android.ext.android.inject
 import timber.log.Timber
 
 /**
+ * fragment to show a survey is completed
+ *
  * @author Ziggy Moens
  */
 class SurveyDoneFragment : Fragment() {

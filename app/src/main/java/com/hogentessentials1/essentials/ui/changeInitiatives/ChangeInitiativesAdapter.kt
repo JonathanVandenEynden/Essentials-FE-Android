@@ -9,9 +9,9 @@ import com.hogentessentials1.essentials.data.model.ChangeInitiative
 import com.hogentessentials1.essentials.databinding.ChangeinitiativesItemBinding
 
 /**
+ * Converts Change Initiatives to views
  * @author Ziggy Moens
  * @author Simon De Wilde
- * Converts Change Initiatives to views
  * @param clickListener listener for when a change initiative is tapped
  */
 class ChangeInitiativeAdapter(val clickListener: ChangeInitiativesListener) :

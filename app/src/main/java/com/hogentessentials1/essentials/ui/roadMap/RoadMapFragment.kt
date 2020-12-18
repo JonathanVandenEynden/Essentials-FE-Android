@@ -16,6 +16,8 @@ import com.hogentessentials1.essentials.databinding.RoadmapBinding
 import com.hogentessentials1.essentials.util.Globals
 
 /**
+ * fragment for road maps
+ *
  * @author Ziggy Moens
  */
 @Suppress("DEPRECATION")

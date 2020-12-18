@@ -9,6 +9,8 @@ import com.hogentessentials1.essentials.data.repositories.ChangeInitiativeReposi
 import com.hogentessentials1.essentials.util.Resource
 
 /**
+ * view model for the road map overview
+ *
  * @author Ziggy Moens
  * @author Simon De Wilde
  */

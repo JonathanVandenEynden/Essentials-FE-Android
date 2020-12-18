@@ -8,11 +8,12 @@ import com.hogentessentials1.essentials.data.model.ChangeGroup
 import com.hogentessentials1.essentials.databinding.TeamListItemBinding
 
 /**
+ * Adapter to convert change group to a view
  * @author Simon De Wilde
  *
- * Adapter to convert change group to a view
+ * @property clickListener
  */
-class ChangeGroupAdapter(private var clickClickListener: ChangeGroupClickListener) :
+class ChangeGroupAdapter(private var clickListener: ChangeGroupClickListener) :
     ListAdapter<ChangeGroup, ChangeGroupViewHolder>(ChangeGroupDIffCallback()) {
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -34,7 +35,7 @@ class ChangeGroupAdapter(private var clickClickListener: ChangeGroupClickListene
         val changeGroup = getItem(position)
         holder.bindData(changeGroup)
         holder.itemView.setOnClickListener {
-            clickClickListener.onClick(changeGroup)
+            clickListener.onClick(changeGroup)
         }
     }
 }

@@ -7,9 +7,10 @@ import com.hogentessentials1.essentials.data.repositories.ChangeGroupRepository
 import com.hogentessentials1.essentials.util.Resource
 
 /**
+ * View model for the overview of the teams
  * @author Simon De Wilde
  *
- * Viewmodel for the overview of the teams
+ * @property repo
  */
 class TeamsViewModel(private val repo: ChangeGroupRepository) : ViewModel() {
     val changeGroups: LiveData<Resource<List<ChangeGroup>>> = repo.getChangeGroups()

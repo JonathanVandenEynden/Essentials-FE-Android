@@ -15,10 +15,10 @@ import com.hogentessentials1.essentials.util.Status
 import org.koin.android.ext.android.inject
 
 /**
- * @author Simon De Wilde
- *
  * Fragment for showing the overview of teams
  * Also a listener when a change group is tapped
+ * @author Simon De Wilde
+ *
  */
 class TeamsFragment : Fragment(), ChangeGroupClickListener {
 

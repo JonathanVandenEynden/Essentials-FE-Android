@@ -5,9 +5,10 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 /**
+ * Repository for portfolios
  * @author Kilian Hoefman
  *
- * Repository for portfolios
+ * @property portfolioDao
  */
 @Singleton
 class PortfolioRepository @Inject constructor(private val portfolioDao: PortfolioDao) {

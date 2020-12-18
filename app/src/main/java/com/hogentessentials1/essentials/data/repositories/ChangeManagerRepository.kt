@@ -5,9 +5,10 @@ import com.hogentessentials1.essentials.data.network.ChangeManagerRemoteDataSour
 import com.hogentessentials1.essentials.util.Resource
 
 /**
+ * Repository for change managers
  * @author Kilian Hoefman
  *
- * Repository for change managers
+ * @property remoteDataSource
  */
 class ChangeManagerRepository(val remoteDataSource: ChangeManagerRemoteDataSource) {
 

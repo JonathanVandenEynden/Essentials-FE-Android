@@ -5,9 +5,10 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 /**
+ * Repository for assessments
  * @author Kilian Hoefman
  *
- * Repository for assessments
+ * @property assessmentDao
  */
 
 @Singleton

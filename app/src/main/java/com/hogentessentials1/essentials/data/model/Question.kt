@@ -6,7 +6,15 @@ import com.squareup.moshi.Json
 import kotlinx.android.parcel.Parcelize
 
 /**
+ * A question in a survey
+ *
  * @author Kilian Hoefman
+ *
+ * @property id
+ * @property possibleAnswers a dictionary with a possible answer as key and the amount chosen as value
+ * @property questionString
+ * @property type the type of question --> Yes/No, Open, Ranged, Multiple Chose
+ * @property questionRegistered a dictionary with employees as key and the time they answered the question as value
  */
 
 @Entity(tableName = "questions")

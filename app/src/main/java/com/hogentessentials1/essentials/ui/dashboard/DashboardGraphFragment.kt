@@ -20,6 +20,10 @@ import com.hogentessentials1.essentials.databinding.FragmentDashboardGraphBindin
 import org.koin.android.ext.android.inject
 import timber.log.Timber
 
+/**
+ * fragent for a dashboard graph
+ *
+ */
 class DashboardGraphFragment : Fragment() {
     // lateinit var viewModel: DashboardViewModel
     private lateinit var binding: FragmentDashboardGraphBinding

@@ -8,9 +8,9 @@ import androidx.room.Query
 import com.hogentessentials1.essentials.data.model.Assessment
 
 /**
- * @author Kilian Hoefman
- *
  * Dao for the assesment-entity
+
+ * @author Kilian Hoefman
  */
 
 @Dao

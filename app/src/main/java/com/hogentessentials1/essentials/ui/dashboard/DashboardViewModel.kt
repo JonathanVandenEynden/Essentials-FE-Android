@@ -13,10 +13,13 @@ import com.hogentessentials1.essentials.util.Resource
 import kotlinx.coroutines.launch
 
 /**
+ * viewmodel voor Dashboard
  *
  * @author Marbod Naassens
  *
- * viewmodel voor Dashboard
+ * @property dashboardRepository
+ * @property cirepository
+ * @property rmiRepository
  */
 class DashboardViewModel(private val dashboardRepository: DashboardRepository, private val cirepository: ChangeInitiativeRepository, val rmiRepository: RoadMapRepository) : ViewModel() {
 

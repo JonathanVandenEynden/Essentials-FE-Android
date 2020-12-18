@@ -8,9 +8,9 @@ import androidx.room.Query
 import com.hogentessentials1.essentials.data.model.ChangeGroup
 
 /**
+ * Dao for the ChangeGroup-entity
  * @author Kilian Hoefman
  *
- * Dao for the ChangeGroup-entity
  */
 
 @Dao
@@ -35,6 +35,9 @@ interface ChangeGroupDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(changeGroups: List<ChangeGroup>)
 
+    /**
+     * deletes all entries from the database
+     */
     @Query("DELETE FROM changeGroup")
     suspend fun deleteAll()
 }

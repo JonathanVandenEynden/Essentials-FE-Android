@@ -8,10 +8,12 @@ import com.hogentessentials1.essentials.util.performGetOperation
 import javax.inject.Singleton
 
 /**
+ * Repository for change groups
  * @author Kilian Hoefman
  * @author Simon De Wilde
  *
- * Repository for change groups
+ * @property remoteDataSource
+ * @property localDataSource
  */
 
 @Singleton

@@ -8,8 +8,8 @@ import androidx.room.Query
 import com.hogentessentials1.essentials.data.model.ChangeType
 
 /**
- * @author Kilian Hoefman
  * Dao for the changeType-entity
+ * @author Kilian Hoefman
  */
 
 @Dao

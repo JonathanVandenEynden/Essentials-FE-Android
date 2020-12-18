@@ -6,7 +6,9 @@ import com.hogentessentials1.essentials.data.network.OrganizationRemoteDataSourc
 import com.hogentessentials1.essentials.util.Resource
 
 /**
- * Repository for organization
+ * Repository for organizations
+ *
+ * @property remoteDataSource
  */
 class OrganizationRepository(val remoteDataSource: OrganizationRemoteDataSource) : BaseDataSource() {
 

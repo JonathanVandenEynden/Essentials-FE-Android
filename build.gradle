@@ -16,6 +16,7 @@ buildscript {
         authentication_version = "2.0.0"
         room_version = "2.2.5"
         gson_version = "2.8.6"
+        dokka_version = "1.4.20"
     }
 
     repositories {
@@ -29,11 +30,13 @@ buildscript {
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
         classpath "androidx.navigation:navigation-safe-args-gradle-plugin:2.3.2"
+        classpath "org.jetbrains.dokka:dokka-gradle-plugin:$dokka_version"
     }
 }
 
 plugins{
     id "org.jlleitschuh.gradle.ktlint" version "9.1.1"
+    id "org.jetbrains.dokka" version "1.4.20"
 }
 
 allprojects {

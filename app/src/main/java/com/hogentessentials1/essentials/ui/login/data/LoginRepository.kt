@@ -3,10 +3,11 @@ package com.hogentessentials1.essentials.ui.login.data
 import com.hogentessentials1.essentials.ui.login.data.model.LoggedInUser
 
 /**
- * @author Simon De Wilde
- *
  * Class that requests authentication and user information from the remote data source and
  * maintains an in-memory cache of login status and user credentials information.
+ * @author Simon De Wilde
+ *
+ * @property dataSource
  */
 
 class LoginRepository(val dataSource: LoginDataSource) {

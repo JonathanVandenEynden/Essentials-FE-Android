@@ -9,9 +9,9 @@ import com.hogentessentials1.essentials.data.model.Survey
 import com.hogentessentials1.essentials.databinding.SurveysChangeinitiativeListitemBinding
 
 /**
+ * Adapter to create a view based on a Survey
  * @author Ziggy Moens
  *
- * Adapter to create a view based on a Survey
  * @param clickListener listener when a survey is tapped
  */
 

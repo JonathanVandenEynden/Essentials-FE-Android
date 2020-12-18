@@ -1,9 +1,12 @@
 package com.hogentessentials1.essentials.ui.login.ui.login
 
 /**
+ * Data validation state of the login form.
  * @author Simon De Wilde
  *
- * Data validation state of the login form.
+ * @property usernameError
+ * @property passwordError
+ * @property isDataValid
  */
 data class LoginFormState(
     val usernameError: Int? = null,

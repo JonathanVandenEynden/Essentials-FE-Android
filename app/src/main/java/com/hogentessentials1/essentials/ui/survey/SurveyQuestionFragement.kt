@@ -21,6 +21,8 @@ import kotlinx.android.synthetic.main.survey_question.view.*
 import org.koin.android.ext.android.inject
 
 /**
+ * fragement for a question
+ *
  * @author Ziggy Moens
  */
 

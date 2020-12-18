@@ -1,13 +1,16 @@
 package com.hogentessentials1.essentials.data.repositories
 
 import com.hogentessentials1.essentials.data.model.Project
-import com.hogentessentials1.essentials.data.model.network.local.ProjectLocalDataSource
 import com.hogentessentials1.essentials.data.network.ProjectRemoteDataSource
+import com.hogentessentials1.essentials.data.network.local.ProjectLocalDataSource
 import com.hogentessentials1.essentials.util.Resource
 import javax.inject.Singleton
 
 /**
- * Repository for answers
+ * Repository for projects
+ *
+ * @property remoteDataSource
+ * @property localDataSource
  */
 @Singleton
 class ProjectRepository(val remoteDataSource: ProjectRemoteDataSource, val localDataSource: ProjectLocalDataSource) {

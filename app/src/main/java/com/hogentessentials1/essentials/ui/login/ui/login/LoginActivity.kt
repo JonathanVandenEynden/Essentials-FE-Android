@@ -24,6 +24,7 @@ import com.hogentessentials1.essentials.R
 import org.koin.android.ext.android.inject
 
 /**
+ * the login activity
  * @author Simon De Wilde
  */
 class LoginActivity : AppCompatActivity() {

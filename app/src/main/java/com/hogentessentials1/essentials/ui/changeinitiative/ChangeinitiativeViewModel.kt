@@ -5,9 +5,9 @@ import androidx.lifecycle.ViewModel
 import com.hogentessentials1.essentials.data.model.ChangeInitiative
 
 /**
+ * Viewmodel for the change initiative (detail) fragment
  * @author Ziggy Moens
  *
- * Viewmodel for the change initiative (detail) fragment
  */
 
 class ChangeinitiativeViewModel : ViewModel() {

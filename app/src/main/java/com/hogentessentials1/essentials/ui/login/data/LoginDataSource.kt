@@ -12,9 +12,10 @@ import org.json.JSONObject
 import timber.log.Timber
 
 /**
+ * Class that handles authentication w/ login credentials and retrieves user information.
  * @author Simon De Wilde
  *
- * Class that handles authentication w/ login credentials and retrieves user information.
+ * @property aApiService
  */
 class LoginDataSource(val aApiService: AccountEndpointInterface) : BaseDataSource() {
 

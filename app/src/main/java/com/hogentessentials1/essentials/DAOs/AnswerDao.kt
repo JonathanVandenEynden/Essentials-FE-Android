@@ -8,9 +8,10 @@ import androidx.room.Query
 import com.hogentessentials1.essentials.data.model.Answer
 
 /**
+ * Dao for the answer-entity
+ *
  * @author Kilian Hoefman
  *
- * Dao for the answer-entity
  */
 
 @Dao

@@ -7,6 +7,11 @@ import kotlinx.android.parcel.Parcelize
 
 /**
  * @author Kilian Hoefman
+ *
+ * @property id the id of the assessment
+ * @property questions list of questions
+ * @property feedback one question
+ * @property roadMapItemId the id of the linked road map item
  */
 
 @Entity(tableName = "assessment")

@@ -1,16 +1,18 @@
 package com.hogentessentials1.essentials.data.repositories
 
 import com.hogentessentials1.essentials.data.model.RoadMapItem
-import com.hogentessentials1.essentials.data.model.network.local.RoadMapLocalDataSource
 import com.hogentessentials1.essentials.data.network.RoadMapRemoteDataSource
+import com.hogentessentials1.essentials.data.network.local.RoadMapLocalDataSource
 import com.hogentessentials1.essentials.util.Resource
 import com.hogentessentials1.essentials.util.performGetOperation
 import javax.inject.Singleton
 
 /**
+ * Repository for road map items
  * @author Kilian Hoefman
  *
- * Repository for road map items
+ * @property remoteDataSource
+ * @property localDataSource
  */
 
 @Singleton

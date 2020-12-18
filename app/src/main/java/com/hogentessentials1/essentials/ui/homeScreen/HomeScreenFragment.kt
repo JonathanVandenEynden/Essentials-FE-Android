@@ -21,6 +21,7 @@ import com.hogentessentials1.essentials.util.Globals
 import timber.log.Timber
 
 /**
+ * fragment for the home screen
  * @author Ziggy Moens
  */
 

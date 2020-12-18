@@ -24,13 +24,6 @@ import com.hogentessentials1.essentials.data.network.converters.EmployeeConverte
 import com.hogentessentials1.essentials.data.network.converters.ProjectConverter
 import com.hogentessentials1.essentials.data.network.converters.RoadMapItemConverter
 
-/**
- * @author Simon De Wilde
- * @author Kilian Hoefman
- *
- * The database for the application
- */
-
 @Database(
     entities = [Project::class, Employee::class, ChangeInitiative::class, RoadMapItem::class, ChangeGroup::class],
     version = 3,
@@ -46,7 +39,12 @@ import com.hogentessentials1.essentials.data.network.converters.RoadMapItemConve
     EmployeeChangeGroupArrayConverter::class,
     ChangeTypeConverter::class
 )
-
+/**
+ * The database for the application
+ * @author Simon De Wilde
+ * @author Kilian Hoefman
+ *
+ */
 abstract class EssentialsDatabase : RoomDatabase() {
     abstract fun EmployeeDao(): EmployeeDao
     abstract fun ChangeInitiativeDao(): ChangeInitiativeDao

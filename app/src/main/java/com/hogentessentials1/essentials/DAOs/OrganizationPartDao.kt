@@ -8,8 +8,8 @@ import androidx.room.Query
 import com.hogentessentials1.essentials.data.model.OrganizationPart
 
 /**
- * @author Kilian Hoefman
  * Dao for the organizationPart-entity
+ * @author Kilian Hoefman
  */
 
 @Dao

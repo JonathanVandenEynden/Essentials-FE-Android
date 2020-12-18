@@ -8,8 +8,8 @@ import androidx.room.Query
 import com.hogentessentials1.essentials.data.model.Feedback
 
 /**
- * @author Kilian Hoefman
  * Dao for the feedback-entity
+ * @author Kilian Hoefman
  */
 
 @Dao

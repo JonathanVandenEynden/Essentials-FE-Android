@@ -1,15 +1,17 @@
 package com.hogentessentials1.essentials.data.repositories
 
 import com.hogentessentials1.essentials.data.model.Employee
-import com.hogentessentials1.essentials.data.model.network.local.EmployeeLocalDataSource
 import com.hogentessentials1.essentials.data.network.EmployeeRemoteDataSource
+import com.hogentessentials1.essentials.data.network.local.EmployeeLocalDataSource
 import com.hogentessentials1.essentials.util.Resource
 import javax.inject.Singleton
 
 /**
+ * Repository for employees
  * @author Kilian Hoefman
  *
- * Repository for employees
+ * @property remoteDataSource
+ * @property localDataSource
  */
 
 @Singleton

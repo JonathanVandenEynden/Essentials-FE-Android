@@ -5,9 +5,10 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 /**
+ * Repository for answers
  * @author Kilian Hoefman
  *
- * Repository for answers
+ * @property answerDao
  */
 
 @Singleton

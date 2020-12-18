@@ -9,8 +9,8 @@ import com.hogentessentials1.essentials.data.model.EmployeeOrganizationPart
 import com.hogentessentials1.essentials.data.model.OrganizationPart
 
 /**
- * @author Kilian Hoefman
  * Dao for the employeeOrganizationPart-entity
+ * @author Kilian Hoefman
  */
 
 @Dao

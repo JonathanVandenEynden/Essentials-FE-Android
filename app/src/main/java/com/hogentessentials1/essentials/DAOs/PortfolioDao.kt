@@ -8,8 +8,8 @@ import androidx.room.Query
 import com.hogentessentials1.essentials.data.model.Portfolio
 
 /**
- * @author Kilian Hoefman
  * Dao for the portfolio-entity
+ * @author Kilian Hoefman
  */
 
 @Dao
