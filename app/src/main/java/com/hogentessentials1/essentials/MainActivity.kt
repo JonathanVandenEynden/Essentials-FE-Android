@@ -1,25 +1,38 @@
 package com.hogentessentials1.essentials
 
+import android.app.NotificationChannel
+import android.app.NotificationManager
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.NotificationManagerCompat
 import androidx.core.view.GravityCompat
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupWithNavController
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.android.gms.tasks.Task
 import com.google.android.material.navigation.NavigationView
+import com.google.firebase.iid.FirebaseInstanceId
+import com.google.firebase.iid.FirebaseInstanceIdReceiver
+import com.google.firebase.iid.InstanceIdResult
+import com.google.firebase.messaging.FirebaseMessaging
 import com.hogentessentials1.essentials.data.network.EssentialsDatabase
 import com.hogentessentials1.essentials.databinding.ActivityMainBinding
 import com.hogentessentials1.essentials.ui.homeScreen.HomeScreenFragmentDirections
 import com.hogentessentials1.essentials.ui.login.ui.login.LoginActivity
+import com.hogentessentials1.essentials.ui.survey.SurveyDoneViewModel
 import com.hogentessentials1.essentials.util.Globals
+import org.koin.android.ext.android.inject
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import timber.log.Timber
 
 /**
  * @author Simon De Wilde
@@ -28,6 +41,13 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
+    private val viewModel: DeviceTokenViewModel by inject()
+
+    companion object{
+        val CHANNEL_ID: String = "essentialstoolkit_notifs"
+    }
+    val CHANNEL_NAME: String = "essentialstoolkit notifs"
+    val CHANNEL_DESC: String = "test"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,6 +55,27 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         binding = DataBindingUtil.setContentView(
             this,
             R.layout.activity_main
+        )
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
+        {
+            val channel = NotificationChannel(CHANNEL_ID, CHANNEL_NAME, NotificationManager.IMPORTANCE_DEFAULT)
+            channel.description = CHANNEL_DESC
+            val manager: NotificationManagerCompat = NotificationManagerCompat.from(this)
+            manager.createNotificationChannel(channel)
+        }
+        FirebaseMessaging.getInstance().token.addOnCompleteListener(
+            OnCompleteListener {
+                if (it.isSuccessful) {
+                    Timber.e("test" + Globals.userid!!.toString() + " " + it.result)
+                    viewModel.post(Globals.userid!!, it.result!!)
+                }
+                else
+                {
+                    Timber.e("nope")
+                }
+
+            }
         )
 
         val navHostFragment =

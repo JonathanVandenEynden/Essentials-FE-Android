@@ -141,3 +141,8 @@ interface AccountEndpointInterface {
         @Body requestBody: RequestBody
     ): Response<ResponseBody>
 }
+
+interface DeviceTokenEndpointInterface {
+    @POST("DeviceTokens/{userid}")
+    suspend fun postDeviceToken(@Path("userid") userid: Int, @Body requestBody: RequestBody): Response<ResponseBody>
+}
