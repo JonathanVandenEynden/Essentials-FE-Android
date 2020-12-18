@@ -133,6 +133,13 @@ dependencies {
     //Gson
     implementation "com.google.code.gson:gson:$gson_version"
 
+    // Espresso
+    implementation "androidx.fragment:fragment:$fragment_version"
+    debugImplementation "androidx.fragment:fragment-testing:1.3.0-beta01"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_version"
+    androidTestImplementation "androidx.test.espresso:espresso-contrib:$espresso_version"
+    androidTestImplementation "androidx.test:runner:$junit_version"
+    androidTestImplementation "androidx.test:rules:1.1.0"
 }
 
 
