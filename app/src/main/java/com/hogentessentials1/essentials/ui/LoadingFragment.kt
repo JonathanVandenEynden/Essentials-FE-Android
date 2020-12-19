@@ -29,7 +29,7 @@ class LoadingFragment : DialogFragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_loading, container, false)
         dialog?.requestWindowFeature(Window.FEATURE_NO_TITLE)

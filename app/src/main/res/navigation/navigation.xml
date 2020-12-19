@@ -185,9 +185,6 @@
             android:name="roadmapitem"
             app:argType="com.hogentessentials1.essentials.data.model.RoadMapItem" />
         <action
-            android:id="@+id/action_roadMapFragment_to_surveyQuestionFragment"
-            app:destination="@id/surveyQuestionFragment" />
-        <action
             android:id="@+id/action_roadMapFragment_to_notFoundFragment"
             app:destination="@id/notFoundFragment"
             app:enterAnim="@anim/slide_in_right"
@@ -200,11 +197,6 @@
             app:destination="@id/myChangesQuestionListFragment"
             app:popUpTo="@id/roadMapFragment"
             app:popUpToInclusive="true" />
-
-  
-            app:enterAnim="@anim/slide_in_right"
-            app:popEnterAnim="@anim/slide_in_left" />
-
     </fragment>
     <fragment
         android:id="@+id/surveyComplete"

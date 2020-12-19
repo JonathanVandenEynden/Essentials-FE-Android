@@ -4,10 +4,8 @@
     @author Sébastien De Pauw
 -->
 
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
         <variable
@@ -40,7 +38,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
-                android:text="Average mood after this survey:"
+                android:text="@string/average_mood_after_this_survey"
                 android:textSize="18sp" />
 
             <LinearLayout
@@ -55,7 +53,7 @@
                     android:layout_height="80dp"
                     android:layout_gravity="center"
                     android:baselineAlignBottom="false"
-                    android:contentDescription="Emoji showing average happiness"
+                    android:contentDescription="@string/emoji_showing_average_happiness"
                     android:textAlignment="center" />
 
                 <TextView
@@ -63,7 +61,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
-                    android:text="Overall happiness: 100 %"
+                    android:text="@string/overall_happiness_100"
                     android:textAlignment="center" />
             </LinearLayout>
         </LinearLayout>
@@ -74,7 +72,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:text="All questions in this survey:"
+            android:text="@string/all_questions_in_this_survey"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/survey_linearlayout_id" />
 

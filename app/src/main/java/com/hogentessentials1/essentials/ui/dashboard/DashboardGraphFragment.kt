@@ -24,12 +24,8 @@ class DashboardGraphFragment : Fragment() {
     // lateinit var viewModel: DashboardViewModel
     private lateinit var binding: FragmentDashboardGraphBinding
     val viewModel: DashboardViewModel by inject()
-    var ci: ChangeInitiative? = null
-    var rmi: RoadMapItem? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
+    private var ci: ChangeInitiative? = null
+    private var rmi: RoadMapItem? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -66,7 +62,7 @@ class DashboardGraphFragment : Fragment() {
         return binding.root
     }
 
-    fun showCharts(item: RoadMapItem) {
+    private fun showCharts(item: RoadMapItem) {
         val chart = binding.chart
         chart.description.textSize = 20f
         chart.legend.textSize = 15f
@@ -88,7 +84,7 @@ class DashboardGraphFragment : Fragment() {
         val moods: List<String> =
             listOf("\uD83D\uDE26", "\uD83D\uDE41", "\uD83D\uDE10", "\uD83D\uDE42", "\uD83D\uDE04")
         val valueSet1 = ArrayList<PieEntry>()
-        if (!mood.isEmpty()) {
+        if (mood.isNotEmpty()) {
             for (m in mood) {
                 val ve = PieEntry(m.value.toFloat(), moods[m.key])
                 valueSet1.add(ve)
@@ -105,13 +101,13 @@ class DashboardGraphFragment : Fragment() {
         return dataSet1
     }
 
-    fun setupHyperlink() {
+    private fun setupHyperlink() {
         val linkTextView = binding.siteLink
-        linkTextView.setMovementMethod(LinkMovementMethod.getInstance())
+        linkTextView.movementMethod = LinkMovementMethod.getInstance()
         linkTextView.setLinkTextColor(Color.BLUE)
     }
 
-    fun refreshVM() {
+    private fun refreshVM() {
         viewModel.fillDashboard()
     }
 }

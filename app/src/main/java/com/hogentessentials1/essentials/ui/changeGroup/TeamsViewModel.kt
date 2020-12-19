@@ -14,8 +14,7 @@ import com.hogentessentials1.essentials.util.Resource
 class TeamsViewModel(private val repo: ChangeGroupRepository) : ViewModel() {
 
     val changeGroups: LiveData<Resource<List<ChangeGroup>>> = repo.getChangeGroups()
-
-    init {
+}
 
 //        val mockMembers = arrayListOf<String>()
 //        mockMembers.add("Simon")
@@ -30,7 +29,6 @@ class TeamsViewModel(private val repo: ChangeGroupRepository) : ViewModel() {
 //        mockChangeGroups.add(ChangeGroup(123, "changeGroup2", mockMembers))
 //
 //        _changeGroups.value = mockChangeGroups
-    }
 
 //    private fun getChangeGroupsForLoggedInUser() {
 //        viewModelScope.launch {
@@ -50,4 +48,3 @@ class TeamsViewModel(private val repo: ChangeGroupRepository) : ViewModel() {
 //            }
 //        }
 //    }
-}

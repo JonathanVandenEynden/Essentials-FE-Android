@@ -46,10 +46,6 @@ class ChangeinitiativeViewModel : ViewModel() {
         )
     )*/
 
-    override fun onCleared() {
-        super.onCleared()
-    }
-
     private val _navigateToRoadmap = MutableLiveData<Boolean>()
     val navigateToRoadmap
         get() = _navigateToRoadmap

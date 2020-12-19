@@ -75,7 +75,7 @@ class TeamsFragment : Fragment(), ChangeGroupClickListener {
         return binding.root
     }
 
-    fun showLoading(b: Boolean) {
+    private fun showLoading(b: Boolean) {
         if (b) {
             if (!loadingDialogFragment.isAdded) {
                 loadingDialogFragment.show(requireActivity().supportFragmentManager, "loader")
@@ -94,7 +94,7 @@ class TeamsFragment : Fragment(), ChangeGroupClickListener {
     private fun navigateToDetail(changeGroup: ChangeGroup) {
 
         val directions =
-            TeamsFragmentDirections.actionTeamsFragmentToTeamDetailsFragment(changeGroup.employeeChangeGroups!!.map { ecg -> ecg.employee!!.firstName.plus(" ").plus(ecg.employee!!.lastName) }.toTypedArray())
+            TeamsFragmentDirections.actionTeamsFragmentToTeamDetailsFragment(changeGroup.employeeChangeGroups!!.map { ecg -> ecg.employee!!.firstName.plus(" ").plus(ecg.employee.lastName) }.toTypedArray())
         findNavController().navigate(directions)
     }
 }

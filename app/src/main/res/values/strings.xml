@@ -69,5 +69,13 @@
 
     <string name="no_changes_available">There are no changes available at the moment</string>
     <string name="no_surveys_available">There are no surveys available at the moment</string>
+    <string name="Overall_happiness_not_applicable">Overall happiness: not yet applicable</string>
+    <string name="Overall_happiness_applicable">Overall happiness: %1$s</string>
+    <string name="chosen_perc">%1$s %%</string>
+    <string name="change_initatives">Change initatives</string>
+    <string name="average_mood_after_this_survey">Average mood after this survey:</string>
+    <string name="emoji_showing_average_happiness">Emoji showing average happiness</string>
+    <string name="overall_happiness_100">Overall happiness: 100 %</string>
+    <string name="all_questions_in_this_survey">All questions in this survey:</string>
 
 </resources>

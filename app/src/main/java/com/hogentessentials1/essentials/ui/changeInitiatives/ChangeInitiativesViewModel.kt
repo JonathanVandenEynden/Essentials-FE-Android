@@ -23,9 +23,6 @@ class ChangeInitiativesViewModel(private val repo: ChangeInitiativeRepository) :
     val changeinitiatives: LiveData<List<ChangeInitiative>>
         get() = _changeinitiavtives
 
-    init {
-    }
-
     val changeinitiativesEmployee: LiveData<Resource<List<ChangeInitiative>>> = repo.getChangeInitiativesForEmployee()
 
 //    fun changeinitiativesEmployee() {
@@ -66,7 +63,7 @@ class ChangeInitiativesViewModel(private val repo: ChangeInitiativeRepository) :
 //        }
 //    }
 
-    private val _navigateToChangeInitiative = MutableLiveData<ChangeInitiative>()
+    private val _navigateToChangeInitiative = MutableLiveData<ChangeInitiative?>()
     val navigateToChangeInitiative
         get() = _navigateToChangeInitiative
 

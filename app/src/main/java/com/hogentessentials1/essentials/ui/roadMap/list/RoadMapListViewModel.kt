@@ -54,11 +54,7 @@ class RoadMapListViewModel(private val repo: ChangeInitiativeRepository) : ViewM
 //        }
 //    }
 
-    override fun onCleared() {
-        super.onCleared()
-    }
-
-    private val _navigateToRoadMapItem = MutableLiveData<RoadMapItem>()
+    private val _navigateToRoadMapItem = MutableLiveData<RoadMapItem?>()
     val navigateToRoadMapItem
         get() = _navigateToRoadMapItem
 
