@@ -103,10 +103,7 @@ class TeamsFragment : Fragment(), ChangeGroupClickListener {
 
         val directions =
             TeamsFragmentDirections.actionTeamsFragmentToTeamDetailsFragment(
-                changeGroup.employeeChangeGroups!!.map {
-                    ecg ->
-                    ecg.employee!!.firstName.plus(" ").plus(ecg.employee.lastName)
-                }.toTypedArray()
+                changeGroup
             )
         findNavController().navigate(directions)
     }

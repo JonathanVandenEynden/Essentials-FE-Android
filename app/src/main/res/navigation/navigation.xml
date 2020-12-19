@@ -131,7 +131,10 @@
         android:label="TeamDetailsFragment">
         <argument
             android:name="changeGroupMembers"
-            app:argType="string[]" />
+            app:argType="com.hogentessentials1.essentials.data.model.ChangeGroup" />
+        <action
+            android:id="@+id/action_teamDetailsFragment_to_employeeDetails"
+            app:destination="@id/employeeDetails" />
     </fragment>
     <fragment
         android:id="@+id/notFoundFragment"
@@ -254,4 +257,13 @@
         app:destination="@id/homeScreenFragment"
         app:enterAnim="@anim/slide_in_right"
         app:popEnterAnim="@anim/slide_in_left" />
+    <fragment
+        android:id="@+id/employeeDetails"
+        android:name="com.hogentessentials1.essentials.ui.changeGroup.EmployeeDetails.EmployeeDetails"
+        android:label="employee_details_fragment"
+        tools:layout="@layout/employee_details_fragment" >
+        <argument
+            android:name="Employee"
+            app:argType="com.hogentessentials1.essentials.data.model.Employee" />
+    </fragment>
 </navigation>
