@@ -14,7 +14,7 @@ class ChangeTypeConverter {
      */
     @TypeConverter
     fun stringToChangeType(value: String?): ChangeType? {
-            return Gson().fromJson(value, ChangeType::class.java)
+        return Gson().fromJson(value, ChangeType::class.java)
     }
 
     /**

@@ -77,6 +77,7 @@ val networkModule = module {
     single { provideSurveyEndpointInterface(get()) }
     single { provideAccountEndpointInterface(get()) }
     single { provideDashboardEndpointInterface(get()) }
+    single { provideDeviceTokenEndpointInterface(get()) }
 
     // remote datasources
     single { RoadMapRemoteDataSource(get()) }
@@ -90,6 +91,7 @@ val networkModule = module {
     single { SurveyRemoteDataSource(get()) }
     single { LoginDataSource(get()) }
     single { DashboardRemoteDataSource(get()) }
+    single { DeviceTokenRemoteDataSource(get()) }
 
     // local datasources
     single { ChangeInitiativeLocalDataSource(get()) }
@@ -117,6 +119,7 @@ val networkModule = module {
     single { SurveyRepository(get()) }
     single { LoginRepository(get()) }
     single { DashboardRepository(get()) }
+    single { DeviceTokenRepository(get()) }
 }
 
 /**
@@ -210,3 +213,6 @@ private fun provideAccountEndpointInterface(retrofit: Retrofit): AccountEndpoint
 
 private fun provideDashboardEndpointInterface(retrofit: Retrofit): DashboardEndpointInterface =
     retrofit.create(DashboardEndpointInterface::class.java)
+
+private fun provideDeviceTokenEndpointInterface(retrofit: Retrofit): DeviceTokenEndpointInterface =
+    retrofit.create(DeviceTokenEndpointInterface::class.java)

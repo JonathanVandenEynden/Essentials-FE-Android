@@ -17,6 +17,7 @@ import com.hogentessentials1.essentials.R
 import com.hogentessentials1.essentials.data.model.ChangeInitiative
 import com.hogentessentials1.essentials.data.model.RoadMapItem
 import com.hogentessentials1.essentials.databinding.FragmentDashboardBinding
+import com.hogentessentials1.essentials.ui.LoadingFragment
 import com.hogentessentials1.essentials.util.Status
 import org.koin.android.ext.android.inject
 import timber.log.Timber
@@ -38,6 +39,7 @@ class DashboardFragment : Fragment() {
     lateinit var rmiAdapter: DashboardRMIAdapter
     lateinit var spinner: Spinner
     lateinit var spinnerrmi: Spinner
+    private val loadingDialogFragment by lazy { LoadingFragment() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -78,13 +80,14 @@ class DashboardFragment : Fragment() {
 
                 when (it.status) {
                     Status.SUCCESS -> {
-                        Timber.e("test1")
-
                         adapter = DashboardAdapter(this.requireContext(), ArrayList(it.data!!))
                         spinner.adapter = adapter
-                        Timber.e("Test2")
                     }
-                    else -> {
+                    Status.LOADING -> {
+                        showLoading(true)
+                    }
+                    Status.ERROR -> {
+                        showLoading(false)
                     }
                 }
             }
@@ -94,9 +97,7 @@ class DashboardFragment : Fragment() {
             rmiAdapter = DashboardRMIAdapter(this.requireContext(), ArrayList(it))
             spinnerrmi.adapter = rmiAdapter
         })*/
-        Timber.e("Test3")
         spinner.setSelection(selectedCI)
-        Timber.e("Test4")
         spinnerrmi.setOnItemSelectedListener(
             object : OnItemSelectedListener {
                 override fun onItemSelected(
@@ -113,12 +114,10 @@ class DashboardFragment : Fragment() {
                         "$clickedText selected",
                         Toast.LENGTH_SHORT
                     ).show()
-// showCharts(clickedItem)
-                    var amount_filledIn: Double = 0.0
+                    // showCharts(clickedItem)
                     viewModel.fi.observe(
                         viewLifecycleOwner,
                         {
-                            amount_filledIn = it
                             speed.speedTo(it.toFloat())
                         }
                     )
@@ -149,6 +148,7 @@ class DashboardFragment : Fragment() {
                     rmiAdapter =
                         DashboardRMIAdapter(parent.context, ArrayList(clickedItem.roadMap.toList()))
                     spinnerrmi.adapter = rmiAdapter
+                    showLoading(false)
                 }
 
                 override fun onNothingSelected(parent: AdapterView<*>?) {}
@@ -189,4 +189,41 @@ class DashboardFragment : Fragment() {
     fun refreshVM() {
         viewModel.fillDashboard()
     }
+
+    fun showLoading(b: Boolean) {
+        if (b) {
+            if (!loadingDialogFragment.isAdded) {
+                loadingDialogFragment.show(requireActivity().supportFragmentManager, "loader")
+            }
+        } else {
+            // if (loadingDialogFragment.isAdded) {
+            loadingDialogFragment.dismissAllowingStateLoss()
+            // }
+        }
+    }
+
+    /*        viewModel.changeInitiatives.observe(
+            viewLifecycleOwner,
+            {
+                it?.let { resource ->
+                    when (resource.status) {
+                        Status.SUCCESS -> {
+                            showLoading(false)
+                            if (resource.data?.isEmpty() == true) {
+                                //findNavController().navigate(ChangeInitiativesFragmentDirections.actionChangeInitiativesToNotFoundFragment())
+                            } else {
+                            }
+                            adapter = DashboardAdapter(this.requireContext(), ArrayList(resource.data))
+                            spinner.adapter = adapter
+                        }
+                        Status.LOADING -> {
+                            showLoading(true)
+                        }
+                        Status.ERROR -> {
+                            showLoading(false)
+                        }
+                    }
+                }
+            }
+        )*/
 }

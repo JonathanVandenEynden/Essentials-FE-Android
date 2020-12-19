@@ -22,6 +22,7 @@ import kotlinx.coroutines.launch
  * @property rmiRepository
  */
 class DashboardViewModel(private val dashboardRepository: DashboardRepository, private val cirepository: ChangeInitiativeRepository, val rmiRepository: RoadMapRepository) : ViewModel() {
+    // val changeInitiatives: LiveData<Resource<List<ChangeInitiative>>> = this.cirepository.getCIForChangeManager()
 
     var chosenCIId: Int = 1
 //

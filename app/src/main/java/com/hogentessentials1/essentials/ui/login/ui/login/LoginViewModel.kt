@@ -13,8 +13,9 @@ import kotlinx.coroutines.launch
 /**
  * View model for the login page
  * @author Simon De Wilde
- *
+ * @author Jonathan Vanden Eynden
  * @property loginRepository
+ *
  */
 class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel() {
 
