@@ -25,9 +25,7 @@ class DashboardViewModel(private val dashboardRepository: DashboardRepository, p
 
     var chosenCIId: Int = 1
 
-
     val cis: LiveData<Resource<List<ChangeInitiative>>> = cirepository.getChangeInitiativesForChangeManager()
-
 
     val rmis: LiveData<Resource<List<RoadMapItem>>> = rmiRepository.getRoadMaps(chosenCIId)
 
@@ -57,5 +55,4 @@ class DashboardViewModel(private val dashboardRepository: DashboardRepository, p
     fun onNavigatedToGraph() {
         _navigateToGraph.value = false
     }
-
 }

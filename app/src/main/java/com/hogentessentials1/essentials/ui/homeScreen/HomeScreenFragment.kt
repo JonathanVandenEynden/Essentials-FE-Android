@@ -15,7 +15,6 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
-import com.hogentessentials1.essentials.R
 import com.hogentessentials1.essentials.databinding.FragmentHomeScreenBinding
 import com.hogentessentials1.essentials.util.Globals
 import timber.log.Timber

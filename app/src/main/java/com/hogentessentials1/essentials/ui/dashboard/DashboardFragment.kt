@@ -5,11 +5,11 @@ import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.ViewGroup
-import android.view.View
-import android.view.MenuInflater
 import android.view.Menu
+import android.view.MenuInflater
 import android.view.MenuItem
+import android.view.View
+import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.AdapterView.OnItemSelectedListener
 import android.widget.Spinner
@@ -25,7 +25,6 @@ import com.hogentessentials1.essentials.databinding.FragmentDashboardBinding
 import com.hogentessentials1.essentials.ui.LoadingFragment
 import com.hogentessentials1.essentials.util.Status
 import org.koin.android.ext.android.inject
-import timber.log.Timber
 
 /**
  * fragment for dashboards
@@ -146,7 +145,6 @@ class DashboardFragment : Fragment() {
 
                 override fun onNothingSelected(parent: AdapterView<*>?) {}
             })
-
 
         viewModel.navigateToGraph.observe(
             viewLifecycleOwner,
