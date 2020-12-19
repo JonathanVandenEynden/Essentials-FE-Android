@@ -62,11 +62,12 @@ class DashboardGraphFragment : Fragment() {
             rmi = it
         }
 
-        if (ci != null && rmi != null) {
+        binding.chart.setNoDataText("No moods available for Change")
+        if (ci != null && rmi != null ) {
             binding.textView2.text = ci?.title
             showCharts(rmi!!)
         }
-        binding.chart.setNoDataText("No moods available for Change")
+
 
         setHasOptionsMenu(true)
 
@@ -96,16 +97,21 @@ class DashboardGraphFragment : Fragment() {
         val chart = binding.chart
         chart.description.textSize = 20f
         chart.legend.textSize = 15f
-        val data = PieData(getDataSet())
-        chart.data = data
-        chart.data.setValueTextSize(15f)
+        if (getDataSet() != null)
+        {
+            val data = PieData(getDataSet())
+            chart.data = data
+            chart.data.setValueTextSize(15f)
+        }
+
+
         chart.setEntryLabelTextSize(20f)
         chart.description.text = item.title
         chart.animateXY(2000, 2000)
         chart.invalidate()
     }
 
-    private fun getDataSet(): PieDataSet {
+    private fun getDataSet(): PieDataSet? {
         viewModel.chosenCIId = ci!!.id
         refreshVM()
         val moods : List<String> = listOf(
@@ -118,9 +124,6 @@ class DashboardGraphFragment : Fragment() {
         getMood()
         var mood: Map<Int, Int> = mapOf()
         viewModel.m.observe(viewLifecycleOwner, { mood = it })
-        Timber.e("Test:%s", mood.toString())
-        val moods: List<String> =
-            listOf("\uD83D\uDE26", "\uD83D\uDE41", "\uD83D\uDE10", "\uD83D\uDE42", "\uD83D\uDE04")
         val valueSet1 = ArrayList<PieEntry>()
         if (mood!!.isNotEmpty())
         {
@@ -134,11 +137,7 @@ class DashboardGraphFragment : Fragment() {
             return dataSet1
 
         }
-        val ve = PieEntry(100f, "N/A")
-        valueSet1.add(ve)
-        val dataSet1 = PieDataSet(valueSet1, "Overal Mood")
-        dataSet1.setColors(*ColorTemplate.COLORFUL_COLORS)
-        return dataSet1
+        return null
     }
 
     fun refreshVM()
