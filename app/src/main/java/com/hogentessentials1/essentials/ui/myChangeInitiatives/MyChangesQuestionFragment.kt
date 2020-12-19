@@ -1,6 +1,7 @@
 package com.hogentessentials1.essentials.ui.myChangeInitiatives
 
 import android.os.Bundle
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.hogentessentials1.essentials.R
 import com.hogentessentials1.essentials.data.model.Question
 import com.hogentessentials1.essentials.databinding.FragmentMychangeQuestionBinding
+import timber.log.Timber
 
 
 /**
@@ -50,14 +52,20 @@ class MyChangesQuestionFragment: Fragment() {
             }
             if(question.type.toInt() == 1){
                 val stars = RatingBar(activity)
-                stars.rating = v.toFloat()
+                stars.rating = k.toFloat()
                 stars.numStars = 5
-                tr.addView(stars, TableRow.LayoutParams(230, 120))
-                tr.addView(tTimesChosen, TableRow.LayoutParams(120, 120))
+                stars.setIsIndicator(true)
+                tr.addView(stars, TableRow.LayoutParams(240, 120))
+                var lp = TableRow.LayoutParams(110, 120)
+                lp.gravity = Gravity.CENTER
+                tr.addView(tTimesChosen, lp)
+
             } else if(question.type.toInt() == 2){
                 tAnswer.text = k
-                tr.addView(tAnswer, TableRow.LayoutParams(230, 50))
-                tr.addView(tTimesChosen, TableRow.LayoutParams(120, 50))
+                tr.addView(tAnswer, TableRow.LayoutParams(240, 50))
+                var lp = TableRow.LayoutParams(110, 50)
+                lp.gravity = Gravity.CENTER
+                tr.addView(tTimesChosen, lp)
             }
 
             ll.addView(tr)
