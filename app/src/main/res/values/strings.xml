@@ -69,6 +69,8 @@
 
     <string name="no_changes_available">There are no changes available at the moment</string>
     <string name="no_surveys_available">There are no surveys available at the moment</string>
+    <string name="chartDescription">% of mood for Change</string>
+    <string name="dataSetDescription">Overal Mood</string>
     <string name="Overall_happiness_not_applicable">Overall happiness: not yet applicable</string>
     <string name="Overall_happiness_applicable">Overall happiness: %1$s</string>
     <string name="chosen_perc">%1$s %%</string>
