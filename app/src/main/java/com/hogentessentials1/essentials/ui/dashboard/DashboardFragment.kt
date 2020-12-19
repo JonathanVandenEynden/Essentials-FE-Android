@@ -43,17 +43,17 @@ import timber.log.Timber
  */
 class DashboardFragment : Fragment() {
     private var ciList: ArrayList<ChangeInitiative> = arrayListOf()
-    private var rmiList: ArrayList<RoadMapItem> = arrayListOf()
+    //private var rmiList: ArrayList<RoadMapItem> = arrayListOf()
     private var selectedCI: Int = 0
-    private var selectedRMI: Int = 0
+    //private var selectedRMI: Int = 0
 
     // lateinit var viewModel: DashboardViewModel
     private lateinit var binding: FragmentDashboardBinding
     val viewModel: DashboardViewModel by inject()
     lateinit var adapter: DashboardAdapter
-    lateinit var rmiAdapter: DashboardRMIAdapter
+    //lateinit var rmiAdapter: DashboardRMIAdapter
     lateinit var spinner: Spinner
-    lateinit var spinnerrmi: Spinner
+    //lateinit var spinnerrmi: Spinner
     private val loadingDialogFragment by lazy { LoadingFragment() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -77,7 +77,7 @@ class DashboardFragment : Fragment() {
         binding.lifecycleOwner = this
 
         val spinner = binding.spinnerCi
-        val spinnerrmi = binding.spinnerRmi
+        //val spinnerrmi = binding.spinnerRmi
         val speed = binding.speedView
         speed.unit = "% of Surveys filled in"
         speed.isWithTremble = false
@@ -112,9 +112,8 @@ class DashboardFragment : Fragment() {
             rmiAdapter = DashboardRMIAdapter(this.requireContext(), ArrayList(it))
             spinnerrmi.adapter = rmiAdapter
         })*/
-        Timber.e("Test3")
         spinner.setSelection(selectedCI)
-        spinnerrmi.setOnItemSelectedListener(
+        /*spinnerrmi.setOnItemSelectedListener(
             object : OnItemSelectedListener {
                 override fun onItemSelected(
                     parent: AdapterView<*>?,
@@ -141,7 +140,7 @@ class DashboardFragment : Fragment() {
 
                 override fun onNothingSelected(parent: AdapterView<*>?) {}
             }
-        )
+        )*/
 
         spinner.setOnItemSelectedListener(
             object : OnItemSelectedListener {
@@ -161,9 +160,15 @@ class DashboardFragment : Fragment() {
                     ).show()
                     viewModel.chosenCIId = clickedItem.id
                     refreshVM()
-                    rmiAdapter =
+                    /*rmiAdapter =
                         DashboardRMIAdapter(parent.context, ArrayList(clickedItem.roadMap.toList()))
-                    spinnerrmi.adapter = rmiAdapter
+                    spinnerrmi.adapter = rmiAdapter*/
+                    viewModel.fi.observe(
+                        viewLifecycleOwner,
+                        {
+                            speed.speedTo(it.toFloat())
+                        }
+                    )
                     showLoading(false)
                 }
 
@@ -171,7 +176,7 @@ class DashboardFragment : Fragment() {
             }
         )
 
-        spinnerrmi.setSelection(selectedRMI)
+        //spinnerrmi.setSelection(selectedRMI)
 
         viewModel.navigateToGraph.observe(
             viewLifecycleOwner,
@@ -181,7 +186,7 @@ class DashboardFragment : Fragment() {
                     selectedCI = spinner.selectedItemPosition
                     Timber.e(spinner.selectedItem.toString())
                     Timber.e(selectedCI.toString())
-                    selectedRMI = spinnerrmi.selectedItemPosition
+                    //selectedRMI = spinnerrmi.selectedItemPosition
                     navController.navigate(
                         DashboardFragmentDirections.actionDashboardFragmentToDashboardGraphFragment(
                             spinner.selectedItem as ChangeInitiative
