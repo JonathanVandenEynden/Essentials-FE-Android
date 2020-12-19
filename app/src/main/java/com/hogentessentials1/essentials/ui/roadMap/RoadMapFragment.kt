@@ -14,7 +14,6 @@ import com.hogentessentials1.essentials.data.model.Question
 import com.hogentessentials1.essentials.data.model.RoadMapItem
 import com.hogentessentials1.essentials.databinding.RoadmapBinding
 import com.hogentessentials1.essentials.util.Globals
-import org.koin.android.ext.android.bind
 
 /**
  * fragment for road maps
@@ -66,34 +65,34 @@ class RoadMapFragment : Fragment() {
             binding.surveyRoadmap.setText(resources.getText(R.string.survey_already_filled))
         }
 
-        if(!changemanager){
-        viewModel.navigateToSurvey.observe(
-            viewLifecycleOwner,
-            {
-                if (it) {
-                    if (q.size == 0) {
-                        roadmapitem.assessment!!.questions = q_original
-                        binding.root.findNavController().navigate(
-                            RoadMapFragmentDirections.actionRoadMapFragmentToSurveyComplete()
-                        )
-                    } else {
-                        binding.root.findNavController().navigate(
-                            RoadMapFragmentDirections.actionRoadMapFragmentToSurveyQuestionFragment(
-                                changemanager,
-                                roadmapitem
+        if (!changemanager) {
+            viewModel.navigateToSurvey.observe(
+                viewLifecycleOwner,
+                {
+                    if (it) {
+                        if (q.size == 0) {
+                            roadmapitem.assessment!!.questions = q_original
+                            binding.root.findNavController().navigate(
+                                RoadMapFragmentDirections.actionRoadMapFragmentToSurveyComplete()
                             )
-                        )
+                        } else {
+                            binding.root.findNavController().navigate(
+                                RoadMapFragmentDirections.actionRoadMapFragmentToSurveyQuestionFragment(
+                                    changemanager,
+                                    roadmapitem
+                                )
+                            )
+                        }
+                        viewModel.onNavigatedToSurvey()
                     }
-                    viewModel.onNavigatedToSurvey()
                 }
-            }
-        )
-        } else{
+            )
+        } else {
             binding.surveyRoadmap.text = getString(R.string.view_survey)
             viewModel.navigateToSurvey.observe(
-             viewLifecycleOwner,
+                viewLifecycleOwner,
                 {
-                    if(it){
+                    if (it) {
                         roadmapitem.assessment!!.questions = q_original
                         binding.root.findNavController().navigate(
                             RoadMapFragmentDirections.actionRoadMapFragmentToMyChangesQuestionListFragment(roadmapitem)

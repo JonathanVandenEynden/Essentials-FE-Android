@@ -10,6 +10,8 @@ import com.hogentessentials1.essentials.data.network.ChangeManagerRemoteDataSour
 import com.hogentessentials1.essentials.data.network.ChangeManagersEndpointInterface
 import com.hogentessentials1.essentials.data.network.DashboardEndpointInterface
 import com.hogentessentials1.essentials.data.network.DashboardRemoteDataSource
+import com.hogentessentials1.essentials.data.network.DeviceTokenEndpointInterface
+import com.hogentessentials1.essentials.data.network.DeviceTokenRemoteDataSource
 import com.hogentessentials1.essentials.data.network.EmployeeEndpointInterface
 import com.hogentessentials1.essentials.data.network.EmployeeRemoteDataSource
 import com.hogentessentials1.essentials.data.network.EssentialsDatabase
@@ -32,6 +34,7 @@ import com.hogentessentials1.essentials.data.repositories.ChangeGroupRepository
 import com.hogentessentials1.essentials.data.repositories.ChangeInitiativeRepository
 import com.hogentessentials1.essentials.data.repositories.ChangeManagerRepository
 import com.hogentessentials1.essentials.data.repositories.DashboardRepository
+import com.hogentessentials1.essentials.data.repositories.DeviceTokenRepository
 import com.hogentessentials1.essentials.data.repositories.EmployeeRepository
 import com.hogentessentials1.essentials.data.repositories.OrganizationRepository
 import com.hogentessentials1.essentials.data.repositories.ProjectRepository

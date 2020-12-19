@@ -11,7 +11,7 @@ import com.hogentessentials1.essentials.util.Status
  * @author Sébastien De Pauw
  */
 
-class MyChangesQuestionListViewModel (private val repo: QuestionRepository) : ViewModel() {
+class MyChangesQuestionListViewModel(private val repo: QuestionRepository) : ViewModel() {
 
     private val _status = MutableLiveData<Status>()
 
@@ -27,7 +27,7 @@ class MyChangesQuestionListViewModel (private val repo: QuestionRepository) : Vi
         super.onCleared()
     }
 
-    private val _navigateToQuestion = MutableLiveData<Question>()
+    private val _navigateToQuestion = MutableLiveData<Question?>()
     val navigateToQuestion
         get() = _navigateToQuestion
 

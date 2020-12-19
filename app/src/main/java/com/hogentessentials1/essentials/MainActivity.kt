@@ -16,22 +16,16 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.gms.tasks.OnCompleteListener
-import com.google.android.gms.tasks.Task
 import com.google.android.material.navigation.NavigationView
-import com.google.firebase.iid.FirebaseInstanceId
-import com.google.firebase.iid.FirebaseInstanceIdReceiver
-import com.google.firebase.iid.InstanceIdResult
 import com.google.firebase.messaging.FirebaseMessaging
 import com.hogentessentials1.essentials.data.network.EssentialsDatabase
 import com.hogentessentials1.essentials.databinding.ActivityMainBinding
-import com.hogentessentials1.essentials.ui.homeScreen.HomeScreenFragmentDirections
 import com.hogentessentials1.essentials.ui.login.ui.login.LoginActivity
-import com.hogentessentials1.essentials.ui.survey.SurveyDoneViewModel
 import com.hogentessentials1.essentials.util.Globals
-import org.koin.android.ext.android.inject
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import org.koin.android.ext.android.inject
 import timber.log.Timber
 
 /**
@@ -46,7 +40,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private lateinit var navController: NavController
     private val viewModel: DeviceTokenViewModel by inject()
 
-    companion object{
+    companion object {
         val CHANNEL_ID: String = "essentialstoolkit_notifs"
     }
     val CHANNEL_NAME: String = "essentialstoolkit notifs"
@@ -60,8 +54,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.layout.activity_main
         )
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
-        {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val channel = NotificationChannel(CHANNEL_ID, CHANNEL_NAME, NotificationManager.IMPORTANCE_DEFAULT)
             channel.description = CHANNEL_DESC
             val manager: NotificationManagerCompat = NotificationManagerCompat.from(this)
@@ -72,12 +65,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 if (it.isSuccessful) {
                     Timber.e("test" + Globals.userid!!.toString() + " " + it.result)
                     viewModel.post(Globals.userid!!, it.result!!)
-                }
-                else
-                {
+                } else {
                     Timber.e("nope")
                 }
-
             }
         )
 
@@ -136,19 +126,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         binding.drawerLayout.closeDrawers()
 
         when (item.itemId) {
-            R.id.changeInitiativesDrawer -> navController.navigate(
-                HomeScreenFragmentDirections.actionHomeScreenFragmentToChangeInitiativesFragment(
-                    false
-                )
-            )
-            R.id.allSurveysDrawer -> navController.navigate(
-                HomeScreenFragmentDirections.actionHomeScreenFragmentToRoadMapListFragment(
-                    true,
-                    false,
-                    null
-                )
-            )
-            R.id.teamsDrawer -> navController.navigate(R.id.teamsFragment)
+            R.id.homeDrawer -> navController.navigate((R.id.action_global_homeScreenFragment))
+            R.id.changeInitiativesDrawer -> navController.navigate(R.id.action_global_changeInitiatives)
+            R.id.teamsDrawer -> navController.navigate(R.id.action_global_teamsFragment)
             R.id.logout -> {
                 Globals.bearerToken = ""
                 // Remove all data from logged in user when explicitly logged out
