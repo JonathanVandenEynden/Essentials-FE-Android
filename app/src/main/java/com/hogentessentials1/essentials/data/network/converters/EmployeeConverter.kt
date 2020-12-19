@@ -11,7 +11,7 @@ class EmployeeConverter {
     }
 
     @TypeConverter
-    fun EmployeeToString(fields: Employee): String {
+    fun employeeToString(fields: Employee): String {
         return Gson().toJson(fields)
     }
 }

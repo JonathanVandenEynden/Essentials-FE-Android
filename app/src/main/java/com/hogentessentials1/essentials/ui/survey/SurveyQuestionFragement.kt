@@ -6,8 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.NotificationCompat
-import androidx.core.app.NotificationManagerCompat
 import androidx.core.view.children
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -21,7 +19,6 @@ import com.hogentessentials1.essentials.ui.roadMap.RoadMapFragmentDirections
 import kotlinx.android.synthetic.main.survey_question.*
 import kotlinx.android.synthetic.main.survey_question.view.*
 import org.koin.android.ext.android.inject
-import java.time.LocalDateTime
 
 /**
  * @author Ziggy Moens
@@ -33,7 +30,7 @@ class SurveyQuestionFragement : Fragment() {
     private var questions: List<Question> = arrayListOf()
     private lateinit var roadMapItem: RoadMapItem
     private lateinit var binding: SurveyQuestionBinding
-    lateinit var currentQuestion: Question
+    private lateinit var currentQuestion: Question
     private var questionIndex = 0
     private var numberOfQuestions = 0
     private var errorOccured = false
@@ -41,7 +38,7 @@ class SurveyQuestionFragement : Fragment() {
 
     private lateinit var viewModel: SurveyQuestionViewModel
 
-    fun getViewModel(): SurveyQuestionViewModel {
+    private fun getViewModel(): SurveyQuestionViewModel {
         val viewModel: SurveyQuestionViewModel by inject()
         return viewModel
     }
@@ -51,7 +48,7 @@ class SurveyQuestionFragement : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = DataBindingUtil.inflate<SurveyQuestionBinding>(
+        binding = DataBindingUtil.inflate(
             inflater,
             R.layout.survey_question,
             container,
@@ -62,25 +59,12 @@ class SurveyQuestionFragement : Fragment() {
         roadMapItem = args.roadmapitem
         questions = roadMapItem.assessment!!.questions
 
-        if (true)
-        {
-            var builder = NotificationCompat.Builder(this.requireContext(), "testchannel")
-                .setSmallIcon(R.drawable.ic_logo)
-                .setContentTitle("hey")
-                .setContentText("textContent")
-                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-            with(NotificationManagerCompat.from(this.requireContext())) {
-                notify(1, builder.build())
-            }
-        }
-
-
         binding.currentQuestion = this
         numberOfQuestions = questions.size
 
         setQuestion()
 
-        binding.nextQuestion.setOnClickListener { _: View ->
+        binding.nextQuestion.setOnClickListener {
             handleNextQuestion()
         }
         return binding.root
@@ -101,43 +85,48 @@ class SurveyQuestionFragement : Fragment() {
         binding.ratingBarQuestion.visibility = View.INVISIBLE
         binding.mcQuestion.visibility = View.INVISIBLE
         binding.openQuestion.visibility = View.INVISIBLE
-        if (currentQuestion.type == "0") {
-            binding.yesnoQuestion.visibility = View.VISIBLE
-            binding.yesButton.setOnClickListener { view: View ->
-                answer = "true"
-                view.setBackgroundColor(resources.getColor(R.color.selected_brown))
-                no_button.setBackgroundColor(resources.getColor(R.color.white))
-            }
-            binding.noButton.setOnClickListener { view: View ->
-                answer = "false"
-                view.setBackgroundColor(resources.getColor(R.color.selected_brown))
-                yes_button.setBackgroundColor(resources.getColor(R.color.white))
-            }
-        } else if (currentQuestion.type == "1") {
-            binding.ratingBarQuestion.visibility = View.VISIBLE
-        } else if (currentQuestion.type == "2") {
-            binding.mcQuestion.visibility = View.VISIBLE
-
-            for (x in currentQuestion.possibleAnswers.keys) {
-                val r =
-                    context?.let { MaterialButton(ContextThemeWrapper(it, R.style.button_style)) }
-                r?.let {
-                    r.setBackgroundColor(resources.getColor(R.color.white))
-                    r.text = x
-                    r.width = Int.MAX_VALUE
-                    r.setTextColor(resources.getColor(R.color.black))
-                    r.setOnClickListener { view: View ->
-                        for (b in binding.mcQuestion.children) {
-                            b.setBackgroundColor(resources.getColor(R.color.white))
-                        }
-                        answer = x
-                        view.setBackgroundColor(resources.getColor(R.color.selected_brown))
-                    }
+        when (currentQuestion.type) {
+            "0" -> {
+                binding.yesnoQuestion.visibility = View.VISIBLE
+                binding.yesButton.setOnClickListener { view: View ->
+                    answer = "true"
+                    view.setBackgroundColor(resources.getColor(R.color.selected_brown))
+                    no_button.setBackgroundColor(resources.getColor(R.color.white))
                 }
-                binding.mcQuestion.mc_question.addView(r)
+                binding.noButton.setOnClickListener { view: View ->
+                    answer = "false"
+                    view.setBackgroundColor(resources.getColor(R.color.selected_brown))
+                    yes_button.setBackgroundColor(resources.getColor(R.color.white))
+                }
             }
-        } else if (currentQuestion.type == "3") {
-            binding.openQuestion.visibility = View.VISIBLE
+            "1" -> {
+                binding.ratingBarQuestion.visibility = View.VISIBLE
+            }
+            "2" -> {
+                binding.mcQuestion.visibility = View.VISIBLE
+
+                for (x in currentQuestion.possibleAnswers.keys) {
+                    val r =
+                        context?.let { MaterialButton(ContextThemeWrapper(it, R.style.button_style)) }
+                    r?.let {
+                        r.setBackgroundColor(resources.getColor(R.color.white))
+                        r.text = x
+                        r.width = Int.MAX_VALUE
+                        r.setTextColor(resources.getColor(R.color.black))
+                        r.setOnClickListener { view: View ->
+                            for (b in binding.mcQuestion.children) {
+                                b.setBackgroundColor(resources.getColor(R.color.white))
+                            }
+                            answer = x
+                            view.setBackgroundColor(resources.getColor(R.color.selected_brown))
+                        }
+                    }
+                    binding.mcQuestion.mc_question.addView(r)
+                }
+            }
+            "3" -> {
+                binding.openQuestion.visibility = View.VISIBLE
+            }
         }
         binding.surveyQuestion.text = currentQuestion.questionString
     }

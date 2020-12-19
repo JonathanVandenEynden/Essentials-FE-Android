@@ -1,38 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-    @author Ziggy Moens
+    @author Sébastien De Pauw
 -->
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
         <variable
-            name="roadmapItem"
-            type="com.hogentessentials1.essentials.data.model.RoadMapItem" />
+            name="question"
+            type="com.hogentessentials1.essentials.data.model.Question" />
 
         <variable
             name="clickListener"
-            type="com.hogentessentials1.essentials.ui.roadMap.list.RoadMapListener" />
+            type="com.hogentessentials1.essentials.ui.myChangeInitiatives.list.MyChangesQuestionListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/surveys_item_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            android:onClick="@{() -> clickListener.onClick(roadmapItem)}"
-            android:text="@{roadmapItem.title}"
+            android:layout_marginStart="@dimen/dp8"
+            android:layout_marginEnd="@dimen/dp8"
+            android:onClick="@{() -> clickListener.onClick(question)}"
+            android:text="@{question.questionString}"
             android:textColor="@color/black"
             app:backgroundTint="@color/brown"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
 </layout>
