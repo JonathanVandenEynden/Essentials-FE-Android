@@ -22,7 +22,7 @@ class EmployeeChangeGroupArrayConverter {
      * @param list
      */
     @TypeConverter
-    fun EmployeeChangeGroupToString(list: Array<EmployeeChangeGroup>?): String {
+    fun employeeChangeGroupToString(list: Array<EmployeeChangeGroup>?): String {
         return Gson().toJson(list)
     }
 }

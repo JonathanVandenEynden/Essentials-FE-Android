@@ -43,10 +43,6 @@ class DashboardFragment : Fragment() {
     // lateinit var spinnerrmi: Spinner
     private val loadingDialogFragment by lazy { LoadingFragment() }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -68,7 +64,7 @@ class DashboardFragment : Fragment() {
         val speed = binding.speedView
         speed.unit = "% of Surveys filled in"
         speed.isWithTremble = false
-        speed.setMaxSpeed(100)
+        speed.maxSpeed = 100
         speed.lowSpeedPercent = 33
         speed.mediumSpeedPercent = 66
         speed.lowSpeedColor = Color.RED
@@ -159,9 +155,31 @@ class DashboardFragment : Fragment() {
                     showLoading(false)
                 }
 
-                override fun onNothingSelected(parent: AdapterView<*>?) {}
+        spinner.onItemSelectedListener = object : OnItemSelectedListener {
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                val clickedItem: ChangeInitiative =
+                    parent?.getItemAtPosition(position) as ChangeInitiative
+                val clickedText: String = clickedItem.title
+                Toast.makeText(
+                    context,
+                    "$clickedText selected",
+                    Toast.LENGTH_SHORT
+                ).show()
+                viewModel.chosenCIId = clickedItem.id
+                refreshVM()
+                rmiAdapter =
+                    DashboardRMIAdapter(parent.context, ArrayList(clickedItem.roadMap.toList()))
+                spinnerrmi.adapter = rmiAdapter
+                showLoading(false)
             }
-        )
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {}
+        }
 
         // spinnerrmi.setSelection(selectedRMI)
 

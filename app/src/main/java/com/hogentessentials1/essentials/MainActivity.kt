@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private val viewModel: DeviceTokenViewModel by inject()
 
     companion object {
-        val CHANNEL_ID: String = "essentialstoolkit_notifs"
+        const val CHANNEL_ID: String = "essentialstoolkit_notifs"
     }
     val CHANNEL_NAME: String = "essentialstoolkit notifs"
     val CHANNEL_DESC: String = "test"

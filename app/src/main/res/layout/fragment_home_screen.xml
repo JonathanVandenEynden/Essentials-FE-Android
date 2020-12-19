@@ -156,6 +156,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
                     android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="16dp"
                     android:fontFamily="sans-serif-black"
                     android:onClick="@{()->viewModel.onTeamsClicked()}"
                     android:text="@string/my_teams"
@@ -164,10 +165,12 @@
                     app:icon="@drawable/people_black_18dp"
                     app:iconSize="60dp"
                     app:iconTint="@color/black"
+                    app:layout_constraintBottom_toTopOf="@+id/title_cm"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/surveys"
+                    app:layout_constraintVertical_bias="0.0"
                     app:strokeColor="@color/brown"
                     app:strokeWidth="2.5dp" />
 

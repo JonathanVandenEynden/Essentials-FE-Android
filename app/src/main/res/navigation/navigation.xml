@@ -2,7 +2,7 @@
 <!--
     @author Ziggy Moens
     @author Simon De Wilde
-
+    @author Sébastien De Pauw
     navigation for the application
 -->
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
@@ -97,11 +97,10 @@
             app:enterAnim="@anim/slide_in_right"
             app:popEnterAnim="@anim/slide_in_left" />
         <argument
-            android:name="changemanager"
-            app:argType="boolean" />
-        <argument
             android:name="changeinitiative"
             app:argType="com.hogentessentials1.essentials.data.model.ChangeInitiative" />
+        <argument android:name="changemanager"
+            app:argType="boolean" />
     </fragment>
     <fragment
         android:id="@+id/dashboardFragment"
@@ -178,6 +177,7 @@
             app:destination="@id/surveyQuestionFragment"
             app:enterAnim="@anim/slide_in_right"
             app:popEnterAnim="@anim/slide_in_left" />
+
         <argument
             android:name="changemanager"
             app:argType="boolean" />
@@ -191,9 +191,12 @@
             app:popEnterAnim="@anim/slide_in_left" />
         <action
             android:id="@+id/action_roadMapFragment_to_surveyComplete"
-            app:destination="@id/surveyComplete"
-            app:enterAnim="@anim/slide_in_right"
-            app:popEnterAnim="@anim/slide_in_left" />
+            app:destination="@id/surveyComplete" />
+        <action
+            android:id="@+id/action_roadMapFragment_to_myChangesQuestionListFragment"
+            app:destination="@id/myChangesQuestionListFragment"
+            app:popUpTo="@id/roadMapFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/surveyComplete"
@@ -212,5 +215,24 @@
         <argument
             android:name="changeInitiative"
             app:argType="com.hogentessentials1.essentials.data.model.ChangeInitiative" />
+    </fragment>
+    <fragment
+        android:id="@+id/myChangesFragment"
+        android:name="com.hogentessentials1.essentials.ui.myChangeInitiatives.MyChangesQuestionFragment"
+        android:label="MyChangesFragment">
+        <argument
+            android:name="question"
+            app:argType="com.hogentessentials1.essentials.data.model.Question" />
+    </fragment>
+    <fragment
+        android:id="@+id/myChangesQuestionListFragment"
+        android:name="com.hogentessentials1.essentials.ui.myChangeInitiatives.list.MyChangesQuestionListFragment"
+        android:label="MyChangesQuestionListFragment" >
+        <argument
+            android:name="roadMapItem"
+            app:argType="com.hogentessentials1.essentials.data.model.RoadMapItem" />
+        <action
+            android:id="@+id/action_myChangesQuestionListFragment_to_myChangesFragment"
+            app:destination="@id/myChangesFragment" />
     </fragment>
 </navigation>

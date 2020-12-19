@@ -8,8 +8,8 @@ class NotificationService : FirebaseMessagingService() {
         super.onMessageReceived(p0)
 
         if (p0.notification != null) {
-            var title = p0.notification!!.title
-            var message = p0.notification!!.body
+            val title = p0.notification!!.title
+            val message = p0.notification!!.body
 
             NotificationHelper.displayNotification(applicationContext, title!!, message!!)
         }
