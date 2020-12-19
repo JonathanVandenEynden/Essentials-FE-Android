@@ -12,11 +12,7 @@ import com.hogentessentials1.essentials.data.model.Survey
 import okhttp3.RequestBody
 import okhttp3.ResponseBody
 import retrofit2.Response
-import retrofit2.http.Body
-import retrofit2.http.DELETE
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Path
+import retrofit2.http.*
 
 /**
  * @author Kilian Hoefman
@@ -144,5 +140,5 @@ interface AccountEndpointInterface {
 
 interface DeviceTokenEndpointInterface {
     @POST("DeviceTokens/{userid}")
-    suspend fun postDeviceToken(@Path("userid") userid: Int, @Body requestBody: RequestBody): Response<ResponseBody>
+    suspend fun postDeviceToken(@Path("userid") userid: String, @Query("token") token: String): Response<ResponseBody>
 }
