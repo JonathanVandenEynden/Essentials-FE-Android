@@ -155,8 +155,8 @@ class DashboardFragment : Fragment() {
                     showLoading(false)
                 }
 
-            override fun onNothingSelected(parent: AdapterView<*>?) {}
-        })
+                override fun onNothingSelected(parent: AdapterView<*>?) {}
+            })
 
         // spinnerrmi.setSelection(selectedRMI)
 
