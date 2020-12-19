@@ -184,8 +184,7 @@ class DashboardFragment : Fragment() {
                     selectedRMI = spinnerrmi.selectedItemPosition
                     navController.navigate(
                         DashboardFragmentDirections.actionDashboardFragmentToDashboardGraphFragment(
-                            spinner.selectedItem as ChangeInitiative,
-                            spinnerrmi.selectedItem as RoadMapItem
+                            spinner.selectedItem as ChangeInitiative
                         )
                     )
                     viewModel.onNavigatedToGraph()
@@ -236,29 +235,4 @@ class DashboardFragment : Fragment() {
             // }
         }
     }
-
-    /*        viewModel.changeInitiatives.observe(
-            viewLifecycleOwner,
-            {
-                it?.let { resource ->
-                    when (resource.status) {
-                        Status.SUCCESS -> {
-                            showLoading(false)
-                            if (resource.data?.isEmpty() == true) {
-                                //findNavController().navigate(ChangeInitiativesFragmentDirections.actionChangeInitiativesToNotFoundFragment())
-                            } else {
-                            }
-                            adapter = DashboardAdapter(this.requireContext(), ArrayList(resource.data))
-                            spinner.adapter = adapter
-                        }
-                        Status.LOADING -> {
-                            showLoading(true)
-                        }
-                        Status.ERROR -> {
-                            showLoading(false)
-                        }
-                    }
-                }
-            }
-        )*/
 }

@@ -58,14 +58,14 @@ class DashboardGraphFragment : Fragment() {
         arguments?.getParcelable<ChangeInitiative>("changeInitiative")?.let {
             ci = it
         }
-        arguments?.getParcelable<RoadMapItem>("roadMapItem")?.let {
-            rmi = it
-        }
 
         binding.chart.setNoDataText("No moods available for Change")
-        if (ci != null && rmi != null ) {
+        if (ci != null) {
+            viewModel.chosenCIId = ci!!.id
+            refreshVM()
+            getMood()
+
             binding.textView2.text = ci?.title
-            showCharts(rmi!!)
         }
 
 
@@ -93,27 +93,23 @@ class DashboardGraphFragment : Fragment() {
     }
 
 
-    fun showCharts(item: RoadMapItem) {
+    fun showCharts() {
         val chart = binding.chart
         chart.description.textSize = 20f
         chart.legend.textSize = 15f
-        if (getDataSet() != null)
+        if (mood != null)
         {
             val data = PieData(getDataSet())
             chart.data = data
             chart.data.setValueTextSize(15f)
         }
-
-
+        chart.description.text = getString(R.string.chartDescription)
         chart.setEntryLabelTextSize(20f)
-        chart.description.text = item.title
         chart.animateXY(2000, 2000)
         chart.invalidate()
     }
 
     private fun getDataSet(): PieDataSet? {
-        viewModel.chosenCIId = ci!!.id
-        refreshVM()
         val moods : List<String> = listOf(
             "\uD83D\uDE26",
             "\uD83D\uDE41",
@@ -121,21 +117,21 @@ class DashboardGraphFragment : Fragment() {
             "\uD83D\uDE42",
             "\uD83D\uDE04"
         )
-        getMood()
-        var mood: Map<Int, Int> = mapOf()
-        viewModel.m.observe(viewLifecycleOwner, { mood = it })
         val valueSet1 = ArrayList<PieEntry>()
         if (mood!!.isNotEmpty())
         {
+            Timber.e(mood.toString())
+            Timber.e("hey")
+            var sum = 0
+            mood!!.values.forEach{sum += it}
             for (m in mood!!) {
-                val ve = PieEntry(m.value.toFloat(), moods[m.key - 1])
+                val ve = PieEntry((m.value.toFloat() / sum) * 100, moods[m.key - 1])
                 valueSet1.add(ve)
             }
-            val dataSet1 = PieDataSet(valueSet1, "Overal Mood")
+            val dataSet1 = PieDataSet(valueSet1, getString(R.string.dataSetDescription))
             dataSet1.valueTextSize = 20f
-            dataSet1.setColors(*ColorTemplate.COLORFUL_COLORS)
+            dataSet1.setColors(*ColorTemplate.JOYFUL_COLORS)
             return dataSet1
-
         }
         return null
     }
@@ -149,6 +145,7 @@ class DashboardGraphFragment : Fragment() {
     {
         viewModel.m.observe(viewLifecycleOwner, Observer {
             mood = it
+            showCharts()
         })
     }
 }

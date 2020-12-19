@@ -212,8 +212,5 @@
         <argument
             android:name="changeInitiative"
             app:argType="com.hogentessentials1.essentials.data.model.ChangeInitiative" />
-        <argument
-            android:name="roadMapItem"
-            app:argType="com.hogentessentials1.essentials.data.model.RoadMapItem" />
     </fragment>
 </navigation>
