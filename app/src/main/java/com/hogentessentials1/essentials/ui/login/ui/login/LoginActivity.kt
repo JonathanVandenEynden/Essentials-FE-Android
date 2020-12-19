@@ -23,6 +23,7 @@ import org.koin.android.ext.android.inject
 
 /**
  * @author Simon De Wilde
+ * @author Jonathan Vanden Eynden
  */
 class LoginActivity : AppCompatActivity() {
 

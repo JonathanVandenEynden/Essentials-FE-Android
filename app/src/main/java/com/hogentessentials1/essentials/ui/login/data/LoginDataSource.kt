@@ -13,6 +13,7 @@ import java.io.IOException
 
 /**
  * @author Simon De Wilde
+ * @author Jonathan Vanden Eynden
  *
  * Class that handles authentication w/ login credentials and retrieves user information.
  */
