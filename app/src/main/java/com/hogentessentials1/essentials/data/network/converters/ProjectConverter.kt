@@ -6,6 +6,8 @@ import com.hogentessentials1.essentials.data.model.Project
 
 /**
  *  Type converter for Project to string and vice versa
+ *
+ *  @author Simon De Wilde
  */
 class ProjectConverter {
     /**

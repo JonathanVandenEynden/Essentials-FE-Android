@@ -11,7 +11,6 @@ import kotlinx.android.parcel.Parcelize
  * a change group for a change initiative
  *
  * @author Kilian Hoefman: start of Dataclass
-
  * @property id the id of the change group
  * @property name
  * @property employeeChangeGroups a list of joiningtables between change groups and employees

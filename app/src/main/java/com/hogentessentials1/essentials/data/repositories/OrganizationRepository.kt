@@ -4,12 +4,14 @@ import com.hogentessentials1.essentials.data.model.Organization
 import com.hogentessentials1.essentials.data.network.BaseDataSource
 import com.hogentessentials1.essentials.data.network.OrganizationRemoteDataSource
 import com.hogentessentials1.essentials.util.Resource
+import javax.inject.Singleton
 
 /**
  * Repository for organizations
  *
  * @property remoteDataSource
  */
+@Singleton
 class OrganizationRepository(val remoteDataSource: OrganizationRemoteDataSource) : BaseDataSource() {
 
     /**

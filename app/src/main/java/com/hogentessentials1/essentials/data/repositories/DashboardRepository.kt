@@ -2,12 +2,14 @@ package com.hogentessentials1.essentials.data.repositories
 
 import com.hogentessentials1.essentials.data.network.DashboardRemoteDataSource
 import com.hogentessentials1.essentials.util.Resource
+import javax.inject.Singleton
 
 /**
  * Repository for dashboard
- *
+ * @author Marbod Naassens
  * @property remoteDataSource
  */
+@Singleton
 class DashboardRepository(val remoteDataSource: DashboardRemoteDataSource) {
 
     /**

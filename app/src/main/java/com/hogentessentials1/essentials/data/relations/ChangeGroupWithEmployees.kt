@@ -9,10 +9,12 @@ import com.hogentessentials1.essentials.data.model.Employee
  * @author Kilian Hoefman
  */
 data class ChangeGroupWithEmployees(
-    @Embedded val changeGroup: ChangeGroup,
+    @Embedded
+    val changeGroup: ChangeGroup,
+
     @Relation(
         parentColumn = "id",
-        entityColumn = "employee_id"
+        entityColumn = "changeGroup_id"
     )
     val employees: List<Employee>
 )

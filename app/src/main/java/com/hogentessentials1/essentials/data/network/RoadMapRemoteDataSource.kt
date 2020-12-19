@@ -2,7 +2,7 @@ package com.hogentessentials1.essentials.data.network
 
 /**
  * The remote data source for road map items
- *
+ * @author Kilian Hoefman
  * @property rmiApiService
  */
 class RoadMapRemoteDataSource(val rmiApiService: RoadMapItemsEndpointInterface) : BaseDataSource() {

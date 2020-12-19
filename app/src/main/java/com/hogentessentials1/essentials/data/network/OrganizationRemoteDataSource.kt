@@ -2,7 +2,7 @@ package com.hogentessentials1.essentials.data.network
 
 /**
  * The remote data source for organizations
- *
+ * @author Kilian Hoefman
  * @property cgApiService
  */
 class OrganizationRemoteDataSource(val cgApiService: OrganizationsEndpointInterface) : BaseDataSource() {

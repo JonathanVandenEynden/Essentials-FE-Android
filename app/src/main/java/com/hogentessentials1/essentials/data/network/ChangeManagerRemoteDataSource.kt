@@ -3,6 +3,8 @@ package com.hogentessentials1.essentials.data.network
 /**
  * The remote data source for change manager
  *
+ * @author Kilian Hoefman
+ *
  * @property cmApiService
  */
 class ChangeManagerRemoteDataSource(val cmApiService: ChangeManagersEndpointInterface) : BaseDataSource() {

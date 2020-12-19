@@ -4,7 +4,7 @@ import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
 /**
- * joining table class between employees and changegroups
+ * joining table class between employees and change groups
  *
  * @author Simon De Wilde
  *

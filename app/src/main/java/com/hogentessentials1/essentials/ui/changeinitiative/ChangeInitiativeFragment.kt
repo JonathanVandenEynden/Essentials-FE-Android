@@ -15,6 +15,7 @@ import com.hogentessentials1.essentials.databinding.ChangeinitiativeBinding
 /**
  * Fragment for the details of a changeInitiative
  * @author Ziggy Moens
+ * @author Marbod Naassens
  *
  */
 
@@ -36,7 +37,7 @@ class ChangeInitiativeFragment : Fragment() {
         binding.viewModel = viewModel
 
         val args =
-            ChangeInitiativeFragmentArgs.fromBundle(requireArguments()) // TODO controle op niet null
+            ChangeInitiativeFragmentArgs.fromBundle(requireArguments())
 
         val ci = args.changeinitiative
         val changemanager = args.changemanager

@@ -11,6 +11,7 @@ import javax.inject.Singleton
  * TODORepository for change initiatives
  * @author Kilian Hoefman
  * @author Simon De Wilde
+ * @author Marbod Naassens
  *
  * @property remoteDataSource
  * @property localDataSource

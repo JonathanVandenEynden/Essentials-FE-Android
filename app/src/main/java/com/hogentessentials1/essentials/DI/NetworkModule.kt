@@ -60,8 +60,8 @@ import retrofit2.converter.moshi.MoshiConverterFactory
  *
  * @author Simon De Wilde
  * @author Kilian Hoefman
- * @author Jonathan VEVL
- * @author Marbod Naasens
+ * @author Jonathan Vanden Eynden Van Lysebeth
+ * @author Marbod Naassens
  * @author Ziggy Moens
  * @author Sébastien De Pauw
  */

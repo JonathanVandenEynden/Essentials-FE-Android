@@ -3,6 +3,10 @@ package com.hogentessentials1.essentials.data.network
 /**
  * The remote data source for change groups
  *
+ * @author Kilian Hoefman
+ * @author Simon De Wilde
+ *
+ *
  * @property cgApiService
  */
 class ChangeGroupRemoteDataSource(val cgApiService: ChangeGroupEndpointInterface) : BaseDataSource() {

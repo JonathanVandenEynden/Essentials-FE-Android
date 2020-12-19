@@ -50,9 +50,9 @@ class SurveyDoneFragment : Fragment() {
 
             if (feedback != null) {
                 viewModel.answer(feedback.id.toInt(), answer)
-            } else (
+            } else {
                 Timber.e("feedback error")
-                )
+            }
 
             view.findNavController().navigate(
                 SurveyDoneFragmentDirections.actionSurveyDoneFragmentToHomeScreenFragment()

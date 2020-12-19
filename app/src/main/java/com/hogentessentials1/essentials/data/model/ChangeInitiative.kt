@@ -12,6 +12,7 @@ import kotlinx.android.parcel.Parcelize
  *
  * @author Ziggy Moens: made Parcelable
  * @author Kilian Hoefman: start of Dataclass
+ * @author Marbod Naassens
  *
  * @property id
  * @property title
@@ -21,7 +22,6 @@ import kotlinx.android.parcel.Parcelize
  * @property progress the progress (percentage) in string
  * @property changeGroup which change group is affected by this change
  * @property changeSponsor who is the sponsor for this change
- * @property changeType economic, personal, technological, organizational
  * @property roadMap a list of road map items
  */
 

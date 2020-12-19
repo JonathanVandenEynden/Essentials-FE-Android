@@ -4,6 +4,12 @@ import android.content.Context
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 
+/**
+ * class for displaying notifications
+ *
+ * @author Marbod Naassens
+ *
+ */
 class NotificationHelper {
     companion object Displayer {
         fun displayNotification(context: Context, title: String, body: String) {

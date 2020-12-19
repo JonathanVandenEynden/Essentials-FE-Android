@@ -12,7 +12,7 @@ data class ChangeInitiativeWithChangeGroup(
     @Embedded val changeInitiative: ChangeInitiative,
     @Relation(
         parentColumn = "id",
-        entityColumn = "change_group_id"
+        entityColumn = "changeInitiative_id"
     )
     val changeGroup: ChangeGroup
 )

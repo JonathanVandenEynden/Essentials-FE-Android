@@ -6,6 +6,8 @@ import com.hogentessentials1.essentials.data.model.Employee
 /**
  * The local data source for employees
  *
+ * @author Marbod Naassens
+ *
  * @property employeeDao
  */
 class EmployeeLocalDataSource(val employeeDao: EmployeeDao) {

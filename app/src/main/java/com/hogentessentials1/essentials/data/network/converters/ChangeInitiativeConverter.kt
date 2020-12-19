@@ -6,6 +6,8 @@ import com.hogentessentials1.essentials.data.model.ChangeInitiative
 
 /**
  *  Type converter for ChangeInitiative to string and vice versa
+ *
+ *  @author Simon De Wilde
  */
 class ChangeInitiativeConverter {
     /**

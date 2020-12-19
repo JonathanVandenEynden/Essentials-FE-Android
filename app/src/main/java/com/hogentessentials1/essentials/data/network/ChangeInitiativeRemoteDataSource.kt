@@ -2,7 +2,7 @@ package com.hogentessentials1.essentials.data.network
 
 /**
  * The remote data source for change initiatives
- *
+ * @author Kilian Hoefman
  * @property ciApiService
  */
 class ChangeInitiativeRemoteDataSource(val ciApiService: ChangeInitiativesEndpointInterface) : BaseDataSource() {

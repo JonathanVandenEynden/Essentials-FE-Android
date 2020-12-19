@@ -6,6 +6,8 @@ import com.hogentessentials1.essentials.data.model.Assessment
 
 /**
  *  Type converter for Assessment to string and vice versa
+ *
+ *  @author Simon De Wilde
  */
 class AssessmentConverter {
     /**

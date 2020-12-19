@@ -28,9 +28,10 @@ import timber.log.Timber
 /**
  * fragent for a dashboard graph
  *
+ * @author Marbod Naassens
+ *
  */
 class DashboardGraphFragment : Fragment() {
-    // lateinit var viewModel: DashboardViewModel
     private lateinit var binding: FragmentDashboardGraphBinding
     val viewModel: DashboardViewModel by inject()
     var ci: ChangeInitiative? = null

@@ -23,18 +23,10 @@ import retrofit2.http.Query
  * @author Kilian Hoefman
  * @author Jonathan Vanden Eynden
  * @author Simon De Wilde
+ * @author Marbod Naassens
+ * @author Ziggy Moens
+ * @author Sébastien De Pauw
  */
-
-// private const val BASE_URL = "https://essentialsapi.azurewebsites.net/api/"
-
-// private val moshi = Moshi.Builder()
-//    .add(KotlinJsonAdapterFactory())
-//    .build()
-//
-// private val retrofit = Retrofit.Builder()
-//    .addConverterFactory(ScalarsConverterFactory.create())
-//    .baseUrl(BASE_URL)
-//    .build()
 
 /**
  * Interface to make api calls for employees using the Retrofit library
@@ -176,6 +168,9 @@ interface AccountEndpointInterface {
     ): Response<ResponseBody>
 }
 
+/**
+ * Interface to make api calls for device tokens using the Retrofit library
+ */
 interface DeviceTokenEndpointInterface {
     @POST("DeviceTokens/{userid}")
     suspend fun postDeviceToken(@Path("userid") userid: String, @Query("token") token: String): Response<ResponseBody>

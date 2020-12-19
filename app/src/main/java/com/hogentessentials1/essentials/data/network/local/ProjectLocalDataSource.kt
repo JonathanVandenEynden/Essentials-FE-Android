@@ -5,7 +5,8 @@ import com.hogentessentials1.essentials.data.model.Project
 
 /**
  * The local data source for projects
- *
+ * @author Marbod Naassens
+ * @author Simon De Wilde
  * @property projectDao
  */
 class ProjectLocalDataSource(val projectDao: ProjectDao) {

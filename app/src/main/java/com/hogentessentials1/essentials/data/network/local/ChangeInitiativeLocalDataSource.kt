@@ -6,6 +6,8 @@ import com.hogentessentials1.essentials.data.model.ChangeInitiative
 /**
  * The local data source for change initiatives
  *
+ * @author Simon De Wilde
+ *
  * @property changeInitiativeDao
  */
 class ChangeInitiativeLocalDataSource(val changeInitiativeDao: ChangeInitiativeDao) {

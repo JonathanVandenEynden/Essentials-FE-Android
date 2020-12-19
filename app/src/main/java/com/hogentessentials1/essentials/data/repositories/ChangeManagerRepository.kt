@@ -3,6 +3,7 @@ package com.hogentessentials1.essentials.data.repositories
 import com.hogentessentials1.essentials.data.model.ChangeManager
 import com.hogentessentials1.essentials.data.network.ChangeManagerRemoteDataSource
 import com.hogentessentials1.essentials.util.Resource
+import javax.inject.Singleton
 
 /**
  * Repository for change managers
@@ -10,6 +11,7 @@ import com.hogentessentials1.essentials.util.Resource
  *
  * @property remoteDataSource
  */
+@Singleton
 class ChangeManagerRepository(val remoteDataSource: ChangeManagerRemoteDataSource) {
 
     /**

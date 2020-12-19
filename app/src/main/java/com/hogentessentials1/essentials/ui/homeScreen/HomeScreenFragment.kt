@@ -23,6 +23,8 @@ import timber.log.Timber
 /**
  * fragment for the home screen
  * @author Ziggy Moens
+ * @author Simon De Wilde
+ * @author Kilian Hoefman
  */
 
 class HomeScreenFragment : Fragment() {
@@ -166,8 +168,6 @@ class HomeScreenFragment : Fragment() {
          * @author Ziggy Moens: Remove dark theme from the app
          */
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-
-        binding.labelName.text = getString(R.string.hello, Globals.username)
 
         return binding.root
     }

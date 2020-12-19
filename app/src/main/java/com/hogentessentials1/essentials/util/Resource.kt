@@ -2,6 +2,9 @@ package com.hogentessentials1.essentials.util
 
 /**
  * resource that can be returned from sources
+ *
+ * @source Jens Buysse en Özgür Akin
+ *
  * @param data the data that is returned from the source
  * @param message the return message
  * @param status the status of the resource (ERROR, LOADING, SUCCESS)

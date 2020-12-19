@@ -6,6 +6,9 @@ import com.hogentessentials1.essentials.data.model.RoadMapItem
 /**
  * The local data source for road map items
  *
+ * @author Marbod Naassens
+ * @author Simon De Wilde
+ *
  * @property roadMapDao
  */
 class RoadMapLocalDataSource(val roadMapDao: RoadMapDao) {

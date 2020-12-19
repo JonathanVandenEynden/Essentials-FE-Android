@@ -9,11 +9,11 @@ import javax.inject.Singleton
 /**
  * Repository for employees
  * @author Kilian Hoefman
+ * @author Marbod Naassens
  *
  * @property remoteDataSource
  * @property localDataSource
  */
-
 @Singleton
 class EmployeeRepository(val remoteDataSource: EmployeeRemoteDataSource, val localDataSource: EmployeeLocalDataSource) {
 

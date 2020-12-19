@@ -167,35 +167,3 @@ class SurveyQuestionFragement : Fragment() {
         }
     }
 }
-
-/*Timber.e(roadMapItem.assessment.toString())
-try {
-val questions = roadMapItem.assessment!!.questions
-numberOfQuestions = questions.size
-
-
-binding.currentQuestion = this
-setQuestion()
-
-binding.ratingBarQuestion.setOnRatingBarChangeListener { _, _, _ ->
-    (ratingGiven())
-}
-
-binding.nextQuestion.setOnClickListener { view: View ->
-    // if (ratingIsGiven) {
-    //currentQuestion.answer = binding.ratingBarQuestion.rating.toDouble()
-    if (questionIndex < numberOfQuestions) {
-        currentQuestion = questions[questionIndex]
-        setQuestion()
-        binding.ratingBarQuestion.rating = 0.0F
-        binding.invalidateAll()
-    } else {
-        view.findNavController().navigate(
-            SurveyQuestionFragementDirections.actionSurveyQuestionFragmentToSurveyEndFragment(
-                roadMapItem
-            )
-        )
-    }
-
-    // }
-*/

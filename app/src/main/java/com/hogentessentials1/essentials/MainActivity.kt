@@ -32,6 +32,7 @@ import timber.log.Timber
  * The main activity of the application
  *
  * @author Simon De Wilde
+ * @author Marbod Naassens
  *
  */
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -44,7 +45,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         const val CHANNEL_ID: String = "essentialstoolkit_notifs"
     }
     val CHANNEL_NAME: String = "essentialstoolkit notifs"
-    val CHANNEL_DESC: String = "test"
+    val CHANNEL_DESC: String = "Essentials notifications"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -63,10 +64,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         FirebaseMessaging.getInstance().token.addOnCompleteListener(
             OnCompleteListener {
                 if (it.isSuccessful) {
-                    Timber.e("test" + Globals.userid!!.toString() + " " + it.result)
                     viewModel.post(Globals.userid!!, it.result!!)
                 } else {
-                    Timber.e("nope")
+                    Timber.e("not successful")
                 }
             }
         )

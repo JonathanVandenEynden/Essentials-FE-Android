@@ -59,7 +59,6 @@ class LoginActivityTest {
 
     @Test
     fun test_isSignInButtonEnabled_withInputInUsernameAndPasswordTextField() {
-        onView(withId(R.id.username)).perform(clearText()) // TODO weghalen nadat username niet meer automatisch is ingevuld
         onView(withId(R.id.username)).perform(typeText("username"))
         onView(withId(R.id.password)).perform(typeText("password"))
         onView(withId(R.id.login)).check(matches(isEnabled()))
@@ -67,7 +66,6 @@ class LoginActivityTest {
 
     @Test
     fun test_navMainActivity() {
-        onView(withId(R.id.username)).perform(clearText()) // TODO weghalen nadat username niet meer automatisch is ingevuld
         onView(withId(R.id.username)).perform(typeText("Sukrit.bhattacharya@hogent.com"))
         onView(withId(R.id.password)).perform(typeText("P@ssword1"))
         onView(withId(R.id.login)).perform(click())

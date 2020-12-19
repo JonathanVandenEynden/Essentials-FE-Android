@@ -2,7 +2,7 @@ package com.hogentessentials1.essentials.data.network
 
 /**
  * The remote data source for projects
- *
+ * @author Kilian Hoefman
  * @property projectApiService
  */
 class ProjectRemoteDataSource(val projectApiService: ProjectsEndpointInterface) : BaseDataSource() {

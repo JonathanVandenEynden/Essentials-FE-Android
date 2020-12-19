@@ -6,6 +6,8 @@ import com.hogentessentials1.essentials.data.model.ChangeGroup
 
 /**
  *  Type converter for ChangeGroup to string and vice versa
+ *
+ *  @author Simon De Wilde
  */
 class ChangeGroupConverter {
     /**

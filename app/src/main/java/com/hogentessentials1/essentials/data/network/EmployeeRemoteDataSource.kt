@@ -2,7 +2,7 @@ package com.hogentessentials1.essentials.data.network
 
 /**
  * The remote data source for employees
- *
+ * @author Kilian Hoefman
  * @property employeeApiService
  */
 class EmployeeRemoteDataSource(val employeeApiService: EmployeeEndpointInterface) : BaseDataSource() {

@@ -7,6 +7,7 @@ import timber.log.Timber
 /**
  * The base data source of the application
  *
+ * @source Jens Buysse en Özgür Akin
  */
 abstract class BaseDataSource {
 

@@ -6,7 +6,8 @@ import org.json.JSONArray
 
 /**
  * The remote data source for questions
- *
+ * @author Kilian Hoefman
+ * @author Ziggy Moens
  * @property questionApiService
  */
 class QuestionRemoteDataSource(val questionApiService: QuestionsEndpointInterface) :

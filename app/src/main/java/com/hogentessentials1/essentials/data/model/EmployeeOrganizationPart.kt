@@ -17,7 +17,6 @@ import kotlinx.android.parcel.Parcelize
  * @property type
  */
 
-@Entity(tableName = "employeeOrganizationPart")
 @Parcelize
 data class EmployeeOrganizationPart(
     @Json(name = "employeeId")

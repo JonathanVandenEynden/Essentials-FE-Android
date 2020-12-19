@@ -6,6 +6,8 @@ import com.hogentessentials1.essentials.data.model.RoadMapItem
 
 /**
  *  Type converter for RoadMapItem to string and vice versa
+ *
+ *  @author Simon De Wilde
  */
 class RoadMapItemConverter {
     /**

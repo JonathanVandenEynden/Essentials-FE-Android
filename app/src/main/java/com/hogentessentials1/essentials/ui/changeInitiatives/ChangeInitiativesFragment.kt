@@ -82,14 +82,6 @@ class ChangeInitiativesFragment : Fragment() {
 
         binding.ciList.adapter = adapter
 
-        /*if (changemanager) {
-            (activity as AppCompatActivity).supportActionBar?.title = "My Change initiatives"
-            viewModel.changeinitiativesChangeManager()
-        } else {
-            (activity as AppCompatActivity).supportActionBar?.title = "Change initiatives"
-            viewModel.changeinitiativesEmployee()
-        }*/
-
         if (changemanager) {
             (activity as AppCompatActivity).supportActionBar?.title = "My Change initiatives"
 
@@ -150,15 +142,6 @@ class ChangeInitiativesFragment : Fragment() {
             )
         }
 
-        /*viewModel.changeinitiatives.observe(
-            viewLifecycleOwner,
-            {
-                showLoading(true)
-                adapter.submitList(it)
-                showLoading(false)
-            }
-        )*/
-
         return binding.root
     }
 
@@ -175,9 +158,7 @@ class ChangeInitiativesFragment : Fragment() {
                 loadingDialogFragment.show(requireActivity().supportFragmentManager, "loader")
             }
         } else {
-            // if (loadingDialogFragment.isAdded) {
             loadingDialogFragment.dismissAllowingStateLoss()
-            // }
         }
     }
 }

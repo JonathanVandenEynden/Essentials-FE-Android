@@ -10,6 +10,8 @@ import javax.inject.Singleton
 /**
  * Repository for road map items
  * @author Kilian Hoefman
+ * @author Simon De Wilde
+ * @author Marbod Naassens
  *
  * @property remoteDataSource
  * @property localDataSource
@@ -27,12 +29,9 @@ class RoadMapRepository(val remoteDataSource: RoadMapRemoteDataSource, val local
         return remoteDataSource.getRoadMapItemById(roadMapItemId)
     }
 
-//    suspend fun getRoadMaps(id: Int): Resource<List<RoadMapItem>> {
-//        return remoteDataSource.getRoadMapItemsForChangeInitatitveWithId(id)
-//    }
     /**
      * get all road map items for a change initiative
-     * @param changeInitiativeId
+     * @param id
      * @return Resource with list of road map items
      */
     fun getRoadMaps(id: Int) = performGetOperation(

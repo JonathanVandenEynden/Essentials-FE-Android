@@ -13,7 +13,6 @@ import kotlinx.android.parcel.Parcelize
  * @property changeManagers
  * @property portfolio
  */
-// @Entity(tableName = "organization")
 @Parcelize
 data class Organization(
     @Json(name = "id")

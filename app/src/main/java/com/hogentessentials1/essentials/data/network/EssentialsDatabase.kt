@@ -77,24 +77,6 @@ abstract class EssentialsDatabase : RoomDatabase() {
             Room.databaseBuilder(appContext, EssentialsDatabase::class.java, "essentials_db")
                 .fallbackToDestructiveMigration()
                 .build()
-
-//        fun getInstance(context: Context): EssentialsDatabase {
-//            synchronized(this) {
-//                var instance = INSTANCE
-//
-//                if (instance == null) {
-//                    instance = Room.databaseBuilder(
-//                        context.applicationContext,
-//                        EssentialsDatabase::class.java,
-//                        "essentials_db"
-//                    )
-//                        .fallbackToDestructiveMigration()
-//                        .build()
-//                    INSTANCE = instance
-//                }
-//                return instance
-//            }
-//        }
     }
 
     suspend fun truncate() {

@@ -2,7 +2,7 @@ package com.hogentessentials1.essentials.data.network
 
 /**
  * The remote data source for surveys
- *
+ * @author Kilian Hoefman
  * @property surveyApiService
  */
 class SurveyRemoteDataSource(val surveyApiService: SurveyEndpointInterface) : BaseDataSource() {

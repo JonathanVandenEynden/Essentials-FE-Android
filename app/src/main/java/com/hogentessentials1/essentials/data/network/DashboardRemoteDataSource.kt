@@ -3,6 +3,8 @@ package com.hogentessentials1.essentials.data.network
 /**
  * The remote data source for dashboard
  *
+ * @author Marbod Naassens
+ *
  * @property dashboardApiService
  */
 class DashboardRemoteDataSource(val dashboardApiService: DashboardEndpointInterface) :

@@ -6,6 +6,8 @@ import com.hogentessentials1.essentials.data.model.Employee
 
 /**
  *  Type converter for Employee to string and vice versa
+ *
+ *  @author Simon De Wilde
  */
 class EmployeeConverter {
     /**
