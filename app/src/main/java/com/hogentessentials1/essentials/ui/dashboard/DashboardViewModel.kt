@@ -5,20 +5,12 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.hogentessentials1.essentials.data.model.ChangeInitiative
-import com.hogentessentials1.essentials.data.model.Repositories.ChangeInitiativeRepository
-import com.hogentessentials1.essentials.data.model.Repositories.DashboardRepository
-import com.hogentessentials1.essentials.data.model.Repositories.RoadMapRepository
 import com.hogentessentials1.essentials.data.model.RoadMapItem
-import com.hogentessentials1.essentials.data.model.Survey
-import com.hogentessentials1.essentials.data.model.SurveyQuestion
-import com.hogentessentials1.essentials.data.model.util.Status
+import com.hogentessentials1.essentials.data.repositories.ChangeInitiativeRepository
+import com.hogentessentials1.essentials.data.repositories.DashboardRepository
+import com.hogentessentials1.essentials.data.repositories.RoadMapRepository
+import com.hogentessentials1.essentials.util.Resource
 import kotlinx.coroutines.launch
-import timber.log.Timber
-import java.time.LocalDate
-import java.time.LocalDateTime
-import java.util.*
-import kotlin.collections.ArrayList
-
 
 /**
  *
@@ -27,20 +19,25 @@ import kotlin.collections.ArrayList
  * viewmodel voor Dashboard
  */
 class DashboardViewModel(private val dashboardRepository: DashboardRepository, private val cirepository: ChangeInitiativeRepository, val rmiRepository: RoadMapRepository) : ViewModel() {
+    // val changeInitiatives: LiveData<Resource<List<ChangeInitiative>>> = this.cirepository.getCIForChangeManager()
 
-    var chosenCIId: Int = 1;
+    var chosenCIId: Int = 1
+//
+//    private val _status = MutableLiveData<Status>()
+//    val status: LiveData<Status>
+//        get() = _status
 
-    private val _status = MutableLiveData<Status>()
-    val status: LiveData<Status>
-        get() = _status
+//    private val _changeInititives = MutableLiveData<List<ChangeInitiative>>()
+//    val cis: LiveData<List<ChangeInitiative>>
+//        get() = _changeInititives
 
-    private val _changeInititives = MutableLiveData<List<ChangeInitiative>>()
-    val cis: LiveData<List<ChangeInitiative>>
-        get() = _changeInititives
+    val cis: LiveData<Resource<List<ChangeInitiative>>> = cirepository.getChangeInitiativesForChangeManager()
 
-    private val _roadMapItems = MutableLiveData<List<RoadMapItem>>()
-    val rmis: LiveData<List<RoadMapItem>>
-        get() = _roadMapItems
+//    private val _roadMapItems = MutableLiveData<List<RoadMapItem>>()
+//    val rmis: LiveData<List<RoadMapItem>>
+//        get() = _roadMapItems
+
+    val rmis: LiveData<Resource<List<RoadMapItem>>> = rmiRepository.getRoadMaps(chosenCIId)
 
     private val _filledIn = MutableLiveData<Double>()
     val fi: LiveData<Double>
@@ -49,6 +46,51 @@ class DashboardViewModel(private val dashboardRepository: DashboardRepository, p
     private val _mood = MutableLiveData<Map<Int, Int>>()
     val m: LiveData<Map<Int, Int>>
         get() = _mood
+
+//    init {
+//        viewModelScope.launch {
+//            _status.value = Status.LOADING
+//            Timber.e("start met ophalen")
+//            try {
+//                Timber.e(chosenCIId.toString())
+//                _changeInititives.value =
+//                    cirepository.getChangeInitiativesForChangeManager().value?.data
+//                _roadMapItems.value =
+//                    rmiRepository.getRoadMaps(chosenCIId).data
+//                fillDashboard()
+//                Timber.e("ophalen successvol")
+//                _status.value = Status.SUCCESS
+//            } catch (e: Exception) {
+//                Timber.e("ophalen mislukt")
+//                Timber.e("$e")
+//
+//                _status.value = Status.ERROR
+//            }
+//        }
+//    }
+
+    fun fillDashboard() {
+        viewModelScope.launch {
+            _filledIn.value = dashboardRepository.getFilledInSurveys(chosenCIId).data
+            _mood.value = dashboardRepository.getMood(chosenCIId).data
+        }
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+    }
+
+    private val _navigateToGraph = MutableLiveData<Boolean>()
+    val navigateToGraph: LiveData<Boolean>
+        get() = _navigateToGraph
+
+    fun onButtonClicked() {
+        _navigateToGraph.value = true
+    }
+
+    fun onNavigatedToGraph() {
+        _navigateToGraph.value = false
+    }
 
     /*var changeInitiatives: ArrayList<ChangeInitiative> = arrayListOf(
         ChangeInitiative(
@@ -180,50 +222,4 @@ class DashboardViewModel(private val dashboardRepository: DashboardRepository, p
             )
         )
     )*/
-
-    init {
-        viewModelScope.launch {
-            _status.value = Status.LOADING
-            Timber.e("start met ophalen")
-            try {
-                Timber.e(chosenCIId.toString())
-                _changeInititives.value =
-                    cirepository.getChangeInitiatives().data
-                _roadMapItems.value =
-                    rmiRepository.getRoadMaps(chosenCIId).data
-                fillDashboard()
-                Timber.e("ophalen successvol")
-                _status.value = Status.SUCCESS
-            } catch (e: Exception) {
-                Timber.e("ophalen mislukt")
-                Timber.e("${e.message}")
-
-                _status.value = Status.ERROR
-            }
-        }
-    }
-
-    fun fillDashboard()
-    {
-        viewModelScope.launch {
-            _filledIn.value = dashboardRepository.getFilledInSurveys(chosenCIId).data
-            _mood.value = dashboardRepository.getMood(chosenCIId).data
-        }
-    }
-
-    override fun onCleared() {
-        super.onCleared()
-    }
-
-    private val _navigateToGraph = MutableLiveData<Boolean>()
-    val navigateToGraph: LiveData<Boolean>
-        get() = _navigateToGraph
-
-    fun onButtonClicked() {
-        _navigateToGraph.value = true
-    }
-
-    fun onNavigatedToGraph() {
-        _navigateToGraph.value = false
-    }
 }

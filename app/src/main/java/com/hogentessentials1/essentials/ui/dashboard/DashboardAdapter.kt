@@ -7,11 +7,8 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.RecyclerView
 import com.hogentessentials1.essentials.R
 import com.hogentessentials1.essentials.data.model.ChangeInitiative
-import com.hogentessentials1.essentials.ui.changeInitiatives.ChangeInitiativeListener
-import kotlinx.android.synthetic.main.fragment_dashboard_spinner_item.view.*
 
 /**
  * @author Marbod Naassens
@@ -34,16 +31,15 @@ class DashboardAdapter(context: Context, list: ArrayList<ChangeInitiative>) :
         return initView(position, convertView, parent)
     }
 
-    fun initView(position: Int, convertView: View?, parent: ViewGroup): View{
-        var view: View
-        if (convertView == null)
-        {
+    fun initView(position: Int, convertView: View?, parent: ViewGroup): View {
+        val view: View
+        if (convertView == null) {
             view = LayoutInflater.from(context).inflate(
-                R.layout.fragment_dashboard_spinner_item, parent, false
+                R.layout.fragment_dashboard_spinner_item,
+                parent,
+                false
             )
-        }
-        else
-        {
+        } else {
             view = convertView
         }
         val textViewName = view.findViewById<TextView>(R.id.spinner_text)
@@ -51,7 +47,7 @@ class DashboardAdapter(context: Context, list: ArrayList<ChangeInitiative>) :
 
         if (currentItem != null) {
             textViewName.setText(currentItem.title)
-        };
+        }
 
         return view
     }

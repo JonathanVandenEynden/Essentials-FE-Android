@@ -1,8 +1,8 @@
 package com.hogentessentials1.essentials
 
 import android.app.Application
-import com.hogentessentials1.essentials.data.model.DI.networkModule
-import com.hogentessentials1.essentials.data.model.DI.viewModelModule
+import com.hogentessentials1.essentials.DI.networkModule
+import com.hogentessentials1.essentials.DI.viewModelModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
@@ -20,6 +20,6 @@ class MyApplication : Application() {
                 viewModelModule
             )
         }
-        Timber.plant(Timber.DebugTree());
+        Timber.plant(Timber.DebugTree())
     }
 }

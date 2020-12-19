@@ -1,10 +1,11 @@
 package com.hogentessentials1.essentials.data.model
 
 import android.os.Parcelable
-import androidx.room.*
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.squareup.moshi.Json
 import kotlinx.android.parcel.Parcelize
-import java.util.*
 
 /**
  * @author Ziggy Moens: made Parcelable
@@ -29,8 +30,6 @@ data class ChangeInitiative(
     val changeGroup: ChangeGroup?,
     @Json(name = "changeSponsor")
     val changeSponsor: Employee?,
-    @Json(name = "changeType")
-    val changeType: ChangeType?,
     @Json(name = "roadMap")
     val roadMap: Array<RoadMapItem>,
     @Json(name = "progress")

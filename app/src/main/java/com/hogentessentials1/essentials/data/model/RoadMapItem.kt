@@ -6,8 +6,6 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.squareup.moshi.Json
 import kotlinx.android.parcel.Parcelize
-import java.text.DateFormat
-import java.util.*
 
 /**
  * @author Kilian Hoefman
@@ -29,7 +27,4 @@ data class RoadMapItem(
     val startDate: String,
     @Json(name = "endDate")
     val endDate: String
-//TODO Dates casten naar echte datums, formattering tussen JSON en android is verschillend
-) : Parcelable {
-    // TODO
-}
+) : Parcelable

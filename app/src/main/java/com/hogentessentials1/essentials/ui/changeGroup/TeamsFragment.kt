@@ -7,12 +7,12 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.hogentessentials1.essentials.R
 import com.hogentessentials1.essentials.data.model.ChangeGroup
-import com.hogentessentials1.essentials.data.model.util.Status
 import com.hogentessentials1.essentials.databinding.TeamsFragmentBinding
+import com.hogentessentials1.essentials.ui.LoadingFragment
+import com.hogentessentials1.essentials.util.Status
 import org.koin.android.ext.android.inject
 
 /**
@@ -22,20 +22,17 @@ import org.koin.android.ext.android.inject
  */
 class TeamsFragment : Fragment(), ChangeGroupClickListener {
 
+    private val loadingDialogFragment by lazy { LoadingFragment() }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         (activity as AppCompatActivity).supportActionBar?.title = "Teams"
 
         val binding: TeamsFragmentBinding =
             DataBindingUtil.inflate(inflater, R.layout.teams_fragment, container, false)
-
-        val application = requireNotNull(this.activity).application
-
-        // TODO dao's
-//        val dataSource = EssentialsDatabase.getInstance(application).ChangeGroupDao
 
         val viewModel: TeamsViewModel by inject()
 
@@ -49,11 +46,26 @@ class TeamsFragment : Fragment(), ChangeGroupClickListener {
 
         viewModel.changeGroups.observe(
             viewLifecycleOwner,
-            Observer {
+            {
                 it?.let { resource ->
-                    when (resource.status){
+                    when (resource.status) {
                         Status.SUCCESS -> {
+
+                            showLoading(false)
+                            if (resource.data?.isEmpty() == true) {
+                                binding.noTeamsBanner.visibility = View.VISIBLE
+                            } else {
+                                binding.noTeamsBanner.visibility = View.GONE
+                            }
                             adapter.submitList(resource.data)
+                        }
+                        Status.LOADING -> {
+                            showLoading(true)
+                            binding.noTeamsBanner.visibility = View.GONE
+                        }
+                        Status.ERROR -> {
+                            showLoading(false)
+                            // binding.noTeamsBanner.visibility = View.VISIBLE
                         }
                     }
                 }
@@ -63,6 +75,18 @@ class TeamsFragment : Fragment(), ChangeGroupClickListener {
         return binding.root
     }
 
+    fun showLoading(b: Boolean) {
+        if (b) {
+            if (!loadingDialogFragment.isAdded) {
+                loadingDialogFragment.show(requireActivity().supportFragmentManager, "loader")
+            }
+        } else {
+            // if (loadingDialogFragment.isAdded) {
+            loadingDialogFragment.dismissAllowingStateLoss()
+            // }
+        }
+    }
+
     override fun onClick(changeGroup: ChangeGroup) {
         navigateToDetail(changeGroup)
     }
@@ -70,7 +94,7 @@ class TeamsFragment : Fragment(), ChangeGroupClickListener {
     private fun navigateToDetail(changeGroup: ChangeGroup) {
 
         val directions =
-            TeamsFragmentDirections.actionTeamsFragmentToTeamDetailsFragment(changeGroup.users!!.map { u -> u.firstName.plus(" ").plus(u.lastName) }.toTypedArray())
+            TeamsFragmentDirections.actionTeamsFragmentToTeamDetailsFragment(changeGroup.employeeChangeGroups!!.map { ecg -> ecg.employee!!.firstName.plus(" ").plus(ecg.employee!!.lastName) }.toTypedArray())
         findNavController().navigate(directions)
     }
 }

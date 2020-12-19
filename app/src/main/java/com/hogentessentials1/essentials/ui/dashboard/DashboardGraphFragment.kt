@@ -5,6 +5,10 @@ import android.net.Uri
 import android.os.Bundle
 import android.view.*
 import android.widget.*
+import android.text.method.LinkMovementMethod
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -23,25 +27,23 @@ import com.hogentessentials1.essentials.databinding.FragmentDashboardGraphBindin
 import org.koin.android.ext.android.inject
 import timber.log.Timber
 
-
-class DashboardGraphFragment: Fragment() {
-    //lateinit var viewModel: DashboardViewModel
+class DashboardGraphFragment : Fragment() {
+    // lateinit var viewModel: DashboardViewModel
     private lateinit var binding: FragmentDashboardGraphBinding
     val viewModel: DashboardViewModel by inject()
     var ci: ChangeInitiative? = null
     var rmi: RoadMapItem? = null
     var mood: Map<Int, Int>? = null
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
-    
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         binding = DataBindingUtil.inflate(
             inflater,
@@ -53,8 +55,6 @@ class DashboardGraphFragment: Fragment() {
 
         binding.lifecycleOwner = this
 
-        val manager = LinearLayoutManager(activity)
-
         arguments?.getParcelable<ChangeInitiative>("changeInitiative")?.let {
             ci = it
         }
@@ -62,8 +62,7 @@ class DashboardGraphFragment: Fragment() {
             rmi = it
         }
 
-        if (ci != null && rmi != null)
-        {
+        if (ci != null && rmi != null) {
             binding.textView2.text = ci?.title
             showCharts(rmi!!)
         }
@@ -92,21 +91,21 @@ class DashboardGraphFragment: Fragment() {
         return super.onOptionsItemSelected(item)
     }
 
-    fun showCharts(item: RoadMapItem)
-    {
+
+    fun showCharts(item: RoadMapItem) {
         val chart = binding.chart
         chart.description.textSize = 20f
         chart.legend.textSize = 15f
-        val data = PieData(getDataSet(item))
+        val data = PieData(getDataSet())
         chart.data = data
         chart.data.setValueTextSize(15f)
         chart.setEntryLabelTextSize(20f)
-        chart.description.text =  item.title
+        chart.description.text = item.title
         chart.animateXY(2000, 2000)
         chart.invalidate()
     }
 
-    private fun getDataSet(item: RoadMapItem): PieDataSet {
+    private fun getDataSet(): PieDataSet {
         viewModel.chosenCIId = ci!!.id
         refreshVM()
         val moods : List<String> = listOf(
@@ -117,6 +116,11 @@ class DashboardGraphFragment: Fragment() {
             "\uD83D\uDE04"
         )
         getMood()
+        var mood: Map<Int, Int> = mapOf()
+        viewModel.m.observe(viewLifecycleOwner, { mood = it })
+        Timber.e("Test:%s", mood.toString())
+        val moods: List<String> =
+            listOf("\uD83D\uDE26", "\uD83D\uDE41", "\uD83D\uDE10", "\uD83D\uDE42", "\uD83D\uDE04")
         val valueSet1 = ArrayList<PieEntry>()
         if (mood!!.isNotEmpty())
         {
