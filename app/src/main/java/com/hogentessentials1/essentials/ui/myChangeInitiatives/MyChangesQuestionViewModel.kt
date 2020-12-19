@@ -7,10 +7,6 @@ import com.hogentessentials1.essentials.data.model.Question
  * @author Sébastien De Pauw
  */
 
-class MyChangesQuestionViewModel() : ViewModel() {
+class MyChangesQuestionViewModel : ViewModel() {
     lateinit var question: Question
-
-    override fun onCleared() {
-        super.onCleared()
-    }
 }

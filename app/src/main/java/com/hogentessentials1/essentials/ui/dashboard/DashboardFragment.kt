@@ -1,6 +1,8 @@
 package com.hogentessentials1.essentials.ui.dashboard
 
+import android.content.Intent
 import android.graphics.Color
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,12 +12,13 @@ import android.widget.AdapterView.OnItemSelectedListener
 import android.widget.Spinner
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.get
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.hogentessentials1.essentials.R
 import com.hogentessentials1.essentials.data.model.ChangeInitiative
-import com.hogentessentials1.essentials.data.model.RoadMapItem
 import com.hogentessentials1.essentials.databinding.FragmentDashboardBinding
 import com.hogentessentials1.essentials.ui.LoadingFragment
 import com.hogentessentials1.essentials.util.Status
@@ -28,22 +31,18 @@ import timber.log.Timber
  */
 class DashboardFragment : Fragment() {
     private var ciList: ArrayList<ChangeInitiative> = arrayListOf()
-    private var rmiList: ArrayList<RoadMapItem> = arrayListOf()
+    // private var rmiList: ArrayList<RoadMapItem> = arrayListOf()
     private var selectedCI: Int = 0
-    private var selectedRMI: Int = 0
+    // private var selectedRMI: Int = 0
 
     // lateinit var viewModel: DashboardViewModel
     private lateinit var binding: FragmentDashboardBinding
     val viewModel: DashboardViewModel by inject()
     lateinit var adapter: DashboardAdapter
-    lateinit var rmiAdapter: DashboardRMIAdapter
+    // lateinit var rmiAdapter: DashboardRMIAdapter
     lateinit var spinner: Spinner
-    lateinit var spinnerrmi: Spinner
+    // lateinit var spinnerrmi: Spinner
     private val loadingDialogFragment by lazy { LoadingFragment() }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -62,11 +61,11 @@ class DashboardFragment : Fragment() {
         binding.lifecycleOwner = this
 
         val spinner = binding.spinnerCi
-        val spinnerrmi = binding.spinnerRmi
+        // val spinnerrmi = binding.spinnerRmi
         val speed = binding.speedView
         speed.unit = "% of Surveys filled in"
         speed.isWithTremble = false
-        speed.setMaxSpeed(100)
+        speed.maxSpeed = 100
         speed.lowSpeedPercent = 33
         speed.mediumSpeedPercent = 66
         speed.lowSpeedColor = Color.RED
@@ -98,7 +97,7 @@ class DashboardFragment : Fragment() {
             spinnerrmi.adapter = rmiAdapter
         })*/
         spinner.setSelection(selectedCI)
-        spinnerrmi.setOnItemSelectedListener(
+        /*spinnerrmi.setOnItemSelectedListener(
             object : OnItemSelectedListener {
                 override fun onItemSelected(
                     parent: AdapterView<*>?,
@@ -125,7 +124,7 @@ class DashboardFragment : Fragment() {
 
                 override fun onNothingSelected(parent: AdapterView<*>?) {}
             }
-        )
+        )*/
 
         spinner.setOnItemSelectedListener(
             object : OnItemSelectedListener {
@@ -145,17 +144,22 @@ class DashboardFragment : Fragment() {
                     ).show()
                     viewModel.chosenCIId = clickedItem.id
                     refreshVM()
-                    rmiAdapter =
+                    /*rmiAdapter =
                         DashboardRMIAdapter(parent.context, ArrayList(clickedItem.roadMap.toList()))
-                    spinnerrmi.adapter = rmiAdapter
+                    spinnerrmi.adapter = rmiAdapter*/
+                    viewModel.fi.observe(
+                        viewLifecycleOwner,
+                        {
+                            speed.speedTo(it.toFloat())
+                        }
+                    )
                     showLoading(false)
                 }
 
                 override fun onNothingSelected(parent: AdapterView<*>?) {}
-            }
-        )
+            })
 
-        spinnerrmi.setSelection(selectedRMI)
+        // spinnerrmi.setSelection(selectedRMI)
 
         viewModel.navigateToGraph.observe(
             viewLifecycleOwner,
@@ -165,17 +169,18 @@ class DashboardFragment : Fragment() {
                     selectedCI = spinner.selectedItemPosition
                     Timber.e(spinner.selectedItem.toString())
                     Timber.e(selectedCI.toString())
-                    selectedRMI = spinnerrmi.selectedItemPosition
+                    // selectedRMI = spinnerrmi.selectedItemPosition
                     navController.navigate(
                         DashboardFragmentDirections.actionDashboardFragmentToDashboardGraphFragment(
-                            spinner.selectedItem as ChangeInitiative,
-                            spinnerrmi.selectedItem as RoadMapItem
+                            spinner.selectedItem as ChangeInitiative
                         )
                     )
                     viewModel.onNavigatedToGraph()
                 }
             }
         )
+
+        setHasOptionsMenu(true)
 
         (activity as AppCompatActivity).supportActionBar?.title = "Dashboard"
 
@@ -184,6 +189,22 @@ class DashboardFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.overflow_menu, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.infoFragment -> this.findNavController().navigate(R.id.homeScreenFragment)
+            R.id.websiteFragment -> {
+                val uri: Uri = Uri.parse("https://essentialstoolkit.netlify.app/")
+                startActivity(Intent(Intent.ACTION_VIEW, uri))
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     fun refreshVM() {
@@ -201,29 +222,4 @@ class DashboardFragment : Fragment() {
             // }
         }
     }
-
-    /*        viewModel.changeInitiatives.observe(
-            viewLifecycleOwner,
-            {
-                it?.let { resource ->
-                    when (resource.status) {
-                        Status.SUCCESS -> {
-                            showLoading(false)
-                            if (resource.data?.isEmpty() == true) {
-                                //findNavController().navigate(ChangeInitiativesFragmentDirections.actionChangeInitiativesToNotFoundFragment())
-                            } else {
-                            }
-                            adapter = DashboardAdapter(this.requireContext(), ArrayList(resource.data))
-                            spinner.adapter = adapter
-                        }
-                        Status.LOADING -> {
-                            showLoading(true)
-                        }
-                        Status.ERROR -> {
-                            showLoading(false)
-                        }
-                    }
-                }
-            }
-        )*/
 }

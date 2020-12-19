@@ -14,10 +14,6 @@ class RoadMapViewModel : ViewModel() {
 
     lateinit var roadMapItem: RoadMapItem
 
-    override fun onCleared() {
-        super.onCleared()
-    }
-
     private val _navigateToSurvey = MutableLiveData<Boolean>()
     val navigateToSurvey: LiveData<Boolean>
         get() = _navigateToSurvey

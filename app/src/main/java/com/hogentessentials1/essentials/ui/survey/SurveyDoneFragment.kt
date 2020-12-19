@@ -23,7 +23,7 @@ class SurveyDoneFragment : Fragment() {
     private lateinit var viewModel: SurveyDoneViewModel
     private lateinit var answer: String
 
-    fun getViewModel(): SurveyDoneViewModel {
+    private fun getViewModel(): SurveyDoneViewModel {
         val viewModel: SurveyDoneViewModel by inject()
         return viewModel
     }
@@ -43,8 +43,8 @@ class SurveyDoneFragment : Fragment() {
         viewModel = getViewModel()
 
         binding.surveyDoneButton.setOnClickListener { view: View ->
-            val smiley: SmileyRating.Type = binding.feedbackRating.getSelectedSmiley()
-            val rating: Int = smiley.getRating()
+            val smiley: SmileyRating.Type = binding.feedbackRating.selectedSmiley
+            val rating: Int = smiley.rating
 
             answer = rating.toString()
 

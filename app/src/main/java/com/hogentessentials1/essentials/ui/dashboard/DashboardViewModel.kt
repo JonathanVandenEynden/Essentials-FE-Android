@@ -74,13 +74,9 @@ class DashboardViewModel(private val dashboardRepository: DashboardRepository, p
 
     fun fillDashboard() {
         viewModelScope.launch {
-            _filledIn.value = dashboardRepository.getFilledInSurveys(chosenCIId).data
-            _mood.value = dashboardRepository.getMood(chosenCIId).data
+            _filledIn.value = dashboardRepository.getFilledInSurveys(chosenCIId).data!!
+            _mood.value = dashboardRepository.getMood(chosenCIId).data!!
         }
-    }
-
-    override fun onCleared() {
-        super.onCleared()
     }
 
     private val _navigateToGraph = MutableLiveData<Boolean>()

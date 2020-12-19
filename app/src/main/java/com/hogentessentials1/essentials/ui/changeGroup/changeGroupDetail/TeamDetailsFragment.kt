@@ -37,7 +37,7 @@ class TeamDetailsFragment : Fragment() {
             changeGroupMembers = it
         }
 
-        val adapter = activity?.let { ArrayAdapter<String>(it, R.layout.change_group_member_item, changeGroupMembers) }
+        val adapter = activity?.let { ArrayAdapter(it, R.layout.change_group_member_item, changeGroupMembers) }
 
         binding.membersListView.adapter = adapter
 

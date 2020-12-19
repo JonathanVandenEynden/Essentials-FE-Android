@@ -16,6 +16,7 @@ import com.hogentessentials1.essentials.data.model.Question
 import com.hogentessentials1.essentials.data.model.RoadMapItem
 import com.hogentessentials1.essentials.databinding.FragmentMychangeSurveyBinding
 import org.koin.android.ext.android.inject
+import kotlin.math.floor
 
 /**
  * @author Sébastien De Pauw
@@ -28,10 +29,6 @@ class MyChangesQuestionListFragment : Fragment() {
     private var questions: List<Question> = arrayListOf()
 
     private lateinit var binding: FragmentMychangeSurveyBinding
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     fun viewModel(): MyChangesQuestionListViewModel {
         val viewModel: MyChangesQuestionListViewModel by inject()
@@ -93,13 +90,14 @@ class MyChangesQuestionListFragment : Fragment() {
         roadmapItem.assessment.feedback?.possibleAnswers?.forEach { (_, v) -> meanFeedback += v }
         if (meanFeedback != 0.0) {
             meanFeedback /= roadmapItem.assessment.feedback?.possibleAnswers?.size!!
-            binding.surveyAveragemoodTextviewId.text = "Overall happiness: " + calculatePercent(meanFeedback)
+            binding.surveyAveragemoodTextviewId.text = getString(R.string.Overall_happiness_applicable, calculatePercent(meanFeedback))
+            // "Overall happiness: " + calculatePercent(meanFeedback)
         } else {
-            binding.surveyAveragemoodTextviewId.text = "Overall happiness: not yet applicable"
+            binding.surveyAveragemoodTextviewId.text = getString(R.string.Overall_happiness_not_applicable)
         }
 
         binding.surveyAveragemoodImageviewId.setImageResource(
-            when (Math.floor(meanFeedback).toInt()) {
+            when (floor(meanFeedback).toInt()) {
                 1 -> R.drawable.ic_happiness_1
                 2 -> R.drawable.ic_happiness_2
                 3 -> R.drawable.ic_happiness_3
@@ -116,15 +114,11 @@ class MyChangesQuestionListFragment : Fragment() {
         return binding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-    }
-
-    fun calculatePercent(meanFeedback: Double): String {
-        var ret: String
-        when (meanFeedback) {
-            -1.0 -> ret = "not yet applicable"
-            else -> ret = (meanFeedback / 5 * 100).toString() + " %"
+    private fun calculatePercent(meanFeedback: Double): String {
+        var ret = ""
+        ret = when (meanFeedback) {
+            -1.0 -> "not yet applicable"
+            else -> (meanFeedback / 5 * 100).toString() + " %"
         }
         return ret
     }

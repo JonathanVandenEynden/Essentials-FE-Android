@@ -39,7 +39,7 @@ class RoadMapFragment : Fragment() {
 
         val viewModel = ViewModelProvider(this).get(RoadMapViewModel::class.java)
 
-        val q_original: List<Question> = roadmapitem.assessment!!.questions
+        val qOriginal: List<Question> = roadmapitem.assessment!!.questions
         val q: ArrayList<Question> = arrayListOf()
         var filledIn = 0
 
@@ -51,7 +51,7 @@ class RoadMapFragment : Fragment() {
             }
         }
 
-        binding.amountQuestions.text = q_original.size.toString()
+        binding.amountQuestions.text = qOriginal.size.toString()
         binding.filledIn.text = filledIn.toString()
 
         roadmapitem.assessment!!.questions = q
@@ -62,7 +62,7 @@ class RoadMapFragment : Fragment() {
 
         if (q.size == 0 && !changemanager) {
             binding.surveyRoadmap.setBackgroundColor(resources.getColor(R.color.green))
-            binding.surveyRoadmap.setText(resources.getText(R.string.survey_already_filled))
+            binding.surveyRoadmap.text = resources.getText(R.string.survey_already_filled)
         }
 
         if (!changemanager) {
@@ -71,7 +71,7 @@ class RoadMapFragment : Fragment() {
                 {
                     if (it) {
                         if (q.size == 0) {
-                            roadmapitem.assessment!!.questions = q_original
+                            roadmapitem.assessment!!.questions = qOriginal
                             binding.root.findNavController().navigate(
                                 RoadMapFragmentDirections.actionRoadMapFragmentToSurveyComplete()
                             )
@@ -93,7 +93,7 @@ class RoadMapFragment : Fragment() {
                 viewLifecycleOwner,
                 {
                     if (it) {
-                        roadmapitem.assessment!!.questions = q_original
+                        roadmapitem.assessment!!.questions = qOriginal
                         binding.root.findNavController().navigate(
                             RoadMapFragmentDirections.actionRoadMapFragmentToMyChangesQuestionListFragment(roadmapitem)
                         )

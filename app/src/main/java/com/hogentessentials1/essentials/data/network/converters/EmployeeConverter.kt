@@ -22,7 +22,7 @@ class EmployeeConverter {
      * @param employee
      */
     @TypeConverter
-    fun EmployeeToString(employee: Employee): String {
+    fun employeeToString(employee: Employee): String {
         return Gson().toJson(employee)
     }
 }

@@ -28,10 +28,6 @@ class RoadMapListFragment : Fragment() {
 
     private lateinit var binding: RoadmapListBinding
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     fun viewModel(): RoadMapListViewModel {
         val viewModel: RoadMapListViewModel by inject()
         return viewModel
@@ -113,7 +109,7 @@ class RoadMapListFragment : Fragment() {
                                     binding.noRmiBanner.visibility = View.GONE
 
                                     // Get all RMI
-                                    var list = arrayListOf<RoadMapItem>()
+                                    val list = arrayListOf<RoadMapItem>()
                                     resource.data?.map { ci -> list.addAll(ci.roadMap) }
                                     adapter.submitList(list)
                                 }
@@ -142,9 +138,5 @@ class RoadMapListFragment : Fragment() {
         (activity as AppCompatActivity).supportActionBar?.title = "Road map"
 
         return binding.root
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
     }
 }

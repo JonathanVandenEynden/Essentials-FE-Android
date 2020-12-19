@@ -20,12 +20,8 @@ class MyChangesQuestionListViewModel(private val repo: QuestionRepository) : Vie
 
     private val _questions = MutableLiveData<List<Question>>()
 
-    val Questions: LiveData<List<Question>>
+    val questions: LiveData<List<Question>>
         get() = _questions
-
-    override fun onCleared() {
-        super.onCleared()
-    }
 
     private val _navigateToQuestion = MutableLiveData<Question?>()
     val navigateToQuestion

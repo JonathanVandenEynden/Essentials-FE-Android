@@ -14,10 +14,6 @@ class ChangeinitiativeViewModel : ViewModel() {
 
     lateinit var changeInitiative: ChangeInitiative
 
-    override fun onCleared() {
-        super.onCleared()
-    }
-
     private val _navigateToRoadmap = MutableLiveData<Boolean>()
     val navigateToRoadmap
         get() = _navigateToRoadmap

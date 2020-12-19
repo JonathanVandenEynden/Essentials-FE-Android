@@ -27,9 +27,6 @@ import com.hogentessentials1.essentials.data.network.SurveyEndpointInterface
 import com.hogentessentials1.essentials.data.network.SurveyRemoteDataSource
 import com.hogentessentials1.essentials.data.network.local.ChangeGroupLocalDataSource
 import com.hogentessentials1.essentials.data.network.local.ChangeInitiativeLocalDataSource
-import com.hogentessentials1.essentials.data.network.local.EmployeeLocalDataSource
-import com.hogentessentials1.essentials.data.network.local.ProjectLocalDataSource
-import com.hogentessentials1.essentials.data.network.local.RoadMapLocalDataSource
 import com.hogentessentials1.essentials.data.repositories.ChangeGroupRepository
 import com.hogentessentials1.essentials.data.repositories.ChangeInitiativeRepository
 import com.hogentessentials1.essentials.data.repositories.ChangeManagerRepository
@@ -41,6 +38,9 @@ import com.hogentessentials1.essentials.data.repositories.ProjectRepository
 import com.hogentessentials1.essentials.data.repositories.QuestionRepository
 import com.hogentessentials1.essentials.data.repositories.RoadMapRepository
 import com.hogentessentials1.essentials.data.repositories.SurveyRepository
+import com.hogentessentials1.essentials.data.network.local.EmployeeLocalDataSource
+import com.hogentessentials1.essentials.data.network.local.ProjectLocalDataSource
+import com.hogentessentials1.essentials.data.network.local.RoadMapLocalDataSource
 import com.hogentessentials1.essentials.ui.login.data.LoginDataSource
 import com.hogentessentials1.essentials.ui.login.data.LoginRepository
 import com.hogentessentials1.essentials.util.Globals

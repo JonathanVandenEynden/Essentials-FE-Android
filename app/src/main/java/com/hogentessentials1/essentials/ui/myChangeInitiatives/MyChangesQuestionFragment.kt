@@ -48,7 +48,7 @@ class MyChangesQuestionFragment : Fragment() {
             if (amountFilledIn == 0) {
                 tTimesChosen.text = "0 %"
             } else {
-                tTimesChosen.text = (v / amountFilledIn * 100).toString() + " %"
+                tTimesChosen.text = getString(R.string.chosen_perc, (v / amountFilledIn * 100).toString())
             }
             if (question.type.toInt() == 1) {
                 val stars = RatingBar(activity)
@@ -75,9 +75,5 @@ class MyChangesQuestionFragment : Fragment() {
         binding.viewModel = viewModel
 
         return binding.root
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
     }
 }
