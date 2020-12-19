@@ -11,7 +11,10 @@ import android.view.View
 import android.view.animation.AnimationUtils
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
-import android.widget.*
+import android.widget.Button
+import android.widget.EditText
+import android.widget.ImageView
+import android.widget.Toast
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
@@ -23,6 +26,7 @@ import org.koin.android.ext.android.inject
 
 /**
  * @author Simon De Wilde
+ * @author Jonathan Vanden Eynden
  */
 class LoginActivity : AppCompatActivity() {
 

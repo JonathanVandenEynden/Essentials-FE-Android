@@ -4,34 +4,21 @@ import android.content.Intent
 import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
-import android.view.*
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.AdapterView.OnItemSelectedListener
 import android.widget.Spinner
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.GravityCompat
 import androidx.core.view.get
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.NavController
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.ui.NavigationUI
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.github.anastr.speedviewlib.Speedometer
-import com.github.mikephil.charting.charts.PieChart
-import com.github.mikephil.charting.data.BarEntry
-import com.github.mikephil.charting.data.PieData
-import com.github.mikephil.charting.data.PieDataSet
-import com.github.mikephil.charting.data.PieEntry
-import com.github.mikephil.charting.utils.ColorTemplate
 import com.hogentessentials1.essentials.R
 import com.hogentessentials1.essentials.data.model.ChangeInitiative
-import com.hogentessentials1.essentials.data.model.RoadMapItem
 import com.hogentessentials1.essentials.databinding.FragmentDashboardBinding
 import com.hogentessentials1.essentials.ui.LoadingFragment
 import com.hogentessentials1.essentials.util.Status
@@ -43,17 +30,17 @@ import timber.log.Timber
  */
 class DashboardFragment : Fragment() {
     private var ciList: ArrayList<ChangeInitiative> = arrayListOf()
-    //private var rmiList: ArrayList<RoadMapItem> = arrayListOf()
+    // private var rmiList: ArrayList<RoadMapItem> = arrayListOf()
     private var selectedCI: Int = 0
-    //private var selectedRMI: Int = 0
+    // private var selectedRMI: Int = 0
 
     // lateinit var viewModel: DashboardViewModel
     private lateinit var binding: FragmentDashboardBinding
     val viewModel: DashboardViewModel by inject()
     lateinit var adapter: DashboardAdapter
-    //lateinit var rmiAdapter: DashboardRMIAdapter
+    // lateinit var rmiAdapter: DashboardRMIAdapter
     lateinit var spinner: Spinner
-    //lateinit var spinnerrmi: Spinner
+    // lateinit var spinnerrmi: Spinner
     private val loadingDialogFragment by lazy { LoadingFragment() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -77,7 +64,7 @@ class DashboardFragment : Fragment() {
         binding.lifecycleOwner = this
 
         val spinner = binding.spinnerCi
-        //val spinnerrmi = binding.spinnerRmi
+        // val spinnerrmi = binding.spinnerRmi
         val speed = binding.speedView
         speed.unit = "% of Surveys filled in"
         speed.isWithTremble = false
@@ -176,7 +163,7 @@ class DashboardFragment : Fragment() {
             }
         )
 
-        //spinnerrmi.setSelection(selectedRMI)
+        // spinnerrmi.setSelection(selectedRMI)
 
         viewModel.navigateToGraph.observe(
             viewLifecycleOwner,
@@ -186,7 +173,7 @@ class DashboardFragment : Fragment() {
                     selectedCI = spinner.selectedItemPosition
                     Timber.e(spinner.selectedItem.toString())
                     Timber.e(selectedCI.toString())
-                    //selectedRMI = spinnerrmi.selectedItemPosition
+                    // selectedRMI = spinnerrmi.selectedItemPosition
                     navController.navigate(
                         DashboardFragmentDirections.actionDashboardFragmentToDashboardGraphFragment(
                             spinner.selectedItem as ChangeInitiative
@@ -224,8 +211,7 @@ class DashboardFragment : Fragment() {
         return super.onOptionsItemSelected(item)
     }
 
-    fun refreshVM()
-    {
+    fun refreshVM() {
         viewModel.fillDashboard()
     }
 

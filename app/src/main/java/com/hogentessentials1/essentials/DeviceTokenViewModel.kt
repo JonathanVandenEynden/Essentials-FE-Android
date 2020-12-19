@@ -4,7 +4,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.hogentessentials1.essentials.data.repositories.DeviceTokenRepository
 import kotlinx.coroutines.launch
-import timber.log.Timber
 
 class DeviceTokenViewModel(private val repo: DeviceTokenRepository) : ViewModel() {
 

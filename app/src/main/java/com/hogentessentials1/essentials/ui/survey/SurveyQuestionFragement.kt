@@ -21,7 +21,6 @@ import com.hogentessentials1.essentials.ui.roadMap.RoadMapFragmentDirections
 import kotlinx.android.synthetic.main.survey_question.*
 import kotlinx.android.synthetic.main.survey_question.view.*
 import org.koin.android.ext.android.inject
-import java.time.LocalDateTime
 
 /**
  * @author Ziggy Moens
@@ -62,8 +61,7 @@ class SurveyQuestionFragement : Fragment() {
         roadMapItem = args.roadmapitem
         questions = roadMapItem.assessment!!.questions
 
-        if (true)
-        {
+        if (true) {
             var builder = NotificationCompat.Builder(this.requireContext(), "testchannel")
                 .setSmallIcon(R.drawable.ic_logo)
                 .setContentTitle("hey")
@@ -73,7 +71,6 @@ class SurveyQuestionFragement : Fragment() {
                 notify(1, builder.build())
             }
         }
-
 
         binding.currentQuestion = this
         numberOfQuestions = questions.size

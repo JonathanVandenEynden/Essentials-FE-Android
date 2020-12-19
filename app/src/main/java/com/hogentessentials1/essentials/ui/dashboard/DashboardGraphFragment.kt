@@ -3,19 +3,17 @@ package com.hogentessentials1.essentials.ui.dashboard
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.view.*
-import android.widget.*
-import android.text.method.LinkMovementMethod
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
@@ -68,7 +66,6 @@ class DashboardGraphFragment : Fragment() {
             binding.textView2.text = ci?.title
         }
 
-
         setHasOptionsMenu(true)
 
         (activity as AppCompatActivity).supportActionBar?.title = "Dashboard"
@@ -92,13 +89,11 @@ class DashboardGraphFragment : Fragment() {
         return super.onOptionsItemSelected(item)
     }
 
-
     fun showCharts() {
         val chart = binding.chart
         chart.description.textSize = 20f
         chart.legend.textSize = 15f
-        if (mood != null)
-        {
+        if (mood != null) {
             val data = PieData(getDataSet())
             chart.data = data
             chart.data.setValueTextSize(15f)
@@ -110,7 +105,7 @@ class DashboardGraphFragment : Fragment() {
     }
 
     private fun getDataSet(): PieDataSet? {
-        val moods : List<String> = listOf(
+        val moods: List<String> = listOf(
             "\uD83D\uDE26",
             "\uD83D\uDE41",
             "\uD83D\uDE10",
@@ -118,12 +113,11 @@ class DashboardGraphFragment : Fragment() {
             "\uD83D\uDE04"
         )
         val valueSet1 = ArrayList<PieEntry>()
-        if (mood!!.isNotEmpty())
-        {
+        if (mood!!.isNotEmpty()) {
             Timber.e(mood.toString())
             Timber.e("hey")
             var sum = 0
-            mood!!.values.forEach{sum += it}
+            mood!!.values.forEach { sum += it }
             for (m in mood!!) {
                 val ve = PieEntry((m.value.toFloat() / sum) * 100, moods[m.key - 1])
                 valueSet1.add(ve)
@@ -136,16 +130,17 @@ class DashboardGraphFragment : Fragment() {
         return null
     }
 
-    fun refreshVM()
-    {
+    fun refreshVM() {
         viewModel.fillDashboard()
     }
 
-    fun getMood()
-    {
-        viewModel.m.observe(viewLifecycleOwner, Observer {
-            mood = it
-            showCharts()
-        })
+    fun getMood() {
+        viewModel.m.observe(
+            viewLifecycleOwner,
+            Observer {
+                mood = it
+                showCharts()
+            }
+        )
     }
 }
