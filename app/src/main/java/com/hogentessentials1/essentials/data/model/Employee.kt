@@ -8,9 +8,16 @@ import com.squareup.moshi.Json
 import kotlinx.android.parcel.Parcelize
 
 /**
+ * An employee in an organization
+ *
  * @author Kilian Hoefman: start of dataclass
+ *
+ * @property id
+ * @property firstName
+ * @property lastName
+ * @property email
+ * @property employeeChangeGroups the list of joining tables between employees and change groups
  */
-
 @Entity(tableName = "employee")
 @Parcelize
 data class Employee(

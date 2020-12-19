@@ -5,6 +5,9 @@ import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
@@ -12,7 +15,6 @@ import android.widget.AdapterView.OnItemSelectedListener
 import android.widget.Spinner
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.get
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
@@ -23,24 +25,19 @@ import com.hogentessentials1.essentials.databinding.FragmentDashboardBinding
 import com.hogentessentials1.essentials.ui.LoadingFragment
 import com.hogentessentials1.essentials.util.Status
 import org.koin.android.ext.android.inject
-import timber.log.Timber
 
 /**
+ * fragment for dashboards
  * @author Marbod Naassens
  */
 class DashboardFragment : Fragment() {
     private var ciList: ArrayList<ChangeInitiative> = arrayListOf()
-    // private var rmiList: ArrayList<RoadMapItem> = arrayListOf()
     private var selectedCI: Int = 0
-    // private var selectedRMI: Int = 0
 
-    // lateinit var viewModel: DashboardViewModel
     private lateinit var binding: FragmentDashboardBinding
     val viewModel: DashboardViewModel by inject()
     lateinit var adapter: DashboardAdapter
-    // lateinit var rmiAdapter: DashboardRMIAdapter
     lateinit var spinner: Spinner
-    // lateinit var spinnerrmi: Spinner
     private val loadingDialogFragment by lazy { LoadingFragment() }
 
     override fun onCreateView(
@@ -60,7 +57,6 @@ class DashboardFragment : Fragment() {
         binding.lifecycleOwner = this
 
         val spinner = binding.spinnerCi
-        // val spinnerrmi = binding.spinnerRmi
         val speed = binding.speedView
         speed.unit = "% of Surveys filled in"
         speed.isWithTremble = false
@@ -71,7 +67,6 @@ class DashboardFragment : Fragment() {
         speed.mediumSpeedColor = Color.YELLOW
         speed.highSpeedColor = Color.GREEN
 
-        // ciList = ArrayList(viewModel.changeInitiatives)
         viewModel.cis.observe(
             viewLifecycleOwner,
             {
@@ -90,11 +85,7 @@ class DashboardFragment : Fragment() {
                 }
             }
         )
-        // rmiList = ArrayList(viewModel.roadMapItems)
-        /*this.viewModel.rmis.observe(viewLifecycleOwner, Observer {
-            rmiAdapter = DashboardRMIAdapter(this.requireContext(), ArrayList(it))
-            spinnerrmi.adapter = rmiAdapter
-        })*/
+
         spinner.setSelection(selectedCI)
         /*spinnerrmi.setOnItemSelectedListener(
             object : OnItemSelectedListener {
@@ -143,9 +134,6 @@ class DashboardFragment : Fragment() {
                     ).show()
                     viewModel.chosenCIId = clickedItem.id
                     refreshVM()
-                    /*rmiAdapter =
-                        DashboardRMIAdapter(parent.context, ArrayList(clickedItem.roadMap.toList()))
-                    spinnerrmi.adapter = rmiAdapter*/
                     viewModel.fi.observe(
                         viewLifecycleOwner,
                         {
@@ -158,17 +146,12 @@ class DashboardFragment : Fragment() {
                 override fun onNothingSelected(parent: AdapterView<*>?) {}
             })
 
-        // spinnerrmi.setSelection(selectedRMI)
-
         viewModel.navigateToGraph.observe(
             viewLifecycleOwner,
             {
                 if (it) {
                     val navController = binding.root.findNavController()
                     selectedCI = spinner.selectedItemPosition
-                    Timber.e(spinner.selectedItem.toString())
-                    Timber.e(selectedCI.toString())
-                    // selectedRMI = spinnerrmi.selectedItemPosition
                     navController.navigate(
                         DashboardFragmentDirections.actionDashboardFragmentToDashboardGraphFragment(
                             spinner.selectedItem as ChangeInitiative
@@ -184,10 +167,6 @@ class DashboardFragment : Fragment() {
         (activity as AppCompatActivity).supportActionBar?.title = "Dashboard"
 
         return binding.root
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -216,9 +195,7 @@ class DashboardFragment : Fragment() {
                 loadingDialogFragment.show(requireActivity().supportFragmentManager, "loader")
             }
         } else {
-            // if (loadingDialogFragment.isAdded) {
             loadingDialogFragment.dismissAllowingStateLoss()
-            // }
         }
     }
 }

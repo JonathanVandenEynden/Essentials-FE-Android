@@ -22,7 +22,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <!--TODO name of survey instead of id -->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/changeinitiative_listitem_button"
             android:layout_width="match_parent"

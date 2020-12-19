@@ -1,9 +1,6 @@
 package com.hogentessentials1.essentials.DI
 
 import com.hogentessentials1.essentials.BuildConfig
-import com.hogentessentials1.essentials.data.model.network.local.EmployeeLocalDataSource
-import com.hogentessentials1.essentials.data.model.network.local.ProjectLocalDataSource
-import com.hogentessentials1.essentials.data.model.network.local.RoadMapLocalDataSource
 import com.hogentessentials1.essentials.data.network.AccountEndpointInterface
 import com.hogentessentials1.essentials.data.network.ChangeGroupEndpointInterface
 import com.hogentessentials1.essentials.data.network.ChangeGroupRemoteDataSource
@@ -30,6 +27,9 @@ import com.hogentessentials1.essentials.data.network.SurveyEndpointInterface
 import com.hogentessentials1.essentials.data.network.SurveyRemoteDataSource
 import com.hogentessentials1.essentials.data.network.local.ChangeGroupLocalDataSource
 import com.hogentessentials1.essentials.data.network.local.ChangeInitiativeLocalDataSource
+import com.hogentessentials1.essentials.data.network.local.EmployeeLocalDataSource
+import com.hogentessentials1.essentials.data.network.local.ProjectLocalDataSource
+import com.hogentessentials1.essentials.data.network.local.RoadMapLocalDataSource
 import com.hogentessentials1.essentials.data.repositories.ChangeGroupRepository
 import com.hogentessentials1.essentials.data.repositories.ChangeInitiativeRepository
 import com.hogentessentials1.essentials.data.repositories.ChangeManagerRepository
@@ -55,6 +55,16 @@ import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 
+/**
+ * Definitions of the network module
+ *
+ * @author Simon De Wilde
+ * @author Kilian Hoefman
+ * @author Jonathan Vanden Eynden Van Lysebeth
+ * @author Marbod Naassens
+ * @author Ziggy Moens
+ * @author Sébastien De Pauw
+ */
 val networkModule = module {
     // retrofit and interfaces
     single { provideOkHttpClient() }

@@ -11,15 +11,16 @@ import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.DialogFragment
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.hogentessentials1.essentials.R
 import com.hogentessentials1.essentials.databinding.FragmentLoadingBinding
 
 /**
- * A simple [Fragment] subclass.
- * Use the [LoadingFragment.newInstance] factory method to
- * create an instance of this fragment.
+ * Loading fragment
+ *
+ * @author Ziggy Moens
+ * @author Marbod Naassens
+ *
  */
 class LoadingFragment : DialogFragment() {
     private lateinit var binding: FragmentLoadingBinding

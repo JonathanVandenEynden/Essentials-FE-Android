@@ -12,6 +12,8 @@ import com.hogentessentials1.essentials.R
 import com.hogentessentials1.essentials.databinding.NotFound404Binding
 
 /**
+ * Not found fragment
+ * route to this fragment when something does not exist
  * @author Ziggy Moens
  */
 

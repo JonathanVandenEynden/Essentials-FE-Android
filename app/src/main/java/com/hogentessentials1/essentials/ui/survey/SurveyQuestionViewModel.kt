@@ -7,9 +7,12 @@ import kotlinx.coroutines.launch
 import timber.log.Timber
 
 /**
+ * view model for a question
+ *
  * @author Ziggy Moens
+ *
+ * @property repo
  */
-
 class SurveyQuestionViewModel(private val repo: QuestionRepository) : ViewModel() {
 
     fun answer(questionId: Int, answer: String) {

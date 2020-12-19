@@ -8,7 +8,11 @@ import com.squareup.moshi.Json
 import kotlinx.android.parcel.Parcelize
 
 /**
+ * a type of change --> economical, organizational, technological, personal
+ *
  * @author Kilian Hoefman
+ *
+ * @property id
  */
 
 @Entity(tableName = "changeType")

@@ -12,6 +12,7 @@ import com.hogentessentials1.essentials.data.model.ChangeInitiative
 import com.hogentessentials1.essentials.data.model.RoadMapItem
 
 /**
+ * adapter to convert road map items in a dashboard
  * @author Marbod Naassens
  */
 class DashboardRMIAdapter(context: Context, var list: ArrayList<RoadMapItem>) :

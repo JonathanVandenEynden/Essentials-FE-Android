@@ -6,6 +6,8 @@ import androidx.lifecycle.ViewModel
 import com.hogentessentials1.essentials.data.model.RoadMapItem
 
 /**
+ * view model for the road map fragment
+ *
  * @author Ziggy Moens
  */
 class RoadMapViewModel : ViewModel() {

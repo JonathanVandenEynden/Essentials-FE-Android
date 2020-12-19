@@ -2,13 +2,13 @@
 <!-- @author Simon De Wilde -->
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
+        android:id="@+id/homeDrawer"
+        android:icon="@drawable/home_black_48dp"
+        android:title="@string/homeScreen" />
+    <item
         android:id="@+id/changeInitiativesDrawer"
         android:icon="@drawable/sync_black_18dp"
         android:title="@string/change_initiatives" />
-    <item
-        android:id="@+id/allSurveysDrawer"
-        android:icon="@drawable/content_paste_black_48dp"
-        android:title="@string/surveys" />
     <item
         android:id="@+id/teamsDrawer"
         android:icon="@drawable/people_black_48dp"

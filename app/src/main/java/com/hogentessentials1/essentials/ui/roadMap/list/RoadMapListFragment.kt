@@ -18,6 +18,8 @@ import com.hogentessentials1.essentials.util.Status
 import org.koin.android.ext.android.inject
 
 /**
+ * fragment for the road map overview
+ *
  * @author Ziggy Moens
  */
 class RoadMapListFragment : Fragment() {

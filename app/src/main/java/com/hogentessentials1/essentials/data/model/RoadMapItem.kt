@@ -8,7 +8,16 @@ import com.squareup.moshi.Json
 import kotlinx.android.parcel.Parcelize
 
 /**
+ * An item in the road map of a change
+ *
  * @author Kilian Hoefman
+ *
+ * @property id
+ * @property title
+ * @property assessment each road map item can have one survey
+ * @property done
+ * @property startDate
+ * @property endDate
  */
 
 @Entity(tableName = "roadMapItem")

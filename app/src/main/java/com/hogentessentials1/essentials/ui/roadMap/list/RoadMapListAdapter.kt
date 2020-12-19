@@ -9,7 +9,11 @@ import com.hogentessentials1.essentials.data.model.RoadMapItem
 import com.hogentessentials1.essentials.databinding.RoadmapItemBinding
 
 /**
+ * Adapter to convert road map items to views
+ *
  * @author Ziggy Moens
+ *
+ * @property clickListener
  */
 
 class RoadMapAdapter(val clickListener: RoadMapListener) :

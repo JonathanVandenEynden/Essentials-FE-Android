@@ -23,19 +23,14 @@ import retrofit2.http.Query
  * @author Kilian Hoefman
  * @author Jonathan Vanden Eynden
  * @author Simon De Wilde
+ * @author Marbod Naassens
+ * @author Ziggy Moens
+ * @author Sébastien De Pauw
  */
 
-// private const val BASE_URL = "https://essentialsapi.azurewebsites.net/api/"
-
-// private val moshi = Moshi.Builder()
-//    .add(KotlinJsonAdapterFactory())
-//    .build()
-//
-// private val retrofit = Retrofit.Builder()
-//    .addConverterFactory(ScalarsConverterFactory.create())
-//    .baseUrl(BASE_URL)
-//    .build()
-
+/**
+ * Interface to make api calls for employees using the Retrofit library
+ */
 interface EmployeeEndpointInterface {
 
     @GET("Employees/{id}")
@@ -48,6 +43,9 @@ interface EmployeeEndpointInterface {
     suspend fun getEmployeeByEmail(@Path("email") email: String): Response<Employee>
 }
 
+/**
+ * Interface to make api calls for changeInitiatives using the Retrofit library
+ */
 interface ChangeInitiativesEndpointInterface {
 
     @GET("ChangeInitiatives/{id}")
@@ -60,11 +58,17 @@ interface ChangeInitiativesEndpointInterface {
     suspend fun getChangeInitiativesForChangeManager(): Response<List<ChangeInitiative>>
 }
 
+/**
+ * Interface to make api calls for changeGroups using the Retrofit library
+ */
 interface ChangeGroupEndpointInterface {
     @GET("ChangeGroups/GetChangeGroupForUser")
     suspend fun getChangeGroupsForUser(): Response<List<ChangeGroup>>
 }
 
+/**
+ * Interface to make api calls for changeManagers using the Retrofit library
+ */
 interface ChangeManagersEndpointInterface {
 
     @GET("ChangeManagers/GetChangeManagersFromOrganization/{organizationId}")
@@ -77,12 +81,18 @@ interface ChangeManagersEndpointInterface {
     suspend fun getChangeManagerByEmail(@Path("email") email: String): Response<ChangeManager>
 }
 
+/**
+ * Interface to make api calls for organizations using the Retrofit library
+ */
 interface OrganizationsEndpointInterface {
 
     @GET("Organizations/{organizationId}")
     suspend fun getOrganizationById(@Path("organizationId") organizationId: Int): Response<Organization>
 }
 
+/**
+ * Interface to make api calls for projects using the Retrofit library
+ */
 interface ProjectsEndpointInterface {
 
     @GET("Projects/GetProjectsForOrganization/{organizationId}")
@@ -92,6 +102,9 @@ interface ProjectsEndpointInterface {
     suspend fun getProjectById(@Path("projectId") projectId: Int): Response<Project>
 }
 
+/**
+ * Interface to make api calls for questions using the Retrofit library
+ */
 interface QuestionsEndpointInterface {
 
     @GET("Questions/{surveyId}")
@@ -107,6 +120,9 @@ interface QuestionsEndpointInterface {
     suspend fun deleteSurveyById(@Path("surveyId") surveyId: Int): Response<ResponseBody>
 }
 
+/**
+ * Interface to make api calls for road map items using the Retrofit library
+ */
 interface RoadMapItemsEndpointInterface {
 
     @GET("RoadMapItems/{id}")
@@ -116,6 +132,9 @@ interface RoadMapItemsEndpointInterface {
     suspend fun getRoadMapItemsForChangeInitatitveWithId(@Path("changeInitiativeId") changeInitiativeId: Int): Response<List<RoadMapItem>>
 }
 
+/**
+ * Interface to make api calls for surveys using the Retrofit library
+ */
 interface SurveyEndpointInterface {
 
     @GET("Survey")
@@ -128,6 +147,9 @@ interface SurveyEndpointInterface {
     suspend fun getSurveyByRoadMapItemId(@Path("roadmapItemId") roadmapItemId: Int): Response<Survey>
 }
 
+/**
+ * Interface to make api calls for dashboards using the Retrofit library
+ */
 interface DashboardEndpointInterface {
     @GET("Dashboard/GetFilledInSurveysOfChangeInitiative/{id}")
     suspend fun getFilledInSurveys(@Path("id") id: Int): Response<Double>
@@ -136,6 +158,9 @@ interface DashboardEndpointInterface {
     suspend fun getMood(@Path("id") id: Int): Response<Map<Int, Int>>
 }
 
+/**
+ * Interface to make api calls for accounts using the Retrofit library
+ */
 interface AccountEndpointInterface {
     @POST("Account/Login")
     suspend fun login(
@@ -143,6 +168,9 @@ interface AccountEndpointInterface {
     ): Response<ResponseBody>
 }
 
+/**
+ * Interface to make api calls for device tokens using the Retrofit library
+ */
 interface DeviceTokenEndpointInterface {
     @POST("DeviceTokens/{userid}")
     suspend fun postDeviceToken(@Path("userid") userid: String, @Query("token") token: String): Response<ResponseBody>

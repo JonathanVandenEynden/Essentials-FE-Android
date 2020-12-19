@@ -6,11 +6,17 @@ import com.squareup.moshi.Json
 import kotlinx.android.parcel.Parcelize
 
 /**
+ * A part of an organization --> factory, team, country, ...
+ *
  * @author Kilian Hoefman
+ *
+ * @property id
+ * @property name
+ * @property employeeOrganizationParts
+ * @property type
  */
 
 @Entity(tableName = "organizationPart")
-// @ColumnInfo(name = "organization_id")
 @Parcelize
 data class OrganizationPart(
     @Json(name = "name")

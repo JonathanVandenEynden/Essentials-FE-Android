@@ -5,6 +5,13 @@ import androidx.lifecycle.viewModelScope
 import com.hogentessentials1.essentials.data.repositories.DeviceTokenRepository
 import kotlinx.coroutines.launch
 
+/**
+ * Viewmodel for the device tokens
+ *
+ * @author Marbod Naassens
+ *
+ * @property repo
+ */
 class DeviceTokenViewModel(private val repo: DeviceTokenRepository) : ViewModel() {
 
     fun post(userid: Int, token: String) {

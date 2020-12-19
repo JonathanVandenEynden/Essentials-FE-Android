@@ -12,7 +12,7 @@ data class ChangeInitiativeWithRoadMapItems(
     @Embedded val changeInitiative: ChangeInitiative,
     @Relation(
         parentColumn = "id",
-        entityColumn = "roadmap_id"
+        entityColumn = "changeInitiative_id"
     )
     val roadMapItems: List<RoadMapItem>
 )

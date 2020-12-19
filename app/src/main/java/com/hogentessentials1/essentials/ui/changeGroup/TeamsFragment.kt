@@ -16,9 +16,11 @@ import com.hogentessentials1.essentials.util.Status
 import org.koin.android.ext.android.inject
 
 /**
- * @author Simon De Wilde
- *
  * Fragment for showing the overview of teams
+ * Also a listener when a change group is tapped
+ * @author Simon De Wilde
+ * @author Marbod Naassens: loading
+ *
  */
 class TeamsFragment : Fragment(), ChangeGroupClickListener {
 
@@ -29,7 +31,7 @@ class TeamsFragment : Fragment(), ChangeGroupClickListener {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        (activity as AppCompatActivity).supportActionBar?.title = "Teams"
+        (activity as AppCompatActivity).supportActionBar?.title = getString(R.string.teams_fragment_header)
 
         val binding: TeamsFragmentBinding =
             DataBindingUtil.inflate(inflater, R.layout.teams_fragment, container, false)
@@ -50,7 +52,6 @@ class TeamsFragment : Fragment(), ChangeGroupClickListener {
                 it?.let { resource ->
                     when (resource.status) {
                         Status.SUCCESS -> {
-
                             showLoading(false)
                             if (resource.data?.isEmpty() == true) {
                                 binding.noTeamsBanner.visibility = View.VISIBLE
@@ -65,7 +66,7 @@ class TeamsFragment : Fragment(), ChangeGroupClickListener {
                         }
                         Status.ERROR -> {
                             showLoading(false)
-                            // binding.noTeamsBanner.visibility = View.VISIBLE
+                            binding.noTeamsBanner.visibility = View.VISIBLE
                         }
                     }
                 }
@@ -81,20 +82,32 @@ class TeamsFragment : Fragment(), ChangeGroupClickListener {
                 loadingDialogFragment.show(requireActivity().supportFragmentManager, "loader")
             }
         } else {
-            // if (loadingDialogFragment.isAdded) {
             loadingDialogFragment.dismissAllowingStateLoss()
-            // }
         }
     }
 
+    /**
+     * @author Simon De Wilde
+     * navigates to a change group detail screen when it is clicked
+     * @param changeGroup
+     */
     override fun onClick(changeGroup: ChangeGroup) {
         navigateToDetail(changeGroup)
     }
 
+    /**
+     * Navigates to the detail screen of a given changeGroup (team)
+     * @param changeGroup
+     */
     private fun navigateToDetail(changeGroup: ChangeGroup) {
 
         val directions =
-            TeamsFragmentDirections.actionTeamsFragmentToTeamDetailsFragment(changeGroup.employeeChangeGroups!!.map { ecg -> ecg.employee!!.firstName.plus(" ").plus(ecg.employee.lastName) }.toTypedArray())
+            TeamsFragmentDirections.actionTeamsFragmentToTeamDetailsFragment(
+                changeGroup.employeeChangeGroups!!.map {
+                    ecg ->
+                    ecg.employee!!.firstName.plus(" ").plus(ecg.employee.lastName)
+                }.toTypedArray()
+            )
         findNavController().navigate(directions)
     }
 }

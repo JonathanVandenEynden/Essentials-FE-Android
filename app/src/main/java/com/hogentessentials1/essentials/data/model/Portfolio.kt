@@ -8,7 +8,12 @@ import com.squareup.moshi.Json
 import kotlinx.android.parcel.Parcelize
 
 /**
+ * an organization has a portfolio with multiple projects
+ *
  * @author Kilian Hoefman
+ *
+ * @property id
+ * @property projects a list of all projects
  */
 
 @Entity(tableName = "portfolio")

@@ -12,8 +12,8 @@ import com.hogentessentials1.essentials.data.model.Project
 data class ProjectWithChangeInitiatives(
     @Embedded val project: Project,
     @Relation(
-        parentColumn = "project_id",
-        entityColumn = "id"
+        parentColumn = "id",
+        entityColumn = "project_id"
     )
     val changeInitiatives: List<ChangeInitiative>
 )

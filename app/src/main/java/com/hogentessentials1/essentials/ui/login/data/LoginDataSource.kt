@@ -12,10 +12,11 @@ import timber.log.Timber
 import java.io.IOException
 
 /**
+ * Class that handles authentication w/ login credentials and retrieves user information.
  * @author Simon De Wilde
  * @author Jonathan Vanden Eynden
  *
- * Class that handles authentication w/ login credentials and retrieves user information.
+ * @property aApiService
  */
 class LoginDataSource(val aApiService: AccountEndpointInterface) : BaseDataSource() {
 

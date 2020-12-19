@@ -24,11 +24,6 @@ import com.hogentessentials1.essentials.data.network.converters.EmployeeConverte
 import com.hogentessentials1.essentials.data.network.converters.ProjectConverter
 import com.hogentessentials1.essentials.data.network.converters.RoadMapItemConverter
 
-/**
- * @author Simon De Wilde
- * @author Kilian Hoefman
- */
-
 @Database(
     entities = [Project::class, Employee::class, ChangeInitiative::class, RoadMapItem::class, ChangeGroup::class],
     version = 4,
@@ -44,7 +39,12 @@ import com.hogentessentials1.essentials.data.network.converters.RoadMapItemConve
     EmployeeChangeGroupArrayConverter::class,
     ChangeTypeConverter::class
 )
-
+/**
+ * The database for the application
+ * @author Simon De Wilde
+ * @author Kilian Hoefman
+ *
+ */
 abstract class EssentialsDatabase : RoomDatabase() {
     abstract fun EmployeeDao(): EmployeeDao
     abstract fun ChangeInitiativeDao(): ChangeInitiativeDao
@@ -56,6 +56,11 @@ abstract class EssentialsDatabase : RoomDatabase() {
         @Volatile
         private var INSTANCE: EssentialsDatabase? = null
 
+        /**
+         * Creates an instance of the database if necessary and returns it
+         * @param context
+         * @return instance of the database
+         */
         fun getInstance(context: Context): EssentialsDatabase =
             INSTANCE ?: synchronized(this) {
                 INSTANCE ?: buildDatabase(context).also {
@@ -63,28 +68,15 @@ abstract class EssentialsDatabase : RoomDatabase() {
                 }
             }
 
+        /**
+         * builds the database
+         * @param appContext
+         * @return built database
+         */
         private fun buildDatabase(appContext: Context) =
             Room.databaseBuilder(appContext, EssentialsDatabase::class.java, "essentials_db")
                 .fallbackToDestructiveMigration()
                 .build()
-
-//        fun getInstance(context: Context): EssentialsDatabase {
-//            synchronized(this) {
-//                var instance = INSTANCE
-//
-//                if (instance == null) {
-//                    instance = Room.databaseBuilder(
-//                        context.applicationContext,
-//                        EssentialsDatabase::class.java,
-//                        "essentials_db"
-//                    )
-//                        .fallbackToDestructiveMigration()
-//                        .build()
-//                    INSTANCE = instance
-//                }
-//                return instance
-//            }
-//        }
     }
 
     suspend fun truncate() {

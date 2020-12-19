@@ -11,8 +11,11 @@ import com.hogentessentials1.essentials.ui.login.data.Result
 import kotlinx.coroutines.launch
 
 /**
+ * View model for the login page
  * @author Simon De Wilde
  * @author Jonathan Vanden Eynden
+ * @property loginRepository
+ *
  */
 class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel() {
 
@@ -65,7 +68,7 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
 
     // A placeholder password validation check
     private fun isPasswordValid(password: String): Boolean {
-        return password.length > 5
+        return password.length > 8
     }
 
 //    init {

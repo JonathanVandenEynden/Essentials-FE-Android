@@ -15,6 +15,8 @@ import org.koin.android.ext.android.inject
 import timber.log.Timber
 
 /**
+ * fragment to show a survey is completed
+ *
  * @author Ziggy Moens
  */
 class SurveyDoneFragment : Fragment() {
@@ -48,9 +50,9 @@ class SurveyDoneFragment : Fragment() {
 
             if (feedback != null) {
                 viewModel.answer(feedback.id.toInt(), answer)
-            } else (
+            } else {
                 Timber.e("feedback error")
-                )
+            }
 
             view.findNavController().navigate(
                 SurveyDoneFragmentDirections.actionSurveyDoneFragmentToHomeScreenFragment()

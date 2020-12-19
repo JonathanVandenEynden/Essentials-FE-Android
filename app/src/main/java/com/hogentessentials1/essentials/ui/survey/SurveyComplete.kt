@@ -11,6 +11,12 @@ import androidx.navigation.findNavController
 import com.hogentessentials1.essentials.R
 import com.hogentessentials1.essentials.databinding.SurveyCompletelyFinishedBinding
 
+/**
+ * fragment to show a survey is already filled in
+ *
+ * @author Ziggy Moens
+ *
+ */
 class SurveyComplete : Fragment() {
 
     override fun onCreateView(

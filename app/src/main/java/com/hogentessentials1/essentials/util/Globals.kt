@@ -4,11 +4,12 @@ import com.auth0.android.jwt.JWT
 import java.util.Date
 
 /**
+ * This static class has global properties that can be accessed everywhere in the app
+ *
  * @author Simon De Wilde
  * @author Kilian Hoefman
  * @author Ziggy Moens
  *
- * This static class has global properties that can be accessed everywhere in the app
  */
 class Globals {
     companion object {

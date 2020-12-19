@@ -9,9 +9,11 @@ import com.hogentessentials1.essentials.util.Resource
 import com.hogentessentials1.essentials.util.Status
 
 /**
+ * view model for list of change initiatives
  * @author Ziggy Moens
  * @author Simon De Wilde
- * viewmodel for list of change initiatives
+ *
+ * @property repo
  */
 class ChangeInitiativesViewModel(private val repo: ChangeInitiativeRepository) : ViewModel() {
 
@@ -25,43 +27,7 @@ class ChangeInitiativesViewModel(private val repo: ChangeInitiativeRepository) :
 
     val changeinitiativesEmployee: LiveData<Resource<List<ChangeInitiative>>> = repo.getChangeInitiativesForEmployee()
 
-//    fun changeinitiativesEmployee() {
-//        viewModelScope.launch {
-//            _status.value = Status.LOADING
-//            Timber.e("Change initiative - start met ophalen")
-//            try {
-//                _changeinitiavtives.value =
-//                    repo.getChangeInitiativesForEmployee().data
-//                Timber.e("Change initiative E - ophalen successvol")
-//                Timber.e(changeinitiatives.value.toString())
-//                _status.value = Status.SUCCESS
-//            } catch (e: Exception) {
-//                Timber.e("Change initiatives E - ophalen mislukt")
-//                Timber.e("$e")
-//                _status.value = Status.ERROR
-//            }
-//        }
-//    }
-
     val changeinitiativesChangeManager: LiveData<Resource<List<ChangeInitiative>>> = repo.getChangeInitiativesForChangeManager()
-
-//    fun changeinitiativesChangeManager() {
-//        viewModelScope.launch {
-//            _status.value = Status.LOADING
-//            Timber.e("Change initiative - start met ophalen")
-//            try {
-//                _changeinitiavtives.value =
-//                    repo.getChangeInitiativesForChangeManager().data
-//                Timber.e("Change initiative C - ophalen successvol")
-//                Timber.e(changeinitiatives.value.toString())
-//                _status.value = Status.SUCCESS
-//            } catch (e: Exception) {
-//                Timber.e("Change initiatives C - ophalen mislukt")
-//                Timber.e("$e")
-//                _status.value = Status.ERROR
-//            }
-//        }
-//    }
 
     private val _navigateToChangeInitiative = MutableLiveData<ChangeInitiative?>()
     val navigateToChangeInitiative
@@ -75,89 +41,3 @@ class ChangeInitiativesViewModel(private val repo: ChangeInitiativeRepository) :
         _navigateToChangeInitiative.value = null
     }
 }
-
-// ChangeInitiative(
-//            title = "New Resto",
-//            surveys = arrayListOf(
-//                Survey(
-//                    name = "Personnel Survey",
-//                    questions = arrayListOf(
-//                        SurveyQuestion(
-//                            question = "What do you think of the new personnel?",
-//                            option0 = "Uneatable",
-//                            option5 = "Delicious"
-//                        ),
-//                        SurveyQuestion(
-//                            question = "Would you recommend the new resto to your colleagues?",
-//                            option0 = "No",
-//                            option5 = "Yes"
-//                        )
-//                    )
-//                ),
-//                Survey(
-//                    name = "Food Survey",
-//                    questions = arrayListOf(
-//                        SurveyQuestion(
-//                            question = "What do you think of the new food?",
-//                            option0 = "Uneatable",
-//                            option5 = "Delicious"
-//                        ),
-//                        SurveyQuestion(
-//                            question = "Would you recommend the food to your colleagues?",
-//                            option0 = "No",
-//                            option5 = "Yes"
-//                        )
-//                    )
-//                ),
-//                Survey(
-//                    name = "Impact Survey",
-//                    questions= arrayListOf(
-//                        SurveyQuestion(
-//                            question = "What do you think this change has an impact on your work?",
-//                            option0 = "No",
-//                            option5 = "Yes"
-//                        ),
-//                        SurveyQuestion(
-//                            question = "Would you feel more happy at work?",
-//                            option0 = "No",
-//                            option5 = "Yes"
-//                        )
-//                    )
-//                )
-//            )
-//        ),
-//        ChangeInitiative(
-//            title = "Expansion to German market",
-//            surveys = arrayListOf(
-//                Survey(
-//                    name = "Financial Survey",
-//                    questions= arrayListOf(
-//                        SurveyQuestion(
-//                            question = "What do you think of the new financial arrangement concerning the expansion?",
-//                            option0 = "Very bad",
-//                            option5 = "Very Good"
-//                        ),
-//                        SurveyQuestion(
-//                            question = "Do you think you will get a raise by the end of the year?",
-//                            option0 = "No",
-//                            option5 = "Yes"
-//                        )
-//                    )
-//                ),
-//                Survey(
-//                    name = "Work Survey",
-//                    questions= arrayListOf(
-//                        SurveyQuestion(
-//                            question = "Do you feel more pressure at work?",
-//                            option0 = "No",
-//                            option5 = "Yes"
-//                        ),
-//                        SurveyQuestion(
-//                            question = "Would you like working form home while we are expanding?",
-//                            option0 = "No",
-//                            option5 = "Yes"
-//                        )
-//                    )
-//                )
-//            )
-//        )

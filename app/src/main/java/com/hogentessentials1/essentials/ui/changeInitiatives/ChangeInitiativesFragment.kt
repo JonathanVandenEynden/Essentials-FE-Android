@@ -16,6 +16,8 @@ import com.hogentessentials1.essentials.util.Status
 import org.koin.android.ext.android.inject
 
 /**
+ * Fragment for the overview of change initiatives.
+ * used for both employee and change manager (add boolean to action safe-args)
  * @author Ziggy Moens
  */
 class ChangeInitiativesFragment : Fragment() {
@@ -80,14 +82,6 @@ class ChangeInitiativesFragment : Fragment() {
 
         binding.ciList.adapter = adapter
 
-        /*if (changemanager) {
-            (activity as AppCompatActivity).supportActionBar?.title = "My Change initiatives"
-            viewModel.changeinitiativesChangeManager()
-        } else {
-            (activity as AppCompatActivity).supportActionBar?.title = "Change initiatives"
-            viewModel.changeinitiativesEmployee()
-        }*/
-
         if (changemanager) {
             (activity as AppCompatActivity).supportActionBar?.title = "My Change initiatives"
 
@@ -148,15 +142,6 @@ class ChangeInitiativesFragment : Fragment() {
             )
         }
 
-        /*viewModel.changeinitiatives.observe(
-            viewLifecycleOwner,
-            {
-                showLoading(true)
-                adapter.submitList(it)
-                showLoading(false)
-            }
-        )*/
-
         return binding.root
     }
 
@@ -173,9 +158,7 @@ class ChangeInitiativesFragment : Fragment() {
                 loadingDialogFragment.show(requireActivity().supportFragmentManager, "loader")
             }
         } else {
-            // if (loadingDialogFragment.isAdded) {
             loadingDialogFragment.dismissAllowingStateLoss()
-            // }
         }
     }
 }

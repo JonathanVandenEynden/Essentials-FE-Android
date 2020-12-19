@@ -5,6 +5,19 @@ import androidx.lifecycle.liveData
 import androidx.lifecycle.map
 import kotlinx.coroutines.Dispatchers
 
+/**
+ * Defines the operation to return, get and cache data all in one
+ *
+ * @author Simon De Wilde
+ * @source Jens Buysse, Özgür Akin
+ *
+ * @param T
+ * @param A
+ * @param databaseQuery
+ * @param networkCall
+ * @param saveCallResult
+ * @return a resource
+ */
 fun <T, A> performGetOperation(
     databaseQuery: () -> LiveData<T>,
     networkCall: suspend () -> Resource<A>,

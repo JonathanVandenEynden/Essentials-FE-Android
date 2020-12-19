@@ -9,7 +9,10 @@ import com.hogentessentials1.essentials.data.model.Survey
 import com.hogentessentials1.essentials.databinding.SurveysChangeinitiativeListitemBinding
 
 /**
+ * Adapter to create a view based on a Survey
  * @author Ziggy Moens
+ *
+ * @param clickListener listener when a survey is tapped
  */
 
 class SurveysChangeinitiativeAdapter(val clickListener: SurveyListener) :
