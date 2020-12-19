@@ -102,6 +102,7 @@ class RoadMapFragment : Fragment() {
         }
 
         (activity as AppCompatActivity).supportActionBar?.title = getString(R.string.roadmap)
+
         return binding.root
     }
 

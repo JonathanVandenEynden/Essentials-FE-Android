@@ -22,5 +22,7 @@ data class Employee(
     @Json(name = "lastName")
     val lastName: String,
     @Json(name = "email")
-    val email: String
+    val email: String,
+    @Json(name = "employeeChangeGroups")
+    val employeeChangeGroups: Array<EmployeeChangeGroup>?
 ) : Parcelable

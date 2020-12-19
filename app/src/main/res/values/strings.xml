@@ -66,4 +66,8 @@
     <string name="myChange_timesChosen">Times chosen</string>
     <string name="myChange_answers">Answers</string>
     <string name="question">Question: </string>
+
+    <string name="no_changes_available">There are no changes available at the moment</string>
+    <string name="no_surveys_available">There are no surveys available at the moment</string>
+
 </resources>

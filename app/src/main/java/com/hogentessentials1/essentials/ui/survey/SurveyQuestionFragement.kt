@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
 import androidx.core.view.children
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -19,6 +21,7 @@ import com.hogentessentials1.essentials.ui.roadMap.RoadMapFragmentDirections
 import kotlinx.android.synthetic.main.survey_question.*
 import kotlinx.android.synthetic.main.survey_question.view.*
 import org.koin.android.ext.android.inject
+import java.time.LocalDateTime
 
 /**
  * @author Ziggy Moens
@@ -58,6 +61,19 @@ class SurveyQuestionFragement : Fragment() {
         val args = SurveyQuestionFragementArgs.fromBundle(requireArguments())
         roadMapItem = args.roadmapitem
         questions = roadMapItem.assessment!!.questions
+
+        if (true)
+        {
+            var builder = NotificationCompat.Builder(this.requireContext(), "testchannel")
+                .setSmallIcon(R.drawable.ic_logo)
+                .setContentTitle("hey")
+                .setContentText("textContent")
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+            with(NotificationManagerCompat.from(this.requireContext())) {
+                notify(1, builder.build())
+            }
+        }
+
 
         binding.currentQuestion = this
         numberOfQuestions = questions.size

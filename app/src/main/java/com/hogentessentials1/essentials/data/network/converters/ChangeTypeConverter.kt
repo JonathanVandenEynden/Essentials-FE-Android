@@ -6,12 +6,12 @@ import com.hogentessentials1.essentials.data.model.ChangeType
 
 class ChangeTypeConverter {
     @TypeConverter
-    fun stringToChangeType(value: String): ChangeType {
+    fun stringToChangeType(value: String?): ChangeType? {
         return Gson().fromJson(value, ChangeType::class.java)
     }
 
     @TypeConverter
-    fun changeTypeToString(fields: ChangeType): String {
+    fun changeTypeToString(fields: ChangeType?): String? {
         return Gson().toJson(fields)
     }
 }

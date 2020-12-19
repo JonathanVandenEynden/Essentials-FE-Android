@@ -21,10 +21,16 @@
             app:argType="boolean" />
         <action
             android:id="@+id/action_changeInitiatives_to_changeInitiativeFragment"
-            app:destination="@id/changeInitiativeFragment" />
+            app:destination="@id/changeInitiativeFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:popEnterAnim="@anim/slide_in_left" />
         <action
             android:id="@+id/action_changeInitiatives_to_notFoundFragment"
-            app:destination="@id/notFoundFragment" />
+            app:destination="@id/notFoundFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popUpTo="@id/homeScreenFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/homeScreenFragment"
@@ -33,16 +39,24 @@
         tools:layout="@layout/fragment_home_screen">
         <action
             android:id="@+id/action_homeScreenFragment_to_changeInitiativesFragment"
-            app:destination="@id/changeInitiatives" />
+            app:destination="@id/changeInitiatives"
+            app:enterAnim="@anim/slide_in_right"
+            app:popEnterAnim="@anim/slide_in_left" />
         <action
             android:id="@+id/action_homeScreenFragment_to_dashboardFragment"
-            app:destination="@id/dashboardFragment" />
+            app:destination="@id/dashboardFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:popEnterAnim="@anim/slide_in_left" />
         <action
             android:id="@+id/action_homeScreenFragment_to_teamsFragment"
-            app:destination="@id/teamsFragment" />
+            app:destination="@id/teamsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:popEnterAnim="@anim/slide_in_left" />
         <action
             android:id="@+id/action_homeScreenFragment_to_roadMapListFragment"
-            app:destination="@id/roadMapListFragment" />
+            app:destination="@id/roadMapListFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:popEnterAnim="@anim/slide_in_left" />
     </fragment>
     <fragment
         android:id="@+id/surveyQuestionFragment"
@@ -50,7 +64,9 @@
         android:label="SurveyQuestionFragment">
         <action
             android:id="@+id/action_surveyQuestionFragment_to_surveyEndFragment"
-            app:destination="@id/surveyEndFragment" />
+            app:destination="@id/surveyEndFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:popEnterAnim="@anim/slide_in_left" />
         <argument
             android:name="changemanager"
             app:argType="boolean" />
@@ -64,7 +80,9 @@
         android:label="SurveyEndFragment">
         <action
             android:id="@+id/action_surveyDoneFragment_to_homeScreenFragment"
-            app:destination="@id/homeScreenFragment" />
+            app:destination="@id/homeScreenFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:popEnterAnim="@anim/slide_in_left" />
         <argument
             android:name="roadmapitem"
             app:argType="com.hogentessentials1.essentials.data.model.RoadMapItem" />
@@ -75,7 +93,9 @@
         android:label="changeinitiativeFragment">
         <action
             android:id="@+id/action_changeInitiativeFragment_to_roadMapListFragment"
-            app:destination="@id/roadMapListFragment" />
+            app:destination="@id/roadMapListFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:popEnterAnim="@anim/slide_in_left" />
         <argument
             android:name="changeinitiative"
             app:argType="com.hogentessentials1.essentials.data.model.ChangeInitiative" />
@@ -89,7 +109,10 @@
         tools:layout="@layout/fragment_dashboard" >
         <action
             android:id="@+id/action_dashboardFragment_to_dashboardGraphFragment"
-            app:destination="@id/dashboardGraphFragment" />
+            app:destination="@id/dashboardGraphFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_left" />
     </fragment>
     <fragment
         android:id="@+id/teamsFragment"
@@ -98,7 +121,9 @@
         tools:layout="@layout/teams_fragment" >
         <action
             android:id="@+id/action_teamsFragment_to_teamDetailsFragment"
-            app:destination="@id/teamDetailsFragment" />
+            app:destination="@id/teamDetailsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:popEnterAnim="@anim/slide_in_left" />
     </fragment>
     <fragment
         android:id="@+id/teamDetailsFragment"
@@ -114,7 +139,9 @@
         android:label="NotFoundFragment">
         <action
             android:id="@+id/action_notFoundFragment_to_homeScreenFragment"
-            app:destination="@id/homeScreenFragment" />
+            app:destination="@id/homeScreenFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:popEnterAnim="@anim/slide_in_left" />
     </fragment>
     <fragment
         android:id="@+id/roadMapListFragment"
@@ -125,7 +152,9 @@
             app:argType="boolean" />
         <action
             android:id="@+id/action_roadMapListFragment_to_roadMapFragment"
-            app:destination="@id/roadMapFragment" />
+            app:destination="@id/roadMapFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:popEnterAnim="@anim/slide_in_left" />
         <argument
             android:name="changemanager"
             app:argType="boolean" />
@@ -135,12 +164,20 @@
             app:nullable="true" />
         <action
             android:id="@+id/action_roadMapListFragment_to_notFoundFragment"
-            app:destination="@id/notFoundFragment" />
+            app:destination="@id/notFoundFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:popEnterAnim="@anim/slide_in_left" />
     </fragment>
     <fragment
         android:id="@+id/roadMapFragment"
         android:name="com.hogentessentials1.essentials.ui.roadMap.RoadMapFragment"
         android:label="RoadMapFragment">
+        <action
+            android:id="@+id/action_roadMapFragment_to_surveyQuestionFragment"
+            app:destination="@id/surveyQuestionFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:popEnterAnim="@anim/slide_in_left" />
+
         <argument
             android:name="changemanager"
             app:argType="boolean" />
@@ -152,7 +189,9 @@
             app:destination="@id/surveyQuestionFragment" />
         <action
             android:id="@+id/action_roadMapFragment_to_notFoundFragment"
-            app:destination="@id/notFoundFragment" />
+            app:destination="@id/notFoundFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:popEnterAnim="@anim/slide_in_left" />
         <action
             android:id="@+id/action_roadMapFragment_to_surveyComplete"
             app:destination="@id/surveyComplete" />
@@ -161,6 +200,11 @@
             app:destination="@id/myChangesQuestionListFragment"
             app:popUpTo="@id/roadMapFragment"
             app:popUpToInclusive="true" />
+
+  
+            app:enterAnim="@anim/slide_in_right"
+            app:popEnterAnim="@anim/slide_in_left" />
+
     </fragment>
     <fragment
         android:id="@+id/surveyComplete"
@@ -168,7 +212,9 @@
         android:label="SurveyComplete">
         <action
             android:id="@+id/action_surveyComplete_to_homeScreenFragment"
-            app:destination="@id/homeScreenFragment" />
+            app:destination="@id/homeScreenFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:popEnterAnim="@anim/slide_in_left" />
     </fragment>
     <fragment
         android:id="@+id/dashboardGraphFragment"
