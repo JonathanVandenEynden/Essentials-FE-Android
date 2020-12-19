@@ -6,7 +6,6 @@ import org.json.JSONArray
 
 class DeviceTokenRemoteDataSource(val deviceTokenApiService: DeviceTokenEndpointInterface): BaseDataSource() {
     suspend fun postDeviceToken (userid: Int, token: String) {
-        val requestBody = token.toRequestBody("application/json".toMediaTypeOrNull())
-        deviceTokenApiService.postDeviceToken(userid, requestBody)
+        deviceTokenApiService.postDeviceToken(userid.toString(), token)
     }
 }
