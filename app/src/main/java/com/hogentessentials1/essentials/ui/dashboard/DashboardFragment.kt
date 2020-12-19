@@ -155,31 +155,8 @@ class DashboardFragment : Fragment() {
                     showLoading(false)
                 }
 
-        spinner.onItemSelectedListener = object : OnItemSelectedListener {
-            override fun onItemSelected(
-                parent: AdapterView<*>?,
-                view: View?,
-                position: Int,
-                id: Long
-            ) {
-                val clickedItem: ChangeInitiative =
-                    parent?.getItemAtPosition(position) as ChangeInitiative
-                val clickedText: String = clickedItem.title
-                Toast.makeText(
-                    context,
-                    "$clickedText selected",
-                    Toast.LENGTH_SHORT
-                ).show()
-                viewModel.chosenCIId = clickedItem.id
-                refreshVM()
-                rmiAdapter =
-                    DashboardRMIAdapter(parent.context, ArrayList(clickedItem.roadMap.toList()))
-                spinnerrmi.adapter = rmiAdapter
-                showLoading(false)
-            }
-
             override fun onNothingSelected(parent: AdapterView<*>?) {}
-        }
+        })
 
         // spinnerrmi.setSelection(selectedRMI)
 
