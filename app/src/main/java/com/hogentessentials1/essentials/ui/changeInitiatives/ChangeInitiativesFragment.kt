@@ -74,8 +74,8 @@ class ChangeInitiativesFragment : Fragment() {
                 changeInitiative?.let {
                     this.findNavController().navigate(
                         ChangeInitiativesFragmentDirections.actionChangeInitiativesToChangeInitiativeFragment(
-                            changemanager,
-                            changeInitiative
+                            changeInitiative,
+                            changemanager
                         )
                     )
                     viewModel.onChangeInitiativeNavigated()

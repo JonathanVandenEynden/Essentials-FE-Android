@@ -14,6 +14,7 @@ import com.hogentessentials1.essentials.data.model.Question
 import com.hogentessentials1.essentials.data.model.RoadMapItem
 import com.hogentessentials1.essentials.databinding.RoadmapBinding
 import com.hogentessentials1.essentials.util.Globals
+import org.koin.android.ext.android.bind
 
 /**
  * @author Ziggy Moens
@@ -58,11 +59,12 @@ class RoadMapFragment : Fragment() {
 
         binding.viewModel = viewModel
 
-        if (q.size == 0) {
+        if (q.size == 0 && !changemanager) {
             binding.surveyRoadmap.setBackgroundColor(resources.getColor(R.color.green))
             binding.surveyRoadmap.setText(resources.getText(R.string.survey_already_filled))
         }
 
+        if(!changemanager){
         viewModel.navigateToSurvey.observe(
             viewLifecycleOwner,
             {
@@ -84,8 +86,23 @@ class RoadMapFragment : Fragment() {
                 }
             }
         )
+        } else{
+            binding.surveyRoadmap.text = getString(R.string.view_survey)
+            viewModel.navigateToSurvey.observe(
+             viewLifecycleOwner,
+                {
+                    if(it){
+                        roadmapitem.assessment!!.questions = q_original
+                        binding.root.findNavController().navigate(
+                            RoadMapFragmentDirections.actionRoadMapFragmentToMyChangesQuestionListFragment(roadmapitem)
+                        )
+                    }
+                }
+            )
+        }
 
-        (activity as AppCompatActivity).supportActionBar?.title = "Road map item"
+        (activity as AppCompatActivity).supportActionBar?.title = getString(R.string.roadmap)
+
         return binding.root
     }
 
