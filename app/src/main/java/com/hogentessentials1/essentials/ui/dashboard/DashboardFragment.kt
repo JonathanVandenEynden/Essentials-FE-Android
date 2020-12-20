@@ -15,6 +15,7 @@ import android.widget.AdapterView.OnItemSelectedListener
 import android.widget.Spinner
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.os.bundleOf
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
@@ -33,6 +34,7 @@ import org.koin.android.ext.android.inject
 class DashboardFragment : Fragment() {
     private var ciList: ArrayList<ChangeInitiative> = arrayListOf()
     private var selectedCI: Int = 0
+    private lateinit var selectedChange: ChangeInitiative;
 
     private lateinit var binding: FragmentDashboardBinding
     val viewModel: DashboardViewModel by inject()
@@ -133,6 +135,7 @@ class DashboardFragment : Fragment() {
                         Toast.LENGTH_SHORT
                     ).show()
                     viewModel.chosenCIId = clickedItem.id
+                    selectedChange = clickedItem
                     refreshVM()
                     viewModel.fi.observe(
                         viewLifecycleOwner,
@@ -176,7 +179,7 @@ class DashboardFragment : Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.infoFragment -> this.findNavController().navigate(R.id.homeScreenFragment)
+            R.id.infoFragment -> findNavController().navigate(DashboardFragmentDirections.actionGlobalChangeInitiativeFragment(selectedChange, true))
             R.id.websiteFragment -> {
                 val uri: Uri = Uri.parse("https://essentialstoolkit.netlify.app/")
                 startActivity(Intent(Intent.ACTION_VIEW, uri))

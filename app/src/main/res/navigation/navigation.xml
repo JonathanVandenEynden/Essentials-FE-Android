@@ -255,4 +255,9 @@
         app:destination="@id/homeScreenFragment"
         app:enterAnim="@anim/slide_in_right"
         app:popEnterAnim="@anim/slide_in_left" />
+    <action
+        android:id="@+id/action_global_changeInitiativeFragment"
+        app:destination="@id/changeInitiativeFragment"
+        app:enterAnim="@anim/slide_in_right"
+        app:popEnterAnim="@anim/slide_in_left" />
 </navigation>
