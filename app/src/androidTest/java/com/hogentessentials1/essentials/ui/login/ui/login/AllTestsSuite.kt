@@ -13,6 +13,7 @@ import org.junit.runners.Suite
     ChangeInitiativeTest::class,
     HomescreenTest::class,
     LoginActivityTest::class,
-    RoadmapItemTest::class
+    RoadmapItemTest::class,
+    MyTeamsTest::class
 )
 class AllTestsSuite
