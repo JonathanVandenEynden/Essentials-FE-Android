@@ -1,7 +1,6 @@
 package com.hogentessentials1.essentials.ui.login.ui.login
 
 import androidx.test.espresso.Espresso.onView
-import androidx.test.espresso.action.ViewActions.clearText
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.action.ViewActions.typeText
 import androidx.test.espresso.assertion.ViewAssertions.matches
@@ -26,7 +25,6 @@ class ChangeInitiativeTest {
 
     @Test
     fun test_changeInitiative_navigation() {
-        onView(withId(R.id.username)).perform(clearText()) // TODO weghalen nadat username niet meer automatisch is ingevuld
         onView(withId(R.id.username)).perform(typeText("ziggy@hogent.com"))
         onView(withId(R.id.password)).perform(typeText("P@ssword1"))
         onView(withId(R.id.login)).perform(click())

@@ -9,6 +9,8 @@ import timber.log.Timber
 /**
  * view model for survey done fragment
  *
+ * @author Ziggy Moens
+ *
  * @property repo
  */
 class SurveyDoneViewModel(private val repo: QuestionRepository) : ViewModel() {
