@@ -46,7 +46,6 @@ class AuthenticationTest {
 
     @Test
     fun test_wrongCredentials_Fails() {
-        onView(withId(R.id.username)).perform(clearText()) // TODO weghalen nadat username niet meer automatisch is ingevuld
         onView(withId(R.id.username)).perform(typeText("fout@hogent.com"))
         onView(withId(R.id.password)).perform(typeText("test123"))
         onView(withId(R.id.login)).perform(click())

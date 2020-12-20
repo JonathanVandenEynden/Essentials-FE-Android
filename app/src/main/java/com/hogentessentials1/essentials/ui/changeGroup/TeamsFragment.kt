@@ -20,7 +20,7 @@ import org.koin.android.ext.android.inject
  * Also a listener when a change group is tapped
  * @author Simon De Wilde
  * @author Marbod Naassens: loading + No teams banner
- *
+ * @author Jonathan Vanden Eynden Van Lysebeth
  */
 class TeamsFragment : Fragment(), ChangeGroupClickListener {
 

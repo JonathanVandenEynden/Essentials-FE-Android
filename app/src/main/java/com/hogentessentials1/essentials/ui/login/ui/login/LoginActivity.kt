@@ -27,7 +27,7 @@ import org.koin.android.ext.android.inject
 /**
  * the login activity
  * @author Simon De Wilde
- * @author Jonathan Vanden Eynden
+ * @author Jonathan Vanden Eynden Van Lysebeth
  * @author Marbod Naassens: Add animations
  * @author Ziggy Moens
  */

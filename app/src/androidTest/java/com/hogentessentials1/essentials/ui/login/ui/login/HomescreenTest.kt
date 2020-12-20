@@ -1,21 +1,15 @@
 package com.hogentessentials1.essentials.ui.login.ui.login
 
+
 import android.view.View
 import android.view.ViewGroup
 import androidx.test.espresso.Espresso.onView
-import androidx.test.espresso.action.ViewActions.click
-import androidx.test.espresso.action.ViewActions.closeSoftKeyboard
-import androidx.test.espresso.action.ViewActions.replaceText
-import androidx.test.espresso.action.ViewActions.scrollTo
+import androidx.test.espresso.action.ViewActions.*
 import androidx.test.espresso.assertion.ViewAssertions.matches
-import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
-import androidx.test.espresso.matcher.ViewMatchers.withClassName
-import androidx.test.espresso.matcher.ViewMatchers.withId
-import androidx.test.espresso.matcher.ViewMatchers.withParent
-import androidx.test.espresso.matcher.ViewMatchers.withText
-import androidx.test.ext.junit.runners.AndroidJUnit4
+import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.filters.LargeTest
 import androidx.test.rule.ActivityTestRule
+import androidx.test.runner.AndroidJUnit4
 import com.hogentessentials1.essentials.R
 import org.hamcrest.Description
 import org.hamcrest.Matcher
@@ -25,10 +19,6 @@ import org.hamcrest.TypeSafeMatcher
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
-
-/**
- * @author Jonathan Vanden Eynden
- */
 
 @LargeTest
 @RunWith(AndroidJUnit4::class)
@@ -42,21 +32,39 @@ class HomescreenTest {
     fun homescreenTest() {
         val appCompatEditText = onView(
             allOf(
+                withId(R.id.username),
+                childAtPosition(
+                    childAtPosition(
+                        withClassName(`is`("android.widget.ScrollView")),
+                        0
+                    ),
+                    3
+                )
+            )
+        )
+        appCompatEditText.perform(
+            scrollTo(),
+            replaceText("Sukrit.bhattacharya@hogent.com"),
+            closeSoftKeyboard()
+        )
+
+        val appCompatEditText2 = onView(
+            allOf(
                 withId(R.id.password),
                 childAtPosition(
                     childAtPosition(
                         withClassName(`is`("android.widget.ScrollView")),
                         0
                     ),
-                    1
+                    0
                 )
             )
         )
-        appCompatEditText.perform(scrollTo(), replaceText("P@ssword1"), closeSoftKeyboard())
+        appCompatEditText2.perform(scrollTo(), replaceText("P@ssword1"), closeSoftKeyboard())
 
         val materialButton = onView(
             allOf(
-                withId(R.id.login), withText("Sign in"),
+                withId(R.id.login), withText(R.string.action_sign_in),
                 childAtPosition(
                     childAtPosition(
                         withClassName(`is`("android.widget.ScrollView")),
@@ -108,11 +116,42 @@ class HomescreenTest {
             )
         )
         button3.check(matches(isDisplayed()))
+
+        val button4 = onView(
+            allOf(
+                withId(R.id.dashboard), withText(R.string.dashboard),
+                withParent(withParent(withId(R.id.scrollView3))),
+                isDisplayed()
+            )
+        )
+        button4.check(matches(isDisplayed()))
+
+        val button5 = onView(
+            allOf(
+                withId(R.id.my_changes), withText(R.string.my_changes),
+                withParent(withParent(withId(R.id.scrollView3))),
+                isDisplayed()
+            )
+        )
+        button5.check(matches(isDisplayed()))
+
+        val drawerLayout = onView(
+            allOf(
+                withId(R.id.drawerLayout),
+                withParent(
+                    allOf(
+                        withId(android.R.id.content),
+                        withParent(withId(R.id.decor_content_parent))
+                    )
+                ),
+                isDisplayed()
+            )
+        )
+        drawerLayout.check(matches(isDisplayed()))
     }
 
     private fun childAtPosition(
-        parentMatcher: Matcher<View>,
-        position: Int
+        parentMatcher: Matcher<View>, position: Int
     ): Matcher<View> {
 
         return object : TypeSafeMatcher<View>() {
@@ -123,8 +162,8 @@ class HomescreenTest {
 
             public override fun matchesSafely(view: View): Boolean {
                 val parent = view.parent
-                return parent is ViewGroup && parentMatcher.matches(parent) &&
-                    view == parent.getChildAt(position)
+                return parent is ViewGroup && parentMatcher.matches(parent)
+                        && view == parent.getChildAt(position)
             }
         }
     }
