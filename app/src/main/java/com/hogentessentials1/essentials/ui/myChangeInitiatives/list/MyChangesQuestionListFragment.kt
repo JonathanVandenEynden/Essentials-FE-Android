@@ -16,6 +16,7 @@ import com.hogentessentials1.essentials.data.model.Question
 import com.hogentessentials1.essentials.data.model.RoadMapItem
 import com.hogentessentials1.essentials.databinding.FragmentMychangeSurveyBinding
 import org.koin.android.ext.android.inject
+import timber.log.Timber
 import kotlin.math.floor
 
 /**
@@ -86,10 +87,17 @@ class MyChangesQuestionListFragment : Fragment() {
 
         binding.questionList.adapter = adapter
 
+        var allFeedback = 0.0
         var meanFeedback = 0.0
-        roadmapItem.assessment.feedback?.possibleAnswers?.forEach { (_, v) -> meanFeedback += v }
-        if (meanFeedback != 0.0) {
-            meanFeedback /= roadmapItem.assessment.feedback?.possibleAnswers?.size!!
+        Timber.e(roadmapItem.toString())
+        Timber.e(roadmapItem.assessment.toString())
+        Timber.e(roadmapItem.assessment.feedback.toString())
+        Timber.e(roadmapItem.assessment.feedback.possibleAnswers.toString())
+        roadmapItem.assessment.feedback.possibleAnswers.forEach { (k, v) -> allFeedback += (k.toDouble()*v) }
+        Timber.e(meanFeedback.toString())
+        if (allFeedback != 0.0) {
+            meanFeedback = allFeedback/roadmapItem.assessment.questions[0].questionRegistered!!.keys.size
+            Timber.e(meanFeedback.toString())
             binding.surveyAveragemoodTextviewId.text = getString(R.string.Overall_happiness_applicable, calculatePercent(meanFeedback))
             // "Overall happiness: " + calculatePercent(meanFeedback)
         } else {
@@ -115,11 +123,9 @@ class MyChangesQuestionListFragment : Fragment() {
     }
 
     private fun calculatePercent(meanFeedback: Double): String {
-        var ret = ""
-        ret = when (meanFeedback) {
+        return when (meanFeedback) {
             -1.0 -> "not yet applicable"
             else -> (meanFeedback / 5 * 100).toString() + " %"
         }
-        return ret
     }
 }

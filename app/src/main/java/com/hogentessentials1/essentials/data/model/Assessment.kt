@@ -22,7 +22,7 @@ data class Assessment(
     @Json(name = "questions")
     var questions: List<Question>,
     @Json(name = "feedback")
-    val feedback: Question?,
+    val feedback: Question,
     @Json(name = "roadMapItemId")
     val roadMapItemId: String
 ) : Parcelable
