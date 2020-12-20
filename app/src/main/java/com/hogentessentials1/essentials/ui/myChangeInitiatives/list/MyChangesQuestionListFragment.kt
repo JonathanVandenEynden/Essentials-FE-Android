@@ -94,10 +94,10 @@ class MyChangesQuestionListFragment : Fragment() {
         Timber.e(roadmapItem.assessment.toString())
         Timber.e(roadmapItem.assessment.feedback.toString())
         Timber.e(roadmapItem.assessment.feedback.possibleAnswers.toString())
-        roadmapItem.assessment.feedback.possibleAnswers.forEach { (k, v) -> allFeedback += (k.toDouble()*v) }
+        roadmapItem.assessment.feedback.possibleAnswers.forEach { (k, v) -> allFeedback += (k.toDouble() * v) }
         Timber.e(meanFeedback.toString())
         if (allFeedback != 0.0) {
-            meanFeedback = allFeedback/roadmapItem.assessment.questions[0].questionRegistered!!.keys.size
+            meanFeedback = allFeedback / roadmapItem.assessment.questions[0].questionRegistered!!.keys.size
             Timber.e(meanFeedback.toString())
             binding.surveyAveragemoodTextviewId.text = getString(R.string.Overall_happiness_applicable, calculatePercent(meanFeedback))
             // "Overall happiness: " + calculatePercent(meanFeedback)

@@ -12,7 +12,6 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
@@ -23,7 +22,6 @@ import com.hogentessentials1.essentials.data.model.ChangeInitiative
 import com.hogentessentials1.essentials.data.model.RoadMapItem
 import com.hogentessentials1.essentials.databinding.FragmentDashboardGraphBinding
 import org.koin.android.ext.android.inject
-import timber.log.Timber
 
 /**
  * Fragment for the dashboard graph

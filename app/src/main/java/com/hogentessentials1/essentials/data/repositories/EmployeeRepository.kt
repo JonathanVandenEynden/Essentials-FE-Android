@@ -47,5 +47,4 @@ class EmployeeRepository(val remoteDataSource: EmployeeRemoteDataSource, private
         networkCall = { remoteDataSource.getAllEmployeesFromOrganization(organizationId) },
         saveCallResult = { localDataSource.saveEmployees(it) }
     )
-
 }

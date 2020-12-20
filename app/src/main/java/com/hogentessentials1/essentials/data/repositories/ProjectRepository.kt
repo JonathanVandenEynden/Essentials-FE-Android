@@ -18,7 +18,6 @@ import javax.inject.Singleton
 @Singleton
 class ProjectRepository(val remoteDataSource: ProjectRemoteDataSource, private val localDataSource: ProjectLocalDataSource) {
 
-
     /**
      * get project by id
      * @param projectId

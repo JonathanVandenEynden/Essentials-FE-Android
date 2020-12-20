@@ -28,7 +28,6 @@ class RoadMapListFragment : Fragment() {
 
     private val loadingDialogFragment by lazy { LoadingFragment() }
 
-
     lateinit var viewModel: RoadMapListViewModel
 
     private lateinit var binding: RoadmapListBinding
@@ -111,7 +110,6 @@ class RoadMapListFragment : Fragment() {
                                     binding.noRoadmapsButton.visibility = View.VISIBLE
                                     adapter.submitList(arrayListOf())
                                     showLoading(false)
-
                                 } else {
                                     binding.noRoadmapsButton.visibility = View.GONE
 
@@ -120,7 +118,6 @@ class RoadMapListFragment : Fragment() {
                                     resource.data?.map { ci -> list.addAll(ci.roadMap) }
                                     adapter.submitList(list)
                                     showLoading(false)
-
                                 }
                             }
                             Status.LOADING -> {
