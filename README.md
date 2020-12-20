@@ -41,3 +41,7 @@ The testing of this project is invite-only, please send an email to [Ziggy Moens
 | Moens |Ziggy | [GitHub](https://github.com/ziggymoens) |
 | Naassens |Marbod | [GitHub](https://github.com/MarbodNaassens)|
 | Vanden Eynden Van Lysebeth |Jonathan |[GitHub](https://github.com/JonathanVandenEynden) |
+
+## User guide
+
+we also have a [quick start guide](./QuickStartGuide.pdf)
