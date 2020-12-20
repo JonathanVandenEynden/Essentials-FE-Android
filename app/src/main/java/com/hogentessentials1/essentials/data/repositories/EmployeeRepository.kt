@@ -4,6 +4,7 @@ import com.hogentessentials1.essentials.data.model.Employee
 import com.hogentessentials1.essentials.data.network.EmployeeRemoteDataSource
 import com.hogentessentials1.essentials.data.network.local.EmployeeLocalDataSource
 import com.hogentessentials1.essentials.util.Resource
+import com.hogentessentials1.essentials.util.performGetOperation
 import javax.inject.Singleton
 
 /**
@@ -27,15 +28,6 @@ class EmployeeRepository(val remoteDataSource: EmployeeRemoteDataSource, val loc
     }
 
     /**
-     * get all employees by organizationId
-     * @param organizationId
-     * @return Resource with list of employees
-     */
-    suspend fun getAllEmployeesFromOrganization(organizationId: Int): Resource<List<Employee>> {
-        return remoteDataSource.getAllEmployeesFromOrganization(organizationId)
-    }
-
-    /**
      * get employee by email
      * @return resource with employee
      * @param email
@@ -43,4 +35,17 @@ class EmployeeRepository(val remoteDataSource: EmployeeRemoteDataSource, val loc
     suspend fun getEmployeeByEmail(email: String): Resource<Employee> {
         return remoteDataSource.getEmployeeByEmail(email)
     }
+
+    /**
+     * get all employees by organizationId
+     * @param organizationId
+     * @return Resource with list of employees
+     */
+
+    fun getEmployeesFromOrganization(organizationId: Int) = performGetOperation(
+        databaseQuery = { localDataSource.getEmployees() },
+        networkCall = { remoteDataSource.getAllEmployeesFromOrganization(organizationId) },
+        saveCallResult = { localDataSource.saveEmployees(it) }
+    )
+
 }

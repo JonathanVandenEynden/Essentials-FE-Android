@@ -53,7 +53,3 @@ class ChangeInitiativeDiffCallback : DiffUtil.ItemCallback<ChangeInitiative>() {
         return oldItem == newItem
     }
 }
-
-class DashboardListener(val clickListener: (changeInitiative: ChangeInitiative) -> Unit) {
-    fun onClick(changeInitiative: ChangeInitiative) = clickListener(changeInitiative)
-}

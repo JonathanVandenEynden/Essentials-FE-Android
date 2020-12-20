@@ -19,7 +19,7 @@ import org.koin.android.ext.android.inject
  * Fragment for showing the overview of teams
  * Also a listener when a change group is tapped
  * @author Simon De Wilde
- * @author Marbod Naassens: loading
+ * @author Marbod Naassens: loading + No teams banner
  *
  */
 class TeamsFragment : Fragment(), ChangeGroupClickListener {
@@ -54,19 +54,19 @@ class TeamsFragment : Fragment(), ChangeGroupClickListener {
                         Status.SUCCESS -> {
                             showLoading(false)
                             if (resource.data?.isEmpty() == true) {
-                                binding.noTeamsBanner.visibility = View.VISIBLE
+                                binding.noTeamsButton.visibility = View.VISIBLE
                             } else {
-                                binding.noTeamsBanner.visibility = View.GONE
+                                binding.noTeamsButton.visibility = View.GONE
                             }
                             adapter.submitList(resource.data)
                         }
                         Status.LOADING -> {
                             showLoading(true)
-                            binding.noTeamsBanner.visibility = View.GONE
+                            binding.noTeamsButton.visibility = View.GONE
                         }
                         Status.ERROR -> {
                             showLoading(false)
-                            binding.noTeamsBanner.visibility = View.VISIBLE
+                            binding.noTeamsButton.visibility = View.VISIBLE
                         }
                     }
                 }

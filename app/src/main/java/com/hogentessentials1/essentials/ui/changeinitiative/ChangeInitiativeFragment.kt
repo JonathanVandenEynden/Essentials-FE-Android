@@ -15,7 +15,6 @@ import com.hogentessentials1.essentials.databinding.ChangeinitiativeBinding
 /**
  * Fragment for the details of a changeInitiative
  * @author Ziggy Moens
- * @author Marbod Naassens
  *
  */
 

@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+    @author Marbod Naassens
+-->
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@+id/infoFragment" android:title="More survey info"/>
-    <item android:id="@+id/websiteFragment" android:title="More graphs"/>
+    <item android:id="@+id/infoFragment" android:title="@string/overflow_more_surveys"/>
+    <item android:id="@+id/websiteFragment" android:title="@string/overflow_more_graphs"/>
 </menu>

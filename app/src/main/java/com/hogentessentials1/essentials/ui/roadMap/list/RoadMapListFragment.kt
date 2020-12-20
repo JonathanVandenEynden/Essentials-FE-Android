@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.hogentessentials1.essentials.R
 import com.hogentessentials1.essentials.data.model.RoadMapItem
 import com.hogentessentials1.essentials.databinding.RoadmapListBinding
+import com.hogentessentials1.essentials.ui.LoadingFragment
 import com.hogentessentials1.essentials.util.Status
 import org.koin.android.ext.android.inject
 
@@ -21,8 +22,12 @@ import org.koin.android.ext.android.inject
  * fragment for the road map overview
  *
  * @author Ziggy Moens
+ * @author Marbod Naassens
  */
 class RoadMapListFragment : Fragment() {
+
+    private val loadingDialogFragment by lazy { LoadingFragment() }
+
 
     lateinit var viewModel: RoadMapListViewModel
 
@@ -103,28 +108,33 @@ class RoadMapListFragment : Fragment() {
                         when (resource.status) {
                             Status.SUCCESS -> {
                                 if (resource.data?.isEmpty() == true) {
-                                    binding.noRmiBanner.visibility = View.VISIBLE
+                                    binding.noRoadmapsButton.visibility = View.VISIBLE
                                     adapter.submitList(arrayListOf())
+                                    showLoading(false)
+
                                 } else {
-                                    binding.noRmiBanner.visibility = View.GONE
+                                    binding.noRoadmapsButton.visibility = View.GONE
 
                                     // Get all RMI
                                     val list = arrayListOf<RoadMapItem>()
                                     resource.data?.map { ci -> list.addAll(ci.roadMap) }
                                     adapter.submitList(list)
+                                    showLoading(false)
+
                                 }
                             }
                             Status.LOADING -> {
-                                binding.noRmiBanner.visibility = View.GONE
+                                showLoading(true)
+                                binding.noRoadmapsButton.visibility = View.GONE
                             }
                             Status.ERROR -> {
-                                binding.noRmiBanner.visibility = View.VISIBLE
+                                showLoading(false)
+                                binding.noRoadmapsButton.visibility = View.VISIBLE
                             }
                         }
                     }
                 }
             )
-
 //            viewModel.getAllSurveys()
 //            viewModel.RoadMapItems.observe(
 //                viewLifecycleOwner,
@@ -138,5 +148,15 @@ class RoadMapListFragment : Fragment() {
         (activity as AppCompatActivity).supportActionBar?.title = "Road map"
 
         return binding.root
+    }
+
+    private fun showLoading(b: Boolean) {
+        if (b) {
+            if (!loadingDialogFragment.isAdded) {
+                loadingDialogFragment.show(requireActivity().supportFragmentManager, "loader")
+            }
+        } else {
+            loadingDialogFragment.dismissAllowingStateLoss()
+        }
     }
 }

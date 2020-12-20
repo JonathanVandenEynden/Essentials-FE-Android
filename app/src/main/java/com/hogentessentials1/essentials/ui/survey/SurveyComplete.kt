@@ -16,6 +16,7 @@ import com.hogentessentials1.essentials.databinding.SurveyCompletelyFinishedBind
  *
  * @author Ziggy Moens
  *
+ *
  */
 class SurveyComplete : Fragment() {
 
