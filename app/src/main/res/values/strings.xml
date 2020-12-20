@@ -80,7 +80,7 @@
     <string name="overall_happiness_100">Overall happiness: 100 %</string>
     <string name="all_questions_in_this_survey">All questions in this survey:</string>
     <string name="teams_fragment_header">Teams</string>
-    <string name="overflow_more_surveys">More survey info</string>
+    <string name="overflow_more_changeinitiative">More change initiative info</string>
     <string name="overflow_more_graphs">More graphs</string>
 
 </resources>
