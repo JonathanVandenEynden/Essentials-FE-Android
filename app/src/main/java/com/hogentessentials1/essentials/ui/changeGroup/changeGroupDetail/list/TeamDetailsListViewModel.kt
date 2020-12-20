@@ -9,7 +9,7 @@ import com.hogentessentials1.essentials.data.repositories.QuestionRepository
 import com.hogentessentials1.essentials.util.Status
 
 /**
- * @author Sébastien De Pauw
+ * @author Jonathan Vanden Eynden Van Lysebeth
  */
 
 class TeamDetailsListViewModel() : ViewModel() {
