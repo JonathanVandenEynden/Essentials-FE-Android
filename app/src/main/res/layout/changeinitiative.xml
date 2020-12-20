@@ -86,7 +86,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight=".50"
-                        android:text="@{viewModel.changeInitiative.changeSponsor.firstName}"
+                        android:text="@{@string/name_display(viewModel.changeInitiative.changeSponsor.firstName, viewModel.changeInitiative.changeSponsor.lastName)}"
                         android:textAlignment="center" />
                 </LinearLayout>
 
