@@ -4,18 +4,12 @@ import android.content.Intent
 import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.Menu
-import android.view.MenuInflater
-import android.view.MenuItem
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.AdapterView
 import android.widget.AdapterView.OnItemSelectedListener
 import android.widget.Spinner
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.os.bundleOf
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
@@ -34,7 +28,7 @@ import org.koin.android.ext.android.inject
 class DashboardFragment : Fragment() {
     private var ciList: ArrayList<ChangeInitiative> = arrayListOf()
     private var selectedCI: Int = 0
-    private lateinit var selectedChange: ChangeInitiative;
+    private lateinit var selectedChange: ChangeInitiative
 
     private lateinit var binding: FragmentDashboardBinding
     val viewModel: DashboardViewModel by inject()
@@ -60,7 +54,7 @@ class DashboardFragment : Fragment() {
 
         val spinner = binding.spinnerCi
         val speed = binding.speedView
-        speed.unit = "% of Surveys filled in"
+        speed.unit = getString(R.string.speedometer_label)
         speed.isWithTremble = false
         speed.maxSpeed = 100
         speed.lowSpeedPercent = 33
@@ -118,36 +112,35 @@ class DashboardFragment : Fragment() {
             }
         )*/
 
-        spinner.setOnItemSelectedListener(
-            object : OnItemSelectedListener {
-                override fun onItemSelected(
-                    parent: AdapterView<*>?,
-                    view: View?,
-                    position: Int,
-                    id: Long
-                ) {
-                    val clickedItem: ChangeInitiative =
-                        parent?.getItemAtPosition(position) as ChangeInitiative
-                    val clickedText: String = clickedItem.title
-                    Toast.makeText(
-                        context,
-                        "$clickedText selected",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                    viewModel.chosenCIId = clickedItem.id
-                    selectedChange = clickedItem
-                    refreshVM()
-                    viewModel.fi.observe(
-                        viewLifecycleOwner,
-                        {
-                            speed.speedTo(it.toFloat())
-                        }
-                    )
-                    showLoading(false)
-                }
+        spinner.onItemSelectedListener = object : OnItemSelectedListener {
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                val clickedItem: ChangeInitiative =
+                    parent?.getItemAtPosition(position) as ChangeInitiative
+                val clickedText: String = clickedItem.title
+                Toast.makeText(
+                    context,
+                    "$clickedText selected",
+                    Toast.LENGTH_SHORT
+                ).show()
+                viewModel.chosenCIId = clickedItem.id
+                selectedChange = clickedItem
+                refreshVM()
+                viewModel.fi.observe(
+                    viewLifecycleOwner,
+                    {
+                        speed.speedTo(it.toFloat())
+                    }
+                )
+                showLoading(false)
+            }
 
-                override fun onNothingSelected(parent: AdapterView<*>?) {}
-            })
+            override fun onNothingSelected(parent: AdapterView<*>?) {}
+        }
 
         viewModel.navigateToGraph.observe(
             viewLifecycleOwner,
@@ -167,7 +160,7 @@ class DashboardFragment : Fragment() {
 
         setHasOptionsMenu(true)
 
-        (activity as AppCompatActivity).supportActionBar?.title = "Dashboard"
+        (activity as AppCompatActivity).supportActionBar?.title = getString(R.string.dashboard_title)
 
         return binding.root
     }
@@ -181,7 +174,7 @@ class DashboardFragment : Fragment() {
         when (item.itemId) {
             R.id.infoFragment -> findNavController().navigate(DashboardFragmentDirections.actionGlobalChangeInitiativeFragment(selectedChange, true))
             R.id.websiteFragment -> {
-                val uri: Uri = Uri.parse("https://essentialstoolkit.netlify.app/")
+                val uri: Uri = Uri.parse(getString(R.string.essentials_website_link))
                 startActivity(Intent(Intent.ACTION_VIEW, uri))
             }
         }

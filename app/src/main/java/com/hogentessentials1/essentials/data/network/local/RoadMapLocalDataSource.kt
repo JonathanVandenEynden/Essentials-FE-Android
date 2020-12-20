@@ -11,7 +11,7 @@ import com.hogentessentials1.essentials.data.model.RoadMapItem
  *
  * @property roadMapDao
  */
-class RoadMapLocalDataSource(val roadMapDao: RoadMapDao) {
+class RoadMapLocalDataSource(private val roadMapDao: RoadMapDao) {
     /**
      * gets all road map items from the db
      *

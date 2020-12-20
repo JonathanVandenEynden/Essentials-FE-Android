@@ -21,7 +21,7 @@ import kotlinx.coroutines.launch
  * @property cirepository
  * @property rmiRepository
  */
-class DashboardViewModel(private val dashboardRepository: DashboardRepository, private val cirepository: ChangeInitiativeRepository, val rmiRepository: RoadMapRepository) : ViewModel() {
+class DashboardViewModel(private val dashboardRepository: DashboardRepository, private val cirepository: ChangeInitiativeRepository, private val rmiRepository: RoadMapRepository) : ViewModel() {
 
     var chosenCIId: Int = 1
 

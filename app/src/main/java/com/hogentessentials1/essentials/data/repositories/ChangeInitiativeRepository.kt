@@ -19,7 +19,7 @@ import javax.inject.Singleton
 @Singleton
 class ChangeInitiativeRepository(
     val remoteDataSource: ChangeInitiativeRemoteDataSource,
-    val localDataSource: ChangeInitiativeLocalDataSource
+    private val localDataSource: ChangeInitiativeLocalDataSource
 ) {
     /**
      * gets a change initiative with a given id from the db

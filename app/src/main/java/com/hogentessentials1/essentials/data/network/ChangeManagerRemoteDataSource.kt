@@ -7,7 +7,7 @@ package com.hogentessentials1.essentials.data.network
  *
  * @property cmApiService
  */
-class ChangeManagerRemoteDataSource(val cmApiService: ChangeManagersEndpointInterface) : BaseDataSource() {
+class ChangeManagerRemoteDataSource(private val cmApiService: ChangeManagersEndpointInterface) : BaseDataSource() {
 
     /**
      * get a change manager with a given id

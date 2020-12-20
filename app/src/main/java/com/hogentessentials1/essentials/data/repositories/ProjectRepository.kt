@@ -16,7 +16,7 @@ import javax.inject.Singleton
  * @property localDataSource
  */
 @Singleton
-class ProjectRepository(val remoteDataSource: ProjectRemoteDataSource, val localDataSource: ProjectLocalDataSource) {
+class ProjectRepository(val remoteDataSource: ProjectRemoteDataSource, private val localDataSource: ProjectLocalDataSource) {
 
 
     /**

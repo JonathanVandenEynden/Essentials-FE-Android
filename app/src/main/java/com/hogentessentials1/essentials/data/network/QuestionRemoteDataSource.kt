@@ -10,7 +10,7 @@ import org.json.JSONArray
  * @author Ziggy Moens
  * @property questionApiService
  */
-class QuestionRemoteDataSource(val questionApiService: QuestionsEndpointInterface) :
+class QuestionRemoteDataSource(private val questionApiService: QuestionsEndpointInterface) :
     BaseDataSource() {
 
     /**

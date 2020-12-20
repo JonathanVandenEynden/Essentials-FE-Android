@@ -5,7 +5,7 @@ package com.hogentessentials1.essentials.data.network
  * @author Kilian Hoefman
  * @property cgApiService
  */
-class OrganizationRemoteDataSource(val cgApiService: OrganizationsEndpointInterface) : BaseDataSource() {
+class OrganizationRemoteDataSource(private val cgApiService: OrganizationsEndpointInterface) : BaseDataSource() {
 
     /**
      * gets an organization with a given id

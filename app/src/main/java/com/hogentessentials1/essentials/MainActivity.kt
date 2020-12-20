@@ -44,8 +44,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     companion object {
         const val CHANNEL_ID: String = "essentialstoolkit_notifs"
     }
-    val CHANNEL_NAME: String = "essentialstoolkit notifs"
-    val CHANNEL_DESC: String = "Essentials notifications"
+    val channel_name: String = "essentialstoolkit notifs"
+    val channel_desc: String = "Essentials notifications"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,20 +56,18 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         )
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val channel = NotificationChannel(CHANNEL_ID, CHANNEL_NAME, NotificationManager.IMPORTANCE_DEFAULT)
-            channel.description = CHANNEL_DESC
+            val channel = NotificationChannel(CHANNEL_ID, channel_name, NotificationManager.IMPORTANCE_DEFAULT)
+            channel.description = channel_desc
             val manager: NotificationManagerCompat = NotificationManagerCompat.from(this)
             manager.createNotificationChannel(channel)
         }
-        FirebaseMessaging.getInstance().token.addOnCompleteListener(
-            OnCompleteListener {
-                if (it.isSuccessful) {
-                    viewModel.post(Globals.userid!!, it.result!!)
-                } else {
-                    Timber.e("not successful")
-                }
+        FirebaseMessaging.getInstance().token.addOnCompleteListener {
+            if (it.isSuccessful) {
+                viewModel.post(Globals.userid!!, it.result!!)
+            } else {
+                Timber.e("not successful")
             }
-        )
+        }
 
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.navHostFragment) as NavHostFragment

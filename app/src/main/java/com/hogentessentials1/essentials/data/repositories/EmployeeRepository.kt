@@ -16,7 +16,7 @@ import javax.inject.Singleton
  * @property localDataSource
  */
 @Singleton
-class EmployeeRepository(val remoteDataSource: EmployeeRemoteDataSource, val localDataSource: EmployeeLocalDataSource) {
+class EmployeeRepository(val remoteDataSource: EmployeeRemoteDataSource, private val localDataSource: EmployeeLocalDataSource) {
 
     /**
      * get employee by id

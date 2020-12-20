@@ -5,7 +5,7 @@ package com.hogentessentials1.essentials.data.network
  * @author Kilian Hoefman
  * @property ciApiService
  */
-class ChangeInitiativeRemoteDataSource(val ciApiService: ChangeInitiativesEndpointInterface) : BaseDataSource() {
+class ChangeInitiativeRemoteDataSource(private val ciApiService: ChangeInitiativesEndpointInterface) : BaseDataSource() {
 
     /**
      * gets a change initiative with a specific id

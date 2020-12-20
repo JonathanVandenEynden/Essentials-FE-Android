@@ -10,7 +10,7 @@ import com.hogentessentials1.essentials.data.model.Employee
  *
  * @property employeeDao
  */
-class EmployeeLocalDataSource(val employeeDao: EmployeeDao) {
+class EmployeeLocalDataSource(private val employeeDao: EmployeeDao) {
     /**
      * gets all employees from the db
      *

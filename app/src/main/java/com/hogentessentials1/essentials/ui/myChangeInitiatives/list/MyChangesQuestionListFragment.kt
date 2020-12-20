@@ -115,11 +115,9 @@ class MyChangesQuestionListFragment : Fragment() {
     }
 
     private fun calculatePercent(meanFeedback: Double): String {
-        var ret = ""
-        ret = when (meanFeedback) {
+        return when (meanFeedback) {
             -1.0 -> "not yet applicable"
             else -> (meanFeedback / 5 * 100).toString() + " %"
         }
-        return ret
     }
 }

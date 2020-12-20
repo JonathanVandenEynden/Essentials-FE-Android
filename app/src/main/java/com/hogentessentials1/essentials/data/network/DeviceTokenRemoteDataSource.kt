@@ -7,7 +7,7 @@ package com.hogentessentials1.essentials.data.network
  *
  * @property deviceTokenApiService
  */
-class DeviceTokenRemoteDataSource(val deviceTokenApiService: DeviceTokenEndpointInterface) : BaseDataSource() {
+class DeviceTokenRemoteDataSource(private val deviceTokenApiService: DeviceTokenEndpointInterface) : BaseDataSource() {
     suspend fun postDeviceToken(userid: Int, token: String) {
         deviceTokenApiService.postDeviceToken(userid.toString(), token)
     }

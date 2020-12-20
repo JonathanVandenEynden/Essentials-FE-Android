@@ -5,7 +5,7 @@ package com.hogentessentials1.essentials.data.network
  * @author Kilian Hoefman
  * @property employeeApiService
  */
-class EmployeeRemoteDataSource(val employeeApiService: EmployeeEndpointInterface) : BaseDataSource() {
+class EmployeeRemoteDataSource(private val employeeApiService: EmployeeEndpointInterface) : BaseDataSource() {
 
     /**
      * gets an employee with a given id

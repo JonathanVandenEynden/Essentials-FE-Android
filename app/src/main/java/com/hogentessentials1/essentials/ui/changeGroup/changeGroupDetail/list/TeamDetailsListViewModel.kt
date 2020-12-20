@@ -8,7 +8,7 @@ import com.hogentessentials1.essentials.data.model.Employee
  * @author Jonathan Vanden Eynden Van Lysebeth
  */
 
-class TeamDetailsListViewModel() : ViewModel() {
+class TeamDetailsListViewModel : ViewModel() {
 
     private val _navigateToEmployee = MutableLiveData<Employee?>()
     val navigateToEmpolyee

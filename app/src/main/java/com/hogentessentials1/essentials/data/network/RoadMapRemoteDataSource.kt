@@ -5,7 +5,7 @@ package com.hogentessentials1.essentials.data.network
  * @author Kilian Hoefman
  * @property rmiApiService
  */
-class RoadMapRemoteDataSource(val rmiApiService: RoadMapItemsEndpointInterface) : BaseDataSource() {
+class RoadMapRemoteDataSource(private val rmiApiService: RoadMapItemsEndpointInterface) : BaseDataSource() {
 
     /**
      * gets a road map item with a given id

@@ -9,7 +9,7 @@ import com.hogentessentials1.essentials.data.model.Project
  * @author Simon De Wilde
  * @property projectDao
  */
-class ProjectLocalDataSource(val projectDao: ProjectDao) {
+class ProjectLocalDataSource(private val projectDao: ProjectDao) {
     /**
      * gets all projects from the db
      *

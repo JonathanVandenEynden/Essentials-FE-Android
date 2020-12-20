@@ -19,7 +19,7 @@ import javax.inject.Singleton
 @Singleton
 class ChangeGroupRepository(
     val remoteDataSource: ChangeGroupRemoteDataSource,
-    val localDataSource: ChangeGroupLocalDataSource
+    private val localDataSource: ChangeGroupLocalDataSource
 ) {
 
     /**

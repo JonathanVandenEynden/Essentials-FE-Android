@@ -9,7 +9,7 @@ package com.hogentessentials1.essentials.data.network
  *
  * @property cgApiService
  */
-class ChangeGroupRemoteDataSource(val cgApiService: ChangeGroupEndpointInterface) : BaseDataSource() {
+class ChangeGroupRemoteDataSource(private val cgApiService: ChangeGroupEndpointInterface) : BaseDataSource() {
 
     /**
      * gets all change groups for the logged in user

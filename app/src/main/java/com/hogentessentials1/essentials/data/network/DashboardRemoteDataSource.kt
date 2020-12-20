@@ -7,7 +7,7 @@ package com.hogentessentials1.essentials.data.network
  *
  * @property dashboardApiService
  */
-class DashboardRemoteDataSource(val dashboardApiService: DashboardEndpointInterface) :
+class DashboardRemoteDataSource(private val dashboardApiService: DashboardEndpointInterface) :
     BaseDataSource() {
     /**
      * get all filled in surveys from a change initiative with a given id

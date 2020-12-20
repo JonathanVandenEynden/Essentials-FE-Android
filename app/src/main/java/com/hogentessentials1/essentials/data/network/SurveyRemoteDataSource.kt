@@ -5,7 +5,7 @@ package com.hogentessentials1.essentials.data.network
  * @author Kilian Hoefman
  * @property surveyApiService
  */
-class SurveyRemoteDataSource(val surveyApiService: SurveyEndpointInterface) : BaseDataSource() {
+class SurveyRemoteDataSource(private val surveyApiService: SurveyEndpointInterface) : BaseDataSource() {
 
     /**
      * gets all surveys

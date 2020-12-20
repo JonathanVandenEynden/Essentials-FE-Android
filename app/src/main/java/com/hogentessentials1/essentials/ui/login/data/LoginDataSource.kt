@@ -18,7 +18,7 @@ import java.io.IOException
  *
  * @property aApiService
  */
-class LoginDataSource(val aApiService: AccountEndpointInterface) : BaseDataSource() {
+class LoginDataSource(private val aApiService: AccountEndpointInterface) : BaseDataSource() {
 
     suspend fun login(username: String, password: String): Result<LoggedInUser> {
         try {

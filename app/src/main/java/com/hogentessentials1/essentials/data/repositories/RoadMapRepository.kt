@@ -18,7 +18,7 @@ import javax.inject.Singleton
  */
 
 @Singleton
-class RoadMapRepository(val remoteDataSource: RoadMapRemoteDataSource, val localDataSource: RoadMapLocalDataSource) {
+class RoadMapRepository(val remoteDataSource: RoadMapRemoteDataSource, private val localDataSource: RoadMapLocalDataSource) {
 
     /**
      * get road map item by id

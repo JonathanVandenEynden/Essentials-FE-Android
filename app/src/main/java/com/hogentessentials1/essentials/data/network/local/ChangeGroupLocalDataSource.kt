@@ -10,7 +10,7 @@ import com.hogentessentials1.essentials.data.model.ChangeGroup
  *
  * @property changeGroupDao
  */
-class ChangeGroupLocalDataSource(val changeGroupDao: ChangeGroupDao) {
+class ChangeGroupLocalDataSource(private val changeGroupDao: ChangeGroupDao) {
     /**
      * gets all change groups from the db
      *

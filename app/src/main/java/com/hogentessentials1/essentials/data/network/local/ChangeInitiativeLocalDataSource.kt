@@ -10,7 +10,7 @@ import com.hogentessentials1.essentials.data.model.ChangeInitiative
  *
  * @property changeInitiativeDao
  */
-class ChangeInitiativeLocalDataSource(val changeInitiativeDao: ChangeInitiativeDao) {
+class ChangeInitiativeLocalDataSource(private val changeInitiativeDao: ChangeInitiativeDao) {
     /**
      * gets all change initiatives from the db
      *

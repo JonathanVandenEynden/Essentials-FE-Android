@@ -21,6 +21,7 @@ import org.koin.android.ext.android.inject
  * @author Ziggy Moens
  * @author Marbod Naassens
  */
+@Suppress("DEPRECATION")
 class ChangeInitiativesFragment : Fragment() {
 
     private lateinit var binding: ChangeinitiativesListBinding
@@ -28,7 +29,7 @@ class ChangeInitiativesFragment : Fragment() {
     private lateinit var adapter: ChangeInitiativeAdapter
     private val loadingDialogFragment by lazy { LoadingFragment() }
 
-    fun getViewModel(): ChangeInitiativesViewModel {
+    private fun getViewModel(): ChangeInitiativesViewModel {
         val viewModel: ChangeInitiativesViewModel by inject()
         return viewModel
     }
@@ -153,7 +154,7 @@ class ChangeInitiativesFragment : Fragment() {
         }
     }
 
-    fun showLoading(b: Boolean) {
+    private fun showLoading(b: Boolean) {
         if (b) {
             if (!loadingDialogFragment.isAdded) {
                 loadingDialogFragment.show(requireActivity().supportFragmentManager, "loader")

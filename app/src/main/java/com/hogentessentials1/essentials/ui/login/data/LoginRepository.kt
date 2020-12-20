@@ -10,7 +10,7 @@ import com.hogentessentials1.essentials.ui.login.data.model.LoggedInUser
  * @property dataSource
  */
 
-class LoginRepository(val dataSource: LoginDataSource) {
+class LoginRepository(private val dataSource: LoginDataSource) {
 
     // in-memory cache of the loggedInUser object
     var user: LoggedInUser? = null

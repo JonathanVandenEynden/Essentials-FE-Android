@@ -34,13 +34,9 @@ import timber.log.Timber
 class DashboardGraphFragment : Fragment() {
     private lateinit var binding: FragmentDashboardGraphBinding
     val viewModel: DashboardViewModel by inject()
-    var ci: ChangeInitiative? = null
+    private var ci: ChangeInitiative? = null
     var rmi: RoadMapItem? = null
-    var mood: Map<Int, Int>? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
+    private var mood: Map<Int, Int>? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -62,7 +58,7 @@ class DashboardGraphFragment : Fragment() {
             ci = it
         }
 
-        binding.chart.setNoDataText("No moods available for Change")
+        binding.chart.setNoDataText(getString(R.string.no_data_text))
         if (ci != null) {
             viewModel.chosenCIId = ci!!.id
             refreshVM()
@@ -73,7 +69,7 @@ class DashboardGraphFragment : Fragment() {
 
         setHasOptionsMenu(true)
 
-        (activity as AppCompatActivity).supportActionBar?.title = "Dashboard"
+        (activity as AppCompatActivity).supportActionBar?.title = getString(R.string.dashboard_title)
 
         return binding.root
     }
@@ -85,20 +81,22 @@ class DashboardGraphFragment : Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.infoFragment -> this.findNavController().navigate(R.id.homeScreenFragment)
+            R.id.infoFragment -> findNavController().navigate(DashboardFragmentDirections.actionGlobalChangeInitiativeFragment(ci!!, true))
             R.id.websiteFragment -> {
-                val uri: Uri = Uri.parse("https://essentialstoolkit.netlify.app/")
+                val uri: Uri = Uri.parse(getString(R.string.essentials_website_link))
                 startActivity(Intent(Intent.ACTION_VIEW, uri))
             }
         }
         return super.onOptionsItemSelected(item)
     }
 
-    fun showCharts() {
+    private fun showCharts() {
         val chart = binding.chart
         chart.description.textSize = 20f
         chart.legend.textSize = 15f
-        if (mood != null) {
+        var sumValues = 0
+        mood!!.forEach { (_, value) -> sumValues += value }
+        if (sumValues > 0) {
             val data = PieData(getDataSet())
             chart.data = data
             chart.data.setValueTextSize(15f)
@@ -119,8 +117,6 @@ class DashboardGraphFragment : Fragment() {
         )
         val valueSet1 = ArrayList<PieEntry>()
         if (mood!!.isNotEmpty()) {
-            Timber.e(mood.toString())
-            Timber.e("hey")
             var sum = 0
             mood!!.values.forEach { sum += it }
             for (m in mood!!) {
@@ -135,14 +131,14 @@ class DashboardGraphFragment : Fragment() {
         return null
     }
 
-    fun refreshVM() {
+    private fun refreshVM() {
         viewModel.fillDashboard()
     }
 
-    fun getMood() {
+    private fun getMood() {
         viewModel.m.observe(
             viewLifecycleOwner,
-            Observer {
+            {
                 mood = it
                 showCharts()
             }

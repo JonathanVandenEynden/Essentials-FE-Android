@@ -5,7 +5,7 @@ package com.hogentessentials1.essentials.data.network
  * @author Kilian Hoefman
  * @property projectApiService
  */
-class ProjectRemoteDataSource(val projectApiService: ProjectsEndpointInterface) : BaseDataSource() {
+class ProjectRemoteDataSource(private val projectApiService: ProjectsEndpointInterface) : BaseDataSource() {
 
     /**
      * gets a project with a given id

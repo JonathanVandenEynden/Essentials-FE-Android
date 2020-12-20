@@ -41,7 +41,7 @@ class TeamDetailsListFragment : Fragment() {
             false
         )
 
-        var employees: ArrayList<Employee> = arrayListOf()
+        val employees: ArrayList<Employee> = arrayListOf()
 
         viewModel = ViewModelProvider(this).get(TeamDetailsListViewModel::class.java)
 
