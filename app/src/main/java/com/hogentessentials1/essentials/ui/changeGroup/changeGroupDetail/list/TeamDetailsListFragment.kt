@@ -18,7 +18,7 @@ import com.hogentessentials1.essentials.data.model.Employee
 import com.hogentessentials1.essentials.databinding.TeamdetailsListBinding
 
 /**
- * @author Jonathan VEVL
+ * @author Jonathan Vanden Eynden Van Lysebeth
  */
 
 class TeamDetailsListFragment : Fragment() {

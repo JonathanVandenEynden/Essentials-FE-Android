@@ -9,7 +9,7 @@ import com.hogentessentials1.essentials.data.model.Employee
 import com.hogentessentials1.essentials.databinding.TeamdetailsListitemBinding
 
 /**
- * @author Jonathan VEVL
+ * @author Jonathan Vanden Eynden Van Lysebeth
  */
 
 class TeamDetailsListAdapter(val clickListener: TeamDetailsClickListener) : ListAdapter<Employee, TeamDetailsListAdapter.ViewHolder>(TeamDetailsDiffCallback()) {

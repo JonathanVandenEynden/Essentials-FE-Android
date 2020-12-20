@@ -12,7 +12,7 @@ import com.hogentessentials1.essentials.data.model.Employee
 import com.hogentessentials1.essentials.databinding.EmployeeDetailsFragmentBinding
 
 /**
- * @author Sébastien De Pauw
+ * @author Jonathan Vanden Eynden Van Lysebeth
  */
 
 class EmployeeFragment : Fragment() {
@@ -32,6 +32,8 @@ class EmployeeFragment : Fragment() {
         val viewModel = ViewModelProvider(this).get(EmployeeViewModel::class.java)
 
         binding.viewModel = viewModel
+
+        viewModel.employee = employee
 
         return binding.root
     }
