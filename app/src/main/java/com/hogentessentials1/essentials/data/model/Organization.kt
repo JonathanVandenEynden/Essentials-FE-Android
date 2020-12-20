@@ -4,7 +4,15 @@ import android.os.Parcelable
 import com.squareup.moshi.Json
 import kotlinx.android.parcel.Parcelize
 
-// @Entity(tableName = "organization")
+/**
+ * An organization in the application
+ *
+ * @property id
+ * @property name
+ * @property employees
+ * @property changeManagers
+ * @property portfolio
+ */
 @Parcelize
 data class Organization(
     @Json(name = "id")

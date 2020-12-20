@@ -5,8 +5,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 /**
+ * Viewmodel for the homescreen
  * @author Simon De Wilde
- * @author Ziggy Moens: added mock data moved to ChangeInitiativeViewModel
+ * @author Ziggy Moens
  */
 class HomeScreenViewModel : ViewModel() {
 

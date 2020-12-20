@@ -1,0 +1,60 @@
+package com.hogentessentials1.essentials.ui.dashboard
+
+import android.content.Context
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.ArrayAdapter
+import android.widget.TextView
+import androidx.recyclerview.widget.DiffUtil
+import com.hogentessentials1.essentials.R
+import com.hogentessentials1.essentials.data.model.ChangeInitiative
+import com.hogentessentials1.essentials.data.model.RoadMapItem
+
+/**
+ * adapter to convert road map items in a dashboard
+ * @author Marbod Naassens
+ */
+class DashboardRMIAdapter(context: Context, var list: ArrayList<RoadMapItem>) :
+    ArrayAdapter<RoadMapItem>(context, 0, list) {
+    private var vi: LayoutInflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+
+    override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
+        return initView(position, convertView, parent)
+    }
+
+    override fun getDropDownView(position: Int, convertView: View?, parent: ViewGroup): View {
+        return initView(position, convertView, parent)
+    }
+
+    private fun initView(position: Int, convertView: View?, parent: ViewGroup): View {
+        val view: View = convertView
+            ?: LayoutInflater.from(context).inflate(
+                R.layout.fragment_dashboard_spinner_item,
+                parent,
+                false
+            )
+        val textViewName = view.findViewById<TextView>(R.id.spinner_text)
+        val currentItem = getItem(position)
+
+        if (currentItem != null) {
+            textViewName.text = currentItem.title
+        }
+
+        return view
+    }
+}
+
+class RoadmapItemDiffCallback : DiffUtil.ItemCallback<RoadMapItem>() {
+    override fun areItemsTheSame(oldItem: RoadMapItem, newItem: RoadMapItem): Boolean {
+        return oldItem.title == newItem.title
+    }
+
+    override fun areContentsTheSame(oldItem: RoadMapItem, newItem: RoadMapItem): Boolean {
+        return oldItem == newItem
+    }
+}
+
+class DashboardRMIListener(val clickListener: (changeInitiative: ChangeInitiative) -> Unit) {
+    fun onClick(changeInitiative: ChangeInitiative) = clickListener(changeInitiative)
+}

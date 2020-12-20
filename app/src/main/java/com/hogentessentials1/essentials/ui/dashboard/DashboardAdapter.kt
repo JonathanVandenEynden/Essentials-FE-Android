@@ -1,32 +1,46 @@
 package com.hogentessentials1.essentials.ui.dashboard
 
+import android.content.Context
+import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
-import androidx.recyclerview.widget.RecyclerView
+import com.hogentessentials1.essentials.R
 import com.hogentessentials1.essentials.data.model.ChangeInitiative
 
 /**
+ * adapter class to create dashboards
+ * @author Marbod Naassens
  */
-class DashboardAdapter() :
-    ListAdapter<ChangeInitiative, DashboardAdapter.ViewHolder>(ChangeInitiativeDiffCallback()) {
+class DashboardAdapter(context: Context, var list: ArrayList<ChangeInitiative>) :
+    ArrayAdapter<ChangeInitiative>(context, 0, list) {
+    private var vi: LayoutInflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val item = getItem(position)
-        holder.bind(item)
+    override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
+        return initView(position, convertView, parent)
     }
 
-    class ViewHolder private constructor(val binding: TextView) :
-        RecyclerView.ViewHolder(binding.rootView) {
+    override fun getDropDownView(position: Int, convertView: View?, parent: ViewGroup): View {
+        return initView(position, convertView, parent)
+    }
 
-        fun bind(item: ChangeInitiative) {
-            binding.text = item.title
+    private fun initView(position: Int, convertView: View?, parent: ViewGroup): View {
+        val view: View = convertView
+            ?: LayoutInflater.from(context).inflate(
+                R.layout.fragment_dashboard_spinner_item,
+                parent,
+                false
+            )
+        val textViewName = view.findViewById<TextView>(R.id.spinner_text)
+        val currentItem = getItem(position)
+
+        if (currentItem != null) {
+            textViewName.text = currentItem.title
         }
-    }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        TODO("Not yet implemented")
+        return view
     }
 }
 
@@ -38,8 +52,4 @@ class ChangeInitiativeDiffCallback : DiffUtil.ItemCallback<ChangeInitiative>() {
     override fun areContentsTheSame(oldItem: ChangeInitiative, newItem: ChangeInitiative): Boolean {
         return oldItem == newItem
     }
-}
-
-class ChangeInitiativeListener(val clickListener: (changeInitiative: ChangeInitiative) -> Unit) {
-    fun onClick(changeInitiative: ChangeInitiative) = clickListener(changeInitiative)
 }

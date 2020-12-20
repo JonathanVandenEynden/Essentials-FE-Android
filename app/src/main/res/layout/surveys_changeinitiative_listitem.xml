@@ -15,14 +15,13 @@
 
         <variable
             name="clickListener"
-            type="com.hogentessentials1.essentials.ui.surveys.SurveyListener" />
+            type="com.hogentessentials1.essentials.ui.changeinitiative.SurveyListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <!--TODO name of survey instead of id -->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/changeinitiative_listitem_button"
             android:layout_width="match_parent"

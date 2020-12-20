@@ -1,6 +1,6 @@
 <h1 align="center">
   <br>
-  <img src="app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" alt="Essentials Logo"></a>
+  <img src="app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" alt="Essentials Logo">
   <br>
   Essentials
 </h1>
