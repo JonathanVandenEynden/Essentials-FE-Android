@@ -2,6 +2,7 @@
     @author Ziggy Moens
     @author Simon De Wilde
     @author Sébastien De Pauw
+    @author Jonathan Vanden Eynden Van Lysebeth
     navigation for the application
 -->
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
@@ -9,7 +10,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
     app:startDestination="@id/homeScreenFragment">
-
     <fragment
         android:id="@+id/changeInitiatives"
         android:name="com.hogentessentials1.essentials.ui.changeInitiatives.ChangeInitiativesFragment"
@@ -120,21 +120,8 @@
         android:label="teams_fragment"
         tools:layout="@layout/teams_fragment">
         <action
-            android:id="@+id/action_teamsFragment_to_teamDetailsFragment"
-            app:destination="@id/teamDetailsFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:popEnterAnim="@anim/slide_in_left" />
-    </fragment>
-    <fragment
-        android:id="@+id/teamDetailsFragment"
-        android:name="com.hogentessentials1.essentials.ui.changeGroup.changeGroupDetail.TeamDetailsFragment"
-        android:label="TeamDetailsFragment">
-        <argument
-            android:name="changeGroupMembers"
-            app:argType="com.hogentessentials1.essentials.data.model.ChangeGroup" />
-        <action
-            android:id="@+id/action_teamDetailsFragment_to_employeeDetails"
-            app:destination="@id/employeeDetails" />
+            android:id="@+id/action_teamsFragment_to_teamDetailsListFragment"
+            app:destination="@id/teamDetailsListFragment" />
     </fragment>
     <fragment
         android:id="@+id/notFoundFragment"
@@ -180,7 +167,6 @@
             app:destination="@id/surveyQuestionFragment"
             app:enterAnim="@anim/slide_in_right"
             app:popEnterAnim="@anim/slide_in_left" />
-
         <argument
             android:name="changemanager"
             app:argType="boolean" />
@@ -258,12 +244,24 @@
         app:enterAnim="@anim/slide_in_right"
         app:popEnterAnim="@anim/slide_in_left" />
     <fragment
-        android:id="@+id/employeeDetails"
-        android:name="com.hogentessentials1.essentials.ui.changeGroup.EmployeeDetails.EmployeeDetails"
-        android:label="employee_details_fragment"
-        tools:layout="@layout/employee_details_fragment" >
+        android:id="@+id/teamDetailsListFragment"
+        android:name="com.hogentessentials1.essentials.ui.changeGroup.changeGroupDetail.list.TeamDetailsListFragment"
+        android:label="TeamDetailsListFragment" >
         <argument
-            android:name="Employee"
+            android:name="changeGroup"
+            app:argType="com.hogentessentials1.essentials.data.model.ChangeGroup" />
+        <action
+            android:id="@+id/action_teamDetailsListFragment_to_employeeFragment"
+            app:destination="@id/employeeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/employeeFragment"
+        android:name="com.hogentessentials1.essentials.ui.changeGroup.changeGroupDetail.employee.EmployeeFragment"
+        android:label="EmployeeFragment" >
+        <argument
+            android:name="employee"
             app:argType="com.hogentessentials1.essentials.data.model.Employee" />
     </fragment>
 </navigation>
+
+

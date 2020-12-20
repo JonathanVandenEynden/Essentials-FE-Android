@@ -1,4 +1,4 @@
-package com.hogentessentials1.essentials.ui.changeGroup.EmployeeDetails
+package com.hogentessentials1.essentials.ui.changeGroup.changeGroupDetail.list
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,10 +6,13 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.hogentessentials1.essentials.data.model.Employee
-import com.hogentessentials1.essentials.databinding.ChangeGroupMemberItemBinding
+import com.hogentessentials1.essentials.databinding.TeamdetailsListitemBinding
 
-class EmployeeDetailsAdapter(val clickListener: EmployeeListener) :
-    ListAdapter<Employee, EmployeeDetailsAdapter.ViewHolder>(EmployeeDiffCallback()) {
+/**
+ * @author Jonathan VEVL
+ */
+
+class TeamDetailsListAdapter(val clickListener: TeamDetailsClickListener) : ListAdapter<Employee, TeamDetailsListAdapter.ViewHolder>(TeamDetailsDiffCallback()) {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = getItem(position)
@@ -20,10 +23,10 @@ class EmployeeDetailsAdapter(val clickListener: EmployeeListener) :
         return ViewHolder.from(parent)
     }
 
-    class ViewHolder private constructor(val binding: ChangeGroupMemberItemBinding) :
-        RecyclerView.ViewHolder(binding.root){
+    class ViewHolder private constructor(val binding: TeamdetailsListitemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(clickListener: EmployeeListener, item: Employee){
+        fun bind(clickListener: TeamDetailsClickListener, item: Employee) {
             binding.employee = item
             binding.clickListener = clickListener
             binding.executePendingBindings()
@@ -32,16 +35,17 @@ class EmployeeDetailsAdapter(val clickListener: EmployeeListener) :
         companion object {
             fun from(parent: ViewGroup): ViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
-                val binding = ChangeGroupMemberItemBinding.inflate(layoutInflater, parent, false)
+                val binding =
+                    TeamdetailsListitemBinding.inflate(layoutInflater, parent, false)
                 return ViewHolder(binding)
             }
         }
     }
 }
 
-class EmployeeDiffCallback : DiffUtil.ItemCallback<Employee>() {
+class TeamDetailsDiffCallback : DiffUtil.ItemCallback<Employee>() {
     override fun areItemsTheSame(oldItem: Employee, newItem: Employee): Boolean {
-        return oldItem == newItem
+        return oldItem.id == newItem.id
     }
 
     override fun areContentsTheSame(oldItem: Employee, newItem: Employee): Boolean {
@@ -49,7 +53,6 @@ class EmployeeDiffCallback : DiffUtil.ItemCallback<Employee>() {
     }
 }
 
-class EmployeeListener(val clickListener: (employee: Employee ) -> Unit) {
+class TeamDetailsClickListener(val clickListener: (employee: Employee) -> Unit) {
     fun onClick(employee: Employee) = clickListener(employee)
 }
-
