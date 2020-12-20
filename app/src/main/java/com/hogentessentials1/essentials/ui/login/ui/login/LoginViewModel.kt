@@ -13,7 +13,7 @@ import kotlinx.coroutines.launch
 /**
  * View model for the login page
  * @author Simon De Wilde
- * @author Jonathan Vanden Eynden
+ * @author Jonathan Vanden Eynden Van Lysebeth
  * @property loginRepository
  *
  */

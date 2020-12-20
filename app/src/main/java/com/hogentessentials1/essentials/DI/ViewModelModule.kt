@@ -16,7 +16,7 @@ import org.koin.dsl.module
  *
  * @author Simon De Wilde
  * @author Kilian Hoefman
- * @author Jonathan VEVL
+ * @author Jonathan Vanden Eynden Van Lysebeth
  * @author Marbod Naasens
  * @author Ziggy Moens
  * @author Sébastien De Pauw
