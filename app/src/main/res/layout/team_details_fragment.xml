@@ -3,14 +3,15 @@
     @author Simon De Wilde
     layout for showing all team members
 -->
+
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-<!--    <ListView-->
-<!--        android:id="@+id/membersListView"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:padding="8dp" />-->
+    <data>
+        <variable
+            name="viewmodel"
+            type="com.hogentessentials1.essentials.ui.changeGroup.changeGroupDetail.TeamDetailsViewModel" />
+    </data>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/teamsdetailsRV"
@@ -19,6 +20,4 @@
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
-
-
 </layout>

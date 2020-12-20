@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -17,18 +16,18 @@ import com.hogentessentials1.essentials.databinding.TeamDetailsFragmentBinding
 import com.hogentessentials1.essentials.ui.changeGroup.EmployeeDetails.EmployeeDetailsAdapter
 import com.hogentessentials1.essentials.ui.changeGroup.EmployeeDetails.EmployeeDetailsViewModel
 import com.hogentessentials1.essentials.ui.changeGroup.EmployeeDetails.EmployeeListener
-import com.hogentessentials1.essentials.ui.roadMap.RoadMapViewModel
 
 /**
  * Fragment for showing the team members of a change group
  * @author Simon De Wilde
+ * @author Jonathan Vanden Eynden Van Lysebeth
  *
  */
 class TeamDetailsFragment : Fragment() {
 
     private lateinit var changeGroupMembers : ChangeGroup
     private lateinit var adapter : EmployeeDetailsAdapter
-    private lateinit var viewModel : EmployeeDetailsViewModel
+    private lateinit var viewModel : TeamDetailsViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -50,7 +49,8 @@ class TeamDetailsFragment : Fragment() {
         var employees : ArrayList<Employee> = arrayListOf()
 
         changeGroupMembers.employeeChangeGroups?.forEach { e -> employees.add(e.employee!!) }
-        viewModel = ViewModelProvider(this).get(EmployeeDetailsViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(TeamDetailsViewModel::class.java)
+        binding.viewmodel = viewModel
 
         adapter = EmployeeDetailsAdapter(
             EmployeeListener { employee ->
