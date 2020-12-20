@@ -59,7 +59,7 @@ class LoginActivityTest {
     @Test
     fun test_isSignInButtonEnabled_withInputInUsernameAndPasswordTextField() {
         onView(withId(R.id.username)).perform(typeText("username"))
-        onView(withId(R.id.password)).perform(typeText("password"))
+        onView(withId(R.id.password)).perform(typeText("password123"))
         onView(withId(R.id.login)).check(matches(isEnabled()))
     }
 

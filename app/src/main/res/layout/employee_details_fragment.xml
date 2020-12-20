@@ -82,7 +82,7 @@
                         android:textAlignment="center" />
 
                     <TextView
-                        android:id="@+id/sponsor_field"
+                        android:id="@+id/firstname_field"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight=".50"
@@ -111,7 +111,7 @@
                         android:textAlignment="center" />
 
                     <TextView
-                        android:id="@+id/start_field"
+                        android:id="@+id/lastname_field"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight=".50"
@@ -140,7 +140,7 @@
                         android:textAlignment="center" />
 
                     <TextView
-                        android:id="@+id/end_field"
+                        android:id="@+id/emailAdress_field"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight=".50"

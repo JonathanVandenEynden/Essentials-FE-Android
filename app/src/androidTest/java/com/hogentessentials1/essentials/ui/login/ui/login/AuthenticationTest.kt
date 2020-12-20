@@ -16,7 +16,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 
 /**
- * @author Jonathan Vanden Eynden
+ * @author Jonathan Vanden Eynden Van Lysebeth
  */
 
 @RunWith(AndroidJUnit4ClassRunner::class)
@@ -26,7 +26,6 @@ class AuthenticationTest {
 
     @Test
     fun test_changeManager_displaysMychangesAndDashboard() {
-        onView(withId(R.id.username)).perform(clearText()) // TODO weghalen nadat username niet meer automatisch is ingevuld
         onView(withId(R.id.username)).perform(typeText("Sukrit.bhattacharya@hogent.com"))
         onView(withId(R.id.password)).perform(typeText("P@ssword1"))
         onView(withId(R.id.login)).perform(click())
@@ -37,7 +36,6 @@ class AuthenticationTest {
 
     @Test
     fun test_employeeCredentials_doesNotDisplayMychangesAndDashboard() {
-        onView(withId(R.id.username)).perform(clearText()) // TODO weghalen nadat username niet meer automatisch is ingevuld
         onView(withId(R.id.username)).perform(typeText("ziggy@hogent.com"))
         onView(withId(R.id.password)).perform(typeText("P@ssword1"))
         onView(withId(R.id.login)).perform(click())
