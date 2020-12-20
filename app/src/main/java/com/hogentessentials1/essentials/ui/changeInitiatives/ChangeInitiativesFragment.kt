@@ -19,6 +19,7 @@ import org.koin.android.ext.android.inject
  * Fragment for the overview of change initiatives.
  * used for both employee and change manager (add boolean to action safe-args)
  * @author Ziggy Moens
+ * @author Marbod Naassens
  */
 class ChangeInitiativesFragment : Fragment() {
 
