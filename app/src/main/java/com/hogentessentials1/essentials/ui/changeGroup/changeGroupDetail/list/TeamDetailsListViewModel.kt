@@ -1,12 +1,8 @@
 package com.hogentessentials1.essentials.ui.changeGroup.changeGroupDetail.list
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.hogentessentials1.essentials.data.model.Employee
-import com.hogentessentials1.essentials.data.model.Question
-import com.hogentessentials1.essentials.data.repositories.QuestionRepository
-import com.hogentessentials1.essentials.util.Status
 
 /**
  * @author Sébastien De Pauw
@@ -26,4 +22,3 @@ class TeamDetailsListViewModel() : ViewModel() {
         _navigateToEmployee.value = null
     }
 }
-

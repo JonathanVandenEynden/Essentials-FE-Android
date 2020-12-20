@@ -27,7 +27,6 @@ class TeamDetailsListFragment : Fragment() {
 
     private lateinit var binding: TeamdetailsListBinding
 
-
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -50,7 +49,6 @@ class TeamDetailsListFragment : Fragment() {
         val cg: ChangeGroup = args.changeGroup
 
         cg.employeeChangeGroups!!.forEach { e -> e.employee?.let { employees.add(it) } }
-
 
         binding.viewModel = viewModel
 
@@ -88,5 +86,4 @@ class TeamDetailsListFragment : Fragment() {
 
         return binding.root
     }
-
 }

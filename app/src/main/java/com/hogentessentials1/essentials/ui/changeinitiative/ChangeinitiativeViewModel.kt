@@ -1,9 +1,7 @@
 package com.hogentessentials1.essentials.ui.changeinitiative
 
-import android.content.res.Resources
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.hogentessentials1.essentials.R
 import com.hogentessentials1.essentials.data.model.ChangeInitiative
 
 /**
