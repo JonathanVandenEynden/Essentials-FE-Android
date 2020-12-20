@@ -48,7 +48,7 @@
     <string name="essentials_logo_text">Essentials Logo</string>
     <string name="graph">More graphs</string>
     <string name="siteName">For more graphs <a href="https://essentialstoolkit.netlify.app/">visit essentialstoolkit.netlify.app</a></string>
-    <string name="name_display">1$s 2$s</string>
+    <string name="name_display">%1$s %2$s</string>
     <string name="start_survey">Start Survey</string>
     <string name="not_found">The requested page is not found</string>
     <string name="yes">Yes</string>
