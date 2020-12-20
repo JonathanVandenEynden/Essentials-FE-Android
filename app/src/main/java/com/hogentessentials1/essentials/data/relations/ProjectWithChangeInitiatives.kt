@@ -6,6 +6,7 @@ import com.hogentessentials1.essentials.data.model.ChangeInitiative
 import com.hogentessentials1.essentials.data.model.Project
 
 /**
+ * POJO class for relationship between project and changeinitiative (1-to-many)
  * @author Kilian Hoefman
  */
 

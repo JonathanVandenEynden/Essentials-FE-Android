@@ -30,6 +30,7 @@ class ProjectRepository(val remoteDataSource: ProjectRemoteDataSource, private v
 
     /**
      * get all projects
+     *
      * @return Resource with list of projects
      */
     fun getProjectsFromOrganization(organizationId: Int) = performGetOperation(

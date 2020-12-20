@@ -6,6 +6,7 @@ import com.hogentessentials1.essentials.data.model.ChangeGroup
 import com.hogentessentials1.essentials.data.model.Employee
 
 /**
+ * POJO class for relationship between changegroup and employee (1-to-many)
  * @author Kilian Hoefman
  */
 data class ChangeGroupWithEmployees(
