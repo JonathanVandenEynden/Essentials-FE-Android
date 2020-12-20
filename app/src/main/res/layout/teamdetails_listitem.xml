@@ -27,14 +27,13 @@
             android:layout_marginStart="@dimen/dp8"
             android:layout_marginEnd="@dimen/dp8"
             android:onClick="@{() -> clickListener.onClick(employee)}"
-            android:text="@{employee.firstName}"
+            android:text="@{@string/name_display(employee.firstName, employee.lastName)}"
             android:textColor="@color/black"
             app:backgroundTint="@color/brown"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
