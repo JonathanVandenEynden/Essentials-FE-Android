@@ -13,7 +13,7 @@ import com.hogentessentials1.essentials.util.Resource
 import kotlinx.coroutines.launch
 
 /**
- * viewmodel voor Dashboard
+ * viewmodel for Dashboard
  *
  * @author Marbod Naassens
  *

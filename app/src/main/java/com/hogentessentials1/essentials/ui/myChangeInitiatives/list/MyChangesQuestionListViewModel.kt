@@ -8,6 +8,7 @@ import com.hogentessentials1.essentials.data.repositories.QuestionRepository
 import com.hogentessentials1.essentials.util.Status
 
 /**
+ * Viewmodel for MyChangesQuestionListFragment
  * @author Sébastien De Pauw
  */
 

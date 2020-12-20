@@ -18,7 +18,6 @@ class SurveyDoneViewModel(private val repo: QuestionRepository) : ViewModel() {
     fun answer(questionId: Int, answer: String) {
         try {
             viewModelScope.launch {
-                Timber.e(questionId.toString())
                 repo.postAnswerToQuestion(questionId, answer)
             }
         } catch (e: Exception) {

@@ -13,6 +13,8 @@ import com.hogentessentials1.essentials.data.model.Employee
 import com.hogentessentials1.essentials.databinding.EmployeeDetailsFragmentBinding
 
 /**
+ * Fragment for the details of an Employee
+ *
  * @author Jonathan Vanden Eynden Van Lysebeth
  */
 

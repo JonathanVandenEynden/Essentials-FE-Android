@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import com.hogentessentials1.essentials.data.model.Employee
 
 /**
+ * Viewmodel for TeamDetailsListFragment
  * @author Jonathan Vanden Eynden Van Lysebeth
  */
 

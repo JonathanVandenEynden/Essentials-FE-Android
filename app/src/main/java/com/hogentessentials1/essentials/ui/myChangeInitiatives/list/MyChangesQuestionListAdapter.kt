@@ -9,6 +9,9 @@ import com.hogentessentials1.essentials.data.model.Question
 import com.hogentessentials1.essentials.databinding.FragmentMychangeQuestionsListitemBinding
 
 /**
+ * Adapter for the MyChangesQuestionListFragment: List of questions
+ * @param clickListener listener for when a survey is tapped
+
  * @author Sébastien De Pauw
  */
 

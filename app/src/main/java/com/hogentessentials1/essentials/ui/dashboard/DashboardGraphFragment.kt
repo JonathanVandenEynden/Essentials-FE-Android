@@ -26,7 +26,7 @@ import org.koin.android.ext.android.inject
 import timber.log.Timber
 
 /**
- * fragent for a dashboard graph
+ * Fragment for the dashboard graph
  *
  * @author Marbod Naassens
  *

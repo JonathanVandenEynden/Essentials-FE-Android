@@ -16,6 +16,7 @@ import com.hogentessentials1.essentials.data.model.Question
 import com.hogentessentials1.essentials.databinding.FragmentMychangeQuestionBinding
 
 /**
+ * Fragment for the detail of a survey
  * @author Sébastien De Pauw
  */
 

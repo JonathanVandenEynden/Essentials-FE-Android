@@ -18,6 +18,7 @@ import com.hogentessentials1.essentials.data.model.Employee
 import com.hogentessentials1.essentials.databinding.TeamdetailsListBinding
 
 /**
+ * Fragment for the details of a selected team
  * @author Jonathan Vanden Eynden Van Lysebeth
  */
 

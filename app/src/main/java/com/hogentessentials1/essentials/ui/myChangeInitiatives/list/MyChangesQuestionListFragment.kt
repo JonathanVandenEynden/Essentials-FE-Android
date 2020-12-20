@@ -20,6 +20,7 @@ import timber.log.Timber
 import kotlin.math.floor
 
 /**
+ * Fragment for the detail view of a survey
  * @author Sébastien De Pauw
  */
 
